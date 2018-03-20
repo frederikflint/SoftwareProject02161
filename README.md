@@ -2,3 +2,4 @@
 TEST AF MADS
 Sofware Project 2018 - Software Engineering 1
 Push test 1
+Pull test 1
