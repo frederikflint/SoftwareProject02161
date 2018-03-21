@@ -1,3 +1,4 @@
+import java.util.Calendar;
 import java.util.List;
 
 public class Developer extends User {
@@ -14,8 +15,8 @@ public class Developer extends User {
 
     }
 
-    public void createProject() {
-
+    public void createProject(String title, Calendar estStart, Calendar estEnd) {
+        Project project = new Project(title, estStart, estEnd);
     }
 
 }

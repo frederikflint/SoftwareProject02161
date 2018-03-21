@@ -8,11 +8,13 @@ public class Project {
     List<Activity> activities;
     List<Developer> projectDevelopers;
     Developer projectManager;
+    private String title;
     private Calendar estimatedStartTime;
     private Calendar estimatedEndTime;
     int estimatedHours;
 
-    public Project(Calendar estimatedStartTime, Calendar estimatedEndTime) {
+    public Project(String title, Calendar estimatedStartTime, Calendar estimatedEndTime) {
+        setTitle(title);
         setEstimatedStartTime(estimatedStartTime);
         setEstimatedEndTime(estimatedEndTime);
     }
@@ -47,7 +49,23 @@ public class Project {
 
     }
 
+    /**
+     *
+     */
+    public void assignManager(){
+
+    }
+
     // Setters and Getters //
+
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
     public Calendar getEstimatedStartTime() {
         return estimatedStartTime;
