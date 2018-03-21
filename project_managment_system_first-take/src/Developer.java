@@ -1,5 +1,3 @@
-package src;
-
 import java.util.List;
 
 public class Developer extends User {
@@ -8,8 +6,8 @@ public class Developer extends User {
     List<Project> devProjects;
     List<WorkHours> workHours;
 
-    public Developer (String initials) {
-        super(initials);
+    public Developer (String credentials, String password) {
+        super(credentials, password);
     }
 
     public void registerTime() {

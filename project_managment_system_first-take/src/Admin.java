@@ -1,9 +1,8 @@
-package src;
 
 public class Admin extends User {
 
-    public Admin(String initials) {
-        super(initials);
+    public Admin(String credentials, String password) {
+        super(credentials, password);
     }
 
     public void createDeveloper() {

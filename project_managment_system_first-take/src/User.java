@@ -1,11 +1,12 @@
-package src;
 
 public class User {
 
-    String initials;
+    String credentials;
+    String password;
 
-    public User (String initials) {
-        this.initials = initials;
+    public User (String credentials, String password) {
+        this.credentials = credentials;
+        this.password = password;
     }
 
 }
