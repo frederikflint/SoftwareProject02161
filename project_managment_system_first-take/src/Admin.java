@@ -5,8 +5,8 @@ public class Admin extends User {
         super(credentials, password);
     }
 
-    public void createDeveloper() {
-
+    public void createDeveloper(String credentials, String password) {
+        Developer developer = new Developer(credentials, password);
     }
 
     public void promoteDeveloper() {
