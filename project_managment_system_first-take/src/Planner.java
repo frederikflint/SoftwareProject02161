@@ -1,6 +1,6 @@
 import java.util.List;
 
-public class App {
+public class Planner {
 
     List<Developer> developers;
     List<Project> projects;
@@ -8,5 +8,14 @@ public class App {
     public void logIn(String credentials, String passeword){
 
     }
+
+    public void logOut(){
+
+    }
+
+    public List<Developer> getDevelopers() {
+        return developers;
+    }
+
 
 }
