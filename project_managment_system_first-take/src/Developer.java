@@ -11,7 +11,7 @@ public class Developer extends User {
         super(credentials, password);
     }
 
-    public void registerTime() {
+    public void registerTime(WorkHours work) {
 
     }
 
