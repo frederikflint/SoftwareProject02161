@@ -11,8 +11,8 @@ public class Developer extends User {
         super(credentials, password);
     }
 
-    public void registerTime() {
-
+    public void registerTime(Activity activity, Calendar startTime, Calendar endTime) {
+        this.workHours.add(new WorkHours(activity, startTime, endTime));
     }
 
     public void createProject(String title, Calendar estStart, Calendar estEnd) {

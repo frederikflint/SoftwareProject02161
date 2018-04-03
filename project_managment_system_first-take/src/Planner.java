@@ -3,8 +3,8 @@ import java.util.List;
 public class Planner {
 
     public static Developer activeUser;
-    List<Developer> developers;
-    List<Project> projects;
+    public static List<Developer> developers;
+    public static List<Project> projects;
 
     public void logIn(String credentials, String passeword){
         System.out.print(developers);

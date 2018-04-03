@@ -2,7 +2,6 @@
 import java.util.Calendar;
 import java.util.List;
 
-
 public class Project {
 
     List<Activity> activities;
@@ -27,7 +26,7 @@ public class Project {
     public void addDeveloper(Developer developer) throws OperationNotAllowedException {
 
         if (projectManager.equals(Planner.activeUser)) {
-            throw new OperationNotAllowedException("You need to have project manager rights");
+            throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
         } else {
             projectDevelopers.add(developer);
         }
@@ -42,19 +41,13 @@ public class Project {
     public void addActivity(Activity activty) throws OperationNotAllowedException {
 
         if (projectManager.equals(Planner.activeUser)) {
-            throw new OperationNotAllowedException("You need to have project manager rights");
+            throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
         } else {
             activities.add(activty);
         }
 
     }
 
-    /**
-     *
-     */
-    public void assignManager(){
-
-    }
 
     // Setters and Getters //
 
