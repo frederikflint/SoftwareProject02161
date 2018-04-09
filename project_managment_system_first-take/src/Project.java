@@ -51,7 +51,6 @@ public class Project {
 
     // Setters and Getters //
 
-
     public String getTitle() {
         return title;
     }

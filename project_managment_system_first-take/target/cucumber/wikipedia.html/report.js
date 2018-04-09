@@ -14,10 +14,10 @@ formatter.step({
   "keyword": "Given "
 });
 formatter.match({
-  "location": "Users.thatTheUserIsNotLoggedIn()"
+  "location": "UsersSteps.thatTheUserIsNotLoggedIn()"
 });
 formatter.result({
-  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.Users.thatTheUserIsNotLoggedIn(Users.java:13)\r\n\tat ✽.that the user is not logged in(use_cases/Admin_Login.feature:6)\r\n",
+  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.UsersSteps.thatTheUserIsNotLoggedIn(UsersSteps.java:13)\r\n\tat ✽.that the user is not logged in(use_cases/Admin_Login.feature:6)\r\n",
   "status": "pending"
 });
 formatter.step({
@@ -25,7 +25,7 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "Users.thePasswordIsEnteredCorrectly()"
+  "location": "UsersSteps.thePasswordIsEnteredCorrectly()"
 });
 formatter.result({
   "status": "skipped"
@@ -35,7 +35,7 @@ formatter.step({
   "keyword": "When "
 });
 formatter.match({
-  "location": "Users.theUserLogInSucceeds()"
+  "location": "UsersSteps.theUserLogInSucceeds()"
 });
 formatter.result({
   "status": "skipped"
@@ -45,7 +45,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.theUserIsLoggedIn()"
+  "location": "UsersSteps.theUserIsLoggedIn()"
 });
 formatter.result({
   "status": "skipped"
@@ -60,10 +60,10 @@ formatter.step({
   "keyword": "Given "
 });
 formatter.match({
-  "location": "Users.thatTheUserIsNotLoggedIn()"
+  "location": "UsersSteps.thatTheUserIsNotLoggedIn()"
 });
 formatter.result({
-  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.Users.thatTheUserIsNotLoggedIn(Users.java:13)\r\n\tat ✽.that the user is not logged in(use_cases/Admin_Login.feature:12)\r\n",
+  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.UsersSteps.thatTheUserIsNotLoggedIn(UsersSteps.java:13)\r\n\tat ✽.that the user is not logged in(use_cases/Admin_Login.feature:12)\r\n",
   "status": "pending"
 });
 formatter.step({
@@ -71,7 +71,7 @@ formatter.step({
   "keyword": "And "
 });
 formatter.match({
-  "location": "Users.thePasswordEnteredIsWrong()"
+  "location": "UsersSteps.thePasswordEnteredIsWrong()"
 });
 formatter.result({
   "status": "skipped"
@@ -81,7 +81,7 @@ formatter.step({
   "keyword": "When "
 });
 formatter.match({
-  "location": "Users.theUserLogInFails()"
+  "location": "UsersSteps.theUserLogInFails()"
 });
 formatter.result({
   "status": "skipped"
@@ -91,7 +91,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -173,7 +173,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -193,33 +193,42 @@ formatter.step({
   "name": "that the administrator is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.thatTheAdministratorIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.Admin.thatTheAdministratorIsLoggedIn(Admin.java:13)\r\n\tat ✽.that the administrator is logged in(use_cases/Delete_Developer.feature:6)\r\n",
+  "status": "pending"
 });
 formatter.step({
   "name": "a developer is defined",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.aDeveloperIsDefined()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.step({
   "name": "the administrator deletes a developer from the system",
   "keyword": "When "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.theAdministratorDeletesADeveloperFromTheSystem()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.step({
   "name": "the developer is removed from the system",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.theDeveloperIsRemovedFromTheSystem()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "The administrator is not logged in, but tries to remove a developer from",
@@ -238,16 +247,18 @@ formatter.step({
   "name": "the administrator deletes a developer from the system",
   "keyword": "When "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.theAdministratorDeletesADeveloperFromTheSystem()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.step({
   "name": "I get the error message \"Administrator rights required for this action\"",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -267,25 +278,32 @@ formatter.step({
   "name": "that the administrator is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.thatTheAdministratorIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.Admin.thatTheAdministratorIsLoggedIn(Admin.java:13)\r\n\tat ✽.that the administrator is logged in(use_cases/Delete_Project.feature:6)\r\n",
+  "status": "pending"
 });
 formatter.step({
   "name": "the administrator deletes a project",
   "keyword": "When "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.theAdministratorDeletesAProject()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.step({
   "name": "the project is deleted",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.theProjectIsDeleted()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.scenario({
   "name": "Administrator deletes a project that doesn\u0027t exist",
@@ -296,32 +314,39 @@ formatter.step({
   "name": "that the administrator is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.thatTheAdministratorIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.Admin.thatTheAdministratorIsLoggedIn(Admin.java:13)\r\n\tat ✽.that the administrator is logged in(use_cases/Delete_Project.feature:11)\r\n",
+  "status": "pending"
 });
 formatter.step({
   "name": "the administrator deletes a project",
   "keyword": "When "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.theAdministratorDeletesAProject()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.step({
   "name": "that project doesn\u0027t exist",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.thatProjectDoesnTExist()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.step({
   "name": "I get the error message \"the entered project doesn\u0027t exist\"",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -403,7 +428,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -442,7 +467,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -784,7 +809,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -850,7 +875,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -1051,7 +1076,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -1207,7 +1232,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -1246,7 +1271,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -1285,7 +1310,7 @@ formatter.step({
   "keyword": "Then "
 });
 formatter.match({
-  "location": "Users.iGetTheErrorMessage(String)"
+  "location": "UsersSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "skipped"
@@ -1305,9 +1330,12 @@ formatter.step({
   "name": "that the administrator is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.thatTheAdministratorIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.Admin.thatTheAdministratorIsLoggedIn(Admin.java:13)\r\n\tat ✽.that the administrator is logged in(use_cases/Set_Project_Manager_Status.feature:6)\r\n",
+  "status": "pending"
 });
 formatter.step({
   "name": "that a project has no project manager",
@@ -1321,9 +1349,11 @@ formatter.step({
   "name": "a developer is defined",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.aDeveloperIsDefined()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.step({
   "name": "the user is registered as project manager of the project",
@@ -1403,9 +1433,11 @@ formatter.step({
   "name": "that the administrator is logged in",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "Admin.thatTheAdministratorIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.step({
   "name": "the administrator removes the project manager status from the user",
