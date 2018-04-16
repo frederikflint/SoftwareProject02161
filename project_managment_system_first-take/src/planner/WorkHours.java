@@ -1,5 +1,10 @@
+package planner;
+
 import java.util.Calendar;
 
+/**
+ *
+ */
 public class WorkHours {
 
     Activity activity;
