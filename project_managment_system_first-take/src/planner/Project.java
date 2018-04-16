@@ -1,7 +1,12 @@
+package planner;
 
 import java.util.Calendar;
 import java.util.List;
 
+
+/**
+ *
+ */
 public class Project {
 
     List<Activity> activities;
@@ -21,7 +26,7 @@ public class Project {
     /**
      *
      * @param developer
-     * @throws OperationNotAllowedException
+     * @throws OperationNotAllowedException If you do not have manager rights throw error
      */
     public void addDeveloper(Developer developer) throws OperationNotAllowedException {
 
@@ -30,13 +35,12 @@ public class Project {
         } else {
             projectDevelopers.add(developer);
         }
-
     }
 
     /**
      *
      * @param activty
-     * @throws OperationNotAllowedException
+     * @throws OperationNotAllowedException If you do not have manager rights throw error
      */
     public void addActivity(Activity activty) throws OperationNotAllowedException {
 
@@ -45,11 +49,15 @@ public class Project {
         } else {
             activities.add(activty);
         }
-
     }
 
+    /**************************
+     *  Setters and getters   *
+     **************************/
 
-    // Setters and Getters //
+    public void setProjectManager(Developer projectManager) {
+        this.projectManager = projectManager;
+    }
 
     public String getTitle() {
         return title;

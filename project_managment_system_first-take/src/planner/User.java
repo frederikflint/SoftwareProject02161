@@ -1,4 +1,9 @@
+package planner;
 
+
+/**
+ *
+ */
 public class User {
 
     private String credentials;

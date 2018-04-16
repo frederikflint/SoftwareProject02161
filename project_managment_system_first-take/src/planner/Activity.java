@@ -1,3 +1,5 @@
+package planner;
+
 import java.util.List;
 
 public class Activity {
@@ -9,17 +11,14 @@ public class Activity {
 
     public Activity(Project project) {
         this.project = project;
-
-
     }
 
     /**
-     * You should be able to get the project
+     * You should be able to get associated the project
      * @return
      */
     public Project getProject() {
         return project;
     }
-
 
 }
