@@ -17,6 +17,7 @@ public class Admin extends User {
      */
     public void createDeveloper(String credentials, String password) {
         Developer developer = new Developer(credentials, password);
+        Planner.developers.add(developer);
     }
 
     /**

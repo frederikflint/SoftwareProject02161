@@ -3,6 +3,9 @@ package planner;
 import java.util.Calendar;
 import java.util.List;
 
+/**
+ *
+ */
 public class Developer extends User {
 
     List<Activity> devActivities;
