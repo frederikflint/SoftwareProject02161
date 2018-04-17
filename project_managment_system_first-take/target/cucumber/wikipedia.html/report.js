@@ -17,7 +17,7 @@ formatter.match({
   "location": "UsersSteps.thatTheUserIsNotLoggedIn()"
 });
 formatter.result({
-  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.UsersSteps.thatTheUserIsNotLoggedIn(UsersSteps.java:13)\r\n\tat ✽.that the user is not logged in(use_cases/Admin_Login.feature:6)\r\n",
+  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.UsersSteps.thatTheUserIsNotLoggedIn(UsersSteps.java:19)\r\n\tat ✽.that the user is not logged in(use_cases/Admin_Login.feature:6)\r\n",
   "status": "pending"
 });
 formatter.step({
@@ -34,21 +34,17 @@ formatter.step({
   "name": "the user log-in succeeds",
   "keyword": "When "
 });
-formatter.match({
-  "location": "UsersSteps.theUserLogInSucceeds()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "the user is logged in",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.theUserIsLoggedIn()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.scenario({
   "name": "User enters wrong password",
@@ -63,38 +59,32 @@ formatter.match({
   "location": "UsersSteps.thatTheUserIsNotLoggedIn()"
 });
 formatter.result({
-  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.UsersSteps.thatTheUserIsNotLoggedIn(UsersSteps.java:13)\r\n\tat ✽.that the user is not logged in(use_cases/Admin_Login.feature:12)\r\n",
+  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.UsersSteps.thatTheUserIsNotLoggedIn(UsersSteps.java:19)\r\n\tat ✽.that the user is not logged in(use_cases/Admin_Login.feature:12)\r\n",
   "status": "pending"
 });
 formatter.step({
   "name": "the password entered is wrong",
   "keyword": "And "
 });
-formatter.match({
-  "location": "UsersSteps.thePasswordEnteredIsWrong()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "the user log-in fails",
   "keyword": "When "
 });
-formatter.match({
-  "location": "UsersSteps.theUserLogInFails()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "I get the error message \"Wrong password\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.uri("use_cases/Create_Project.feature");
 formatter.feature({
@@ -172,11 +162,9 @@ formatter.step({
   "name": "I get the error message \"Invalid project credentials\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.uri("use_cases/Delete_Developer.feature");
 formatter.feature({
@@ -193,42 +181,33 @@ formatter.step({
   "name": "that the administrator is logged in",
   "keyword": "Given "
 });
-formatter.match({
-  "location": "Admin.thatTheAdministratorIsLoggedIn()"
-});
+formatter.match({});
 formatter.result({
-  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.Admin.thatTheAdministratorIsLoggedIn(Admin.java:13)\r\n\tat ✽.that the administrator is logged in(use_cases/Delete_Developer.feature:6)\r\n",
-  "status": "pending"
+  "status": "undefined"
 });
 formatter.step({
   "name": "a developer is defined",
   "keyword": "And "
 });
-formatter.match({
-  "location": "Admin.aDeveloperIsDefined()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "the administrator deletes a developer from the system",
   "keyword": "When "
 });
-formatter.match({
-  "location": "Admin.theAdministratorDeletesADeveloperFromTheSystem()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "the developer is removed from the system",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "Admin.theDeveloperIsRemovedFromTheSystem()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.scenario({
   "name": "The administrator is not logged in, but tries to remove a developer from",
@@ -247,21 +226,17 @@ formatter.step({
   "name": "the administrator deletes a developer from the system",
   "keyword": "When "
 });
-formatter.match({
-  "location": "Admin.theAdministratorDeletesADeveloperFromTheSystem()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "I get the error message \"Administrator rights required for this action\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.uri("use_cases/Delete_Project.feature");
 formatter.feature({
@@ -278,32 +253,25 @@ formatter.step({
   "name": "that the administrator is logged in",
   "keyword": "Given "
 });
-formatter.match({
-  "location": "Admin.thatTheAdministratorIsLoggedIn()"
-});
+formatter.match({});
 formatter.result({
-  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.Admin.thatTheAdministratorIsLoggedIn(Admin.java:13)\r\n\tat ✽.that the administrator is logged in(use_cases/Delete_Project.feature:6)\r\n",
-  "status": "pending"
+  "status": "undefined"
 });
 formatter.step({
   "name": "the administrator deletes a project",
   "keyword": "When "
 });
-formatter.match({
-  "location": "Admin.theAdministratorDeletesAProject()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "the project is deleted",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "Admin.theProjectIsDeleted()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.scenario({
   "name": "Administrator deletes a project that doesn\u0027t exist",
@@ -314,42 +282,33 @@ formatter.step({
   "name": "that the administrator is logged in",
   "keyword": "Given "
 });
-formatter.match({
-  "location": "Admin.thatTheAdministratorIsLoggedIn()"
-});
+formatter.match({});
 formatter.result({
-  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.Admin.thatTheAdministratorIsLoggedIn(Admin.java:13)\r\n\tat ✽.that the administrator is logged in(use_cases/Delete_Project.feature:11)\r\n",
-  "status": "pending"
+  "status": "undefined"
 });
 formatter.step({
   "name": "the administrator deletes a project",
   "keyword": "When "
 });
-formatter.match({
-  "location": "Admin.theAdministratorDeletesAProject()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "that project doesn\u0027t exist",
   "keyword": "And "
 });
-formatter.match({
-  "location": "Admin.thatProjectDoesnTExist()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "I get the error message \"the entered project doesn\u0027t exist\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.uri("use_cases/Include_Developer_In_Project.feature");
 formatter.feature({
@@ -427,11 +386,9 @@ formatter.step({
   "name": "I get the error message \"This action required project manager rights\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.scenario({
   "name": "A project manager includes an unavailable developer in a project",
@@ -466,11 +423,9 @@ formatter.step({
   "name": "I get the error message \"Developer is not available in this period\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.scenario({
   "name": "A project manager assigns a available developer to an activity",
@@ -808,11 +763,9 @@ formatter.step({
   "name": "I get the error message \"You are assigned to no activities\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.uri("use_cases/List_Of_Available_Developers.feature");
 formatter.feature({
@@ -874,11 +827,9 @@ formatter.step({
   "name": "I get the error message \"No developer is currently available\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.uri("use_cases/Register_Time.feature");
 formatter.feature({
@@ -1075,11 +1026,9 @@ formatter.step({
   "name": "I get the error message \"No registered time spent\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.uri("use_cases/Remove_Activity.feature");
 formatter.feature({
@@ -1231,11 +1180,9 @@ formatter.step({
   "name": "I get the error message \"Activity not found\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.scenario({
   "name": "Removal of nonexistent project activity",
@@ -1270,11 +1217,9 @@ formatter.step({
   "name": "I get the error message \"Activity not found\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.scenario({
   "name": "Removal of nonexistent project activity from user",
@@ -1309,11 +1254,9 @@ formatter.step({
   "name": "I get the error message \"Activity not found\"",
   "keyword": "Then "
 });
-formatter.match({
-  "location": "UsersSteps.iGetTheErrorMessage(String)"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.uri("use_cases/Set_Project_Manager_Status.feature");
 formatter.feature({
@@ -1330,12 +1273,9 @@ formatter.step({
   "name": "that the administrator is logged in",
   "keyword": "Given "
 });
-formatter.match({
-  "location": "Admin.thatTheAdministratorIsLoggedIn()"
-});
+formatter.match({});
 formatter.result({
-  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.Admin.thatTheAdministratorIsLoggedIn(Admin.java:13)\r\n\tat ✽.that the administrator is logged in(use_cases/Set_Project_Manager_Status.feature:6)\r\n",
-  "status": "pending"
+  "status": "undefined"
 });
 formatter.step({
   "name": "that a project has no project manager",
@@ -1349,11 +1289,9 @@ formatter.step({
   "name": "a developer is defined",
   "keyword": "And "
 });
-formatter.match({
-  "location": "Admin.aDeveloperIsDefined()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "the user is registered as project manager of the project",
@@ -1433,11 +1371,9 @@ formatter.step({
   "name": "that the administrator is logged in",
   "keyword": "And "
 });
-formatter.match({
-  "location": "Admin.thatTheAdministratorIsLoggedIn()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "the administrator removes the project manager status from the user",
