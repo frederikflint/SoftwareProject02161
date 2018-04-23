@@ -2,7 +2,7 @@ package planner;
 
 
 /**
- *
+ * The super class Uses
  */
 public class User {
 

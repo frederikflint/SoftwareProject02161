@@ -5,4 +5,7 @@ package planner;
  * These response could be when you add an activity or other operation's on the system
  */
 public class UserResponse {
+    public void sendUserResponse(){
+        
+    }
 }

@@ -9,9 +9,15 @@ import java.util.Objects;
  */
 public class Planner {
 
-    public static Developer activeUser;
-    public static List<Developer> developers =  new ArrayList<Developer>();
-    public static List<Project> projects;
+    public Developer activeUser;
+    public List<Developer> developers =  new ArrayList<>();
+    public List<Project> projects = new ArrayList<>();
+
+
+    /**
+     * Handle the respond to the user.
+     */
+    private UserResponse userResponse = new UserResponse();
 
     /**
      * Set an active user session
@@ -39,11 +45,15 @@ public class Planner {
     }
 
     /**
-     * Log the active user out of the system (remove session)
+     * Log the active user out of the system (remove active session)
      */
     public void logOut(){
-         // Remove the active session
+        // Remove the active session
         activeUser = null;
+    }
+
+    public void sendUserResponse(){
+
     }
 
     /**************************
@@ -55,7 +65,7 @@ public class Planner {
      * @param credentials The developers credentials
      * @return Returns the specific found developer
      */
-    public static Developer getDeveloper(String credentials) {
+    public Developer getDeveloper(String credentials) {
 
         //Set the initial currentDeveloper as null
         Developer currentDeveloper = null;
@@ -73,7 +83,7 @@ public class Planner {
      * @param title The project title
      * @return Returns the specific found project
      */
-    public static Project getProject(String title) {
+    public Project getProject(String title) {
 
         // Set the initial currentProject as null
         Project currentProject = null;
@@ -95,6 +105,10 @@ public class Planner {
     }
 
     public Developer getActiveUser(Developer activeUser) {
+        return activeUser;
+    }
+
+    public Developer getActiveUser() {
         return activeUser;
     }
 }
