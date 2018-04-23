@@ -10,14 +10,14 @@ import planner.Admin;
 import static junit.framework.TestCase.assertEquals;
 import static org.junit.Assert.assertThat;
 
-public class UsersSteps {
+public class UserSteps {
 
     private Planner planner;
     private User user;
     private Admin admin;
     public DeveloperHelper helper;
 
-    public UsersSteps(Planner planner, DeveloperHelper helper) {
+    public UserSteps(Planner planner, DeveloperHelper helper) {
         this.planner = planner;
         this.helper = helper;
     }
