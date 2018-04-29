@@ -2,7 +2,7 @@ package planner;
 
 
 /**
- *
+ * The super class Uses
  */
 public class User {
 
@@ -13,6 +13,10 @@ public class User {
         setCredentials(credentials);
         setPassword(password);
     }
+
+    /**************************
+     *  Setters and getters   *
+     **************************/
 
     public String getCredentials() {
         return credentials;

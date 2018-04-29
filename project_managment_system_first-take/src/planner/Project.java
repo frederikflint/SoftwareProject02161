@@ -3,7 +3,6 @@ package planner;
 import java.util.Calendar;
 import java.util.List;
 
-
 /**
  *
  */
@@ -28,9 +27,9 @@ public class Project {
      * @param developer
      * @throws OperationNotAllowedException If you do not have manager rights throw error
      */
-    public void addDeveloper(Developer developer) throws OperationNotAllowedException {
+    public void addDeveloper(Developer developer, Planner planner) throws OperationNotAllowedException {
 
-        if (projectManager.equals(Planner.activeUser)) {
+        if (projectManager.equals(planner.activeUser)) {
             throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
         } else {
             projectDevelopers.add(developer);
@@ -42,9 +41,9 @@ public class Project {
      * @param activty
      * @throws OperationNotAllowedException If you do not have manager rights throw error
      */
-    public void addActivity(Activity activty) throws OperationNotAllowedException {
+    public void addActivity(Activity activty, Planner planner) throws OperationNotAllowedException {
 
-        if (projectManager.equals(Planner.activeUser)) {
+        if (projectManager.equals(planner.activeUser)) {
             throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
         } else {
             activities.add(activty);

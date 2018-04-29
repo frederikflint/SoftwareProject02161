@@ -7,9 +7,9 @@ import java.util.Calendar;
  */
 public class WorkHours {
 
-    Activity activity;
-    Calendar startTime;
-    Calendar endTime;
+    private Activity activity;
+    private Calendar startTime;
+    private Calendar endTime;
 
     public WorkHours (Activity activity, Calendar startTime, Calendar endTime) {
         this.activity = activity;

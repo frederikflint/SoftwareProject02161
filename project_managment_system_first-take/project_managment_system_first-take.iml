@@ -171,5 +171,6 @@
         <SOURCES />
       </library>
     </orderEntry>
+    <orderEntry type="library" name="org.testfx:testfx-junit5:4.0.13-alpha" level="project" />
   </component>
 </module>

@@ -14,7 +14,7 @@ public class Activity {
     }
 
     /**
-     * You should be able to get associated the project
+     * Get the associated the project
      * @return
      */
     public Project getProject() {

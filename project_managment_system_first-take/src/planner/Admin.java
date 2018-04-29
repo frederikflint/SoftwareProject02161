@@ -10,22 +10,13 @@ public class Admin extends User {
         super(credentials, password);
     }
 
-    /**
-     *
-     * @param credentials
-     * @param password
-     */
-    public void createDeveloper(String credentials, String password) {
-        Developer developer = new Developer(credentials, password);
-        Planner.developers.add(developer);
-    }
 
     /**
      *
      * @return
      */
-    public List<Project> getProjects(){
-        return Planner.projects;
+    public List<Project> getProjects(Planner planner){
+        return planner.projects;
     }
 
     /**
@@ -33,10 +24,12 @@ public class Admin extends User {
      * @param credentials
      * @param title
      */
-    public void assignProjectManager(String credentials, String title) {
+    public void assignProjectManager(String credentials, String title, Planner planner) {
+
         // Get the developer and  project.
-        Developer currentDeveloper = Planner.getDeveloper(credentials);
-        Project currentProject = Planner.getProject(title);
+        Developer currentDeveloper = planner.getDeveloper(credentials);
+        Project currentProject = planner.getProject(title);
+
         // Add the returned developer to the the returned project as manager.
         currentProject.setProjectManager(currentDeveloper);
     }
@@ -45,8 +38,8 @@ public class Admin extends User {
      *
      * @param title
      */
-    public void removeProjectManager(String title) {
-        Project currentProject = Planner.getProject(title);
+    public void removeProjectManager(String title, Planner planner) {
+        Project currentProject = planner.getProject(title);
         currentProject.setProjectManager(null);
 
     }
