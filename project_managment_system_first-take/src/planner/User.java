@@ -14,6 +14,10 @@ public class User {
         setPassword(password);
     }
 
+    /**************************
+     *  Setters and getters   *
+     **************************/
+
     public String getCredentials() {
         return credentials;
     }

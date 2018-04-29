@@ -9,58 +9,67 @@ formatter.scenario({
   "description": "",
   "keyword": "Scenario"
 });
+formatter.before({
+  "status": "passed"
+});
 formatter.step({
   "name": "that the user is not logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UsersSteps.thatTheUserIsNotLoggedIn()"
+  "location": "UserSteps.thatTheUserIsNotLoggedIn()"
 });
 formatter.result({
-  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.UsersSteps.thatTheUserIsNotLoggedIn(UsersSteps.java:19)\r\n\tat ✽.that the user is not logged in(use_cases/Admin_Login.feature:6)\r\n",
-  "status": "pending"
+  "status": "passed"
 });
 formatter.step({
   "name": "the password is entered correctly",
   "keyword": "And "
 });
-formatter.match({
-  "location": "UsersSteps.thePasswordIsEnteredCorrectly()"
-});
+formatter.match({});
 formatter.result({
-  "status": "skipped"
+  "status": "undefined"
 });
 formatter.step({
   "name": "the user log-in succeeds",
   "keyword": "When "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.theUserLogInSucceeds()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.step({
   "name": "the user is logged in",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.theUserIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
+});
+formatter.after({
+  "status": "passed"
 });
 formatter.scenario({
   "name": "User enters wrong password",
   "description": "",
   "keyword": "Scenario"
 });
+formatter.before({
+  "status": "passed"
+});
 formatter.step({
   "name": "that the user is not logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UsersSteps.thatTheUserIsNotLoggedIn()"
+  "location": "UserSteps.thatTheUserIsNotLoggedIn()"
 });
 formatter.result({
-  "error_message": "cucumber.api.PendingException: TODO: implement me\r\n\tat acceptance_tests.UsersSteps.thatTheUserIsNotLoggedIn(UsersSteps.java:19)\r\n\tat ✽.that the user is not logged in(use_cases/Admin_Login.feature:12)\r\n",
-  "status": "pending"
+  "status": "passed"
 });
 formatter.step({
   "name": "the password entered is wrong",
@@ -74,9 +83,11 @@ formatter.step({
   "name": "the user log-in fails",
   "keyword": "When "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.theUserLogInFails()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.step({
   "name": "I get the error message \"Wrong password\"",
@@ -85,6 +96,9 @@ formatter.step({
 formatter.match({});
 formatter.result({
   "status": "undefined"
+});
+formatter.after({
+  "status": "passed"
 });
 formatter.uri("use_cases/Create_Project.feature");
 formatter.feature({
@@ -96,6 +110,9 @@ formatter.scenario({
   "name": "A project is created successfully",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a developer is logged in",
@@ -129,10 +146,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "The developer doesn\u0027t enter valid start and end dates",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a developer is logged in",
@@ -166,6 +189,9 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.uri("use_cases/Delete_Developer.feature");
 formatter.feature({
   "name": "Delete developer",
@@ -176,6 +202,9 @@ formatter.scenario({
   "name": "An administrator deletes a developer from the system",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the administrator is logged in",
@@ -209,10 +238,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "The administrator is not logged in, but tries to remove a developer from",
   "description": "  the system",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the administrator is not logged in",
@@ -238,6 +273,9 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.uri("use_cases/Delete_Project.feature");
 formatter.feature({
   "name": "Delete project",
@@ -248,6 +286,9 @@ formatter.scenario({
   "name": "Administrator deletes a project",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the administrator is logged in",
@@ -273,10 +314,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Administrator deletes a project that doesn\u0027t exist",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the administrator is logged in",
@@ -310,6 +357,9 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.uri("use_cases/Include_Developer_In_Project.feature");
 formatter.feature({
   "name": "Include developer in project",
@@ -320,6 +370,9 @@ formatter.scenario({
   "name": "The project manager includes a developer in a project",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the project manager is logged in",
@@ -353,10 +406,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "A project manager is not logged in, trying to include a developer",
   "description": "  in a project",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the project manager is not logged in",
@@ -390,10 +449,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "A project manager includes an unavailable developer in a project",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the project manager is logged in",
@@ -427,10 +492,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "A project manager assigns a available developer to an activity",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the project manager is logged in",
@@ -480,10 +551,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "A project manager assigns an unavailable developer to an activity",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the project manager is logged in",
@@ -549,10 +626,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "A project manager assigns a developer to an activity outside the project",
   "description": "  managers\u0027 project",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the project manager is logged in",
@@ -618,10 +701,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "A project manager assigns a developer to an activity outside the project",
   "description": "  managers\u0027 project",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the project manager is logged in",
@@ -686,6 +775,9 @@ formatter.step({
 formatter.match({});
 formatter.result({
   "status": "undefined"
+});
+formatter.after({
+  "status": "passed"
 });
 formatter.uri("use_cases/List_Of_Activities.feature");
 formatter.feature({
@@ -697,6 +789,9 @@ formatter.scenario({
   "name": "Developer wishes to see his list of activities",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a developer is logged in",
@@ -730,10 +825,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Developer has no activities in his list, but wants to see it",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a developer is logged in",
@@ -767,6 +868,9 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.uri("use_cases/List_Of_Available_Developers.feature");
 formatter.feature({
   "name": "list of available developers",
@@ -777,6 +881,9 @@ formatter.scenario({
   "name": "Project manager checks list of available developers",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a developer is available",
@@ -802,10 +909,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Project manager check an empty list of available developers",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that no developer is available",
@@ -831,6 +944,9 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.uri("use_cases/Register_Time.feature");
 formatter.feature({
   "name": "Register time",
@@ -841,6 +957,9 @@ formatter.scenario({
   "name": "developer registers time",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a developer is logged in",
@@ -882,10 +1001,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "developer registers time to a project the developer is not registered to",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the developer is logged in",
@@ -919,10 +1044,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "developer registers an invalid amount of time",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a developer is logged in",
@@ -956,10 +1087,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "developer wants to see registered time spent",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a developer is logged in",
@@ -993,10 +1130,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "developer wants to see registered time spent, but hasn\u0027t registered any time",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a developer is logged in",
@@ -1030,6 +1173,9 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.uri("use_cases/Remove_Activity.feature");
 formatter.feature({
   "name": "Remove activity",
@@ -1040,6 +1186,9 @@ formatter.scenario({
   "name": "Remove a personal activity",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the developer is logged in",
@@ -1073,10 +1222,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Remove a project activity",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "a project manager is logged in",
@@ -1110,10 +1265,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Remove project activity from user",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the project manager is logged in",
@@ -1147,10 +1308,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Removal of a nonexistent personal activity",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a user is logged in",
@@ -1184,10 +1351,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Removal of nonexistent project activity",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "a project manager is logged in",
@@ -1221,10 +1394,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Removal of nonexistent project activity from user",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the project manager is logged in",
@@ -1258,6 +1437,9 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.uri("use_cases/Set_Project_Manager_Status.feature");
 formatter.feature({
   "name": "Set project manager status",
@@ -1268,6 +1450,9 @@ formatter.scenario({
   "name": "Administrator assigns a developer as project manager to a project.",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that the administrator is logged in",
@@ -1309,10 +1494,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Assign project manager status when project already has a project manager",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a user is defined",
@@ -1354,10 +1545,16 @@ formatter.match({});
 formatter.result({
   "status": "undefined"
 });
+formatter.after({
+  "status": "passed"
+});
 formatter.scenario({
   "name": "Remove project manager status",
   "description": "",
   "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
 });
 formatter.step({
   "name": "that a developer is project manager",
@@ -1390,5 +1587,8 @@ formatter.step({
 formatter.match({});
 formatter.result({
   "status": "undefined"
+});
+formatter.after({
+  "status": "passed"
 });
 });

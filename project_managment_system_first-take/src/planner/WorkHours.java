@@ -3,7 +3,7 @@ package planner;
 import java.util.Calendar;
 
 /**
- * Set WorkHours
+ *
  */
 public class WorkHours {
 

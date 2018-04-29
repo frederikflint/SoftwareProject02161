@@ -1,65 +1,89 @@
 package acceptance_tests;
 
-import cucumber.api.PendingException;
+import cucumber.api.java.After;
+import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import javafx.scene.Scene;
+import javafx.stage.Stage;
+import org.junit.Test;
+import org.testfx.framework.junit5.ApplicationTest;
+import planner.Admin;
 import planner.Planner;
 import planner.User;
-import planner.Admin;
 
-import static junit.framework.TestCase.assertEquals;
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class UserSteps {
+public class UserSteps extends ApplicationTest {
 
     private Planner planner;
     private User user;
     private Admin admin;
+
+    private ErrorMessageHolder errorMessage;
     public DeveloperHelper helper;
 
-    public UserSteps(Planner planner, DeveloperHelper helper) {
+
+    public UserSteps(Planner planner, ErrorMessageHolder errorMessage, DeveloperHelper helper) {
         this.planner = planner;
+        this.errorMessage = errorMessage;
         this.helper = helper;
     }
 
-    @Given("^that the user is not logged in$")
-    public void thatTheUserIsNotLoggedIn() throws Exception {
-        assertEquals(planner.activeUser,null);
-        throw new PendingException();
+    /******************
+     *  TEST FOR GUI  *
+     ******************/
+
+    @Override
+    public void start (Stage stage) throws Exception {
+
     }
 
-    @Given("^the password is entered correctly$")
-    public void thePasswordIsEnteredCorrectly() throws Exception {
+    @Before
+    public void setUp () throws Exception {
+    }
+
+    @After
+    public void tearDown () throws Exception {
+
+    }
+
+    @Test
+    public void userLoginSuccess () {
+    }
+
+
+    /****************
+     *  Unit tests  *
+     ****************/
+
+    @Given("^that the user is not logged in$")
+    public void thatTheUserIsNotLoggedIn() throws Exception {
+        assertThat(planner.activeUser,is(equalTo(null)));
     }
 
     @When("^the user log-in succeeds$")
     public void theUserLogInSucceeds() throws Exception {
-        throw new PendingException();
+        planner.logIn("nl","nl");
     }
 
-//
-//    @Then("^the user is logged in$")
-//    public void theUserIsLoggedIn() throws Exception {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new PendingException();
-//    }
-//
-//    @Given("^the password entered is wrong$")
-//    public void thePasswordEnteredIsWrong() throws Exception {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new PendingException();
-//    }
-//
-//    @When("^the user log-in fails$")
-//    public void theUserLogInFails() throws Exception {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new PendingException();
-//    }
-//
-//    @Then("^I get the error message \"([^\"]*)\"$")
-//    public void iGetTheErrorMessage(String arg1) throws Exception {
-//        // Write code here that turns the phrase above into concrete actions
-//        throw new PendingException();
-//    }
+
+    @Then("^the user is logged in$")
+    public void theUserIsLoggedIn() throws Exception {
+        assertThat(planner.activeUser.getCredentials(),is("nl"));
+        assertThat(planner.activeUser.getPassword(),is("nl"));
+    }
+
+    @When("^the user log-in fails$")
+    public void theUserLogInFails() throws Exception {
+        try {
+            planner.logIn("test","test");
+        } catch (Exception e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+    }
 
 }

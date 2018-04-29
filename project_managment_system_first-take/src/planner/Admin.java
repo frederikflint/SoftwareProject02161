@@ -10,15 +10,6 @@ public class Admin extends User {
         super(credentials, password);
     }
 
-    /**
-     * Add a new user on the system
-     * @param credentials
-     * @param password
-     */
-    public void createDeveloper(String credentials, String password, Planner planner) {
-        Developer developer = new Developer(credentials, password);
-        planner.developers.add(developer);
-    }
 
     /**
      *

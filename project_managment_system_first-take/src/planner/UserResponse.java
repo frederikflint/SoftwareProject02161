@@ -6,6 +6,6 @@ package planner;
  */
 public class UserResponse {
     public void sendUserResponse(){
-        
+        // Send response to user
     }
 }
