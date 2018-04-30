@@ -31,7 +31,7 @@ public class Planner extends Application {
     public List<Developer> users =  new ArrayList<>();
     public List<Project> projects = new ArrayList<>();
 
-    Stage Window;
+    Stage window;
     Scene LogIn, Dash;
 
 //    public static void main(String[] args) {
@@ -50,6 +50,8 @@ public class Planner extends Application {
     @Override
     public void start(Stage primaryStage) {
 
+        window = primaryStage;
+
         /**
          * FAKE USERS FOR TESTING
          */
@@ -58,7 +60,7 @@ public class Planner extends Application {
         users.add(dev);
 
         // Scene setup as grid
-        primaryStage.setTitle("Time planner");
+        window.setTitle("Time planner");
         GridPane grid = new GridPane();
         grid.getColumnConstraints().add(new ColumnConstraints(100));
         grid.getColumnConstraints().add(new ColumnConstraints(250));
@@ -98,7 +100,14 @@ public class Planner extends Application {
             public void handle(ActionEvent e1) {
                 try {
                     logIn(credentialsTextField.getText(),passwordPasswordField.getText());
-                    actiontarget.setText("The user " + credentialsTextField.getText() + " is now logged in");
+
+                    GridPane samplescene = new GridPane();
+                    Text scenetitle = new Text("Dashboard");
+                    samplescene.setAlignment(Pos.CENTER);
+                    samplescene.add(scenetitle, 0, 0, 2, 1);
+                    Scene sample = new Scene(samplescene,600,400);
+
+                    window.setScene(sample);
                 } catch (Exception e2) {
                     actiontarget.setText(e2.getMessage());
                 }
@@ -107,8 +116,8 @@ public class Planner extends Application {
         });
 
         Scene scene = new Scene(grid,600,400);
-        primaryStage.setScene(scene);
-        primaryStage.show();
+        window.setScene(scene);
+        window.show();
     }
 
 
