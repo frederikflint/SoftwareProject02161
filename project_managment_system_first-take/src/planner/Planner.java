@@ -57,7 +57,6 @@ public class Planner extends Application {
         Developer dev = new Developer("nn","nn");
         users.add(dev);
 
-
         // Scene setup as grid
         primaryStage.setTitle("Time planner");
         GridPane grid = new GridPane();
@@ -77,13 +76,11 @@ public class Planner extends Application {
         TextField credentialsTextField = new TextField();
         grid.add(credentialsTextField, 1, 1);
 
-
         // Password
         Label passwordLabel = new Label("Password:");
         grid.add(passwordLabel, 0, 2);
         PasswordField passwordPasswordField = new PasswordField();
         grid.add(passwordPasswordField, 1, 2);
-
 
         // Sign in
         Button btn = new Button("Sign in");
@@ -103,7 +100,7 @@ public class Planner extends Application {
                     logIn(credentialsTextField.getText(),passwordPasswordField.getText());
                     actiontarget.setText("The user " + credentialsTextField.getText() + " is now logged in");
                 } catch (Exception e2) {
-                    actiontarget.setText("Credentials or password was wrong");
+                    actiontarget.setText(e2.getMessage());
                 }
 
             }
@@ -143,13 +140,17 @@ public class Planner extends Application {
             throw new OperationNotAllowedException("There are already an active user on the system");
         }
 
+        if(users.isEmpty()){
+            throw new OperationNotAllowedException("No users registered with the planner");
+        }
+
         // Go through each of the registered Developers and check the password and credentials.
         // If the current one is present set that user as an active user session.
-        for (Developer developer : users) {
-            if (Objects.equals(developer.getCredentials(), credentials) &&
-                    Objects.equals(developer.getPassword(), passeword)) {
+        for (Developer user : users) {
+            if (Objects.equals(user.getCredentials(), credentials) &&
+                    Objects.equals(user.getPassword(), passeword)) {
                 //Set the active session
-                activeUser = developer;
+                activeUser = user;
             } else {
                 throw new OperationNotAllowedException("Your credentials or password was wrong");
             }
