@@ -1,14 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c66c7b5-4f79-45f6-8e45-1827ba00cb7a" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/planner/sample.fxml" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/planner/sample.fxml" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/planner/Planner$1.class" afterPath="$PROJECT_DIR$/bin/planner/Planner$1.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/planner/Planner.class" afterPath="$PROJECT_DIR$/bin/planner/Planner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/Planner.java" afterPath="$PROJECT_DIR$/src/planner/Planner.java" />
-    </list>
+    <list default="true" id="0c66c7b5-4f79-45f6-8e45-1827ba00cb7a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -568,7 +561,7 @@
       <workItem from="1523882288952" duration="4559000" />
       <workItem from="1524479085144" duration="3108000" />
       <workItem from="1524482562396" duration="5914000" />
-      <workItem from="1525033881361" duration="11195000" />
+      <workItem from="1525033881361" duration="11284000" />
     </task>
     <servers />
   </component>
@@ -605,7 +598,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="48053000" />
+    <option name="totallyTimeSpent" value="48142000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
