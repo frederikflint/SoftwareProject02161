@@ -133,10 +133,10 @@ public class Planner extends Application {
     /**
      * Set an active user session
      * @param credentials The users credentials
-     * @param passeword The users password
+     * @param password The users password
      * @throws OperationNotAllowedException If the users is logged in throw error. If the user us typed in wrong throw error.
      */
-    public void logIn(String credentials, String passeword) throws OperationNotAllowedException{
+    public void logIn(String credentials, String password) throws OperationNotAllowedException{
 
         // Is there a user session?
         if(activeUser != null){
@@ -147,7 +147,7 @@ public class Planner extends Application {
         // If the current one is present set that user as an active user session.
         for (Developer developer : users) {
             if (Objects.equals(developer.getCredentials(), credentials) &&
-                    Objects.equals(developer.getPassword(), passeword)) {
+                    Objects.equals(developer.getPassword(), password)) {
                 //Set the active session
                 activeUser = developer;
             } else {
