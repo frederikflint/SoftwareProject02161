@@ -1,33 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="0c66c7b5-4f79-45f6-8e45-1827ba00cb7a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/libraries/org_testfx_testfx_junit5_4_0_13_alpha.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/planner/sample.fxml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/acceptance_tests/UserHelper.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/acceptance_tests/UsersSteps.class" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/bin/planner/Notification.class" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/planner/Admin.class" afterPath="$PROJECT_DIR$/bin/planner/Admin.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/planner/OperationNotAllowedException.class" afterPath="$PROJECT_DIR$/bin/planner/OperationNotAllowedException.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/planner/Planner.class" afterPath="$PROJECT_DIR$/bin/planner/Planner.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/planner/Project.class" afterPath="$PROJECT_DIR$/bin/planner/Project.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/planner/User.class" afterPath="$PROJECT_DIR$/bin/planner/User.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/planner/UserResponse.class" afterPath="$PROJECT_DIR$/bin/planner/UserResponse.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/bin/planner/WorkHours.class" afterPath="$PROJECT_DIR$/bin/planner/WorkHours.class" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/project_managment_system_first-take.iml" afterPath="$PROJECT_DIR$/project_managment_system_first-take.iml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/Activity.java" afterPath="$PROJECT_DIR$/src/planner/Activity.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/Admin.java" afterPath="$PROJECT_DIR$/src/planner/Admin.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/OperationNotAllowedException.java" afterPath="$PROJECT_DIR$/src/planner/OperationNotAllowedException.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/Planner.java" afterPath="$PROJECT_DIR$/src/planner/Planner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/Project.java" afterPath="$PROJECT_DIR$/src/planner/Project.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/User.java" afterPath="$PROJECT_DIR$/src/planner/User.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/UserResponse.java" afterPath="$PROJECT_DIR$/src/planner/UserResponse.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/WorkHours.java" afterPath="$PROJECT_DIR$/src/planner/WorkHours.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" afterPath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/acceptance_tests/UserSteps.java" afterPath="$PROJECT_DIR$/test/acceptance_tests/UserSteps.java" />
-    </list>
+    <list default="true" id="0c66c7b5-4f79-45f6-8e45-1827ba00cb7a" name="Default" comment="" />
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -55,15 +29,15 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Planner.java" pinned="false" current-in-tab="false">
+      <file leaf-file-name="Planner.java" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/planner/Planner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="206">
-              <caret line="70" column="37" lean-forward="false" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
+            <state relative-caret-position="1506">
+              <caret line="159" column="7" lean-forward="true" selection-start-line="159" selection-start-column="7" selection-end-line="159" selection-end-column="7" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#6423#6424#0" expanded="true" />
-                <element signature="e#6451#6452#0" expanded="true" />
+                <element signature="e#6512#6513#0" expanded="true" />
+                <element signature="e#6540#6541#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -77,19 +51,6 @@
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="sample.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/planner/sample.fxml">
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="315">
-              <caret line="15" column="43" lean-forward="false" selection-start-line="15" selection-start-column="43" selection-end-line="15" selection-end-column="43" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -114,11 +75,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="OperationNotAllowedException.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="OperationNotAllowedException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/planner/OperationNotAllowedException.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="105">
-              <caret line="5" column="6" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+              <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
               <folding />
             </state>
           </provider>
@@ -210,7 +171,6 @@
         <option value="$PROJECT_DIR$/src/planner/Developer.java" />
         <option value="$PROJECT_DIR$/src/planner/views/home.html" />
         <option value="$PROJECT_DIR$/src/planner/Activity.java" />
-        <option value="$PROJECT_DIR$/src/planner/OperationNotAllowedException.java" />
         <option value="$PROJECT_DIR$/src/planner/Project.java" />
         <option value="$PROJECT_DIR$/src/planner/User.java" />
         <option value="$PROJECT_DIR$/src/planner/WorkHours.java" />
@@ -223,6 +183,7 @@
         <option value="$PROJECT_DIR$/src/planner/LogIn.java" />
         <option value="$PROJECT_DIR$/src/planner/sample.fxml" />
         <option value="$PROJECT_DIR$/test/acceptance_tests/UserSteps.java" />
+        <option value="$PROJECT_DIR$/src/planner/OperationNotAllowedException.java" />
         <option value="$PROJECT_DIR$/src/planner/Planner.java" />
       </list>
     </option>
@@ -600,7 +561,7 @@
       <workItem from="1523882288952" duration="4559000" />
       <workItem from="1524479085144" duration="3108000" />
       <workItem from="1524482562396" duration="5914000" />
-      <workItem from="1525033881361" duration="10715000" />
+      <workItem from="1525033881361" duration="11284000" />
     </task>
     <servers />
   </component>
@@ -637,7 +598,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="47573000" />
+    <option name="totallyTimeSpent" value="48142000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -1036,23 +997,23 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/Planner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="206">
-          <caret line="70" column="37" lean-forward="false" selection-start-line="70" selection-start-column="37" selection-end-line="70" selection-end-column="37" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6423#6424#0" expanded="true" />
-            <element signature="e#6451#6452#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/OperationNotAllowedException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="105">
-          <caret line="5" column="6" lean-forward="false" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
+          <caret line="5" column="6" lean-forward="true" selection-start-line="5" selection-start-column="6" selection-end-line="5" selection-end-column="6" />
           <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/Planner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="1506">
+          <caret line="159" column="7" lean-forward="true" selection-start-line="159" selection-start-column="7" selection-end-line="159" selection-end-column="7" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#6512#6513#0" expanded="true" />
+            <element signature="e#6540#6541#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
