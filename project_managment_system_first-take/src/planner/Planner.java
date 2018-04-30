@@ -232,6 +232,12 @@ public class Planner extends Application {
         return currentProject;
     }
 
+    public void createProject(Project project) throws Exception {
+        /*
+        Check if project has valid information
+         */
+    }
+
     public List<Developer> getUsers() {
         return users;
     }
