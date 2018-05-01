@@ -8,8 +8,8 @@ import java.util.List;
  */
 public class Developer extends User {
 
-    List<Activity> devActivities;
-    List<Project> devProjects;
+    List<Activity> Activities;
+    List<Project> Projects;
     List<WorkHours> workHours;
 
     public Developer (String credentials, String password) {

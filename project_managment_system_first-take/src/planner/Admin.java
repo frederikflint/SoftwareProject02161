@@ -10,7 +10,6 @@ public class Admin extends User {
         super(credentials, password);
     }
 
-
     /**
      *
      * @return

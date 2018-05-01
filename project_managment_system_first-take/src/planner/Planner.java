@@ -22,7 +22,7 @@ import java.util.Objects;
 
 
 /**
- * The
+ *
  *
  */
 public class Planner extends Application {
@@ -33,19 +33,6 @@ public class Planner extends Application {
 
     Stage window;
     Scene LogIn, Dash;
-
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
-//
-//
-//    @Override
-//    public void start(Stage primaryStage) {
-//
-
-//
-//
-//    }
 
     @Override
     public void start(Stage primaryStage) {
@@ -95,32 +82,26 @@ public class Planner extends Application {
         grid.add(actiontarget, 1, 6);
         actiontarget.setFill(Color.FIREBRICK);
 
-        btn.setOnAction(new EventHandler<ActionEvent>() {
-            @Override
-            public void handle(ActionEvent e1) {
-                try {
-                    logIn(credentialsTextField.getText(),passwordPasswordField.getText());
+        btn.setOnAction(e1 -> {
+            try {
+                logIn(credentialsTextField.getText(),passwordPasswordField.getText());
 
-                    GridPane samplescene = new GridPane();
-                    Text scenetitle = new Text("Dashboard");
-                    samplescene.setAlignment(Pos.CENTER);
-                    samplescene.add(scenetitle, 0, 0, 2, 1);
-                    Scene sample = new Scene(samplescene,600,400);
-
-                    window.setScene(sample);
-                } catch (Exception e2) {
-                    actiontarget.setText(e2.getMessage());
-                }
-
+                GridPane dasboardGrid = new GridPane();
+                Text scenetitle1 = new Text("Dashboard");
+                dasboardGrid.setAlignment(Pos.CENTER);
+                dasboardGrid.add(scenetitle1, 0, 0, 2, 1);
+                Scene dashboard = new Scene(dasboardGrid,800,600);
+                window.setScene(dashboard);
+            } catch (Exception e2) {
+                actiontarget.setText(e2.getMessage());
             }
+
         });
 
         Scene scene = new Scene(grid,600,400);
         window.setScene(scene);
         window.show();
     }
-
-
 
     /**
      * Handle the respond to the user.
@@ -135,7 +116,6 @@ public class Planner extends Application {
 
      }
 
-
     /**
      * Set an active user session
      * @param credentials The users credentials
@@ -149,6 +129,7 @@ public class Planner extends Application {
             throw new OperationNotAllowedException("There are already an active user on the system");
         }
 
+        // Is there any users on the system.
         if(users.isEmpty()){
             throw new OperationNotAllowedException("No users registered with the planner");
         }
