@@ -24,49 +24,72 @@ public class LoginLogoutSteps {
         this.planner = planner;
     }
 
+
     @Given("^that there is no active user on the system$")
     public void thatThereIsNoActiveUserOnTheSystem() throws Exception {
-        assertThat(planner.activeUser,is(equalTo(null)));
-        }
-
-    @Given("^the credentials is \"([^\"]*)\" and the password is \"([^\"]*)\"$")
-    public void theCredentialsIsAndThePasswordIs(String credentials, String password) throws Exception {
-        // TODO: Make this a helper
-        planner.developers.add(developer);
-        assertThat(developer.getCredentials(),is(equalTo(credentials)));
-        assertThat(developer.getPassword(),is(equalTo(password)));
     }
 
-    @When("^the developer login succeeds$")
-    public void theDeveloperLoginSucceeds() throws Exception {
-        planner.userLogIn(developer.getCredentials(),developer.getPassword());
-        assertThat(planner.activeUser,is(equalTo(developer)));
+    @Given("^there is a developer with username \"([^\"]*)\" registered in the system$")
+    public void thereIsADeveloperWithUsernameRegisteredInTheSystem(String arg1) throws Exception {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
+    }
+
+    @When("^the password \"([^\"]*)\" is entered correctly$")
+    public void thePasswordIsEnteredCorrectly(String arg1) throws Exception {
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 
     @Then("^the developer is logged in$")
     public void theDeveloperIsLoggedIn() throws Exception {
-        assertThat(planner.getActiveUser() != null, is(equalTo(true)));
+        // Write code here that turns the phrase above into concrete actions
+        throw new PendingException();
     }
 
-    @Given("^the username is \"([^\"]*)\"$")
-    public void theUsernameIs(String credentials) throws Exception {
-        assertFalse(developer.getCredentials() == credentials);
-    }
+//    @Given("^that there is no active user on the system$")
+//    public void thatThereIsNoActiveUserOnTheSystem() throws Exception {
+//        assertThat(planner.activeUser,is(equalTo(null)));
+//        }
 
-    @When("^the developer login fails$")
-    public void theDeveloperLoginFails() throws Exception {
-
-        try{
-            planner.userLogIn(developer.getCredentials(), "MRX");
-        } catch (Exception e){
-            assertThat(e.getMessage(),is(equalTo("No developers registered with the planner")));
-        }
-    }
-
-    @Then("^the developer is not logged in$")
-    public void theDeveloperIsNotLoggedIn() throws Exception {
-        assertTrue(planner.activeUser == null);
-
-    }
+//    @Given("^the credentials is \"([^\"]*)\" and the password is \"([^\"]*)\"$")
+//    public void theCredentialsIsAndThePasswordIs(String credentials, String password) throws Exception {
+//        // TODO: Make this a helper
+//        planner.developers.add(developer);
+//        assertThat(developer.getCredentials(),is(equalTo(credentials)));
+//        assertThat(developer.getPassword(),is(equalTo(password)));
+//    }
+//
+//    @When("^the developer login succeeds$")
+//    public void theDeveloperLoginSucceeds() throws Exception {
+//        planner.userLogIn(developer.getCredentials(),developer.getPassword());
+//        assertThat(planner.activeUser,is(equalTo(developer)));
+//    }
+//
+//    @Then("^the developer is logged in$")
+//    public void theDeveloperIsLoggedIn() throws Exception {
+//        assertThat(planner.getActiveUser() != null, is(equalTo(true)));
+//    }
+//
+//    @Given("^the username is \"([^\"]*)\"$")
+//    public void theUsernameIs(String credentials) throws Exception {
+//        assertFalse(developer.getCredentials() == credentials);
+//    }
+//
+//    @When("^the developer login fails$")
+//    public void theDeveloperLoginFails() throws Exception {
+//
+//        try{
+//            planner.userLogIn(developer.getCredentials(), "MRX");
+//        } catch (Exception e){
+//            assertThat(e.getMessage(),is(equalTo("No developers registered with the planner")));
+//        }
+//    }
+//
+//    @Then("^the developer is not logged in$")
+//    public void theDeveloperIsNotLoggedIn() throws Exception {
+//        assertTrue(planner.activeUser == null);
+//
+//    }
 
 }
