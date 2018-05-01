@@ -93,9 +93,11 @@ formatter.step({
   "name": "I get the error message \"Wrong password\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"
@@ -118,33 +120,41 @@ formatter.step({
   "name": "that a developer is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer enters a valid project number, name, description, start and end date",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.theDeveloperEntersAValidProjectNumberNameDescriptionStartAndEndDate()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
-  "name": "the user creates the project",
+  "name": "the developer creates the project",
   "keyword": "When "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.theDeveloperCreatesTheProject()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "the project with that project number, name, description and start and end date is created",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.theProjectWithThatProjectNumberNameDescriptionAndStartAndEndDateIsCreated()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.after({
   "status": "passed"
@@ -161,33 +171,41 @@ formatter.step({
   "name": "that a developer is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer enters an invalid project number, name, description, start or end date",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.theDeveloperEntersAnInvalidProjectNumberNameDescriptionStartOrEndDate()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer creates the project",
   "keyword": "When "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.theDeveloperCreatesTheProject()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "I get the error message \"Invalid project credentials\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.after({
   "status": "passed"
@@ -269,9 +287,11 @@ formatter.step({
   "name": "I get the error message \"Administrator rights required for this action\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"
@@ -353,9 +373,11 @@ formatter.step({
   "name": "I get the error message \"the entered project doesn\u0027t exist\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"
@@ -445,9 +467,11 @@ formatter.step({
   "name": "I get the error message \"This action required project manager rights\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"
@@ -488,9 +512,11 @@ formatter.step({
   "name": "I get the error message \"Developer is not available in this period\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"
@@ -797,9 +823,11 @@ formatter.step({
   "name": "that a developer is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer has a list of activities",
@@ -840,9 +868,11 @@ formatter.step({
   "name": "that a developer is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer has no activities in his list of activities",
@@ -864,9 +894,11 @@ formatter.step({
   "name": "I get the error message \"You are assigned to no activities\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"
@@ -940,9 +972,11 @@ formatter.step({
   "name": "I get the error message \"No developer is currently available\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"
@@ -965,9 +999,11 @@ formatter.step({
   "name": "that a developer is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer is assigned to an activity",
@@ -1059,9 +1095,11 @@ formatter.step({
   "name": "that a developer is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer is assigned to an activity",
@@ -1102,9 +1140,11 @@ formatter.step({
   "name": "that a developer is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer wants to see registered time spent",
@@ -1145,9 +1185,11 @@ formatter.step({
   "name": "that a developer is logged in",
   "keyword": "Given "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer wants to see registered time spent",
@@ -1169,9 +1211,11 @@ formatter.step({
   "name": "I get the error message \"No registered time spent\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"
@@ -1347,9 +1391,11 @@ formatter.step({
   "name": "I get the error message \"Activity not found\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"
@@ -1390,9 +1436,11 @@ formatter.step({
   "name": "I get the error message \"Activity not found\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"
@@ -1433,9 +1481,11 @@ formatter.step({
   "name": "I get the error message \"Activity not found\"",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "skipped"
 });
 formatter.after({
   "status": "passed"

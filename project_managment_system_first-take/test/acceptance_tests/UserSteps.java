@@ -27,7 +27,7 @@ public class UserSteps extends ApplicationTest {
 
     private ErrorMessageHolder errorMessage;
     public DeveloperHelper helper;
-    public ProjectHelper projectHelper;
+    public ProjectHelper projectHelper = new ProjectHelper();
 
 
     public UserSteps(Planner planner, ErrorMessageHolder errorMessage, DeveloperHelper helper) {
