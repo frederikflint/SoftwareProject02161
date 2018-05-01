@@ -1,8 +1,8 @@
 package planner.app;
 
-import planner.domian.Developer;
-import planner.domian.Project;
-import planner.domian.User;
+import planner.domain.Developer;
+import planner.domain.Project;
+import planner.domain.User;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -74,8 +74,16 @@ public class Planner {
         }
     }
 
-    public void createProject(String title, Calendar estStart, Calendar estEnd) {
+    public void createProject(Project project) throws Exception {
+        /*
+        Check if project has valid information
+         */
 
+        if(true){
+
+        } else {
+            throw new Exception("Invalid project credentials");
+        }
     }
 
 

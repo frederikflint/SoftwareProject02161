@@ -1,4 +1,4 @@
-package planner.domian;
+package planner.domain;
 
 
 /**

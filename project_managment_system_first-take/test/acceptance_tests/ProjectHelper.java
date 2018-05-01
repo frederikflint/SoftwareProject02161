@@ -1,6 +1,6 @@
 package acceptance_tests;
 
-import planner.Project;
+import planner.domain.Project;
 
 import java.util.Calendar;
 

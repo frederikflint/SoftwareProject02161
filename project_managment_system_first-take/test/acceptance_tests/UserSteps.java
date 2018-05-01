@@ -10,13 +10,11 @@ import org.junit.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 <<<<<<< HEAD
 import planner.Admin;
-import planner.Planner;
 import planner.Project;
 import planner.User;
 =======
-import planner.domian.Admin;
-import planner.app.Planner;
-import planner.domian.User;
+import planner.domain.Admin;
+import planner.domain.User;
 >>>>>>> 8974728653c0dc6c784af003435c48c7aadbb202
 
 import static org.hamcrest.CoreMatchers.equalTo;

@@ -1,5 +1,4 @@
-package planner.domian;
-import planner.domian.Activity;
+package planner.domain;
 
 import java.util.Calendar;
 
