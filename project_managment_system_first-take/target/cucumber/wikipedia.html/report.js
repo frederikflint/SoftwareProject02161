@@ -23,21 +23,21 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the credentials is \"dd\" and the password is \"1234\"",
+  "name": "there is a developer with username \"dd\" registered in the system",
   "keyword": "And "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.theCredentialsIsAndThePasswordIs(String,String)"
+  "location": "LoginLogoutSteps.thereIsADeveloperWithUsernameRegisteredInTheSystem(String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the developer login succeeds",
+  "name": "the password \"1234\" is entered correctly",
   "keyword": "When "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.theDeveloperLoginSucceeds()"
+  "location": "LoginLogoutSteps.thePasswordIsEnteredCorrectly(String)"
 });
 formatter.result({
   "status": "passed"
@@ -64,35 +64,152 @@ formatter.before({
   "status": "passed"
 });
 formatter.step({
-  "name": "the username is \"wrong username\"",
+  "name": "that there is no active user on the system",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.theUsernameIs(String)"
+  "location": "LoginLogoutSteps.thatThereIsNoActiveUserOnTheSystem()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the developer login fails",
+  "name": "there is a not developer with username \"notRegistered\" registered in the system",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.thereIsANotDeveloperWithUsernameRegisteredInTheSystem(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer enters the password \"1234\"",
   "keyword": "When "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.theDeveloperLoginFails()"
+  "location": "LoginLogoutSteps.theDeveloperEntersThePassword(String)"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "I get the error message \"Wrong username\"",
+  "name": "I get the error message \"Your credentials or password was wrong\"",
   "keyword": "Then "
 });
 formatter.match({
   "location": "UserSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError: \nExpected: is \"Wrong username\"\n     but: was \"\"\r\n\tat org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)\r\n\tat org.junit.Assert.assertThat(Assert.java:956)\r\n\tat org.junit.Assert.assertThat(Assert.java:923)\r\n\tat acceptance_tests.UserSteps.iGetTheErrorMessage(UserSteps.java:141)\r\n\tat ✽.I get the error message \"Wrong username\"(use_cases/Developer_Login.feature:14)\r\n",
-  "status": "failed"
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer has the wrong password",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that there is no active user on the system",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.thatThereIsNoActiveUserOnTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a developer with username \"dd\" registered in the system",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.thereIsADeveloperWithUsernameRegisteredInTheSystem(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the password \"wrong password\" does not match the credentials",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.thePasswordDoesNotMatchTheCredentials(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer enters the password \"wrong password\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.theDeveloperEntersThePassword(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"Your credentials or password was wrong\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.uri("use_cases/User_Logout.feature");
+formatter.feature({
+  "name": "User logout",
+  "description": "  Description: The user logs off the system\n  Actor: User",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "User can logoff",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that there is an active user on the system",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.thatThereIsAnActiveUserOnTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user logs off the system",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.theUserLogsOffTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is logged off",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.theUserIsLoggedOff()"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.after({
   "status": "passed"
