@@ -1,14 +1,14 @@
-#Feature: Register time
-#  Description: developer registers time spent on an activity
-#  Actors: developer
-#
-#  Scenario: developer registers time
-#    Given that a developer is logged in
-#    And the developer is assigned to an activity
-#    When the developer registers time spent on an activity
-#    Then the registered time is registered to the activity
-#    And the registered time is registered to the developer
-#
+Feature: Register time
+  Description: developer registers time spent on an activity
+  Actors: developer
+
+  Scenario: developer registers time
+    Given that a developer is logged in
+    And the developer is assigned to an activity
+    When the developer registers time spent on an activity
+    Then the registered time is registered to the activity
+    And the registered time is registered to the developer
+
 #  Scenario: developer registers time to a project the developer is not registered to
 #    Given that the developer is logged in
 #    And the developer is not assigned to an activity
