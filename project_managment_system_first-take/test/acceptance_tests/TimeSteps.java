@@ -14,6 +14,10 @@ import planner.domain.Developer;
 import planner.domain.Project;
 import planner.domain.User;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertThat;
+
 
 public class TimeSteps {
 
@@ -39,25 +43,29 @@ public class TimeSteps {
     public void theDeveloperIsAssignedToAnActivity() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
-        //assertThat(planner.activeUser.get);
+        //assertThat(planner.getDeveloper(planner.getActiveUser().getCredentials()).getActivities().contains(),is(true));
+
     }
 
     @When("^the developer registers time spent on an activity$")
     public void theDeveloperRegistersTimeSpentOnAnActivity() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
+        //planner.get
     }
 
     @Then("^the registered time is registered to the activity$")
     public void theRegisteredTimeIsRegisteredToTheActivity() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
+        //
     }
 
     @Then("^the registered time is registered to the developer$")
     public void theRegisteredTimeIsRegisteredToTheDeveloper() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
+        //
     }
 
 

@@ -1,12 +1,12 @@
-Feature: Admin login
-  Description: The admin logs into the system
-  Actor: Admin
-
-  Scenario: Admin can login
-    Given that there is no active user on the system
-    And the admin username is "admin" and password "adminadmin"
-    When the admin login succeeds
-    Then the admin is logged in
+#Feature: Admin login
+#  Description: The admin logs into the system
+#  Actor: Admin
+#
+#  Scenario: Admin can login
+#    Given that there is no active user on the system
+#    And the admin username is "admin" and password "adminadmin"
+#    When the admin login succeeds
+#    Then the admin is logged in
 
 #  Scenario: Admin has the wrong username
 #    Given that there is no active user on the system
