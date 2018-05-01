@@ -3,11 +3,10 @@ package acceptance_tests;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import planner.Planner;
+import planner.app.Planner;
 
 public class LoginLogoutSteps {
 
