@@ -1,6 +1,5 @@
 package planner.app;
 
-import org.assertj.core.internal.bytebuddy.implementation.bytecode.Throw;
 import planner.domain.Admin;
 import planner.domain.Developer;
 import planner.domain.Project;
@@ -58,11 +57,19 @@ public class Planner {
     }
 
     /**
-     *
+     * Is there a active session on the system
      * @return boolean. Is there a ongoing session.
      */
     public boolean activeSession(){
         return activeUser != null;
+    }
+
+    /**
+     * Log the active user out of the system (remove active session)
+     */
+    public void userLogOut(){
+        // Remove the active session from the system
+        activeUser = null;
     }
 
     /**
@@ -85,13 +92,6 @@ public class Planner {
         }
     }
 
-    /**
-     * Log the active user out of the system (remove active session)
-     */
-    public void userLogOut(){
-        // Remove the active session from the system
-        activeUser = null;
-    }
 
     /**
      * Add a new user on the system
@@ -105,7 +105,6 @@ public class Planner {
         if (getDeveloper(credentials) != null){
             throw new Exception("Developer is registered");
         }
-
         developers.add(new Developer(credentials, password));
     }
 
