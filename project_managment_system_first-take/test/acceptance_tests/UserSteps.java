@@ -10,9 +10,12 @@ import org.junit.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 import planner.app.Planner;
 import planner.domain.Admin;
+import planner.domain.Developer;
 import planner.domain.Project;
 import planner.domain.User;
 
+
+import java.time.Clock;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -27,13 +30,15 @@ public class UserSteps extends ApplicationTest {
 
     private ErrorMessageHolder errorMessage;
     public DeveloperHelper helper;
-    public ProjectHelper projectHelper = new ProjectHelper();
+    public ProjectHelper projectHelper;
 
 
-    public UserSteps(Planner planner, ErrorMessageHolder errorMessage, DeveloperHelper helper) {
+    public UserSteps(Planner planner, ErrorMessageHolder errorMessage, DeveloperHelper helper, ProjectHelper projectHelper) {
         this.planner = planner;
         this.errorMessage = errorMessage;
         this.helper = helper;
+        this.projectHelper = projectHelper;
+
     }
 
     /******************
@@ -105,6 +110,7 @@ public class UserSteps extends ApplicationTest {
         //throw new PendingException();
         try {
             planner.createProject(project);
+            //System.out.println(project.getTitle());
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
