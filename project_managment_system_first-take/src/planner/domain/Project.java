@@ -1,4 +1,7 @@
-package planner;
+package planner.domain;
+
+import planner.app.OperationNotAllowedException;
+import planner.app.Planner;
 
 import java.util.Calendar;
 import java.util.List;

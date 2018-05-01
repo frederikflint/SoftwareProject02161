@@ -1,4 +1,4 @@
-package planner;
+package planner.domain;
 
 import java.util.List;
 

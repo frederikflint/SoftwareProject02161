@@ -1,4 +1,4 @@
-package planner;
+package planner.app;
 
 /**
  * This class is a handler for the response to the user
