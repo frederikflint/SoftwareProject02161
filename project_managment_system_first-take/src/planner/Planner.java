@@ -34,18 +34,6 @@ public class Planner extends Application {
     Stage window;
     Scene LogIn, Dash;
 
-//    public static void main(String[] args) {
-//        launch(args);
-//    }
-//
-//
-//    @Override
-//    public void start(Stage primaryStage) {
-//
-
-//
-//
-//    }
 
     @Override
     public void start(Stage primaryStage) {
