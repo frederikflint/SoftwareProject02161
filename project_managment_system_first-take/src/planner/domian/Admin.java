@@ -1,4 +1,6 @@
-package planner;
+package planner.domian;
+
+import planner.app.Planner;
 
 import java.util.List;
 
