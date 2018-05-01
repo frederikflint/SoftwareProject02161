@@ -22,6 +22,7 @@ public class LoginLogoutSteps {
 
     private Planner planner;
     private Developer developer = new Developer("dd","1234");
+
     private ErrorMessageHolder errorMessage;
 
 
@@ -88,6 +89,22 @@ public class LoginLogoutSteps {
     @Then("^the user is logged off$")
     public void theUserIsLoggedOff() throws Exception {
         assertFalse(planner.activeSession());
+    }
+
+    @Given("^the username is \"([^\"]*)\" and password \"([^\"]*)\"$")
+    public void theUsernameIsAndPassword(String credentials, String password) throws Exception {
+        assertThat(planner.admin.getCredentials(),is(equalTo(credentials)));
+        assertThat(planner.admin.getPassword(),is(equalTo(password)));
+        planner.userLogIn(credentials, password);
+    }
+
+    @When("^the admin login succeeds$")
+    public void theAdminLoginSucceeds() throws Exception {
+    }
+
+    @Then("^the admin is logged in$")
+    public void theAdminIsLoggedIn() throws Exception {
+        assertTrue(planner.activeUser.isAdmin());
     }
 
 

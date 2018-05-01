@@ -1,4 +1,55 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Developer_Login.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Admin_Login.feature");
+formatter.feature({
+  "name": "Admin login",
+  "description": "  Description: The admin logs into the system\n  Actor: Admin",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Admin can login",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that there is no active user on the system",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.thatThereIsNoActiveUserOnTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the username is \"admin\" and password \"adminadmin\"",
+  "keyword": "And "
+});
+formatter.match({});
+formatter.result({
+  "status": "undefined"
+});
+formatter.step({
+  "name": "the admin login succeeds",
+  "keyword": "When "
+});
+formatter.match({});
+formatter.result({
+  "status": "undefined"
+});
+formatter.step({
+  "name": "the admin is logged in",
+  "keyword": "Then "
+});
+formatter.match({});
+formatter.result({
+  "status": "undefined"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.uri("use_cases/Developer_Login.feature");
 formatter.feature({
   "name": "Developer login",
   "description": "  Description: The developer logs into the system\n  Actor: Developer",
