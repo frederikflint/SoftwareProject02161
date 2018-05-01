@@ -17,7 +17,7 @@ public class ProjectHelper {
     public Project getValidProject() {
         startDate.set(1,1);
         endDate.set(2,1);
-        project = new Project("Projekt", startDate, endDate);
+        project = new Project("Titel", startDate, endDate);
 
         /*
         TODO:
@@ -30,7 +30,7 @@ public class ProjectHelper {
     public Project getInvalidProject() {
         startDate.set(1,1);
         endDate.set(2,1);
-        project = new Project("Projekt", startDate, endDate);
+        project = new Project("IKKETitel", startDate, endDate);
 
         /*
         TODO:

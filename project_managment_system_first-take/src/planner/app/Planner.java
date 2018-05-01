@@ -76,8 +76,8 @@ public class Planner {
         Check if project has valid information
          */
 
-        if(true){
-
+        if(project.getTitle() == "Titel"){
+            projects.add(project);
         } else {
             throw new Exception("Invalid project credentials");
         }
