@@ -122,7 +122,7 @@ public class UserSteps extends ApplicationTest {
     public void theProjectWithThatProjectNumberNameDescriptionAndStartAndEndDateIsCreated() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
-        planner.projects.contains(project);
+        assertThat(planner.projects.contains(project), is(true));
     }
 
     @Given("^the developer enters an invalid project number, name, description, start or end date$")

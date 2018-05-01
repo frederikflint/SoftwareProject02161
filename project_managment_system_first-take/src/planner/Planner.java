@@ -236,6 +236,12 @@ public class Planner extends Application {
         /*
         Check if project has valid information
          */
+
+        if(true){
+
+        } else {
+            throw new Exception("Invalid project credentials");
+        }
     }
 
     public List<Developer> getUsers() {
