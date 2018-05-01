@@ -28,7 +28,7 @@ public class Planner {
 
         // Is there a user session?
         if(activeUser != null){
-            throw new OperationNotAllowedException("There are already an active user on the system");
+            throw new OperationNotAllowedException("There is already an active user on the system");
         }
 
         // Is there any developers on the system.
@@ -64,9 +64,6 @@ public class Planner {
      * @throws Exception If the developers is in the system throw error
      */
     public void createDeveloper(String credentials, String password) throws Exception{
-
-
-
         if (developers.contains(new Developer(credentials, password))) {
             throw new Exception("Developer is already registered");
         } else {

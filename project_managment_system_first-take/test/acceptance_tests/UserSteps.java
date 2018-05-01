@@ -8,14 +8,11 @@ import cucumber.api.java.en.When;
 import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.framework.junit5.ApplicationTest;
-<<<<<<< HEAD
-import planner.Admin;
-import planner.Project;
-import planner.User;
-=======
+import planner.app.Planner;
 import planner.domain.Admin;
+import planner.domain.Project;
 import planner.domain.User;
->>>>>>> 8974728653c0dc6c784af003435c48c7aadbb202
+
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
