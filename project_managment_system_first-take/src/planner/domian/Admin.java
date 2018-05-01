@@ -1,4 +1,6 @@
-package planner;
+package planner.domian;
+
+import planner.app.Planner;
 
 import java.util.List;
 
@@ -9,7 +11,6 @@ public class Admin extends User {
     public Admin(String credentials, String password) {
         super(credentials, password);
     }
-
 
     /**
      *

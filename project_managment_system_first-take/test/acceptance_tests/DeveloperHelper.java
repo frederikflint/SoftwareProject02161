@@ -1,7 +1,7 @@
 package acceptance_tests;
 
-import planner.Developer;
-import planner.User;
+import planner.domian.Developer;
+import planner.domian.User;
 
 public class DeveloperHelper {
     private Developer developer;

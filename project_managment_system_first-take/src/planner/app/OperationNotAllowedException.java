@@ -1,4 +1,4 @@
-package planner;
+package planner.app;
 
 public class OperationNotAllowedException extends Exception {
 

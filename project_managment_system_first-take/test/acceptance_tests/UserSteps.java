@@ -5,14 +5,19 @@ import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import javafx.scene.Scene;
 import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.framework.junit5.ApplicationTest;
+<<<<<<< HEAD
 import planner.Admin;
 import planner.Planner;
 import planner.Project;
 import planner.User;
+=======
+import planner.domian.Admin;
+import planner.app.Planner;
+import planner.domian.User;
+>>>>>>> 8974728653c0dc6c784af003435c48c7aadbb202
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -70,7 +75,7 @@ public class UserSteps extends ApplicationTest {
 
     @When("^the user log-in succeeds$")
     public void theUserLogInSucceeds() throws Exception {
-        planner.logIn("nl","nl");
+        planner.userLogIn("nl","nl");
     }
 
 
@@ -83,7 +88,7 @@ public class UserSteps extends ApplicationTest {
     @When("^the user log-in fails$")
     public void theUserLogInFails() throws Exception {
         try {
-            planner.logIn("test","test");
+            planner.userLogIn("test","test");
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
