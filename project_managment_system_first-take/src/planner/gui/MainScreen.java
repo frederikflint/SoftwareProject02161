@@ -1,8 +1,6 @@
 package planner.gui;
 
 import javafx.application.Application;
-import javafx.event.ActionEvent;
-import javafx.event.EventHandler;
 import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
@@ -17,7 +15,6 @@ import javafx.scene.text.Text;
 import javafx.stage.Stage;
 
 import planner.app.Planner;
-import planner.domain.Admin;
 import planner.domain.Developer;
 
 public class MainScreen extends Application {
@@ -28,7 +25,8 @@ public class MainScreen extends Application {
     Scene LogIn, Dash;
 
     /**
-     * Launch the application.
+     *
+     * @param primaryStage .
      */
     @Override
     public void start(Stage primaryStage) {
@@ -38,11 +36,21 @@ public class MainScreen extends Application {
         /**
          * FAKE USERS FOR TESTING
          */
-        try {
-            planner.createDeveloper("nn","nn");
-        } catch (Exception e){
+        Developer dev = new Developer("test","test");
+        planner.developers.add(dev);
 
+        try {
+            planner.userLogIn("test","test");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
+//
+//        try {
+//            planner.createDeveloper("tester","tester");
+//        }catch (Exception e){
+//            System.out.println(e.getMessage());
+//        }
+
         // Scene setup as grid
         window.setTitle("Time planner");
         GridPane grid = new GridPane();
@@ -81,6 +89,7 @@ public class MainScreen extends Application {
 
         btn.setOnAction(e1 -> {
             try {
+
                 planner.userLogIn(credentialsTextField.getText(),passwordPasswordField.getText());
 
                 GridPane dasboardGrid = new GridPane();

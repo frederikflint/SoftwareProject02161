@@ -10,12 +10,9 @@ import org.junit.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 import planner.app.Planner;
 import planner.domain.Admin;
-import planner.domain.Developer;
 import planner.domain.Project;
 import planner.domain.User;
 
-
-import java.time.Clock;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
@@ -30,15 +27,13 @@ public class UserSteps extends ApplicationTest {
 
     private ErrorMessageHolder errorMessage;
     public DeveloperHelper helper;
-    public ProjectHelper projectHelper;
+    public ProjectHelper projectHelper = new ProjectHelper();
 
 
-    public UserSteps(Planner planner, ErrorMessageHolder errorMessage, DeveloperHelper helper, ProjectHelper projectHelper) {
+    public UserSteps(Planner planner, ErrorMessageHolder errorMessage, DeveloperHelper helper) {
         this.planner = planner;
         this.errorMessage = errorMessage;
         this.helper = helper;
-        this.projectHelper = projectHelper;
-
     }
 
     /******************
@@ -104,19 +99,6 @@ public class UserSteps extends ApplicationTest {
 
     }
 
-<<<<<<< HEAD
-    @When("^the developer creates the project$")
-    public void theDeveloperCreatesTheProject() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
-        try {
-            planner.createProject(project);
-            //System.out.println(project.getTitle());
-        } catch (Exception e) {
-            errorMessage.setErrorMessage(e.getMessage());
-        }
-    }
-=======
 //    @When("^the developer creates the project$")
 //    public void theDeveloperCreatesTheProject() throws Exception {
 //        // Write code here that turns the phrase above into concrete actions
@@ -127,7 +109,6 @@ public class UserSteps extends ApplicationTest {
 //            errorMessage.setErrorMessage(e.getMessage());
 //        }
 //    }
->>>>>>> eb25da430b6c10eff49b62fb0c0551760bad2bc8
 
     @Given("^the developer enters a valid project number, name, description, start and end date$")
     public void theDeveloperEntersAValidProjectNumberNameDescriptionStartAndEndDate() throws Exception {

@@ -104,7 +104,6 @@ public class UserSteps extends ApplicationTest {
 
     }
 
-<<<<<<< HEAD
     @When("^the developer creates the project$")
     public void theDeveloperCreatesTheProject() throws Exception {
         // Write code here that turns the phrase above into concrete actions
@@ -116,18 +115,6 @@ public class UserSteps extends ApplicationTest {
             errorMessage.setErrorMessage(e.getMessage());
         }
     }
-=======
-//    @When("^the developer creates the project$")
-//    public void theDeveloperCreatesTheProject() throws Exception {
-//        // Write code here that turns the phrase above into concrete actions
-//        //throw new PendingException();
-//        try {
-//            planner.createProject(project);
-//        } catch (Exception e) {
-//            errorMessage.setErrorMessage(e.getMessage());
-//        }
-//    }
->>>>>>> eb25da430b6c10eff49b62fb0c0551760bad2bc8
 
     @Given("^the developer enters a valid project number, name, description, start and end date$")
     public void theDeveloperEntersAValidProjectNumberNameDescriptionStartAndEndDate() throws Exception {

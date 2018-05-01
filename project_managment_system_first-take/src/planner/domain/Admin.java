@@ -6,19 +6,10 @@ import java.util.List;
 
 public class Admin extends User {
 
-    String isAdmin;
-
     public Admin(String credentials, String password) {
         super(credentials, password);
     }
 
-    /**
-     *
-     * @return
-     */
-    public List<Project> getProjects(Planner planner){
-        return planner.projects;
-    }
 
     /**
      * Set the project manager by fetching developer and project
@@ -43,6 +34,15 @@ public class Admin extends User {
         Project currentProject = planner.getProject(title);
         currentProject.setProjectManager(null);
 
+    }
+
+    /**
+     *  I
+     * @return boolean.
+     */
+    @Override
+    public boolean isAdmin() {
+        return true;
     }
 
 }

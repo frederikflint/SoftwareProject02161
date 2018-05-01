@@ -1,9 +1,10 @@
 package planner.app;
 
+import org.assertj.core.internal.bytebuddy.implementation.bytecode.Throw;
+import planner.domain.Admin;
 import planner.domain.Developer;
 import planner.domain.Project;
 import planner.domain.User;
-
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -14,6 +15,9 @@ import java.util.Objects;
  */
 public class Planner {
 
+    // The system admin
+    public final Admin admin = new Admin("admin","admin123");
+
     public User activeUser;
     public List<Developer> developers =  new ArrayList<>();
     public List<Project> projects = new ArrayList<>();
@@ -21,31 +25,63 @@ public class Planner {
     /**
      * Set an active user session
      * @param credentials The developers credentials
-     * @param passeword The developers password
+     * @param password The developers password
      * @throws OperationNotAllowedException If the developers is logged in throw error. If the user us typed in wrong throw error.
      */
-    public void userLogIn(String credentials, String passeword) throws OperationNotAllowedException{
+    public void userLogIn(String credentials, String password) throws OperationNotAllowedException{
 
         // Is there a user session?
-        if(activeUser != null){
-            throw new OperationNotAllowedException("There is already an active user on the system");
+        // Before anything clear the session
+        if(activeSession()){
+            activeUser = null;
         }
 
-        // Is there any developers on the system.
-        if(developers.isEmpty()){
-            throw new OperationNotAllowedException("No developers registered with the planner");
+        // If the user has admin rights.
+        // Specific admin scenario
+        if(credentials.equals(admin.getCredentials()) && password.equals(admin.getPassword())){
+            activeUser = admin;
+            return;
         }
 
         // Go through each of the registered Developers and check the password and credentials.
         // If the current one is present set that user as an active user session.
-        for (Developer user : developers) {
-            if (Objects.equals(user.getCredentials(), credentials) &&
-                    Objects.equals(user.getPassword(), passeword)) {
+        for (Developer developer : developers) {
+            if (Objects.equals(developer.getCredentials(), credentials) &&
+                    Objects.equals(developer.getPassword(), password)) {
                 //Set the active session
-                activeUser = user;
+                activeUser = developer;
             } else {
                 throw new OperationNotAllowedException("Your credentials or password was wrong");
             }
+        }
+
+    }
+
+    /**
+     *
+     * @return boolean. Is there a ongoing session.
+     */
+    public boolean activeSession(){
+        return activeUser != null;
+    }
+
+    /**
+     * For developer operations
+     * @throws OperationNotAllowedException
+     */
+    public void checkAdminSession() throws OperationNotAllowedException {
+        if (activeUser == null && !activeUser.isAdmin()) {
+            throw new OperationNotAllowedException("Administrator login required");
+        }
+    }
+
+    /**
+     * For admin operations
+     * @throws OperationNotAllowedException
+     */
+    public void checkDeveloperSession() throws OperationNotAllowedException {
+        if (activeUser == null && activeUser.isAdmin()) {
+            throw new OperationNotAllowedException("Administrator login required");
         }
     }
 
@@ -53,7 +89,7 @@ public class Planner {
      * Log the active user out of the system (remove active session)
      */
     public void userLogOut(){
-        // Remove the active session
+        // Remove the active session from the system
         activeUser = null;
     }
 
@@ -64,30 +100,37 @@ public class Planner {
      * @throws Exception If the developers is in the system throw error
      */
     public void createDeveloper(String credentials, String password) throws Exception{
-        if (developers.contains(new Developer(credentials, password))) {
-            throw new Exception("Developer is already registered");
-        } else {
-            developers.add(new Developer(credentials, password));
+        checkAdminSession();
+
+        if (getDeveloper(credentials) != null){
+            throw new Exception("Developer is registered");
         }
+
+        developers.add(new Developer(credentials, password));
     }
 
-    public void createProject(Project project) throws Exception {
-        /*
-        Check if project has valid information
-         */
+    /**
+     * Add a new project to the system
+     * @param title
+     * @param estimatedStartTime
+     * @param estimatedEndTime
+     * @throws Exception
+     */
+    public void createProject(String title, Calendar estimatedStartTime, Calendar estimatedEndTime ) throws Exception {
+        checkDeveloperSession();
 
-        if(project.getTitle() == "Titel"){
-            projects.add(project);
-        } else {
-            throw new Exception("Invalid project credentials");
+        if (getProject(title) != null){
+            throw new  Exception("");
         }
-    }
 
+        projects.add(new Project(title, estimatedStartTime, estimatedEndTime));
+    }
 
     /**
      * Handle the respond to the user.
      */
     private UserResponse userResponse = new UserResponse();
+
 
     /** SEND RESPONE
      *

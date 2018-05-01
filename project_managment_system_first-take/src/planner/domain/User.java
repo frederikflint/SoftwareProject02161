@@ -1,8 +1,8 @@
 package planner.domain;
 
-
 /**
  * The super class Uses
+ * This super class acts
  */
 public class User {
 
@@ -12,6 +12,14 @@ public class User {
     public User (String credentials, String password) {
         setCredentials(credentials);
         setPassword(password);
+    }
+
+    /**
+     *  Is the user a admin
+     * @return
+     */
+    public boolean isAdmin(){
+        return false;
     }
 
     /**************************

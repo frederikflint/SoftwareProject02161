@@ -13,12 +13,15 @@ public class Activity {
         this.project = project;
     }
 
-    /**
-     * Get the associated the project
-     * @return
-     */
+    /**************************
+     *  Setters and getters   *
+     **************************/
+
     public Project getProject() {
         return project;
     }
 
+    public List<Developer> getDevelopers() {
+        return developers;
+    }
 }
