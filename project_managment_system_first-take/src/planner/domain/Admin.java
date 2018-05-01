@@ -10,18 +10,6 @@ public class Admin extends User {
         super(credentials, password);
     }
 
-    @Override
-    public boolean isAdmin() {
-        return true;
-    }
-
-    /**
-     *
-     * @return
-     */
-    public List<Project> getProjects(Planner planner){
-        return planner.projects;
-    }
 
     /**
      * Set the project manager by fetching developer and project
@@ -46,6 +34,15 @@ public class Admin extends User {
         Project currentProject = planner.getProject(title);
         currentProject.setProjectManager(null);
 
+    }
+
+    /**
+     *  I
+     * @return boolean.
+     */
+    @Override
+    public boolean isAdmin() {
+        return true;
     }
 
 }
