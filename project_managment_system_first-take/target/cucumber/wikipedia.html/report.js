@@ -1,11 +1,11 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Developer_Login.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Create_Project.feature");
 formatter.feature({
-  "name": "Developer login",
-  "description": "  Description: The developer logs into the system\n  Actor: Developer",
+  "name": "Create Project",
+  "description": "  Description: A developer creates a project\n  Actors: Developer",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Developer can login",
+  "name": "A project is created successfully",
   "description": "",
   "keyword": "Scenario"
 });
@@ -13,41 +13,41 @@ formatter.before({
   "status": "passed"
 });
 formatter.step({
-  "name": "that there is no active user on the system",
+  "name": "that a developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.thatThereIsNoActiveUserOnTheSystem()"
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is a developer with username \"dd\" registered in the system",
+  "name": "the developer enters a valid project number, name, description, start and end date",
   "keyword": "And "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.thereIsADeveloperWithUsernameRegisteredInTheSystem(String)"
+  "location": "UserSteps.theDeveloperEntersAValidProjectNumberNameDescriptionStartAndEndDate()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the password \"1234\" is entered correctly",
+  "name": "the developer creates the project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.thePasswordIsEnteredCorrectly(String)"
+  "location": "UserSteps.theDeveloperCreatesTheProject()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the developer is logged in",
+  "name": "the project with that project number, name, description and start and end date is created",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.theDeveloperIsLoggedIn()"
+  "location": "UserSteps.theProjectWithThatProjectNumberNameDescriptionAndStartAndEndDateIsCreated()"
 });
 formatter.result({
   "status": "passed"
@@ -56,7 +56,7 @@ formatter.after({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Developer has the wrong username",
+  "name": "The developer doesn\u0027t enter valid start and end dates",
   "description": "",
   "keyword": "Scenario"
 });
@@ -64,37 +64,37 @@ formatter.before({
   "status": "passed"
 });
 formatter.step({
-  "name": "that there is no active user on the system",
+  "name": "that a developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.thatThereIsNoActiveUserOnTheSystem()"
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "there is a not developer with username \"notRegistered\" registered in the system",
+  "name": "the developer enters an invalid project number, name, description, start or end date",
   "keyword": "And "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.thereIsANotDeveloperWithUsernameRegisteredInTheSystem(String)"
+  "location": "UserSteps.theDeveloperEntersAnInvalidProjectNumberNameDescriptionStartOrEndDate()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the developer enters the password \"1234\"",
+  "name": "the developer creates the project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.theDeveloperEntersThePassword(String)"
+  "location": "UserSteps.theDeveloperCreatesTheProject()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "I get the error message \"Your credentials or password was wrong\"",
+  "name": "I get the error message \"Invalid project credentials\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -106,75 +106,14 @@ formatter.result({
 formatter.after({
   "status": "passed"
 });
-formatter.scenario({
-  "name": "Developer has the wrong password",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.before({
-  "status": "passed"
-});
-formatter.step({
-  "name": "that there is no active user on the system",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.thatThereIsNoActiveUserOnTheSystem()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "there is a developer with username \"dd\" registered in the system",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.thereIsADeveloperWithUsernameRegisteredInTheSystem(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the password \"wrong password\" does not match the credentials",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.thePasswordDoesNotMatchTheCredentials(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the developer enters the password \"wrong password\"",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "LoginLogoutSteps.theDeveloperEntersThePassword(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "I get the error message \"Your credentials or password was wrong\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "UserSteps.iGetTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.after({
-  "status": "passed"
-});
-formatter.uri("use_cases/User_Logout.feature");
+formatter.uri("use_cases/Register_Time.feature");
 formatter.feature({
-  "name": "User logout",
-  "description": "  Description: The user logs off the system\n  Actor: User",
+  "name": "Register time",
+  "description": "  Description: developer registers time spent on an activity\n  Actors: developer",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "User can logoff",
+  "name": "developer registers time",
   "description": "",
   "keyword": "Scenario"
 });
@@ -182,31 +121,51 @@ formatter.before({
   "status": "passed"
 });
 formatter.step({
-  "name": "that there is an active user on the system",
+  "name": "that a developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.thatThereIsAnActiveUserOnTheSystem()"
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user logs off the system",
+  "name": "the developer is assigned to an activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.theDeveloperIsAssignedToAnActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer registers time spent on an activity",
   "keyword": "When "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.theUserLogsOffTheSystem()"
+  "location": "TimeSteps.theDeveloperRegistersTimeSpentOnAnActivity()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is logged off",
+  "name": "the registered time is registered to the activity",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.theUserIsLoggedOff()"
+  "location": "TimeSteps.theRegisteredTimeIsRegisteredToTheActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the registered time is registered to the developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "TimeSteps.theRegisteredTimeIsRegisteredToTheDeveloper()"
 });
 formatter.result({
   "status": "passed"

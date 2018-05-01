@@ -115,14 +115,18 @@ public class Planner {
      * @param estimatedEndTime
      * @throws Exception
      */
-    public void createProject(String title, Calendar estimatedStartTime, Calendar estimatedEndTime ) throws Exception {
-        checkDeveloperSession();
+    public void createProject(Project project) throws Exception {
+        /*
+        Check if project has valid information
+         */
 
-        if (getProject(title) != null){
-            throw new  Exception("");
+        if(project.getTitle() == "Titel"){
+            projects.add(project);
+        } else {
+            throw new Exception("Invalid project credentials");
         }
 
-        projects.add(new Project(title, estimatedStartTime, estimatedEndTime));
+
     }
 
     /**
