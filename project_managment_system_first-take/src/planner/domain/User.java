@@ -14,6 +14,10 @@ public class User {
         setPassword(password);
     }
 
+    /**
+     *  Is the user a admin
+     * @return
+     */
     public boolean isAdmin(){
         return false;
     }

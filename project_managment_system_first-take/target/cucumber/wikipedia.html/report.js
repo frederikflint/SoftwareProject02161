@@ -84,14 +84,15 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the developer is not logged in",
+  "name": "I get the error message \"Wrong username\"",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "LoginLogoutSteps.theDeveloperIsNotLoggedIn()"
+  "location": "UserSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.AssertionError: \nExpected: is \"Wrong username\"\n     but: was \"\"\r\n\tat org.hamcrest.MatcherAssert.assertThat(MatcherAssert.java:20)\r\n\tat org.junit.Assert.assertThat(Assert.java:956)\r\n\tat org.junit.Assert.assertThat(Assert.java:923)\r\n\tat acceptance_tests.UserSteps.iGetTheErrorMessage(UserSteps.java:141)\r\n\tat ✽.I get the error message \"Wrong username\"(use_cases/Developer_Login.feature:14)\r\n",
+  "status": "failed"
 });
 formatter.after({
   "status": "passed"

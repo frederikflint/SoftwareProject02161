@@ -15,7 +15,7 @@ import java.util.Objects;
  */
 public class Planner {
 
-    // The system admin is always on the system
+    // The system admin
     public final Admin admin = new Admin("admin","admin123");
 
     public User activeUser;
@@ -30,15 +30,17 @@ public class Planner {
      */
     public void userLogIn(String credentials, String password) throws OperationNotAllowedException{
 
-        // If the user has admin rights
+        // Is there a user session?
+        // Before anything clear the session
+        if(activeSession()){
+            activeUser = null;
+        }
+
+        // If the user has admin rights.
+        // Specific admin scenario
         if(credentials.equals(admin.getCredentials()) && password.equals(admin.getPassword())){
             activeUser = admin;
             return;
-        }
-
-        // Is there a user session?
-        if(activeUser != null){
-            throw new OperationNotAllowedException("There is already an active user on the system");
         }
 
         // Go through each of the registered Developers and check the password and credentials.
@@ -55,9 +57,16 @@ public class Planner {
 
     }
 
-
     /**
      *
+     * @return boolean. Is there a ongoing session.
+     */
+    public boolean activeSession(){
+        return activeUser != null;
+    }
+
+    /**
+     * For developer operations
      * @throws OperationNotAllowedException
      */
     public void checkAdminSession() throws OperationNotAllowedException {
@@ -65,9 +74,9 @@ public class Planner {
             throw new OperationNotAllowedException("Administrator login required");
         }
     }
-    
+
     /**
-     *
+     * For admin operations
      * @throws OperationNotAllowedException
      */
     public void checkDeveloperSession() throws OperationNotAllowedException {
@@ -80,7 +89,7 @@ public class Planner {
      * Log the active user out of the system (remove active session)
      */
     public void userLogOut(){
-        // Remove the active session
+        // Remove the active session from the system
         activeUser = null;
     }
 
@@ -94,7 +103,7 @@ public class Planner {
         checkAdminSession();
 
         if (getDeveloper(credentials) != null){
-            throw new Exception("");
+            throw new Exception("Developer is registered");
         }
 
         developers.add(new Developer(credentials, password));
