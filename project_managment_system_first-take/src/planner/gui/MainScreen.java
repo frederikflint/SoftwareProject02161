@@ -38,11 +38,24 @@ public class MainScreen extends Application {
         /**
          * FAKE USERS FOR TESTING
          */
-        try {
-            planner.createDeveloper("nn","nn");
-        } catch (Exception e){
+        Developer dev = new Developer("test","test");
+        planner.developers.add(dev);
 
+        try {
+            planner.userLogIn("test","test");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
         }
+
+        try {
+            planner.createDeveloper("tester","tester");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+
+
+
         // Scene setup as grid
         window.setTitle("Time planner");
         GridPane grid = new GridPane();
@@ -81,6 +94,7 @@ public class MainScreen extends Application {
 
         btn.setOnAction(e1 -> {
             try {
+
                 planner.userLogIn(credentialsTextField.getText(),passwordPasswordField.getText());
 
                 GridPane dasboardGrid = new GridPane();

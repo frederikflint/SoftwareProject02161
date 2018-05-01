@@ -16,6 +16,11 @@ public class Developer extends User {
         super(credentials, password);
     }
 
+    @Override
+    public boolean isAdmin() {
+        return super.isAdmin();
+    }
+
     public void registerTime(Activity activity, Calendar startTime, Calendar endTime) {
         this.workHours.add(new WorkHours(activity, startTime, endTime));
     }

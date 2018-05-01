@@ -99,16 +99,16 @@ public class UserSteps extends ApplicationTest {
 
     }
 
-    @When("^the developer creates the project$")
-    public void theDeveloperCreatesTheProject() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
-        try {
-            planner.createProject(project);
-        } catch (Exception e) {
-            errorMessage.setErrorMessage(e.getMessage());
-        }
-    }
+//    @When("^the developer creates the project$")
+//    public void theDeveloperCreatesTheProject() throws Exception {
+//        // Write code here that turns the phrase above into concrete actions
+//        //throw new PendingException();
+//        try {
+//            planner.createProject(project);
+//        } catch (Exception e) {
+//            errorMessage.setErrorMessage(e.getMessage());
+//        }
+//    }
 
     @Given("^the developer enters a valid project number, name, description, start and end date$")
     public void theDeveloperEntersAValidProjectNumberNameDescriptionStartAndEndDate() throws Exception {

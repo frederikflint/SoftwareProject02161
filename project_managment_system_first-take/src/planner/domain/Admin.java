@@ -6,10 +6,13 @@ import java.util.List;
 
 public class Admin extends User {
 
-    String isAdmin;
-
     public Admin(String credentials, String password) {
         super(credentials, password);
+    }
+
+    @Override
+    public boolean isAdmin() {
+        return true;
     }
 
     /**
