@@ -2,3 +2,5 @@
 
 # Ignore IDE
 .idea/
+bin/
+target/

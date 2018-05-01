@@ -27,7 +27,7 @@ public class Admin extends User {
      */
     public void assignProjectManager(String credentials, String title, Planner planner) {
 
-        // Get the developer and  project.
+        // Get the developer and project.
         Developer currentDeveloper = planner.getDeveloper(credentials);
         Project currentProject = planner.getProject(title);
 
