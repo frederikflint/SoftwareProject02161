@@ -11,10 +11,11 @@ public class User {
 
     private String credentials;
     private String password;
+    private Boolean isAdmin = true;
 
-    List<Activity> Activities;
-    List<Project> Projects;
-    List<WorkHours> workHours;
+    private List<Activity> Activities;
+    private List<Project> Projects;
+    private List<WorkHours> workHours;
 
 
     public User (String credentials, String password) {
@@ -60,5 +61,9 @@ public class User {
 
     public List<WorkHours> getWorkHours() {
         return workHours;
+    }
+
+    public Boolean isAdmin() {
+        return isAdmin;
     }
 }

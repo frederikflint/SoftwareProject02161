@@ -8,7 +8,7 @@ public class Activity {
     private Project project;
     private int estimatedTimeSpent;
     private int currentTimeSpent = 0;
-    String ID = "";
+    String ID;
 
     public Activity(Project project, String ID) {
         this.project = project;

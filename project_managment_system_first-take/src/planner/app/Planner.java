@@ -1,8 +1,12 @@
 package planner.app;
 
+import org.mockito.internal.matchers.Null;
 import planner.domain.Project;
 import planner.domain.User;
+import planner.domain.WorkHours;
+
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -20,6 +24,10 @@ public class Planner {
 
     // All the projects on the system
     public List<Project> projects = new ArrayList<>();
+
+    /********************
+     *  Authentication  *
+     *******************/
 
     /**
      * Set an active user session
@@ -58,12 +66,22 @@ public class Planner {
     }
 
     /**
-     * Throw error if there isn't a active sessions
+     * Throw error if there isn't an active sessions
      * @throws OperationNotAllowedException
      */
     public void checkSession() throws OperationNotAllowedException {
         if (!activeSession()) {
-            throw new OperationNotAllowedException("Administrator login required");
+            throw new OperationNotAllowedException("Login required");
+        }
+    }
+
+    /**
+     * Throw error if there isn't an active admin sessions
+     * @throws OperationNotAllowedException
+     */
+    public void checkAdminSession() throws OperationNotAllowedException {
+        if (activeUser.isAdmin()) {
+            throw new OperationNotAllowedException("Administrator required");
         }
     }
 
@@ -75,6 +93,10 @@ public class Planner {
         activeUser = null;
     }
 
+    /********************
+     *  TITLE  *
+     *******************/
+
     /**
      * Add a new user on the system
      * @param credentials Credentials
@@ -82,6 +104,8 @@ public class Planner {
      * @throws Exception If the developers is in the system throw error
      */
     public void createUser(String credentials, String password) throws Exception{
+        checkAdminSession();
+
         if (getUser(credentials) != null){
             throw new Exception("Developer is registered");
         }
@@ -94,6 +118,8 @@ public class Planner {
      * @throws Exception
      */
     public void deleteUser(String credentials)throws Exception{
+        checkAdminSession();
+
         User foundUser = getUser(credentials);
 
         if(foundUser == null){
@@ -109,16 +135,13 @@ public class Planner {
      * @throws Exception
      */
     public void createProject(Project project) throws Exception {
-        /*
-        Check if project has valid information
-         */
+        checkSession();
 
-        if(project.getTitle() == "Titel"){
-            projects.add(project);
+        if(getProject(project.getTitle()) != null){
+            throw new Exception("The project is already on the system");
         } else {
-            throw new Exception("Invalid project credentials");
+            projects.add(project);
         }
-
     }
 
     /**
@@ -127,6 +150,7 @@ public class Planner {
      * @throws Exception
      */
     public void deleteProject(String title) throws  Exception{
+        checkAdminSession();
 
         Project foundProject = getProject(title);
 
@@ -136,6 +160,36 @@ public class Planner {
             projects.remove(foundProject);
         }
     }
+
+    /**
+     * Set the project manager by fetching developer and project
+     * @param credentials
+     * @param title
+     */
+    public void assignProjectManager(String credentials, String title) {
+
+        // Get the developer and project.
+        User foundUser= getUser(credentials);
+        Project foundProject = getProject(title);
+
+        // Add the returned developer to the the returned project as manager.
+        foundProject.setProjectManager(foundUser);
+    }
+
+    /**
+     *
+     * @param title
+     */
+    public void removeProjectManager(String title) {
+
+        Project foundProject = getProject(title);
+        foundProject.setProjectManager(null);
+    }
+
+
+    /*****************
+     *  Responders   *
+     ****************/
 
     /**
      * Handle the respond to the user.
@@ -171,6 +225,20 @@ public class Planner {
             }
         }
         return foundUser;
+    }
+
+    public List<User> getAvailableUsers(Calendar activityStartTime, Calendar activityEndTime){
+
+        List<User> availableUsers =  new ArrayList<>();
+
+        for (User user : users) {
+            for (WorkHours workHour : user.getWorkHours()) {
+
+            }
+        }
+
+        return availableUsers;
+
     }
 
     /**
