@@ -9,9 +9,9 @@ import java.util.List;
  */
 public class Project {
 
-    private List<Activity> projectActivities;
-    private List<User> projectUsers;
-    private User projectManager;
+    private List<Activity> activities;
+    private List<User> users;
+    private User manager;
     private String title;
     private Calendar estimatedStartTime;
     private Calendar estimatedEndTime;
