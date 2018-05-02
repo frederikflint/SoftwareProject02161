@@ -1,6 +1,8 @@
 package planner.app;
 
-import org.mockito.internal.matchers.Null;
+
+import acceptance_tests.Developer;
+import planner.domain.Activity;
 import planner.domain.Project;
 import planner.domain.User;
 import planner.domain.WorkHours;
@@ -162,31 +164,26 @@ public class Planner {
     }
 
     /**
-     * Set the project manager by fetching developer and project
-     * @param credentials
-     * @param title
+     *
+     * @param user
+     * @param project
+     * @throws Exception
      */
-    public void assignProjectManager(String credentials, String title) {
-
-        // Get the developer and project.
-        User foundUser= getUser(credentials);
-        Project foundProject = getProject(title);
-
-        // Add the returned developer to the the returned project as manager.
-        foundProject.setProjectManager(foundUser);
+    public void assignProjectManager(User user, Project project) throws Exception{
+        checkAdminSession();
+        project.setProjectManager(user);
     }
 
     /**
      *
-     * @param title
+     * @param project
+     * @throws Exception
      */
-    public void removeProjectManager(String title) {
-
-        Project foundProject = getProject(title);
-        foundProject.setProjectManager(null);
+    public void removeProjectManager(Project project) throws Exception{
+        checkAdminSession();
+        project.setProjectManager(null);
     }
-
-
+    
     /*****************
      *  Responders   *
      ****************/
@@ -227,18 +224,41 @@ public class Planner {
         return foundUser;
     }
 
-    public List<User> getAvailableUsers(Calendar activityStartTime, Calendar activityEndTime){
 
-        List<User> availableUsers =  new ArrayList<>();
+    /**
+     *
+     * @param activityStartTime
+     * @param activityEndTime
+     * @return
+     */
+    public List<User> getAvailableUsers(Calendar activityStartTime, Calendar activityEndTime) throws Exception {
+        checkSession();
 
+        List<User> availableUsers = new ArrayList<>();
+
+        // Check if a given user is available
         for (User user : users) {
             for (WorkHours workHour : user.getWorkHours()) {
 
+                if(user.getWorkHours() == null){
+                    availableUsers.add(user);
+                }
+
+                if (!(workHour.getStartTime().after(activityStartTime)) && !(workHour.getEndTime().before(activityEndTime))) {
+                    if (!(workHour.getStartTime().equals(activityStartTime)) && !(workHour.getEndTime().equals(activityEndTime))) {
+                        availableUsers.add(user);
+                    }
+                } else {
+                    break;
+                }
             }
         }
 
-        return availableUsers;
+        if(availableUsers.isEmpty()){
+            return null;
+        }
 
+        return availableUsers;
     }
 
     /**

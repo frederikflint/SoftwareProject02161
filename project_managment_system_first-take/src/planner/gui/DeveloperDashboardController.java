@@ -13,5 +13,4 @@ public class DeveloperDashboardController extends Main {
     @FXML
     Label username;
 
-
 }

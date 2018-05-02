@@ -13,7 +13,7 @@ public class Main extends Application {
     Stage primaryStage;
     Parent root;
 
-    protected static Planner planner = new Planner();
+    protected final static Planner planner = new Planner();
     private User user  = new User("test","test");
 
     @Override
