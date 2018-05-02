@@ -6,11 +6,17 @@ public class Activity {
 
     List<Developer> developers;
     private Project project;
-    int estimatedTimeSpent;
-    int currentTimeSpent;
+    private int estimatedTimeSpent;
+    private int currentTimeSpent = 0;
+    String ID = "";
 
-    public Activity(Project project) {
+    public Activity(Project project, String ID) {
         this.project = project;
+        this.ID = ID;
+    }
+
+    public void registerActivityTime(int additionalTime) {
+        currentTimeSpent = currentTimeSpent + additionalTime;
     }
 
     /**************************
@@ -20,6 +26,20 @@ public class Activity {
     public Project getProject() {
         return project;
     }
+
+    public int getEstimatedTimeSpent() {
+        return estimatedTimeSpent;
+    }
+
+    public int getCurrentTimeSpent() {
+        return currentTimeSpent;
+    }
+
+    public String getID() {
+        return ID;
+    }
+
+
 
     public List<Developer> getDevelopers() {
         return developers;

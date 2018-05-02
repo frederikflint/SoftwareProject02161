@@ -9,15 +9,15 @@ import javafx.stage.Stage;
 import org.junit.Test;
 import org.testfx.framework.junit5.ApplicationTest;
 import planner.app.Planner;
+import planner.domain.*;
 import planner.domain.Admin;
 import planner.domain.Developer;
-import planner.domain.Project;
-import planner.domain.User;
 
 import java.util.Calendar;
 
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 
 
@@ -27,6 +27,7 @@ public class TimeSteps {
     private User user;
     private Admin admin;
     private Project project;
+    private Activity activity;
 
     private ErrorMessageHolder errorMessage;
     public DeveloperHelper helper;
@@ -44,8 +45,12 @@ public class TimeSteps {
     @Given("^the developer is assigned to an activity$")
     public void theDeveloperIsAssignedToAnActivity() throws Exception {
         // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
-        //assertThat(planner.getDeveloper(planner.getActiveUser().getCredentials()).getActivities().contains(),is(true));
+        // throw new PendingException();
+        activity = new Activity(new Project("titel",Calendar.getInstance(),Calendar.getInstance()),"Activity");
+
+        //TODO:
+        // assign active user to activity.
+        //
 
     }
 
@@ -58,13 +63,14 @@ public class TimeSteps {
         startTime.set(2018,1,2,8,0);
         endTime.set(2018,1,2,16,0);
 
-        //planner.getActiveUser().registerTime(/*SOME ACTIVITY*/,startTime,endTime);
+        // planner.getActiveUser().registerTime(activity,startTime,endTime);
     }
 
     @Then("^the registered time is registered to the activity$")
     public void theRegisteredTimeIsRegisteredToTheActivity() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
+        assertFalse(activity.getCurrentTimeSpent() != 0);
         //
     }
 
@@ -72,7 +78,7 @@ public class TimeSteps {
     public void theRegisteredTimeIsRegisteredToTheDeveloper() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
-        //
+        //assertThat(planner.activeUser.);
     }
 
 

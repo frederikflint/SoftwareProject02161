@@ -11,9 +11,9 @@ Feature: Register time
 
 #  Scenario: developer registers time to a project the developer is not registered to
 #    Given that the developer is logged in
-#    And the developer is not assigned to an activity
+#    And the developer is not assigned to the activity
 #    When the developer registers time to the activity
-#    Then the developer gets the error message: "You are not assigned to any activities"
+#    Then the developer gets the error message: "You are not assigned to this activity"
 #
 #  Scenario: developer registers an invalid amount of time
 #    Given that a developer is logged in
