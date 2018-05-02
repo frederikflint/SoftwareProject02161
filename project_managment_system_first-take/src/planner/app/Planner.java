@@ -1,6 +1,5 @@
 package planner.app;
 
-
 import acceptance_tests.Developer;
 import planner.domain.Activity;
 import planner.domain.Project;
@@ -13,10 +12,10 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The main planner.
+ * The main planner class.
+ * This class holds all the logic associated with main system.
  */
 public class Planner {
-
 
     // The active developer of the system
     public User activeUser;
@@ -206,19 +205,7 @@ public class Planner {
      *  User Responders  *
      *********************/
 
-    /**
-     * Handle the respond to the user.
-     */
-    private UserResponse userResponse = new UserResponse();
-
-
-    /** SEND RESPONE
-     *
-     */
-
-    private void showAlert(){
-
-    }
+    //TODO: Hvis vi har mere tid kunne vi tilføje notifikationer til brugeren.
 
     /**************************
      *  Setters and getters   *
