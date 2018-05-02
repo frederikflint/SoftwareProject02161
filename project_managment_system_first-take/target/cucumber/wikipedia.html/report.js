@@ -1,4 +1,59 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Create_Project.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Admin_Login.feature");
+formatter.feature({
+  "name": "Admin login",
+  "description": "  Description: The admin logs into the system\n  Actor: Admin",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Admin can login",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.before({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that there is no active user on the system",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.thatThereIsNoActiveUserOnTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the admin username is \"admin\" and password \"adminadmin\"",
+  "keyword": "And "
+});
+formatter.match({});
+formatter.result({
+  "status": "undefined"
+});
+formatter.step({
+  "name": "the admin login succeeds",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.theAdminLoginSucceeds()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.step({
+  "name": "the admin is logged in",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.theAdminIsLoggedIn()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.after({
+  "status": "passed"
+});
+formatter.uri("use_cases/Create_Project.feature");
 formatter.feature({
   "name": "Create Project",
   "description": "  Description: A developer creates a project\n  Actors: Developer",

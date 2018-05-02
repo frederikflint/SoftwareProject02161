@@ -34,7 +34,6 @@ public class LoginLogoutSteps {
     }
 
 
-
     @Given("^that there is no active user on the system$")
     public void thatThereIsNoActiveUserOnTheSystem() throws Exception {
         assertFalse(planner.activeSession());

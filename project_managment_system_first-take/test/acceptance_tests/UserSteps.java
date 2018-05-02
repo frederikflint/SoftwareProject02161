@@ -18,7 +18,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
 
-public class UserSteps extends ApplicationTest {
+public class UserSteps {
 
     private Planner planner;
     private User user;
@@ -37,32 +37,6 @@ public class UserSteps extends ApplicationTest {
         this.projectHelper = projectHelper;
     }
 
-    /******************
-     *  TEST FOR GUI  *
-     ******************/
-
-    @Override
-    public void start (Stage stage) throws Exception {
-
-    }
-
-    @Before
-    public void setUp () throws Exception {
-    }
-
-    @After
-    public void tearDown () throws Exception {
-
-    }
-
-    @Test
-    public void userLoginSuccess () {
-    }
-
-
-    /****************
-     *  Unit tests  *
-     ****************/
 
     @Given("^that the user is not logged in$")
     public void thatTheUserIsNotLoggedIn() throws Exception {
@@ -104,11 +78,11 @@ public class UserSteps extends ApplicationTest {
     public void theDeveloperCreatesTheProject() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
-        try {
-            planner.createProject(project);
-        } catch (Exception e) {
-            errorMessage.setErrorMessage(e.getMessage());
-        }
+//        try {
+//            planner.createProject(project);
+//        } catch (Exception e) {
+//            errorMessage.setErrorMessage(e.getMessage());
+//        }
     }
 
     @Given("^the developer enters a valid project number, name, description, start and end date$")

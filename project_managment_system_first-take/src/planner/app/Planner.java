@@ -73,25 +73,14 @@ public class Planner {
     }
 
     /**
-     * For developer operations
-     * @throws OperationNotAllowedException
-     */
-    public void checkAdminSession() throws OperationNotAllowedException {
-        if (activeUser == null && !activeUser.isAdmin()) {
-            throw new OperationNotAllowedException("Administrator login required");
-        }
-    }
-
-    /**
      * For admin operations
      * @throws OperationNotAllowedException
      */
-    public void checkDeveloperSession() throws OperationNotAllowedException {
-        if (activeUser == null && activeUser.isAdmin()) {
+    public void checkSession() throws OperationNotAllowedException {
+        if (activeSession()) {
             throw new OperationNotAllowedException("Administrator login required");
         }
     }
-
 
     /**
      * Add a new user on the system
@@ -100,8 +89,6 @@ public class Planner {
      * @throws Exception If the developers is in the system throw error
      */
     public void createDeveloper(String credentials, String password) throws Exception{
-        checkAdminSession();
-
         if (getDeveloper(credentials) != null){
             throw new Exception("Developer is registered");
         }
@@ -115,17 +102,7 @@ public class Planner {
      * @param estimatedEndTime
      * @throws Exception
      */
-    public void createProject(Project project) throws Exception {
-        /*
-        Check if project has valid information
-         */
-
-        if(project.getTitle() == "Titel"){
-            projects.add(project);
-        } else {
-            throw new Exception("Invalid project credentials");
-        }
-
+    public void createProject(String title, Calendar estimatedStartTime, Calendar estimatedEndTime) throws Exception {
 
     }
 
@@ -154,7 +131,7 @@ public class Planner {
      */
     public Developer getDeveloper(String credentials) {
 
-        //Set the initial currentDeveloper as null
+        // Set the initial currentDeveloper as null
         Developer currentDeveloper = null;
 
         for (Developer developer : developers) {

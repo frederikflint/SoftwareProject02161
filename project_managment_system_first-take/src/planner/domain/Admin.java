@@ -10,7 +10,6 @@ public class Admin extends User {
         super(credentials, password);
     }
 
-
     /**
      * Set the project manager by fetching developer and project
      * @param credentials
