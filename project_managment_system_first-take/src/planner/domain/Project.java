@@ -79,7 +79,7 @@ public class Project {
      * @throws OperationNotAllowedException If you do not have manager rights throw error.
      *                                      You can't remove an activity that is not a part of the project.
      */
-    public void remoceActivity(Activity activty, User activeUser) throws OperationNotAllowedException {
+    public void removeActivity(Activity activty, User activeUser) throws OperationNotAllowedException {
         if (!(users.contains(activeUser))) {
             throw new OperationNotAllowedException("You are not a part of this project");
         } else if(!(activities.contains(activty))){

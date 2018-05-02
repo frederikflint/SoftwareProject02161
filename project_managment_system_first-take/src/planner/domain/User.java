@@ -51,12 +51,23 @@ public class User {
         }
     }
 
+    /**
+     *
+     * @param activity
+     * @param startTime
+     * @param endTime
+     */
     public void registerTime(Activity activity, Calendar startTime, Calendar endTime) {
         WorkHours workHour = new WorkHours(activity, startTime, endTime);
         workHours.add(workHour);
         activity.registerActivityTime(workHour.getWorkTimeInMinutes());
     }
 
+    /**
+     *
+     * @param timeRegistration
+     * @throws OperationNotAllowedException
+     */
     public void removeRegistedTime(WorkHours timeRegistration) throws OperationNotAllowedException {
         if(!(workHours.contains(timeRegistration))){
             throw new OperationNotAllowedException("The time registration is not in your personal register");

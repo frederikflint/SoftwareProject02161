@@ -32,10 +32,10 @@ public class Planner {
      ********************/
 
     /**
-     * Set an active user session
+     * Set an active user session for the planner.
      * @param credentials The developers credentials
      * @param password The developers password
-     * @throws OperationNotAllowedException If the developers is logged in throw error. If the user us typed in wrong throw error.
+     * @throws AuthenticationException If the developers is logged in throw error. If the user us typed in wrong throw error.
      */
     public void userLogIn(String credentials, String password) throws AuthenticationException{
 
@@ -69,26 +69,27 @@ public class Planner {
 
     /**
      * Is there an active session on the system?
-     * @throws OperationNotAllowedException Throw error if there isn't an active sessions
+     * @throws AuthenticationException Throw error if there isn't an active sessions.
      */
-    public void checkSession() throws OperationNotAllowedException {
+    public void checkSession() throws AuthenticationException {
         if (!activeSession()) {
-            throw new OperationNotAllowedException("Login required");
+            throw new AuthenticationException("Login required");
         }
     }
 
     /**
      * Is there an active admin session on the system.
-     * @throws OperationNotAllowedException Throw error if there isn't an active admin sessions
+     * @throws AuthenticationException Throw error if there isn't an active admin sessions.
      */
-    public void checkAdminSession() throws OperationNotAllowedException {
+    public void checkAdminSession() throws AuthenticationException {
         if (activeUser.isAdmin()) {
-            throw new OperationNotAllowedException("Administrator required");
+            throw new AuthenticationException("Administrator required");
         }
     }
 
     /**
      * Log the active user out of the system (remove active session)
+     * @throws OperationNotAllowedException If there is not an active session on the system throw error.
      */
     public void userLogOut() throws OperationNotAllowedException {
         // Remove the active session from the system
@@ -98,54 +99,60 @@ public class Planner {
         activeUser = null;
     }
 
-    /****************
-     *  FLAG TITLE  *
-     ****************/
+    /***********************
+     *  Planner Operations *
+     ***********************/
 
     /**
      * Add a new user to the system
      * @param credentials Credentials
      * @param password Password
-     * @throws Exception If the session is not a Admin session throw exception.
-     *                   If the developers is in the system throw exception.
+     * @throws OperationNotAllowedException If the session is not a Admin session throw exception.
+     *                                      If the developers is in the system throw exception.
+     * @throws AuthenticationException If the user is not a admin.
      */
-    public void createUser(String credentials, String password) throws Exception{
+    public void createUser(String credentials, String password) throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
 
         if (getUser(credentials) != null){
-            throw new Exception("Developer is registered");
+            throw new OperationNotAllowedException("Developer is registered");
         }
         users.add(new User(credentials, password));
     }
 
     /**
-     * Delete a given user from the system
+     * Delete a given user from the system.
      * @param user
-     * @throws Exception If the session is not a Admin session throw exception.
-     *                   If the user is not on the system throw exception.
+     * @throws OperationNotAllowedException If the user is not on the system throw exception.
+     * @throws AuthenticationException If the user is not a admin.
      */
-    public void deleteUser(User user)throws Exception{
+    public void deleteUser(User user)throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
 
         if(!(users.contains(user))){
-            throw new Exception("No user with the given credentials" + user.getCredentials() + "found");
+            throw new OperationNotAllowedException("No user with the given credentials" + user.getCredentials() + "found");
         } else {
             users.remove(user);
         }
     }
 
     /**
-     *
+     * Crete a project on the planner.
      * @param project
-     * @throws Exception If
+     * @throws OperationNotAllowedException If the project you are trying to create is on the system
+     *                                      There is a project with the same title on the planner
+     *                                      The time frame for the project is i
+     * @throws AuthenticationException There is not a user on the system to perform this operation.
      */
-    public void createProject(Project project) throws Exception {
+    public void createProject(Project project) throws OperationNotAllowedException, AuthenticationException  {
         checkSession();
 
         if(!(projects.contains(project))){
-            throw new Exception("Project is already on the system");
+            throw new OperationNotAllowedException("Project is already on the planner");
+        } else if(getProject(project.getTitle()) != null){
+            throw new OperationNotAllowedException("A project with that title is on the planner");
         } else if (project.getEstimatedEndTime().before(project.getEstimatedStartTime())) {
-            throw new Exception("Invalid time for project");
+            throw new OperationNotAllowedException("Invalid time for project");
         } else {
             projects.add(project);
         }
@@ -153,37 +160,44 @@ public class Planner {
     }
 
     /**
-     *
+     * Remove a project form the planner.
      * @param project
-     * @throws Exception If the session is not a Admin session throw exception.
+     * @throws OperationNotAllowedException The project you are trying to remove is not on the system.
+     * @throws AuthenticationException The user is not a admin.
      */
-    public void deleteProject(Project project) throws  Exception{
+    public void deleteProject(Project project) throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
 
-        if(!(users.contains(project))){
-            throw new Exception("No project with the given title " + project.getTitle() + " was found");
+        if(!(projects.contains(project))){
+            throw new OperationNotAllowedException("No project with the given title " + project.getTitle() + " was found");
         } else {
             projects.remove(project);
         }
     }
 
     /**
-     *
+     * Assign project manager status to a user.
      * @param user A user
      * @param project
-     * @throws Exception If the session is not a Admin session throw exception.
+     * @throws OperationNotAllowedException the user you are trying to promote is not a part of the system.
+     * @throws AuthenticationException If the session is not a Admin session throw exception.
      */
-    public void assignProjectManager(User user, Project project) throws Exception{
+    public void assignProjectManager(User user, Project project) throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
+
+        if(!(users.contains(user))){
+            throw new OperationNotAllowedException("The user you are trying to promote is not a part of the planner");
+        }
+
         project.setProjectManager(user);
     }
 
     /**
      *
      * @param project
-     * @throws Exception If the session is not a Admin session throw exception.
+     * @throws AuthenticationException If the session is not a Admin session throw exception.
      */
-    public void removeProjectManager(Project project) throws Exception{
+    public void removeProjectManager(Project project) throws AuthenticationException{
         checkAdminSession();
         project.setProjectManager(null);
     }
