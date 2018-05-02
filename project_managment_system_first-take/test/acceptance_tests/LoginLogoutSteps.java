@@ -1,7 +1,5 @@
 package acceptance_tests;
 
-import static com.sun.org.apache.xerces.internal.util.PropertyState.is;
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.is;
@@ -9,13 +7,10 @@ import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
 import static org.junit.Assert.assertTrue;
 
-import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import org.hamcrest.core.IsNot;
 import planner.app.AuthenticationException;
-import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
 import planner.domain.Developer;
 
@@ -104,7 +99,7 @@ public class LoginLogoutSteps {
 
     @Then("^the admin is logged in$")
     public void theAdminIsLoggedIn() throws Exception {
-        assertTrue(planner.activeUser.isAdmin());
+        assertTrue(planner.activeDeveloper.isAdmin());
     }
 
 

@@ -1,13 +1,8 @@
 package acceptance_tests;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import javafx.stage.Stage;
-import org.junit.Test;
-import org.testfx.framework.junit5.ApplicationTest;
 import planner.app.Planner;
 import planner.domain.Admin;
 import planner.domain.Project;
@@ -40,7 +35,7 @@ public class UserSteps {
 
     @Given("^that the user is not logged in$")
     public void thatTheUserIsNotLoggedIn() throws Exception {
-        assertThat(planner.activeUser,is(equalTo(null)));
+        assertThat(planner.activeDeveloper,is(equalTo(null)));
     }
 
     @When("^the user log-in succeeds$")
@@ -51,8 +46,8 @@ public class UserSteps {
 
     @Then("^the user is logged in$")
     public void theUserIsLoggedIn() throws Exception {
-        assertThat(planner.activeUser.getCredentials(),is("nl"));
-        assertThat(planner.activeUser.getPassword(),is("nl"));
+        assertThat(planner.activeDeveloper.getCredentials(),is("nl"));
+        assertThat(planner.activeDeveloper.getPassword(),is("nl"));
     }
 
     @When("^the user log-in fails$")
@@ -68,8 +63,8 @@ public class UserSteps {
     public void thatADeveloperIsLoggedIn() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
-        if(planner.getActiveUser() == null){
-            planner.activeUser = helper.getUser();
+        if(planner.getActiveDeveloper() == null){
+            planner.activeDeveloper = helper.getUser();
         }
 
     }

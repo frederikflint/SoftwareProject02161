@@ -1,8 +1,6 @@
 package planner.domain;
 
 import planner.app.OperationNotAllowedException;
-import planner.app.Planner;
-
 import java.util.Calendar;
 import java.util.List;
 
@@ -30,12 +28,11 @@ public class Project {
      * @param developer
      * @throws OperationNotAllowedException If you do not have manager rights throw error
      */
-    public void addDeveloper(Developer developer, Planner planner) throws OperationNotAllowedException {
-
-        if (projectManager.equals(planner.activeUser)) {
-            throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
-        } else {
+    public void addDeveloper(Developer developer, Developer activeDeveloper) throws OperationNotAllowedException {
+        if (projectManager.equals(activeDeveloper)) {
             projectDevelopers.add(developer);
+        } else {
+            throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
         }
     }
 
@@ -44,20 +41,25 @@ public class Project {
      * @param activty
      * @throws OperationNotAllowedException If you do not have manager rights throw error
      */
-    public void addActivity(Activity activty, Planner planner) throws OperationNotAllowedException {
+    public void addActivity(Activity activty, Developer activeDeveloper) throws OperationNotAllowedException {
 
-        if (projectManager.equals(planner.activeUser)) {
-            throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
-        } else {
+        if (projectDevelopers.contains(activeDeveloper)) {
             activities.add(activty);
+        } else {
+            throw new OperationNotAllowedException("You are not a part of this project");
         }
     }
+
 
     /**************************
      *  Setters and getters   *
      **************************/
 
-    public void setProjectManager(Developer projectManager) {
+    public void setEstimatedStartTime(Calendar estimatedStartTime) {
+        this.estimatedStartTime = estimatedStartTime;
+    }
+
+    public void setProjectManager(Developer projectManager ) {
         this.projectManager = projectManager;
     }
 
@@ -71,10 +73,6 @@ public class Project {
 
     public Calendar getEstimatedStartTime() {
         return estimatedStartTime;
-    }
-
-    public void setEstimatedStartTime(Calendar estimatedStartTime) {
-        this.estimatedStartTime = estimatedStartTime;
     }
 
     public Calendar getEstimatedEndTime() {
