@@ -11,6 +11,7 @@ import java.util.Objects;
  */
 public class Planner {
 
+
     // The active developer of the system
     public User activeUser;
 
@@ -81,10 +82,15 @@ public class Planner {
      * @throws Exception If the developers is in the system throw error
      */
     public void createUser(String credentials, String password) throws Exception{
+
         if (getUser(credentials) != null){
             throw new Exception("Developer is registered");
         }
         users.add(new User(credentials, password));
+    }
+
+    public void deleteUser(String credentials)throws Exception{
+
     }
 
     /**
@@ -102,6 +108,10 @@ public class Planner {
         } else {
             throw new Exception("Invalid project credentials");
         }
+
+    }
+
+    public void deleteProject(Project project) throws  Exception{
 
     }
 

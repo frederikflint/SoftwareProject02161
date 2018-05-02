@@ -9,13 +9,13 @@ import java.util.List;
  */
 public class Project {
 
-    List<Activity> activities;
-    List<Developer> projectDevelopers;
-    Developer projectManager;
+    private List<Activity> projectActivities;
+    private List<User> projectUsers;
+    private User projectManager;
     private String title;
     private Calendar estimatedStartTime;
     private Calendar estimatedEndTime;
-    int estimatedHours;
+    private int estimatedHours;
 
     public Project(String title, Calendar estimatedStartTime, Calendar estimatedEndTime) {
         setTitle(title);
@@ -25,12 +25,12 @@ public class Project {
 
     /**
      *
-     * @param developer
+     * @param user
      * @throws OperationNotAllowedException If you do not have manager rights throw error
      */
-    public void addDeveloper(Developer developer, Developer activeDeveloper) throws OperationNotAllowedException {
-        if (projectManager.equals(activeDeveloper)) {
-            projectDevelopers.add(developer);
+    public void addDeveloper(User user, User activeUser) throws OperationNotAllowedException {
+        if (projectManager.equals(activeUser)) {
+            projectUsers.add(user);
         } else {
             throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
         }
@@ -41,16 +41,16 @@ public class Project {
      * @param activty
      * @throws OperationNotAllowedException If you do not have manager rights throw error
      */
-    public void addActivity(Activity activty, Developer activeDeveloper) throws OperationNotAllowedException {
+    public void addActivity(Activity activty, User activeUser) throws OperationNotAllowedException {
 
-        if (projectDevelopers.contains(activeDeveloper)) {
-            activities.add(activty);
+        if (projectUsers.contains(activeUser)) {
+            projectActivities.add(activty);
         } else {
             throw new OperationNotAllowedException("You are not a part of this project");
         }
     }
 
-
+    
     /**************************
      *  Setters and getters   *
      **************************/
@@ -59,7 +59,7 @@ public class Project {
         this.estimatedStartTime = estimatedStartTime;
     }
 
-    public void setProjectManager(Developer projectManager ) {
+    public void setProjectManager(User projectManager ) {
         this.projectManager = projectManager;
     }
 
