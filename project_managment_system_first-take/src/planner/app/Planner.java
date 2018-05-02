@@ -13,7 +13,7 @@ import java.util.List;
 import java.util.Objects;
 
 /**
- * The main planner
+ * The main planner.
  */
 public class Planner {
 
@@ -273,7 +273,7 @@ public class Planner {
         }
 
         if(availableUsers.isEmpty()){
-            return null;
+            throw new Exception("There are no available users");
         }
 
         return availableUsers;

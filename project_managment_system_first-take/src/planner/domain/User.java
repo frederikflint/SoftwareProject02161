@@ -8,8 +8,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- * The super class Uses
- * This super class acts
+ * This is the a user of the system.
  */
 public class User {
 
@@ -52,7 +51,7 @@ public class User {
     }
 
     /**
-     *
+     * Register time used on an activity.
      * @param activity
      * @param startTime
      * @param endTime
@@ -64,7 +63,7 @@ public class User {
     }
 
     /**
-     *
+     * Remove registered time.
      * @param timeRegistration
      * @throws OperationNotAllowedException
      */
