@@ -5,7 +5,6 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import planner.app.Planner;
 import planner.domain.*;
-import planner.domain.Admin;
 
 import java.util.Calendar;
 
@@ -23,11 +22,11 @@ public class TimeSteps {
     private Activity activity;
 
     private ErrorMessageHolder errorMessage;
-    public DeveloperHelper helper;
+    public UserHelper helper;
     public ProjectHelper projectHelper;
 
 
-    public TimeSteps(Planner planner,ErrorMessageHolder errorMessage,DeveloperHelper helper,ProjectHelper projectHelper) {
+    public TimeSteps(Planner planner, ErrorMessageHolder errorMessage, UserHelper helper, ProjectHelper projectHelper) {
         this.planner = planner;
         this.helper = helper;
         this.errorMessage = errorMessage;

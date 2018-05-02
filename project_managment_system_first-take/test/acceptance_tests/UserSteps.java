@@ -19,11 +19,11 @@ public class UserSteps {
     private Project project;
 
     private ErrorMessageHolder errorMessage;
-    public DeveloperHelper helper;
+    public UserHelper helper;
     public ProjectHelper projectHelper;
 
 
-    public UserSteps(Planner planner, ErrorMessageHolder errorMessage, DeveloperHelper helper, ProjectHelper projectHelper) {
+    public UserSteps(Planner planner, ErrorMessageHolder errorMessage, UserHelper helper, ProjectHelper projectHelper) {
         this.planner = planner;
         this.errorMessage = errorMessage;
         this.helper = helper;

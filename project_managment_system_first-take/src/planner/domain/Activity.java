@@ -4,7 +4,7 @@ import java.util.List;
 
 public class Activity {
 
-    List<Developer> developers;
+    private List<User> users;
     private Project project;
     private int estimatedTimeSpent;
     private int currentTimeSpent = 0;
@@ -41,7 +41,7 @@ public class Activity {
 
 
 
-    public List<Developer> getDevelopers() {
-        return developers;
+    public List<User> getDevelopers() {
+        return users;
     }
 }

@@ -50,7 +50,7 @@ public class Project {
         }
     }
 
-    
+
     /**************************
      *  Setters and getters   *
      **************************/

@@ -6,6 +6,7 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import planner.app.Planner;
+import planner.domain.User;
 
 public class Main extends Application {
 
@@ -13,7 +14,7 @@ public class Main extends Application {
     Parent root;
 
     protected static Planner planner = new Planner();
-    private Developer dev = new Developer("test","test");
+    private User user  = new User("test","test");
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -21,7 +22,7 @@ public class Main extends Application {
         /**
          *  ADD FAKE USERS
          */
-        planner.developers.add(dev);
+        planner.users.add(user);
 
         /**
          *  Create initial scene

@@ -82,7 +82,6 @@ public class Planner {
      * @throws Exception If the developers is in the system throw error
      */
     public void createUser(String credentials, String password) throws Exception{
-
         if (getUser(credentials) != null){
             throw new Exception("Developer is registered");
         }

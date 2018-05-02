@@ -24,14 +24,7 @@ public class LoginController extends Main {
 
         try {
            planner.userLogIn(credentials.getText(),password.getText());
-
-           if(planner.activeDeveloper.isAdmin()){
-               System.out.print(planner.activeDeveloper.isAdmin());
-               setUpDevDash();
-           } else {
-               System.out.print(planner.activeDeveloper.isAdmin());
-               setUpDevDash();
-           }
+            
 
         } catch (Exception e) {
             error.setText(e.getMessage());
