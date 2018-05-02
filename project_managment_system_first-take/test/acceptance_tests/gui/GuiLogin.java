@@ -7,7 +7,16 @@ import static org.testfx.matcher.control.LabeledMatchers.hasText;
 public class GuiLogin extends GuiBase {
 
     @Test
-    public void logInSuccess() {
+    public void logInSuccessAdmin() {
+        clickOn("#credentials");
+        write("admin");
+        clickOn("#password");
+        write("admin123");
+        clickOn("#login");
+    }
+
+    @Test
+    public void logInSuccessDeveloper() {
         clickOn("#credentials");
         write("test");
         clickOn("#password");

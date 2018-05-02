@@ -27,7 +27,7 @@ public class Planner {
      * @param password The developers password
      * @throws OperationNotAllowedException If the developers is logged in throw error. If the user us typed in wrong throw error.
      */
-    public void userLogIn(String credentials, String password) throws OperationNotAllowedException{
+    public void userLogIn(String credentials, String password) throws AuthenticationException{
 
         // Is there a user session?
         // Before anything clear the session
@@ -50,7 +50,7 @@ public class Planner {
                 //Set the active session
                 activeUser = developer;
             } else {
-                throw new OperationNotAllowedException("Your credentials or password was wrong");
+                throw new AuthenticationException("Your credentials or password was wrong");
             }
         }
 

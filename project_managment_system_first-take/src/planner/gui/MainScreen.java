@@ -93,7 +93,7 @@
 //                planner.userLogIn(credentialsTextField.getText(),passwordPasswordField.getText());
 //
 //                GridPane dasboardGrid = new GridPane();
-//                Text scenetitle1 = new Text("Dashboard");
+//                Text scenetitle1 = new Text("DashboardController");
 //                dasboardGrid.setAlignment(Pos.CENTER);
 //                dasboardGrid.add(scenetitle1, 0, 0, 2, 1);
 //                Scene dashboard = new Scene(dasboardGrid,800,600);

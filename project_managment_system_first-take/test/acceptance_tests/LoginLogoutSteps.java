@@ -14,6 +14,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import org.hamcrest.core.IsNot;
+import planner.app.AuthenticationException;
 import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
 import planner.domain.Developer;
@@ -64,7 +65,7 @@ public class LoginLogoutSteps {
     public void theDeveloperEntersThePassword(String password) throws Exception {
         try {
             planner.userLogIn("wrong username", password);
-        } catch (OperationNotAllowedException e) {
+        } catch (AuthenticationException e) {
             errorMessage.setErrorMessage(e.getMessage());
         }
     }
