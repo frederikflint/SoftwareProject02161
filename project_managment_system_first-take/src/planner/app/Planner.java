@@ -88,8 +88,19 @@ public class Planner {
         users.add(new User(credentials, password));
     }
 
+    /**
+     *
+     * @param credentials
+     * @throws Exception
+     */
     public void deleteUser(String credentials)throws Exception{
+        User foundUser = getUser(credentials);
 
+        if(foundUser == null){
+            throw new Exception("No project with the given name found");
+        } else {
+            users.remove(foundUser);
+        }
     }
 
     /**
@@ -110,8 +121,20 @@ public class Planner {
 
     }
 
-    public void deleteProject(Project project) throws  Exception{
+    /**
+     *
+     * @param title
+     * @throws Exception
+     */
+    public void deleteProject(String title) throws  Exception{
 
+        Project foundProject = getProject(title);
+
+        if(foundProject == null){
+            throw new Exception("No project with the given name found");
+        } else {
+            projects.remove(foundProject);
+        }
     }
 
     /**
