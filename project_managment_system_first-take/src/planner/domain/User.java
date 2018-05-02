@@ -1,5 +1,8 @@
 package planner.domain;
 
+import cucumber.api.java.en_old.Ac;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 
@@ -11,11 +14,11 @@ public class User {
 
     private String credentials;
     private String password;
-    private Boolean isAdmin = true;
+    private Boolean isAdmin = false;
 
-    private List<Activity> Activities;
-    private List<Project> Projects;
-    private List<WorkHours> workHours;
+    private List<Activity> activities = new ArrayList<Activity>();
+    private List<Project> projects = new ArrayList<Project>();
+    private List<WorkHours> workHours = new ArrayList<WorkHours>();
 
 
     public User (String credentials, String password) {
@@ -23,19 +26,15 @@ public class User {
         setPassword(password);
     }
 
-    public void addActivity(){
+    public void addActivity(Activity activity){
+        activities.add(activity);
     }
 
     public void registerTime(Activity activity, Calendar startTime, Calendar endTime) {
-        System.out.println(activity.getID());
-        System.out.println(startTime.get(Calendar.HOUR_OF_DAY));
-        System.out.println(endTime.get(Calendar.HOUR_OF_DAY));
         WorkHours workHour = new WorkHours(activity, startTime, endTime);
-
         workHours.add(workHour);
         activity.registerActivityTime(workHour.getWorkTimeInMinutes());
     }
-
 
     /**************************
      *  Setters and getters   *
@@ -58,11 +57,11 @@ public class User {
     }
 
     public List<Activity> getActivities() {
-        return Activities;
+        return activities;
     }
 
     public List<Project> getProjects() {
-        return Projects;
+        return projects;
     }
 
     public List<WorkHours> getWorkHours() {

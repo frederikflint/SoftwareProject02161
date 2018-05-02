@@ -31,49 +31,32 @@ public class TimeSteps {
         this.helper = helper;
         this.errorMessage = errorMessage;
         this.projectHelper = projectHelper;
-
     }
 
     @Given("^the developer is assigned to an activity$")
     public void theDeveloperIsAssignedToAnActivity() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        // throw new PendingException();
         activity = new Activity(new Project("titel",Calendar.getInstance(),Calendar.getInstance()),"Activity");
-
-        //TODO:
-        // assign active user to activity.
-        //
-
+        planner.getActiveUser().addActivity(activity);
     }
 
     @When("^the developer registers time spent on an activity$")
     public void theDeveloperRegistersTimeSpentOnAnActivity() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
         Calendar startTime = Calendar.getInstance();
         Calendar endTime = Calendar.getInstance();
         startTime.set(2018,1,2,8,0);
-        System.out.println(startTime.get(Calendar.HOUR_OF_DAY));
         endTime.set(2018,1,2,16,0);
-        System.out.println(endTime.get(Calendar.HOUR_OF_DAY));
-
         planner.getActiveUser().registerTime(activity,startTime,endTime);
     }
 
     @Then("^the registered time is registered to the activity$")
     public void theRegisteredTimeIsRegisteredToTheActivity() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
         assertFalse(activity.getCurrentTimeSpent() == 0);
-        System.out.println(activity.getCurrentTimeSpent());
         //
     }
 
     @Then("^the registered time is registered to the developer$")
     public void theRegisteredTimeIsRegisteredToTheDeveloper() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
-        //assertThat(planner.activeUser.);
+        assertFalse(planner.getActiveUser().getWorkHours().isEmpty());
     }
 
 
