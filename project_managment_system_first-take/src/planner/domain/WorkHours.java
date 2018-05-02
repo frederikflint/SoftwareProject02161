@@ -36,10 +36,6 @@ public class WorkHours {
         return workTimeInMinutes;
     }
 
-    public void setWorkTimeInMinutes(int workTimeInMinutes) {
-        this.workTimeInMinutes = workTimeInMinutes;
-    }
-
     public Calendar getStartTime() {
         return startTime;
     }
