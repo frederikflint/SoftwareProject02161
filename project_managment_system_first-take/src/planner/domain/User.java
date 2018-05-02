@@ -1,6 +1,7 @@
 package planner.domain;
 
 import cucumber.api.java.en_old.Ac;
+import planner.app.OperationNotAllowedException;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -26,14 +27,42 @@ public class User {
         setPassword(password);
     }
 
-    public void addActivity(Activity activity){
-        activities.add(activity);
+    /**
+     * Add activity to users personal activities.
+     * @param activity
+     */
+    public void addActivity(Activity activity) throws OperationNotAllowedException {
+        if(activities.contains(activity)){
+            throw new OperationNotAllowedException("This activity is already add to your account");
+        } else {
+            activities.add(activity);
+        }
+    }
+
+    /**
+     * Remove a given activity from the user
+     * @param activity
+     */
+    public void removeActivity(Activity activity) throws OperationNotAllowedException{
+        if(!(activities.contains(activity))){
+            throw new OperationNotAllowedException("This activity is not in your personal activities");
+        } else {
+            activities.remove(activity);
+        }
     }
 
     public void registerTime(Activity activity, Calendar startTime, Calendar endTime) {
         WorkHours workHour = new WorkHours(activity, startTime, endTime);
         workHours.add(workHour);
         activity.registerActivityTime(workHour.getWorkTimeInMinutes());
+    }
+
+    public void removeRegistedTime(WorkHours timeRegistration) throws OperationNotAllowedException {
+        if(!(workHours.contains(timeRegistration))){
+            throw new OperationNotAllowedException("The time registration is not in your personal register");
+        } else {
+            activities.remove(timeRegistration);
+        }
     }
 
     /**************************

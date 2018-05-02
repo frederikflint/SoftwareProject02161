@@ -29,7 +29,7 @@ public class Planner {
 
     /********************
      *  Authentication  *
-     *******************/
+     ********************/
 
     /**
      * Set an active user session
@@ -68,8 +68,8 @@ public class Planner {
     }
 
     /**
-     * Throw error if there isn't an active sessions
-     * @throws OperationNotAllowedException
+     * Is there an active session on the system?
+     * @throws OperationNotAllowedException Throw error if there isn't an active sessions
      */
     public void checkSession() throws OperationNotAllowedException {
         if (!activeSession()) {
@@ -78,8 +78,8 @@ public class Planner {
     }
 
     /**
-     * Throw error if there isn't an active admin sessions
-     * @throws OperationNotAllowedException
+     * Is there an active admin session on the system.
+     * @throws OperationNotAllowedException Throw error if there isn't an active admin sessions
      */
     public void checkAdminSession() throws OperationNotAllowedException {
         if (activeUser.isAdmin()) {
@@ -90,20 +90,24 @@ public class Planner {
     /**
      * Log the active user out of the system (remove active session)
      */
-    public void userLogOut(){
+    public void userLogOut() throws OperationNotAllowedException {
         // Remove the active session from the system
+        if (activeUser == null){
+            throw new OperationNotAllowedException("There is no user logged in to the system");
+        }
         activeUser = null;
     }
 
-    /********************
-     *  TITLE  *
-     *******************/
+    /****************
+     *  FLAG TITLE  *
+     ****************/
 
     /**
-     * Add a new user on the system
+     * Add a new user to the system
      * @param credentials Credentials
      * @param password Password
-     * @throws Exception If the developers is in the system throw error
+     * @throws Exception If the session is not a Admin session throw exception.
+     *                   If the developers is in the system throw exception.
      */
     public void createUser(String credentials, String password) throws Exception{
         checkAdminSession();
@@ -115,61 +119,59 @@ public class Planner {
     }
 
     /**
-     *
-     * @param credentials
-     * @throws Exception
+     * Delete a given user from the system
+     * @param user
+     * @throws Exception If the session is not a Admin session throw exception.
+     *                   If the user is not on the system throw exception.
      */
-    public void deleteUser(String credentials)throws Exception{
+    public void deleteUser(User user)throws Exception{
         checkAdminSession();
 
-        User foundUser = getUser(credentials);
-
-        if(foundUser == null){
-            throw new Exception("No project with the given name found");
+        if(!(users.contains(user))){
+            throw new Exception("No user with the given credentials" + user.getCredentials() + "found");
         } else {
-            users.remove(foundUser);
+            users.remove(user);
         }
     }
 
     /**
      *
      * @param project
-     * @throws Exception
+     * @throws Exception If
      */
     public void createProject(Project project) throws Exception {
         checkSession();
 
-        if(getProject(project.getTitle()) != null
-                || project.getEstimatedEndTime().before(project.getEstimatedStartTime())
-                ){
-            throw new Exception("Invalid project credentials");
+        if(!(projects.contains(project))){
+            throw new Exception("Project is already on the system");
+        } else if (project.getEstimatedEndTime().before(project.getEstimatedStartTime())) {
+            throw new Exception("Invalid time for project");
         } else {
             projects.add(project);
         }
+
     }
 
     /**
      *
-     * @param title
-     * @throws Exception
+     * @param project
+     * @throws Exception If the session is not a Admin session throw exception.
      */
-    public void deleteProject(String title) throws  Exception{
+    public void deleteProject(Project project) throws  Exception{
         checkAdminSession();
 
-        Project foundProject = getProject(title);
-
-        if(foundProject == null){
-            throw new Exception("No project with the given name found");
+        if(!(users.contains(project))){
+            throw new Exception("No project with the given title " + project.getTitle() + " was found");
         } else {
-            projects.remove(foundProject);
+            projects.remove(project);
         }
     }
 
     /**
      *
-     * @param user
+     * @param user A user
      * @param project
-     * @throws Exception
+     * @throws Exception If the session is not a Admin session throw exception.
      */
     public void assignProjectManager(User user, Project project) throws Exception{
         checkAdminSession();
@@ -179,16 +181,16 @@ public class Planner {
     /**
      *
      * @param project
-     * @throws Exception
+     * @throws Exception If the session is not a Admin session throw exception.
      */
     public void removeProjectManager(Project project) throws Exception{
         checkAdminSession();
         project.setProjectManager(null);
     }
     
-    /*****************
-     *  Responders   *
-     ****************/
+    /*********************
+     *  User Responders  *
+     *********************/
 
     /**
      * Handle the respond to the user.

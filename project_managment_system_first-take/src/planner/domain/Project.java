@@ -24,66 +24,125 @@ public class Project {
     }
 
     /**
-     *
+     * Add a given user to the project
      * @param user
-     * @throws OperationNotAllowedException If you do not have manager rights throw error
+     * @throws OperationNotAllowedException If you do not have manager rights throw error.
+     *                                      The user is a part of the project.
      */
     public void addUser(User user, User activeUser) throws OperationNotAllowedException {
-        if (manager.equals(activeUser)) {
-            users.add(user);
-        } else {
+        if (!(manager.equals(activeUser))) {
             throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
+        } else if (users.contains(user)){
+            throw new OperationNotAllowedException("This user is already a part of the project");
+        } else {
+            users.add(user);
         }
     }
 
-
     /**
-     *
+     * Remove a given user from the project.
      * @param user
-     * @throws OperationNotAllowedException If you do not have manager rights throw error
+     * @throws OperationNotAllowedException If you do not have manager rights throw error.
+     *                                      The user is not a part of the project.
      */
     public void removeUser(User user, User activeUser) throws OperationNotAllowedException {
-        if (manager.equals(activeUser)) {
-            users.add(user);
-        } else {
+        if (!(manager.equals(activeUser))) {
             throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
+        } else if (!(users.contains(user))){
+            throw new OperationNotAllowedException("The given user is not a part og this project");
+        } else {
+            users.add(user);
         }
     }
 
     /**
-     *
+     * Add an activity to the project.
      * @param activty
-     * @throws OperationNotAllowedException If you do not have manager rights throw error
+     * @param activeUser The active user session
+     * @throws OperationNotAllowedException The active user is not a part og the project.
+     *                                      The activity is already a part og the project.
      */
     public void addActivity(Activity activty, User activeUser) throws OperationNotAllowedException {
-        if (users.contains(activeUser)) {
-            activities.add(activty);
-        } else {
+        if (!(users.contains(activeUser))) {
             throw new OperationNotAllowedException("You are not a part of this project");
+        } else if (activities.contains(activty)) {
+            throw new OperationNotAllowedException("The activity is already a part of the project");
+        } else {
+            activities.add(activty);
         }
     }
-
 
     /**
-     *
+     * Remove a given activity form the project
      * @param activty
-     * @throws OperationNotAllowedException If you do not have manager rights throw error
+     * @param activeUser The active user session.
+     * @throws OperationNotAllowedException If you do not have manager rights throw error.
+     *                                      You can't remove an activity that is not a part of the project.
      */
     public void remoceActivity(Activity activty, User activeUser) throws OperationNotAllowedException {
-        if (users.contains(activeUser)) {
-            activities.add(activty);
-        } else {
+        if (!(users.contains(activeUser))) {
             throw new OperationNotAllowedException("You are not a part of this project");
+        } else if(!(activities.contains(activty))){
+            throw new OperationNotAllowedException("The activity you are trying to remove is not in this project");
+        } else {
+            activities.add(activty);
         }
     }
+
+    /**
+     * Add a given activity to a user from the project.
+     * @param activity
+     * @param activeUser
+     * @param user
+     * @throws OperationNotAllowedException If you do not have manager rights throw error.
+     *                                      The user has to be a part of the project to add activity.
+     *                                      The activity has to be a part of the project to add it.
+     */
+    public void addActivityToProjectUser(Activity activity, User activeUser, User user) throws OperationNotAllowedException {
+        if(!(manager.equals(activeUser))){
+            throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
+        } else if (!(users.contains(user))) {
+            throw new OperationNotAllowedException("The user is not a part og this project");
+        } else if(!(activities.contains(activity))) {
+            throw new OperationNotAllowedException("This activity is not a part of the project");
+        } else {
+            try {
+                user.addActivity(activity);
+            }catch ( OperationNotAllowedException e){
+                throw new OperationNotAllowedException(e.getMessage());
+            }
+        }
+    }
+
+    /**
+     * Remove a given activity from a user of the project.
+     * @param activity
+     * @param activeUser
+     * @param user
+     * @throws OperationNotAllowedException If you do not have manager rights throw error.
+     *                                      The user has to be a part of the project to add activity.
+     *                                      The activity has to be a part of the project to remove it.
+     */
+    public void removeActivityFromProjectUser(Activity activity, User activeUser, User user) throws OperationNotAllowedException {
+        if(!(manager.equals(activeUser))){
+            throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
+        } else if (!(users.contains(user))){
+            throw new OperationNotAllowedException("The user is not a part of this project");
+        } else if(!(activities.contains(activity))){
+            throw new OperationNotAllowedException("This activity is not a part of the project");
+        } else {
+            try {
+                user.removeActivity(activity);
+            }catch ( OperationNotAllowedException e){
+                throw new OperationNotAllowedException(e.getMessage());
+            }
+        }
+    }
+
 
     /**************************
      *  Setters and getters   *
      **************************/
-
-    public void setEstimatedStartTime(Calendar estimatedStartTime) {
-        this.estimatedStartTime = estimatedStartTime;
-    }
 
     public void setProjectManager(User projectManager ) {
         this.manager = projectManager;
@@ -97,16 +156,20 @@ public class Project {
         this.title = title;
     }
 
+    public void setEstimatedEndTime(Calendar estimatedEndTime) {
+        this.estimatedEndTime = estimatedEndTime;
+    }
+
+    public void setEstimatedStartTime(Calendar estimatedStartTime) {
+        this.estimatedStartTime = estimatedStartTime;
+    }
+
     public Calendar getEstimatedStartTime() {
         return estimatedStartTime;
     }
 
     public Calendar getEstimatedEndTime() {
         return estimatedEndTime;
-    }
-
-    public void setEstimatedEndTime(Calendar estimatedEndTime) {
-        this.estimatedEndTime = estimatedEndTime;
     }
 
 }
