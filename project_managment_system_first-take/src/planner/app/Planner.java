@@ -244,10 +244,11 @@ public class Planner {
 
 
     /**
-     *
+     * Get users that are available for work
      * @param activityStartTime
      * @param activityEndTime
-     * @return
+     * @return The available users
+     * @throws Exception There are no users available.
      */
     public List<User> getAvailableUsers(Calendar activityStartTime, Calendar activityEndTime) throws Exception {
         checkSession();
@@ -260,6 +261,7 @@ public class Planner {
 
                 if(user.getWorkHours() == null){
                     availableUsers.add(user);
+                    break;
                 }
 
                 if (!(workHour.getStartTime().after(activityStartTime)) && !(workHour.getEndTime().before(activityEndTime))) {

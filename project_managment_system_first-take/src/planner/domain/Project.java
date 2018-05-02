@@ -5,7 +5,7 @@ import java.util.Calendar;
 import java.util.List;
 
 /**
- *
+ * A project of the planner
  */
 public class Project {
 
@@ -115,6 +115,9 @@ public class Project {
      *                                      The activity has to be a part of the project to add it.
      */
     public void addActivityToProjectUser(Activity activity, User activeUser, User user) throws OperationNotAllowedException {
+
+        //TODO: Måske vi burde se om den user vi tilføjer til har tid?
+
         if(!(manager.equals(activeUser))){
             throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
         } else if (!(users.contains(user))) {

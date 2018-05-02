@@ -1,5 +1,6 @@
 package planner.domain;
 
+import java.util.Calendar;
 import java.util.List;
 
 public class Activity {
@@ -39,9 +40,8 @@ public class Activity {
         return ID;
     }
 
-
-
     public List<User> getDevelopers() {
         return users;
     }
+
 }
