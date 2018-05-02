@@ -27,7 +27,13 @@ public class User {
     }
 
     public void registerTime(Activity activity, Calendar startTime, Calendar endTime) {
-        this.workHours.add(new WorkHours(activity, startTime, endTime));
+        System.out.println(activity.getID());
+        System.out.println(startTime.get(Calendar.HOUR_OF_DAY));
+        System.out.println(endTime.get(Calendar.HOUR_OF_DAY));
+        WorkHours workHour = new WorkHours(activity, startTime, endTime);
+
+        workHours.add(workHour);
+        activity.registerActivityTime(workHour.getWorkTimeInMinutes());
     }
 
 
