@@ -18,10 +18,10 @@ public class Planner {
     public final Admin admin = new Admin("admin","admin123");
 
     // The active developer of the system
-    public Developer activeDeveloper;
+    public User activeUser;
 
     // All the developers on the system
-    public List<Developer> developers =  new ArrayList<>();
+    public List<User> users =  new ArrayList<>();
 
     // All the projects on the system
     public List<Project> projects = new ArrayList<>();
@@ -37,17 +37,17 @@ public class Planner {
         // Is there a user session?
         // Before anything clear the session
         if(activeSession()){
-            activeDeveloper = null;
+            activeUser = null;
         }
 
 
         // Go through each of the registered Developers and check the password and credentials.
         // If the current one is present set that user as an active user session.
-        for (Developer developer : developers) {
-            if (Objects.equals(developer.getCredentials(), credentials) &&
-                    Objects.equals(developer.getPassword(), password)) {
+        for (User user : users) {
+            if (Objects.equals(user.getCredentials(), credentials) &&
+                    Objects.equals(user.getPassword(), password)) {
                 //Set the active session
-                activeDeveloper = developer;
+                activeUser = user;
             } else {
                 throw new AuthenticationException("Your credentials or password was wrong");
             }
@@ -60,7 +60,7 @@ public class Planner {
      * @return boolean. Is there a ongoing session.
      */
     public boolean activeSession(){
-        return activeDeveloper != null;
+        return activeUser != null;
     }
 
     /**
@@ -78,7 +78,7 @@ public class Planner {
      */
     public void userLogOut(){
         // Remove the active session from the system
-        activeDeveloper = null;
+        activeUser = null;
     }
 
     /**
@@ -88,17 +88,15 @@ public class Planner {
      * @throws Exception If the developers is in the system throw error
      */
     public void createDeveloper(String credentials, String password) throws Exception{
-        if (getDeveloper(credentials) != null){
+        if (getUser(credentials) != null){
             throw new Exception("Developer is registered");
         }
-        developers.add(new Developer(credentials, password));
+        users.add(new Developer(credentials, password));
     }
 
     /**
-     * Add a new project to the system
-     * @param title
-     * @param estimatedStartTime
-     * @param estimatedEndTime
+     *
+     * @param project
      * @throws Exception
      */
     public void createProject(Project project) throws Exception {
@@ -137,17 +135,17 @@ public class Planner {
      * @param credentials The developers credentials
      * @return Returns the specific found developer
      */
-    public Developer getDeveloper(String credentials) {
+    public User getUser(String credentials) {
 
         // Set the initial currentDeveloper as null
-        Developer currentDeveloper = null;
+        User foundUser = null;
 
-        for (Developer developer : developers) {
-            if (Objects.equals(developer.getCredentials(), credentials)){
-                currentDeveloper =  developer;
+        for (User user : users) {
+            if (Objects.equals(user.getCredentials(), credentials)){
+                foundUser =  user;
             }
         }
-        return currentDeveloper;
+        return foundUser;
     }
 
     /**
@@ -168,19 +166,19 @@ public class Planner {
         return currentProject;
     }
 
-    public List<Developer> getDevelopers() {
-        return developers;
+    public List<User> getUsers() {
+        return users;
     }
 
     public List<Project> getProjects() {
         return projects;
     }
 
-    public Developer getActiveUser(Developer activeUser) {
+    public User getActiveUser(User activeUser) {
         return activeUser;
     }
 
-    public User getActiveDeveloper() {
-        return activeDeveloper;
+    public User getActiveUser() {
+        return activeUser;
     }
 }

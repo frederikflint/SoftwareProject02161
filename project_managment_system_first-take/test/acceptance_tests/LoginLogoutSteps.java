@@ -12,12 +12,12 @@ import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import planner.app.AuthenticationException;
 import planner.app.Planner;
-import planner.domain.Developer;
+import planner.domain.User;
 
 public class LoginLogoutSteps {
 
     private Planner planner;
-    private Developer developer = new Developer("dd","1234");
+    private User user = new User("dd","1234");
 
     private ErrorMessageHolder errorMessage;
 
@@ -26,7 +26,7 @@ public class LoginLogoutSteps {
         this.planner = planner;
         this.errorMessage = errorMessage;
 
-        planner.developers.add(developer);
+        planner.users.add(user);
     }
 
 
@@ -37,13 +37,13 @@ public class LoginLogoutSteps {
 
     @Given("^there is a developer with username \"([^\"]*)\" registered in the system$")
     public void thereIsADeveloperWithUsernameRegisteredInTheSystem(String credentials) throws Exception {
-        assertTrue(planner.getDeveloper(credentials).getCredentials().equals(credentials));
+        assertTrue(planner.getUser(credentials).getCredentials().equals(credentials));
     }
 
     @When("^the password \"([^\"]*)\" is entered correctly$")
     public void thePasswordIsEnteredCorrectly(String password) throws Exception {
-        assertTrue(planner.getDeveloper(developer.getCredentials()).getPassword().equals(password));
-        planner.userLogIn(developer.getCredentials(),developer.getPassword());
+        assertTrue(planner.getUser(user.getCredentials()).getPassword().equals(password));
+        planner.userLogIn(user.getCredentials(),user.getPassword());
     }
 
     @Then("^the developer is logged in$")
@@ -53,7 +53,7 @@ public class LoginLogoutSteps {
 
     @Given("^there is a not developer with username \"([^\"]*)\" registered in the system$")
     public void thereIsANotDeveloperWithUsernameRegisteredInTheSystem(String credentials) throws Exception {
-        assertThat(planner.getDeveloper(credentials), is(equalTo(null)));
+        assertThat(planner.getUser(credentials), is(equalTo(null)));
     }
 
     @When("^the developer enters the password \"([^\"]*)\"$")
@@ -67,12 +67,12 @@ public class LoginLogoutSteps {
 
     @Given("^the password \"([^\"]*)\" does not match the credentials$")
     public void thePasswordDoesNotMatchTheCredentials(String password) throws Exception {
-        assertThat(planner.getDeveloper(developer.getCredentials()).getPassword(),is(not(password)));
+        assertThat(planner.getUser(user.getCredentials()).getPassword(),is(not(password)));
     }
 
     @Given("^that there is an active user on the system$")
     public void thatThereIsAnActiveUserOnTheSystem() throws Exception {
-        planner.userLogIn(developer.getCredentials(),developer.getPassword());
+        planner.userLogIn(user.getCredentials(),user.getPassword());
         assertTrue(planner.activeSession());
     }
 
@@ -99,7 +99,7 @@ public class LoginLogoutSteps {
 
     @Then("^the admin is logged in$")
     public void theAdminIsLoggedIn() throws Exception {
-        assertTrue(planner.activeDeveloper.isAdmin());
+        assertTrue(planner.activeUser.isAdmin());
     }
 
 

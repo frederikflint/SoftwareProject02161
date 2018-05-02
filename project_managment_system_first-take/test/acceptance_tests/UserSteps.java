@@ -35,7 +35,7 @@ public class UserSteps {
 
     @Given("^that the user is not logged in$")
     public void thatTheUserIsNotLoggedIn() throws Exception {
-        assertThat(planner.activeDeveloper,is(equalTo(null)));
+        assertThat(planner.activeUser,is(equalTo(null)));
     }
 
     @When("^the user log-in succeeds$")
@@ -46,8 +46,8 @@ public class UserSteps {
 
     @Then("^the user is logged in$")
     public void theUserIsLoggedIn() throws Exception {
-        assertThat(planner.activeDeveloper.getCredentials(),is("nl"));
-        assertThat(planner.activeDeveloper.getPassword(),is("nl"));
+        assertThat(planner.activeUser.getCredentials(),is("nl"));
+        assertThat(planner.activeUser.getPassword(),is("nl"));
     }
 
     @When("^the user log-in fails$")
@@ -63,8 +63,8 @@ public class UserSteps {
     public void thatADeveloperIsLoggedIn() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
-        if(planner.getActiveDeveloper() == null){
-            planner.activeDeveloper = helper.getUser();
+        if(planner.getActiveUser() == null){
+            planner.activeUser = helper.getUser();
         }
 
     }
