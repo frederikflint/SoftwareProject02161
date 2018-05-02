@@ -29,8 +29,8 @@ public class Project {
      * @throws OperationNotAllowedException If you do not have manager rights throw error
      */
     public void addDeveloper(User user, User activeUser) throws OperationNotAllowedException {
-        if (projectManager.equals(activeUser)) {
-            projectUsers.add(user);
+        if (manager.equals(activeUser)) {
+            users.add(user);
         } else {
             throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
         }
@@ -43,8 +43,8 @@ public class Project {
      */
     public void addActivity(Activity activty, User activeUser) throws OperationNotAllowedException {
 
-        if (projectUsers.contains(activeUser)) {
-            projectActivities.add(activty);
+        if (users.contains(activeUser)) {
+            activities.add(activty);
         } else {
             throw new OperationNotAllowedException("You are not a part of this project");
         }
@@ -60,7 +60,7 @@ public class Project {
     }
 
     public void setProjectManager(User projectManager ) {
-        this.projectManager = projectManager;
+        this.manager = projectManager;
     }
 
     public String getTitle() {
