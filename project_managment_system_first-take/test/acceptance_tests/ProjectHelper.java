@@ -28,8 +28,8 @@ public class ProjectHelper {
     }
 
     public Project getInvalidProject() {
-        startDate.set(1,1);
-        endDate.set(2,1);
+        startDate.set(2018,1,19,8,0);
+        endDate.set(2018,1,1,8,0);
         project = new Project("IKKETitel", startDate, endDate);
 
         /*

@@ -137,8 +137,10 @@ public class Planner {
     public void createProject(Project project) throws Exception {
         checkSession();
 
-        if(getProject(project.getTitle()) != null){
-            throw new Exception("The project is already on the system");
+        if(getProject(project.getTitle()) != null
+                || project.getEstimatedEndTime().before(project.getEstimatedStartTime())
+                ){
+            throw new Exception("Invalid project credentials");
         } else {
             projects.add(project);
         }
