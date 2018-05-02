@@ -17,7 +17,6 @@ public class Developer extends User {
     }
 
     public void addActivity(){
-
     }
 
     public void registerTime(Activity activity, Calendar startTime, Calendar endTime) {

@@ -45,7 +45,7 @@ public class TimeSteps {
     public void theDeveloperIsAssignedToAnActivity() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
-        //assertThat(planner.getDeveloper(planner.getActiveUser().getCredentials()).getActivities().contains(),is(true));
+        //assertThat(planner.getDeveloper(planner.getActiveDeveloper().getCredentials()).getActivities().contains(),is(true));
 
     }
 
@@ -58,7 +58,7 @@ public class TimeSteps {
         startTime.set(2018,1,2,8,0);
         endTime.set(2018,1,2,16,0);
 
-        //planner.getActiveUser().registerTime(/*SOME ACTIVITY*/,startTime,endTime);
+        //planner.getActiveDeveloper().registerTime(/*SOME ACTIVITY*/,startTime,endTime);
     }
 
     @Then("^the registered time is registered to the activity$")

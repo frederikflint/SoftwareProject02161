@@ -14,11 +14,16 @@ import java.util.Objects;
  */
 public class Planner {
 
-    // The system admin
+    // The system admin. At all times this guy will be around to help
     public final Admin admin = new Admin("admin","admin123");
 
-    public User activeUser;
+    // The active developer of the system
+    public Developer activeDeveloper;
+
+    // All the developers on the system
     public List<Developer> developers =  new ArrayList<>();
+
+    // All the projects on the system
     public List<Project> projects = new ArrayList<>();
 
     /**
@@ -32,15 +37,9 @@ public class Planner {
         // Is there a user session?
         // Before anything clear the session
         if(activeSession()){
-            activeUser = null;
+            activeDeveloper = null;
         }
 
-        // If the user has admin rights.
-        // Specific admin scenario
-        if(credentials.equals(admin.getCredentials()) && password.equals(admin.getPassword())){
-            activeUser = admin;
-            return;
-        }
 
         // Go through each of the registered Developers and check the password and credentials.
         // If the current one is present set that user as an active user session.
@@ -48,7 +47,7 @@ public class Planner {
             if (Objects.equals(developer.getCredentials(), credentials) &&
                     Objects.equals(developer.getPassword(), password)) {
                 //Set the active session
-                activeUser = developer;
+                activeDeveloper = developer;
             } else {
                 throw new AuthenticationException("Your credentials or password was wrong");
             }
@@ -61,7 +60,17 @@ public class Planner {
      * @return boolean. Is there a ongoing session.
      */
     public boolean activeSession(){
-        return activeUser != null;
+        return activeDeveloper != null;
+    }
+
+    /**
+     * Throw error if there isn't a active sessions
+     * @throws OperationNotAllowedException
+     */
+    public void checkSession() throws OperationNotAllowedException {
+        if (!activeSession()) {
+            throw new OperationNotAllowedException("Administrator login required");
+        }
     }
 
     /**
@@ -69,17 +78,7 @@ public class Planner {
      */
     public void userLogOut(){
         // Remove the active session from the system
-        activeUser = null;
-    }
-
-    /**
-     * For admin operations
-     * @throws OperationNotAllowedException
-     */
-    public void checkSession() throws OperationNotAllowedException {
-        if (activeSession()) {
-            throw new OperationNotAllowedException("Administrator login required");
-        }
+        activeDeveloper = null;
     }
 
     /**
@@ -172,7 +171,7 @@ public class Planner {
         return activeUser;
     }
 
-    public User getActiveUser() {
-        return activeUser;
+    public User getActiveDeveloper() {
+        return activeDeveloper;
     }
 }

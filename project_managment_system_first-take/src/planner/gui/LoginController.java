@@ -19,16 +19,18 @@ public class LoginController extends Main {
     @FXML
     Button login;
 
-
+    @FXML
     public void login () {
 
         try {
            planner.userLogIn(credentials.getText(),password.getText());
 
-           if(planner.activeUser.isAdmin()){
-               // SWITCH TO ADMIN SCENE
+           if(planner.activeDeveloper.isAdmin()){
+               System.out.print(planner.activeDeveloper.isAdmin());
+               setUpDevDash();
            } else {
-               // SWITCH TO DEV SCENE
+               System.out.print(planner.activeDeveloper.isAdmin());
+               setUpDevDash();
            }
 
         } catch (Exception e) {
