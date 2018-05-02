@@ -133,7 +133,8 @@ formatter.match({
   "location": "TimeSteps.theDeveloperRegistersTimeSpentOnAnActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "error_message": "java.lang.NullPointerException\r\n\tat planner.domain.User.registerTime(User.java:34)\r\n\tat acceptance_tests.TimeSteps.theDeveloperRegistersTimeSpentOnAnActivity(TimeSteps.java:60)\r\n\tat ✽.the developer registers time spent on an activity(use_cases/Register_Time.feature:8)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "the registered time is registered to the activity",
@@ -143,7 +144,7 @@ formatter.match({
   "location": "TimeSteps.theRegisteredTimeIsRegisteredToTheActivity()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "the registered time is registered to the developer",
@@ -153,6 +154,6 @@ formatter.match({
   "location": "TimeSteps.theRegisteredTimeIsRegisteredToTheDeveloper()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 });

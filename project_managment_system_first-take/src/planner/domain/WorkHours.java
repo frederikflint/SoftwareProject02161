@@ -19,4 +19,20 @@ public class WorkHours {
         workTimeInMinutes = endTime.get(Calendar.HOUR_OF_DAY) - startTime.get(Calendar.HOUR_OF_DAY);
     }
 
+    public Activity getActivity() {
+        return activity;
+    }
+
+    public void setActivity(Activity activity) {
+        this.activity = activity;
+    }
+
+    public int getWorkTimeInMinutes() {
+        return workTimeInMinutes;
+    }
+
+    public void setWorkTimeInMinutes(int workTimeInMinutes) {
+        this.workTimeInMinutes = workTimeInMinutes;
+    }
+
 }

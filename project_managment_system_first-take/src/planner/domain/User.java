@@ -12,9 +12,9 @@ public class User {
     private String credentials;
     private String password;
 
-    List<Activity> Activities;
-    List<Project> Projects;
-    List<WorkHours> workHours;
+    private List<Activity> Activities;
+    private List<Project> Projects;
+    private List<WorkHours> workHours;
 
 
     public User (String credentials, String password) {
@@ -26,7 +26,13 @@ public class User {
     }
 
     public void registerTime(Activity activity, Calendar startTime, Calendar endTime) {
-        this.workHours.add(new WorkHours(activity, startTime, endTime));
+        System.out.println(activity.getID());
+        System.out.println(startTime.get(Calendar.HOUR_OF_DAY));
+        System.out.println(endTime.get(Calendar.HOUR_OF_DAY));
+        WorkHours workHour = new WorkHours(activity, startTime, endTime);
+
+        workHours.add(workHour);
+        activity.registerActivityTime(workHour.getWorkTimeInMinutes());
     }
 
 

@@ -53,16 +53,19 @@ public class TimeSteps {
         Calendar startTime = Calendar.getInstance();
         Calendar endTime = Calendar.getInstance();
         startTime.set(2018,1,2,8,0);
+        System.out.println(startTime.get(Calendar.HOUR_OF_DAY));
         endTime.set(2018,1,2,16,0);
+        System.out.println(endTime.get(Calendar.HOUR_OF_DAY));
 
-        // planner.getActiveUser().registerTime(activity,startTime,endTime);
+        planner.getActiveUser().registerTime(activity,startTime,endTime);
     }
 
     @Then("^the registered time is registered to the activity$")
     public void theRegisteredTimeIsRegisteredToTheActivity() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
-        assertFalse(activity.getCurrentTimeSpent() != 0);
+        assertFalse(activity.getCurrentTimeSpent() == 0);
+        System.out.println(activity.getCurrentTimeSpent());
         //
     }
 
