@@ -9,10 +9,19 @@ import java.util.List;
  */
 public class Project {
 
+    // List of project activities
     private List<Activity> activities;
+
+    // List of project users
     private List<User> users;
+
+    // Project manager
     private User manager;
+
+    // Project title
     private String title;
+
+    // Estimated project time
     private Calendar estimatedStartTime;
     private Calendar estimatedEndTime;
     private int estimatedHours;
@@ -30,6 +39,8 @@ public class Project {
      *                                      The user is a part of the project.
      */
     public void addUser(User user, User activeUser) throws OperationNotAllowedException {
+
+        // Add the user to the project
         if (!(manager.equals(activeUser))) {
             throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
         } else if (users.contains(user)){
@@ -37,6 +48,9 @@ public class Project {
         } else {
             users.add(user);
         }
+
+        // TODO: add this project to the user user.addProject(this.project);
+
     }
 
     /**
@@ -53,6 +67,8 @@ public class Project {
         } else {
             users.add(user);
         }
+
+        // TODO: remove this project from the user user.removeProject(this.project);
     }
 
     /**

@@ -12,12 +12,20 @@ import java.util.List;
  */
 public class User {
 
+    // User identifiers (account)
     private String credentials;
     private String password;
+
+    // Is the user a admin of the system
     private Boolean isAdmin = false;
 
+    // User activities
     private List<Activity> activities = new ArrayList<Activity>();
+
+    // User Projects
     private List<Project> projects = new ArrayList<Project>();
+
+    // Registered working time
     private List<WorkHours> workHours = new ArrayList<WorkHours>();
 
 
@@ -72,6 +80,32 @@ public class User {
             throw new OperationNotAllowedException("The time registration is not in your personal register");
         } else {
             activities.remove(timeRegistration);
+        }
+    }
+
+    /**
+     * Add a project to the user.
+     * @param project
+     * @throws OperationNotAllowedException The project is a part of the user.
+     */
+    public void addProject(Project project) throws OperationNotAllowedException {
+        if(projects.contains(project)){
+            throw new OperationNotAllowedException("The project is already in the users project list");
+        } else {
+            projects.add(project);
+        }
+    }
+
+    /**
+     * Remove a project from the user.
+     * @param project
+     * @throws OperationNotAllowedException The project is not a part of the user.
+     */
+    public void removeProject(Project project) throws OperationNotAllowedException {
+        if(!(projects.contains(project))){
+            throw new OperationNotAllowedException("The project you are trying to remove is not in the project list");
+        } else {
+            projects.remove(project);
         }
     }
 

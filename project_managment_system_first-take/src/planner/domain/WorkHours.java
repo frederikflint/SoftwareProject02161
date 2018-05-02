@@ -18,7 +18,7 @@ public class WorkHours {
         this.endTime = endTime;
         workTimeInMinutes = endTime.get(Calendar.HOUR_OF_DAY) - startTime.get(Calendar.HOUR_OF_DAY);
     }
-    
+
     /**************************
      *  Setters and getters   *
      **************************/
