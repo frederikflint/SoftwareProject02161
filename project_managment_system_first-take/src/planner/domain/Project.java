@@ -42,14 +42,12 @@ public class Project {
      * @throws OperationNotAllowedException If you do not have manager rights throw error
      */
     public void addActivity(Activity activty, User activeUser) throws OperationNotAllowedException {
-
         if (users.contains(activeUser)) {
             activities.add(activty);
         } else {
             throw new OperationNotAllowedException("You are not a part of this project");
         }
     }
-
 
     /**************************
      *  Setters and getters   *
