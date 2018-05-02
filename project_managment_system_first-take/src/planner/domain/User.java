@@ -1,6 +1,7 @@
 package planner.domain;
 
 import cucumber.api.java.en_old.Ac;
+import cucumber.api.java.es.E;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -30,10 +31,18 @@ public class User {
         activities.add(activity);
     }
 
-    public void registerTime(Activity activity, Calendar startTime, Calendar endTime) {
-        WorkHours workHour = new WorkHours(activity, startTime, endTime);
-        workHours.add(workHour);
-        activity.registerActivityTime(workHour.getWorkTimeInMinutes());
+    public void registerTime(Activity activity, Calendar startTime, Calendar endTime, User user) throws Exception {
+        if(!user.getActivities().contains(activity)) {
+            throw new Exception("You are not assigned to this activity");
+
+        } else if(endTime.before(startTime) ||
+                (endTime.get(Calendar.DAY_OF_YEAR) - startTime.get(Calendar.DAY_OF_YEAR) > 30)){
+            throw new Exception("The input of time spent is not valid");
+        } else {
+            WorkHours workHour = new WorkHours(activity, startTime, endTime);
+            workHours.add(workHour);
+            activity.registerActivityTime(workHour.getWorkTimeInMinutes());
+        }
     }
 
     /**************************
