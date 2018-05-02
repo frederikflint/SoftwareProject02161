@@ -6,7 +6,6 @@ import javafx.scene.Parent;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 import planner.app.Planner;
-import planner.domain.Developer;
 
 public class Main extends Application {
 

@@ -1,6 +1,5 @@
 package acceptance_tests;
 
-import planner.domain.Developer;
 import planner.domain.User;
 
 public class DeveloperHelper {

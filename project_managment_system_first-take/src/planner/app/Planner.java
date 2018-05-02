@@ -1,11 +1,8 @@
 package planner.app;
 
-import planner.domain.Admin;
-import planner.domain.Developer;
 import planner.domain.Project;
 import planner.domain.User;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.List;
 import java.util.Objects;
 
@@ -13,9 +10,6 @@ import java.util.Objects;
  * The main planner
  */
 public class Planner {
-
-    // The system admin. At all times this guy will be around to help
-    public final Admin admin = new Admin("admin","admin123");
 
     // The active developer of the system
     public User activeUser;
@@ -39,7 +33,6 @@ public class Planner {
         if(activeSession()){
             activeUser = null;
         }
-
 
         // Go through each of the registered Developers and check the password and credentials.
         // If the current one is present set that user as an active user session.
@@ -87,11 +80,11 @@ public class Planner {
      * @param password Password
      * @throws Exception If the developers is in the system throw error
      */
-    public void createDeveloper(String credentials, String password) throws Exception{
+    public void createUser(String credentials, String password) throws Exception{
         if (getUser(credentials) != null){
             throw new Exception("Developer is registered");
         }
-        users.add(new Developer(credentials, password));
+        users.add(new User(credentials, password));
     }
 
     /**

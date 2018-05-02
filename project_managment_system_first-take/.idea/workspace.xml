@@ -2,19 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c66c7b5-4f79-45f6-8e45-1827ba00cb7a" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/planner/gui/AdminDashboardController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/planner/gui/DeveloperDashboardController.java" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/src/planner/gui/admin_dashboard.fxml" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/src/planner/gui/DashboardController.java" afterPath="" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/src/planner/gui/dashboard.fxml" afterPath="$PROJECT_DIR$/src/planner/gui/developer_dashboard.fxml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/src/planner/domain/Developer.java" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/app/Planner.java" afterPath="$PROJECT_DIR$/src/planner/app/Planner.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/domain/Developer.java" afterPath="$PROJECT_DIR$/src/planner/domain/Developer.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/domain/Project.java" afterPath="$PROJECT_DIR$/src/planner/domain/Project.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/gui/LoginController.java" afterPath="$PROJECT_DIR$/src/planner/gui/LoginController.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/domain/User.java" afterPath="$PROJECT_DIR$/src/planner/domain/User.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/gui/Main.java" afterPath="$PROJECT_DIR$/src/planner/gui/Main.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/gui/MainScreen.java" afterPath="$PROJECT_DIR$/src/planner/gui/MainScreen.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/acceptance_tests/LoginLogoutSteps.java" afterPath="$PROJECT_DIR$/test/acceptance_tests/LoginLogoutSteps.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/acceptance_tests/DeveloperHelper.java" afterPath="$PROJECT_DIR$/test/acceptance_tests/DeveloperHelper.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/acceptance_tests/TimeSteps.java" afterPath="$PROJECT_DIR$/test/acceptance_tests/TimeSteps.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/acceptance_tests/UserSteps.java" afterPath="$PROJECT_DIR$/test/acceptance_tests/UserSteps.java" />
     </list>
@@ -39,21 +31,30 @@
       <file leaf-file-name="Planner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/planner/app/Planner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="23" column="59" lean-forward="true" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
+            <state relative-caret-position="416">
+              <caret line="131" column="0" lean-forward="true" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
               <folding>
-                <element signature="e#2000#2001#0" expanded="true" />
-                <element signature="e#2046#2047#0" expanded="true" />
+                <element signature="imports" expanded="true" />
+                <element signature="e#1717#1718#0" expanded="true" />
+                <element signature="e#1758#1759#0" expanded="true" />
+                <element signature="e#4447#4448#0" expanded="true" />
+                <element signature="e#4475#4476#0" expanded="true" />
+                <element signature="e#4517#4518#0" expanded="true" />
+                <element signature="e#4548#4549#0" expanded="true" />
+                <element signature="e#4598#4599#0" expanded="true" />
+                <element signature="e#4631#4632#0" expanded="true" />
+                <element signature="e#4666#4667#0" expanded="true" />
+                <element signature="e#4699#4700#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Main.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/planner/gui/Main.java">
+      <file leaf-file-name="GuiLogin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/acceptance_tests/gui/GuiLogin.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="777">
-              <caret line="37" column="5" lean-forward="false" selection-start-line="37" selection-start-column="5" selection-end-line="37" selection-end-column="5" />
+            <state relative-caret-position="294">
+              <caret line="14" column="26" lean-forward="false" selection-start-line="14" selection-start-column="26" selection-end-line="14" selection-end-column="26" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -61,36 +62,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginController.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/planner/gui/LoginController.java">
+      <file leaf-file-name="UserSteps.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/acceptance_tests/UserSteps.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="224">
-              <caret line="29" column="30" lean-forward="false" selection-start-line="29" selection-start-column="30" selection-end-line="29" selection-end-column="30" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="developer_dashboard.fxml" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/planner/gui/developer_dashboard.fxml">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="147">
-              <caret line="7" column="25" lean-forward="false" selection-start-line="7" selection-start-column="25" selection-end-line="7" selection-end-column="25" />
-              <folding />
-            </state>
-          </provider>
-          <provider editor-type-id="JavaFX-Scene-Builder">
-            <state />
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Developer.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/planner/domain/Developer.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-70">
-              <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
+            <state relative-caret-position="105">
+              <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
               <folding />
             </state>
           </provider>
@@ -99,9 +75,24 @@
       <file leaf-file-name="User.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/planner/domain/User.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="374">
-              <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="26" selection-end-column="32" />
-              <folding />
+            <state relative-caret-position="470">
+              <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+              <folding>
+                <element signature="imports" expanded="true" />
+                <element signature="e#1145#1146#0" expanded="true" />
+                <element signature="e#1187#1188#0" expanded="true" />
+                <element signature="e#1218#1219#0" expanded="true" />
+                <element signature="e#1263#1264#0" expanded="true" />
+                <element signature="e#1295#1296#0" expanded="true" />
+                <marker date="1525271032928" expanded="false" signature="778:789" ph=" { " />
+                <marker date="1525271032928" expanded="false" signature="808:814" ph=" }" />
+                <marker date="1525271032928" expanded="false" signature="866:877" ph=" { " />
+                <marker date="1525271032928" expanded="false" signature="908:914" ph=" }" />
+                <marker date="1525271032928" expanded="false" signature="947:958" ph=" { " />
+                <marker date="1525271032928" expanded="false" signature="974:980" ph=" }" />
+                <marker date="1525271032928" expanded="false" signature="1026:1037" ph=" { " />
+                <marker date="1525271032928" expanded="false" signature="1062:1068" ph=" }" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -109,8 +100,8 @@
       <file leaf-file-name="Project.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/planner/domain/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-210">
-              <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+            <state relative-caret-position="189">
+              <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1747#1748#0" expanded="true" />
@@ -122,20 +113,37 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Admin.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/src/planner/domain/Admin.java">
+      <file leaf-file-name="AuthenticationException.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/planner/app/AuthenticationException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-              <folding>
-                <element signature="e#167#168#0" expanded="true" />
-                <element signature="e#211#212#0" expanded="true" />
-              </folding>
+            <state relative-caret-position="210">
+              <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+              <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="Activity.java" pinned="false" current-in-tab="true">
+      <file leaf-file-name="UserResponse.java" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/src/planner/app/UserResponse.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="210">
+              <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Admin.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/planner/domain/Admin.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="302">
+              <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="Activity.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/planner/domain/Activity.java">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="84">
@@ -148,8 +156,8 @@
       <file leaf-file-name="OperationNotAllowedException.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/planner/app/OperationNotAllowedException.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="42">
-              <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="11" selection-end-column="1" />
+            <state relative-caret-position="84">
+              <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
               <folding />
             </state>
           </provider>
@@ -169,6 +177,7 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>Node</find>
+      <find>deve</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -184,7 +193,6 @@
       <list>
         <option value="$PROJECT_DIR$/.gitignore" />
         <option value="$PROJECT_DIR$/use_cases/Admin_Login.feature" />
-        <option value="$PROJECT_DIR$/src/planner/domain/User.java" />
         <option value="$PROJECT_DIR$/src/planner/domain/Activity.java" />
         <option value="$PROJECT_DIR$/test/acceptance_tests/TimeSteps.java" />
         <option value="$PROJECT_DIR$/use_cases/Create_Project.feature" />
@@ -192,7 +200,6 @@
         <option value="$PROJECT_DIR$/use_cases/User_Logout.feature" />
         <option value="$PROJECT_DIR$/use_cases/Register_Time.feature" />
         <option value="$PROJECT_DIR$/src/planner/domain/Admin.java" />
-        <option value="$PROJECT_DIR$/test/acceptance_tests/UserSteps.java" />
         <option value="$PROJECT_DIR$/src/planner/gui/controller.java" />
         <option value="$PROJECT_DIR$/src/planner/gui/LogInScene.java" />
         <option value="$PROJECT_DIR$/src/planner/gui/sample/Main.java" />
@@ -229,10 +236,12 @@
         <option value="$PROJECT_DIR$/src/planner/gui/developer_dashboard.fxml" />
         <option value="$PROJECT_DIR$/src/planner/gui/DeveloperDashboardController.java" />
         <option value="$PROJECT_DIR$/src/planner/gui/LoginController.java" />
-        <option value="$PROJECT_DIR$/src/planner/domain/Developer.java" />
         <option value="$PROJECT_DIR$/src/planner/gui/Main.java" />
-        <option value="$PROJECT_DIR$/src/planner/app/Planner.java" />
         <option value="$PROJECT_DIR$/src/planner/domain/Project.java" />
+        <option value="$PROJECT_DIR$/src/planner/domain/User.java" />
+        <option value="$PROJECT_DIR$/src/planner/domain/Developer.java" />
+        <option value="$PROJECT_DIR$/test/acceptance_tests/UserSteps.java" />
+        <option value="$PROJECT_DIR$/src/planner/app/Planner.java" />
       </list>
     </option>
   </component>
@@ -724,7 +733,7 @@
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="96344000" />
+    <option name="totallyTimeSpent" value="96520000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -788,19 +797,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/app/UserResponse.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="170">
-          <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/domain/WorkHours.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="85">
           <caret line="5" column="2" lean-forward="false" selection-start-line="5" selection-start-column="2" selection-end-line="5" selection-end-column="2" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -879,7 +879,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="6" column="13" lean-forward="false" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -924,25 +923,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/UserSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="48" column="5" lean-forward="false" selection-start-line="48" selection-start-column="5" selection-end-line="48" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="false" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/app/AuthenticationException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="12" column="1" lean-forward="false" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -958,7 +938,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -966,7 +945,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="26" lean-forward="false" selection-start-line="2" selection-start-column="26" selection-end-line="2" selection-end-column="26" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -974,7 +952,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="0" lean-forward="true" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -985,7 +962,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1001,7 +977,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
           <caret line="17" column="16" lean-forward="true" selection-start-line="17" selection-start-column="16" selection-end-line="17" selection-end-column="16" />
-          <folding />
         </state>
       </provider>
       <provider editor-type-id="JavaFX-Scene-Builder">
@@ -1012,9 +987,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="294">
           <caret line="14" column="0" lean-forward="false" selection-start-line="14" selection-start-column="0" selection-end-line="14" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1022,7 +994,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
           <caret line="2" column="30" lean-forward="false" selection-start-line="2" selection-start-column="30" selection-end-line="2" selection-end-column="30" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -1057,14 +1028,6 @@
         <state />
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/domain/User.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="374">
-          <caret line="24" column="0" lean-forward="false" selection-start-line="24" selection-start-column="0" selection-end-line="26" selection-end-column="32" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/gui/LoginController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="224">
@@ -1085,37 +1048,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/domain/Developer.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-70">
-          <caret line="18" column="30" lean-forward="false" selection-start-line="18" selection-start-column="30" selection-end-line="18" selection-end-column="30" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/app/OperationNotAllowedException.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="0" lean-forward="false" selection-start-line="2" selection-start-column="0" selection-end-line="11" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/app/Planner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="23" column="59" lean-forward="true" selection-start-line="23" selection-start-column="59" selection-end-line="23" selection-end-column="59" />
-          <folding>
-            <element signature="e#2000#2001#0" expanded="true" />
-            <element signature="e#2046#2047#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/domain/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-210">
-          <caret line="5" column="0" lean-forward="true" selection-start-line="5" selection-start-column="0" selection-end-line="5" selection-end-column="0" />
+        <state relative-caret-position="189">
+          <caret line="9" column="13" lean-forward="false" selection-start-line="9" selection-start-column="13" selection-end-line="9" selection-end-column="13" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1747#1748#0" expanded="true" />
@@ -1126,21 +1062,101 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/domain/Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="10" column="5" lean-forward="false" selection-start-line="10" selection-start-column="5" selection-end-line="10" selection-end-column="5" />
-          <folding>
-            <element signature="e#167#168#0" expanded="true" />
-            <element signature="e#211#212#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/domain/Activity.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
           <caret line="4" column="13" lean-forward="false" selection-start-line="4" selection-start-column="13" selection-end-line="4" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/domain/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="302">
+          <caret line="27" column="7" lean-forward="true" selection-start-line="27" selection-start-column="7" selection-end-line="27" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="470">
+          <caret line="52" column="43" lean-forward="false" selection-start-line="52" selection-start-column="43" selection-end-line="52" selection-end-column="43" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1145#1146#0" expanded="true" />
+            <element signature="e#1187#1188#0" expanded="true" />
+            <element signature="e#1218#1219#0" expanded="true" />
+            <element signature="e#1263#1264#0" expanded="true" />
+            <element signature="e#1295#1296#0" expanded="true" />
+            <marker date="1525271032928" expanded="false" signature="778:789" ph=" { " />
+            <marker date="1525271032928" expanded="false" signature="808:814" ph=" }" />
+            <marker date="1525271032928" expanded="false" signature="866:877" ph=" { " />
+            <marker date="1525271032928" expanded="false" signature="908:914" ph=" }" />
+            <marker date="1525271032928" expanded="false" signature="947:958" ph=" { " />
+            <marker date="1525271032928" expanded="false" signature="974:980" ph=" }" />
+            <marker date="1525271032928" expanded="false" signature="1026:1037" ph=" { " />
+            <marker date="1525271032928" expanded="false" signature="1062:1068" ph=" }" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/domain/Developer.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="546">
+          <caret line="33" column="0" lean-forward="false" selection-start-line="33" selection-start-column="0" selection-end-line="33" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/UserSteps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="27" lean-forward="false" selection-start-line="5" selection-start-column="27" selection-end-line="5" selection-end-column="27" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/app/Planner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="416">
+          <caret line="131" column="0" lean-forward="true" selection-start-line="131" selection-start-column="0" selection-end-line="131" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#1717#1718#0" expanded="true" />
+            <element signature="e#1758#1759#0" expanded="true" />
+            <element signature="e#4447#4448#0" expanded="true" />
+            <element signature="e#4475#4476#0" expanded="true" />
+            <element signature="e#4517#4518#0" expanded="true" />
+            <element signature="e#4548#4549#0" expanded="true" />
+            <element signature="e#4598#4599#0" expanded="true" />
+            <element signature="e#4631#4632#0" expanded="true" />
+            <element signature="e#4666#4667#0" expanded="true" />
+            <element signature="e#4699#4700#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/app/OperationNotAllowedException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="4" column="7" lean-forward="true" selection-start-line="4" selection-start-column="7" selection-end-line="4" selection-end-column="7" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/app/AuthenticationException.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="12" column="1" lean-forward="true" selection-start-line="12" selection-start-column="1" selection-end-line="12" selection-end-column="1" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/app/UserResponse.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="210">
+          <caret line="10" column="1" lean-forward="false" selection-start-line="10" selection-start-column="1" selection-end-line="10" selection-end-column="1" />
           <folding />
         </state>
       </provider>

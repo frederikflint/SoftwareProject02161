@@ -4,7 +4,6 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import planner.app.Planner;
-import planner.domain.Admin;
 import planner.domain.Project;
 import planner.domain.User;
 
@@ -17,7 +16,6 @@ public class UserSteps {
 
     private Planner planner;
     private User user;
-    private Admin admin;
     private Project project;
 
     private ErrorMessageHolder errorMessage;

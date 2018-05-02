@@ -30,14 +30,6 @@ public class User {
     }
 
 
-    /**
-     *  Is the user a admin
-     * @return
-     */
-    public boolean isAdmin(){
-        return false;
-    }
-
     /**************************
      *  Setters and getters   *
      **************************/
@@ -56,5 +48,17 @@ public class User {
 
     public void setPassword(String password) {
         this.password = password;
+    }
+
+    public List<Activity> getActivities() {
+        return Activities;
+    }
+
+    public List<Project> getProjects() {
+        return Projects;
+    }
+
+    public List<WorkHours> getWorkHours() {
+        return workHours;
     }
 }

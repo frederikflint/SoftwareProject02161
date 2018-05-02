@@ -1,21 +1,14 @@
 package acceptance_tests;
 
-import cucumber.api.java.After;
-import cucumber.api.java.Before;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
-import javafx.stage.Stage;
-import org.junit.Test;
-import org.testfx.framework.junit5.ApplicationTest;
 import planner.app.Planner;
 import planner.domain.*;
 import planner.domain.Admin;
-import planner.domain.Developer;
 
 import java.util.Calendar;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertThat;
