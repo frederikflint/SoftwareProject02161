@@ -64,11 +64,21 @@ public class User {
      * @param startTime
      * @param endTime
      */
-    public void registerTime(Activity activity, Calendar startTime, Calendar endTime) {
-        WorkHours workHour = new WorkHours(activity, startTime, endTime);
-        workHours.add(workHour);
-        activity.registerActivityTime(workHour.getWorkTimeInMinutes());
+
+    public void registerTime(Activity activity, Calendar startTime, Calendar endTime, User user) throws Exception {
+        if(!user.getActivities().contains(activity)) {
+            throw new Exception("You are not assigned to this activity");
+
+        } else if(endTime.before(startTime) ||
+                (endTime.get(Calendar.DAY_OF_YEAR) - startTime.get(Calendar.DAY_OF_YEAR) > 30)){
+            throw new Exception("The input of time spent is not valid");
+        } else {
+            WorkHours workHour = new WorkHours(activity, startTime, endTime);
+            workHours.add(workHour);
+            activity.registerActivityTime(workHour.getWorkTimeInMinutes());
+        }
     }
+
 
     /**
      * Remove registered time.
