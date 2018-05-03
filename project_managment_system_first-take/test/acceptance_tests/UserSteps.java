@@ -60,8 +60,6 @@ public class UserSteps {
 
     @Given("^that a developer is logged in$")
     public void thatADeveloperIsLoggedIn() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
         if(planner.getActiveUser() == null){
             planner.activeUser = helper.getUser();
         }
@@ -70,8 +68,6 @@ public class UserSteps {
 
     @When("^the developer creates the project$")
     public void theDeveloperCreatesTheProject() throws Exception {
-         //Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
         try {
             planner.createProject(project);
         } catch (Exception e) {
@@ -81,33 +77,35 @@ public class UserSteps {
 
     @Given("^the developer enters a valid project number, name, description, start and end date$")
     public void theDeveloperEntersAValidProjectNumberNameDescriptionStartAndEndDate() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
         project = projectHelper.getValidProject();
     }
 
 
     @Then("^the project with that project number, name, description and start and end date is created$")
     public void theProjectWithThatProjectNumberNameDescriptionAndStartAndEndDateIsCreated() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
         assertTrue(planner.projects.contains(project));
     }
 
-    @Given("^the developer enters an invalid project number, name, description, start or end date$")
+    @Given("^the developer enters a project with an invalid time consumption$")
     public void theDeveloperEntersAnInvalidProjectNumberNameDescriptionStartOrEndDate() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
-        project = projectHelper.getInvalidProject();
+        project = projectHelper.getInvalidTimeProject();
     }
 
-
+    @Given("^a project already exist in the planner$")
+    public void aProjectAlreadyExistInThePlanner() throws Exception {
+        project = projectHelper.getValidProject();
+        planner.createProject(project);
+    }
 
     @Then("^I get the error message \"([^\"]*)\"$")
     public void iGetTheErrorMessage(String arg1) throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        //throw new PendingException();
         assertThat(errorMessage.getErrorMessage(),is(equalTo(arg1)));
+    }
+
+    @Given("^the developer enters a project with the same name as another project$")
+    public void theDeveloperEntersAProjectWithTheSameNameAsAnotherProject() throws Exception {
+        //project =
+        assertTrue(planner.getProjects().get(planner.getProjects().indexOf(project)).getTitle().equals(project.getTitle()));
     }
 
 }
