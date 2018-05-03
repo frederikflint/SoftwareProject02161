@@ -146,10 +146,10 @@ public class Planner {
     public void createProject(Project project) throws OperationNotAllowedException, AuthenticationException  {
         checkSession();
 
-        if(!(projects.contains(project))){
-            throw new OperationNotAllowedException("Project is already on the planner");
+        if((projects.contains(project))){
+            throw new OperationNotAllowedException("Project is already in the planner");
         } else if(getProject(project.getTitle()) != null){
-            throw new OperationNotAllowedException("A project with that title is on the planner");
+            throw new OperationNotAllowedException("A project with that title is in the planner");
         } else if (project.getEstimatedEndTime().before(project.getEstimatedStartTime())) {
             throw new OperationNotAllowedException("Invalid time for project");
         } else {

@@ -11,6 +11,7 @@ import planner.domain.User;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
 import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserSteps {
 
@@ -90,7 +91,7 @@ public class UserSteps {
     public void theProjectWithThatProjectNumberNameDescriptionAndStartAndEndDateIsCreated() throws Exception {
         // Write code here that turns the phrase above into concrete actions
         //throw new PendingException();
-        assertThat(planner.projects.contains(project), is(true));
+        assertTrue(planner.projects.contains(project));
     }
 
     @Given("^the developer enters an invalid project number, name, description, start or end date$")
