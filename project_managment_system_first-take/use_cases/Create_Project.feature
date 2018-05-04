@@ -8,9 +8,9 @@ Feature: Create Project
     When the developer creates the project
     Then the project is created
 
-  Scenario: The developer doesn't enter valid start and end dates
+  Scenario: The developer doesn't enter valid start date
     Given that a developer is logged in
-    And the developer enters a project with an invalid time consumption
+    And the developer enters a project with an invalid start date
     When the developer creates the project
     Then I get the error message "Invalid time for project"
 
