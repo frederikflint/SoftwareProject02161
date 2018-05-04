@@ -1,16 +1,23 @@
 package acceptance_tests;
 
+import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import planner.app.Planner;
+import planner.domain.Activity;
 import planner.domain.Project;
 import planner.domain.User;
 
 
+import java.util.List;
+
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotEquals;
 import static org.junit.Assert.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class UserSteps {
@@ -19,18 +26,20 @@ public class UserSteps {
     private User user;
     private Project project;
 
+    private ActivityHelper activityHelper;
     private ErrorMessageHolder errorMessage;
     public UserHelper helper;
     public ProjectHelper projectHelper;
 
 
-    public UserSteps(Planner planner, ErrorMessageHolder errorMessage, UserHelper helper, ProjectHelper projectHelper) {
+
+    public UserSteps(Planner planner, ErrorMessageHolder errorMessage, UserHelper helper, ProjectHelper projectHelper, ActivityHelper activityHelper) {
         this.planner = planner;
         this.errorMessage = errorMessage;
         this.helper = helper;
         this.projectHelper = projectHelper;
+        this.activityHelper = activityHelper;
     }
-
 
     @Given("^that the user is not logged in$")
     public void thatTheUserIsNotLoggedIn() throws Exception {
@@ -106,6 +115,33 @@ public class UserSteps {
     public void theDeveloperEntersAProjectWithTheSameNameAsAnotherProject() throws Exception {
         //project =
         assertTrue(planner.getProjects().get(planner.getProjects().indexOf(project)).getTitle().equals(project.getTitle()));
+    }
+
+    @Given("^the developer has a non-empty list of activities$")
+    public void the_developer_has_a_non_empty_list_of_activities() throws Exception {
+        planner.getActiveUser().addActivity(activityHelper.getActivity());
+        assertFalse(planner.getActiveUser().getActivities().isEmpty());
+    }
+
+    @When("^the developer wants the list of his activities$")
+    public void theDeveloperWantsTheListOfHisActivities() throws Exception {
+        try {
+            planner.getActiveUser().showActivities();
+        } catch (Exception e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+    }
+
+    @Then("^the developer gets the list of his activities$")
+    public void theDeveloperGetsTheListOfHisActivities() throws Exception {
+        planner.getActiveUser().showActivities();
+
+    }
+
+    @Given("^the developer has no activities in his list of activities$")
+    public void the_developer_has_no_activities_in_his_list_of_activities() throws Exception {
+        assertEquals(planner.getActiveUser().getActivities().isEmpty(), true);
+
     }
 
 }

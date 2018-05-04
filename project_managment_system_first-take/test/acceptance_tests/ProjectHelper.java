@@ -18,7 +18,7 @@ public class ProjectHelper {
         startDate.set(1,1);
 
         endDate.set(2,1);
-        project = new Project("Titel", startDate, endDate);
+        project = new Project("Title", startDate, endDate);
 
         /*
         TODO:
