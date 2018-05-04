@@ -300,6 +300,102 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("use_cases/List_Of_Activities.feature");
+formatter.feature({
+  "name": "List of activities",
+  "description": "  Description: a developer can see a list of his activities.\n  Actors: Developer",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Developer wishes to see his list of activities",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that a developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer has a non-empty list of activities",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.the_developer_has_a_non_empty_list_of_activities()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer wants the list of his activities",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperWantsTheListOfHisActivities()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer gets the list of his activities",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperGetsTheListOfHisActivities()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Developer has no activities in his list, but wants to see it",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that a developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer has no activities in his list of activities",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.the_developer_has_no_activities_in_his_list_of_activities()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer wants the list of his activities",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperWantsTheListOfHisActivities()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"You are assigned to no activities\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/Register_Time.feature");
 formatter.feature({
   "name": "Register time",

@@ -1,6 +1,5 @@
 package planner.domain;
 
-import cucumber.api.java.en_old.Ac;
 import planner.app.OperationNotAllowedException;
 
 import java.util.ArrayList;
@@ -114,6 +113,15 @@ public class User {
             throw new OperationNotAllowedException("The project you are trying to remove is not in the project list");
         } else {
             projects.remove(project);
+        }
+    }
+
+    // TODO: Skal forbedres til terminal-udgave...
+    public List<Activity> showActivities() throws Exception {
+        if (activities.isEmpty()) {
+            throw new Exception("You are assigned to no activities");
+        } else {
+            return activities;
         }
     }
 
