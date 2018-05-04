@@ -38,18 +38,14 @@ public class Project {
      * @throws OperationNotAllowedException If you do not have manager rights throw error.
      *                                      The user is a part of the project.
      */
-    public void addUser(User user, User activeUser) throws OperationNotAllowedException {
+    public void addUser(User user) throws OperationNotAllowedException {
 
         // Add the user to the project
-        if (!(manager.equals(activeUser))) {
-            throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
-        } else if (users.contains(user)){
+        if (users.contains(user)){
             throw new OperationNotAllowedException("This user is already a part of the project");
         } else {
             users.add(user);
         }
-
-        // TODO: add this project to the user user.addProject(this.project);
 
     }
 
@@ -59,16 +55,12 @@ public class Project {
      * @throws OperationNotAllowedException If you do not have manager rights throw error.
      *                                      The user is not a part of the project.
      */
-    public void removeUser(User user, User activeUser) throws OperationNotAllowedException {
-        if (!(manager.equals(activeUser))) {
-            throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
-        } else if (!(users.contains(user))){
+    public void removeUser(User user) throws OperationNotAllowedException {
+        if (!(users.contains(user))){
             throw new OperationNotAllowedException("The given user is not a part og this project");
         } else {
             users.add(user);
         }
-
-        // TODO: remove this project from the user user.removeProject(this.project);
     }
 
     /**
@@ -123,7 +115,7 @@ public class Project {
         } else if (!(users.contains(user))) {
             throw new OperationNotAllowedException("The user is not a part og this project");
         } else if(!(activities.contains(activity))) {
-            throw new OperationNotAllowedException("This activity is not a part of the project");
+            throw new OperationNotAllowedException("This activity is not a part of this project");
         } else {
             try {
                 user.addActivity(activity);
@@ -148,7 +140,7 @@ public class Project {
         } else if (!(users.contains(user))){
             throw new OperationNotAllowedException("The user is not a part of this project");
         } else if(!(activities.contains(activity))){
-            throw new OperationNotAllowedException("This activity is not a part of the project");
+            throw new OperationNotAllowedException("This activity is not a part of this project");
         } else {
             try {
                 user.removeActivity(activity);
@@ -191,4 +183,11 @@ public class Project {
         return estimatedEndTime;
     }
 
+    public List<User> getUsers() {
+        return users;
+    }
+
+    public User getManager() {
+        return manager;
+    }
 }

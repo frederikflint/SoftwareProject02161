@@ -79,7 +79,6 @@ public class User {
         }
     }
 
-
     /**
      * Remove registered time.
      * @param timeRegistration
