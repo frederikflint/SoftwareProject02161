@@ -16,7 +16,7 @@ public class User {
     private String credentials;
     private String password;
 
-    // Is the user a admin of the system
+    // Is the user a adminHelper of the system
     private Boolean isAdmin = false;
 
     // User activities
@@ -147,6 +147,10 @@ public class User {
 
     public List<WorkHours> getWorkHours() {
         return workHours;
+    }
+
+    public void setAdmin(Boolean admin) {
+        isAdmin = admin;
     }
 
     public Boolean isAdmin() {

@@ -15,6 +15,7 @@ public class Main extends Application {
 
     protected final static Planner planner = new Planner();
     private User user  = new User("test","test");
+    private User admin  = new User("admin","admin123");
 
     @Override
     public void start(Stage primaryStage) throws Exception {
@@ -23,6 +24,8 @@ public class Main extends Application {
          *  ADD FAKE USERS
          */
         planner.users.add(user);
+        admin.setAdmin(true);
+        planner.users.add(admin);
 
         /**
          *  Create initial scene

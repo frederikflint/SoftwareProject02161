@@ -1,7 +1,5 @@
 package planner.app;
 
-import acceptance_tests.Developer;
-import planner.domain.Activity;
 import planner.domain.Project;
 import planner.domain.User;
 import planner.domain.WorkHours;
@@ -67,6 +65,14 @@ public class Planner {
     }
 
     /**
+     * Is the active user an admin.
+     * @return
+     */
+    public boolean activeAdmin(){
+        return activeUser.isAdmin();
+    }
+
+    /**
      * Is there an active session on the system?
      * @throws AuthenticationException Throw error if there isn't an active sessions.
      */
@@ -77,8 +83,8 @@ public class Planner {
     }
 
     /**
-     * Is there an active admin session on the system?
-     * @throws AuthenticationException Throw error if there isn't an active admin sessions.
+     * Is there an active adminHelper session on the system?
+     * @throws AuthenticationException Throw error if there isn't an active adminHelper sessions.
      */
     public void checkAdminSession() throws AuthenticationException {
         if (activeUser.isAdmin()) {
@@ -119,7 +125,7 @@ public class Planner {
      * @param password Password
      * @throws OperationNotAllowedException If the session is not a Admin session throw exception.
      *                                      If the developers is in the system throw exception.
-     * @throws AuthenticationException If the user is not a admin.
+     * @throws AuthenticationException If the user is not a adminHelper.
      */
     public void createUser(String credentials, String password) throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
@@ -134,7 +140,7 @@ public class Planner {
      * Delete a given user from the system.
      * @param user
      * @throws OperationNotAllowedException If the user is not on the system throw exception.
-     * @throws AuthenticationException If the user is not a admin.
+     * @throws AuthenticationException If the user is not a adminHelper.
      */
     public void deleteUser(User user)throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
@@ -179,7 +185,7 @@ public class Planner {
      * Remove a project from the planner.
      * @param project
      * @throws OperationNotAllowedException The project you are trying to remove is not on the system.
-     * @throws AuthenticationException The user is not a admin.
+     * @throws AuthenticationException The user is not a adminHelper.
      */
     public void deleteProject(Project project) throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
