@@ -2,13 +2,17 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="0c66c7b5-4f79-45f6-8e45-1827ba00cb7a" name="Default" comment="">
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/test/acceptance_tests/BaseSetUp.java" />
+      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/use_cases/BaseSeUp.feature" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/app/Planner.java" afterPath="$PROJECT_DIR$/src/planner/app/Planner.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/src/planner/domain/Activity.java" afterPath="$PROJECT_DIR$/src/planner/domain/Activity.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" afterPath="$PROJECT_DIR$/target/cucumber/wikipedia.html/report.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/acceptance_tests/LoginLogoutSteps.java" afterPath="$PROJECT_DIR$/test/acceptance_tests/LoginLogoutSteps.java" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/acceptance_tests/ManagerSteps.java" afterPath="$PROJECT_DIR$/test/acceptance_tests/ManagerSteps.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/acceptance_tests/ProjectHelper.java" afterPath="$PROJECT_DIR$/test/acceptance_tests/ProjectHelper.java" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/test/acceptance_tests/UserSteps.java" afterPath="$PROJECT_DIR$/test/acceptance_tests/UserSteps.java" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/use_cases/Developer_Login.feature" afterPath="$PROJECT_DIR$/use_cases/Developer_Login.feature" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/use_cases/Set_Project_Manager_Status.feature" afterPath="$PROJECT_DIR$/use_cases/Set_Project_Manager_Status.feature" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/use_cases/User_Logout.feature" afterPath="$PROJECT_DIR$/use_cases/User_Logout.feature" />
     </list>
     <ignored path="$PROJECT_DIR$/out/" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -28,24 +32,15 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="375">
-      <file leaf-file-name="ManagerSteps.java" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/test/acceptance_tests/ManagerSteps.java">
+      <file leaf-file-name="Project.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/planner/domain/Project.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="46">
-              <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
+            <state relative-caret-position="1305">
+              <caret line="158" column="16" lean-forward="false" selection-start-line="158" selection-start-column="16" selection-end-line="158" selection-end-column="16" />
               <folding>
-                <element signature="imports" expanded="true" />
+                <element signature="e#6178#6179#0" expanded="true" />
+                <element signature="e#6223#6224#0" expanded="true" />
               </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="User_Logout.feature" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/use_cases/User_Logout.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-              <folding />
             </state>
           </provider>
         </entry>
@@ -53,42 +48,8 @@
       <file leaf-file-name="Planner.java" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/planner/app/Planner.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="172">
-              <caret line="261" column="16" lean-forward="false" selection-start-line="261" selection-start-column="16" selection-end-line="261" selection-end-column="16" />
-              <folding>
-                <element signature="imports" expanded="true" />
-                <element signature="e#2089#2090#0" expanded="true" />
-                <element signature="e#2132#2133#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="AdminHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/acceptance_tests/AdminHelper.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="126">
-              <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="Set_Project_Manager_Status.feature" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/use_cases/Set_Project_Manager_Status.feature">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="105">
-              <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
-              <folding />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="UserSteps.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/acceptance_tests/UserSteps.java">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="161">
-              <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
+            <state relative-caret-position="189">
+              <caret line="336" column="0" lean-forward="true" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
               </folding>
@@ -99,21 +60,19 @@
       <file leaf-file-name="Developer_Login.feature" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/use_cases/Developer_Login.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="0">
-              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+            <state relative-caret-position="294">
+              <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
               <folding />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="LoginLogoutSteps.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/acceptance_tests/LoginLogoutSteps.java">
+      <file leaf-file-name="User_Logout.feature" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/use_cases/User_Logout.feature">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="21">
-              <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
-              <folding>
-                <element signature="imports" expanded="true" />
-              </folding>
+            <state relative-caret-position="0">
+              <caret line="0" column="20" lean-forward="true" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
+              <folding />
             </state>
           </provider>
         </entry>
@@ -125,19 +84,66 @@
               <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
               <folding>
                 <element signature="imports" expanded="true" />
-                <element signature="e#4531#4532#0" expanded="true" />
-                <element signature="e#4562#4563#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="ProjectHelper.java" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/test/acceptance_tests/ProjectHelper.java">
+      <file leaf-file-name="Activity.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/src/planner/domain/Activity.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="231">
-              <caret line="22" column="13" lean-forward="true" selection-start-line="22" selection-start-column="13" selection-end-line="22" selection-end-column="13" />
+            <state relative-caret-position="927">
+              <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+              <folding>
+                <element signature="e#1555#1556#0" expanded="true" />
+                <element signature="e#1615#1616#0" expanded="true" />
+                <element signature="e#1676#1677#0" expanded="true" />
+                <element signature="e#1732#1733#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="BaseSetUp.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/acceptance_tests/BaseSetUp.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="591">
+              <caret line="39" column="38" lean-forward="true" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="AdminHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/acceptance_tests/AdminHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="252">
+              <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
               <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserHelper.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/acceptance_tests/UserHelper.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="357">
+              <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="UserSteps.java" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/test/acceptance_tests/UserSteps.java">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="241">
+              <caret line="60" column="56" lean-forward="true" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
+              <folding>
+                <element signature="imports" expanded="true" />
+              </folding>
             </state>
           </provider>
         </entry>
@@ -176,11 +182,6 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/src/planner/gui/LogInScene.java" />
-        <option value="$PROJECT_DIR$/src/planner/gui/sample/Main.java" />
-        <option value="$PROJECT_DIR$/../../untitled/src/sample/Main.java" />
-        <option value="$PROJECT_DIR$/../../untitled/src/scenes/Main.java" />
-        <option value="$PROJECT_DIR$/src/planner/gui/MainScreen.java" />
         <option value="$PROJECT_DIR$/src/planner/gui/scenes/LogIn.fxml" />
         <option value="$PROJECT_DIR$/src/planner/gui/scenes/LogIn.java" />
         <option value="$PROJECT_DIR$/src/planner/gui/scenes/Controller.java" />
@@ -208,25 +209,30 @@
         <option value="$PROJECT_DIR$/src/planner/domain/Developer.java" />
         <option value="$PROJECT_DIR$/src/planner/gui/LoginController.java" />
         <option value="$PROJECT_DIR$/test/acceptance_tests/gui/GuiBase.java" />
-        <option value="$PROJECT_DIR$/test/acceptance_tests/LoginLogoutSteps.java" />
         <option value="$PROJECT_DIR$/test/acceptance_tests/TimeSteps.java" />
         <option value="$PROJECT_DIR$/test/acceptance_tests/DeveloperHelper.java" />
-        <option value="$PROJECT_DIR$/test/acceptance_tests/UserHelper.java" />
         <option value="$PROJECT_DIR$/src/planner/gui/DeveloperDashboardController.java" />
         <option value="$PROJECT_DIR$/src/planner/domain/WorkHours.java" />
         <option value="$PROJECT_DIR$/src/planner/app/AuthenticationException.java" />
         <option value="$PROJECT_DIR$/src/planner/app/OperationNotAllowedException.java" />
-        <option value="$PROJECT_DIR$/src/planner/domain/Activity.java" />
         <option value="$PROJECT_DIR$/src/planner/domain/Project.java" />
         <option value="$PROJECT_DIR$/src/planner/domain/User.java" />
         <option value="$PROJECT_DIR$/test/acceptance_tests/AdminHelper.java" />
         <option value="$PROJECT_DIR$/test/acceptance_tests/gui/GuiLogin.java" />
         <option value="$PROJECT_DIR$/src/planner/gui/Main.java" />
         <option value="$PROJECT_DIR$/test/acceptance_tests/ProjectHelper.java" />
-        <option value="$PROJECT_DIR$/src/planner/app/Planner.java" />
-        <option value="$PROJECT_DIR$/use_cases/Set_Project_Manager_Status.feature" />
         <option value="$PROJECT_DIR$/test/acceptance_tests/UserSteps.java" />
+        <option value="$PROJECT_DIR$/use_cases/Set_Project_Manager_Status.feature" />
+        <option value="$PROJECT_DIR$/use_cases/Developer_Login.feature" />
+        <option value="$PROJECT_DIR$/use_cases/User_Logout.feature" />
+        <option value="$PROJECT_DIR$/test/acceptance_tests/BaseSetup.java" />
+        <option value="$PROJECT_DIR$/use_cases/BaseSeUp.feature" />
         <option value="$PROJECT_DIR$/test/acceptance_tests/ManagerSteps.java" />
+        <option value="$PROJECT_DIR$/test/acceptance_tests/LoginLogoutSteps.java" />
+        <option value="$PROJECT_DIR$/test/acceptance_tests/BaseSetUp.java" />
+        <option value="$PROJECT_DIR$/test/acceptance_tests/UserHelper.java" />
+        <option value="$PROJECT_DIR$/src/planner/domain/Activity.java" />
+        <option value="$PROJECT_DIR$/src/planner/app/Planner.java" />
       </list>
     </option>
   </component>
@@ -237,10 +243,9 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds" extendedState="6">
-    <option name="x" value="817" />
-    <option name="y" value="168" />
-    <option name="width" value="1612" />
-    <option name="height" value="876" />
+    <option name="y" value="-28" />
+    <option name="width" value="1382" />
+    <option name="height" value="744" />
   </component>
   <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
   <component name="ProjectView">
@@ -313,9 +318,7 @@
             <path>
               <item name="project_managment_system_first-take" type="b2602c69:ProjectViewProjectNode" />
               <item name="project_managment_system_first-take" type="462c0819:PsiDirectoryNode" />
-              <item name="test" type="462c0819:PsiDirectoryNode" />
-              <item name="acceptance_tests" type="462c0819:PsiDirectoryNode" />
-              <item name="gui" type="462c0819:PsiDirectoryNode" />
+              <item name="use_cases" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
           <select />
@@ -703,44 +706,44 @@
       <workItem from="1525253123023" duration="1552000" />
       <workItem from="1525258892911" duration="5844000" />
       <workItem from="1525282289547" duration="7957000" />
-      <workItem from="1525422352630" duration="9519000" />
+      <workItem from="1525422352630" duration="15610000" />
     </task>
     <servers />
   </component>
   <component name="TestHistory">
-    <history-entry file="AcceptanceTest - 2018.05.04 at 12h 51m 07s.xml">
+    <history-entry file="AcceptanceTest - 2018.05.04 at 14h 26m 59s.xml">
       <configuration name="AcceptanceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AcceptanceTest - 2018.05.04 at 12h 51m 28s.xml">
+    <history-entry file="AcceptanceTest - 2018.05.04 at 14h 28m 02s.xml">
       <configuration name="AcceptanceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AcceptanceTest - 2018.05.04 at 12h 52m 17s.xml">
+    <history-entry file="AcceptanceTest - 2018.05.04 at 14h 28m 54s.xml">
       <configuration name="AcceptanceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AcceptanceTest - 2018.05.04 at 12h 52m 36s.xml">
+    <history-entry file="AcceptanceTest - 2018.05.04 at 14h 29m 19s.xml">
       <configuration name="AcceptanceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AcceptanceTest - 2018.05.04 at 12h 53m 38s.xml">
+    <history-entry file="AcceptanceTest - 2018.05.04 at 14h 29m 50s.xml">
       <configuration name="AcceptanceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AcceptanceTest - 2018.05.04 at 13h 00m 59s.xml">
+    <history-entry file="AcceptanceTest - 2018.05.04 at 14h 30m 12s.xml">
       <configuration name="AcceptanceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AcceptanceTest - 2018.05.04 at 13h 02m 41s.xml">
+    <history-entry file="AcceptanceTest - 2018.05.04 at 14h 34m 15s.xml">
       <configuration name="AcceptanceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AcceptanceTest - 2018.05.04 at 13h 02m 59s.xml">
+    <history-entry file="AcceptanceTest - 2018.05.04 at 14h 35m 52s.xml">
       <configuration name="AcceptanceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AcceptanceTest - 2018.05.04 at 13h 03m 24s.xml">
+    <history-entry file="AcceptanceTest - 2018.05.04 at 14h 42m 05s.xml">
       <configuration name="AcceptanceTest" configurationId="JUnit" />
     </history-entry>
-    <history-entry file="AcceptanceTest - 2018.05.04 at 13h 04m 31s.xml">
+    <history-entry file="AcceptanceTest - 2018.05.04 at 15h 13m 35s.xml">
       <configuration name="AcceptanceTest" configurationId="JUnit" />
     </history-entry>
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="118845000" />
+    <option name="totallyTimeSpent" value="124936000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="-9" y="-9" width="1938" height="1048" extended-state="6" />
@@ -754,12 +757,12 @@
       <window_info id="Capture Analysis" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.50416666" order="0" side_tool="true" content_ui="tabs" />
       <window_info id="Maven Projects" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
-      <window_info id="Run" active="true" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.3642384" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
+      <window_info id="Run" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.4227373" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
       <window_info id="Version Control" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Capture Tool" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Designer" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="1" side_tool="false" content_ui="tabs" />
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.184375" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.21041666" sideWeight="0.5" order="4" side_tool="false" content_ui="combo" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="false" content_ui="tabs" />
       <window_info id="Find" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3289183" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Structure" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="5" side_tool="false" content_ui="tabs" />
@@ -789,25 +792,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/src/planner/gui/HelloWorld.java" />
-    <entry file="file://$PROJECT_DIR$/src/planner/gui/SCENE_WIDTH.java" />
-    <entry file="file://$PROJECT_DIR$/src/planner/gui/HelloWord.java" />
-    <entry file="jar://C:/Program Files/Java/jdk1.8.0_131/javafx-src.zip!/javafx/fxml/FXML.java" />
-    <entry file="jar://$MAVEN_REPOSITORY$/org/testfx/testfx-junit5/4.0.13-alpha/testfx-junit5-4.0.13-alpha.jar!/org/testfx/framework/junit5/ApplicationTest.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-481">
-          <caret line="24" column="22" lean-forward="false" selection-start-line="24" selection-start-column="22" selection-end-line="24" selection-end-column="22" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="jar://$MAVEN_REPOSITORY$/org/testfx/testfx-core/4.0.13-alpha/testfx-core-4.0.13-alpha.jar!/org/testfx/api/FxRobotInterface.class">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="264" column="29" lean-forward="false" selection-start-line="264" selection-start-column="29" selection-end-line="264" selection-end-column="29" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/GuiTest.java" />
     <entry file="jar://$MAVEN_REPOSITORY$/org/testfx/testfx-core/4.0.13-alpha/testfx-core-4.0.13-alpha.jar!/org/testfx/api/FxRobot.class">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="-4849">
@@ -847,14 +831,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/gui/GuiProjectManager.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="63">
-          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/gui/DeveloperDashboardController.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="147">
@@ -862,14 +838,6 @@
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/gui/LoginController.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="41" />
-          <folding />
         </state>
       </provider>
     </entry>
@@ -913,14 +881,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/domain/Activity.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="357">
-          <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/planner/app/OperationNotAllowedException.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -945,60 +905,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/domain/Project.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="479">
-          <caret line="64" column="0" lean-forward="true" selection-start-line="64" selection-start-column="0" selection-end-line="64" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#6818#6819#0" expanded="true" />
-            <element signature="e#6846#6847#0" expanded="true" />
-            <element signature="e#6878#6879#0" expanded="true" />
-            <element signature="e#6908#6909#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/ActivityHelper.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="84">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/use_cases/Delete_Developer.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/use_cases/Admin_Login.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-384">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/use_cases/Include_Developer_In_Project.feature">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/Admin.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="29">
-          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/acceptance_tests/ProjectManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="84">
@@ -1015,14 +921,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/ErrorMessageHolder.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="42">
-          <caret line="2" column="13" lean-forward="false" selection-start-line="2" selection-start-column="13" selection-end-line="2" selection-end-column="13" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/test/acceptance_tests/gui/GuidDeveloper.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="42">
@@ -1031,13 +929,11 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/gui/Main.java">
+    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/gui/GuiProjectManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="231">
-          <caret line="17" column="52" lean-forward="false" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
+        <state relative-caret-position="63">
+          <caret line="3" column="1" lean-forward="false" selection-start-line="3" selection-start-column="1" selection-end-line="3" selection-end-column="1" />
+          <folding />
         </state>
       </provider>
     </entry>
@@ -1045,6 +941,14 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="420">
           <caret line="22" column="22" lean-forward="true" selection-start-line="22" selection-start-column="22" selection-end-line="22" selection-end-column="22" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/List_Of_Available_Developers.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding />
         </state>
       </provider>
@@ -1057,20 +961,139 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/TimeSteps.java">
+    <entry file="file://$PROJECT_DIR$/use_cases/Register_Time.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-672">
-          <caret line="43" column="71" lean-forward="true" selection-start-line="43" selection-start-column="71" selection-end-line="43" selection-end-column="71" />
+        <state relative-caret-position="-315">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/gui/LoginController.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="7" column="41" lean-forward="false" selection-start-line="7" selection-start-column="37" selection-end-line="7" selection-end-column="41" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/gui/Main.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="42">
+          <caret line="17" column="52" lean-forward="false" selection-start-line="17" selection-start-column="52" selection-end-line="17" selection-end-column="52" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/UserHelper.java">
+    <entry file="file://$PROJECT_DIR$/use_cases/List_Of_Activities.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="378">
-          <caret line="18" column="1" lean-forward="true" selection-start-line="18" selection-start-column="1" selection-end-line="18" selection-end-column="1" />
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/Include_Developer_In_Project.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/Admin.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-286">
+          <caret line="10" column="24" lean-forward="false" selection-start-line="10" selection-start-column="24" selection-end-line="10" selection-end-column="24" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/ActivityHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="84">
+          <caret line="7" column="13" lean-forward="false" selection-start-line="7" selection-start-column="13" selection-end-line="7" selection-end-column="13" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/ErrorMessageHolder.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="105">
+          <caret line="5" column="18" lean-forward="false" selection-start-line="5" selection-start-column="18" selection-end-line="5" selection-end-column="18" />
+          <folding>
+            <element signature="e#136#137#0" expanded="true" />
+            <element signature="e#171#172#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/Admin_Login.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="252">
+          <caret line="12" column="88" lean-forward="true" selection-start-line="12" selection-start-column="88" selection-end-line="12" selection-end-column="88" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/Remove_Activity.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/LoginLogoutSteps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="197">
+          <caret line="29" column="5" lean-forward="false" selection-start-line="29" selection-start-column="5" selection-end-line="29" selection-end-column="5" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/Delete_Developer.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/TimeSteps.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="21">
+          <caret line="43" column="0" lean-forward="true" selection-start-line="43" selection-start-column="0" selection-end-line="43" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/BaseSeUp.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="true" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/Create_Project.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="294">
+          <caret line="14" column="9" lean-forward="false" selection-start-line="14" selection-start-column="9" selection-end-line="14" selection-end-column="59" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/use_cases/Set_Project_Manager_Status.feature">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="18" column="7" lean-forward="false" selection-start-line="18" selection-start-column="7" selection-end-line="18" selection-end-column="83" />
           <folding />
         </state>
       </provider>
@@ -1083,38 +1106,90 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/domain/User.java">
+    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/ManagerSteps.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+        <state relative-caret-position="512">
+          <caret line="83" column="0" lean-forward="true" selection-start-line="83" selection-start-column="0" selection-end-line="83" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
-            <element signature="e#4531#4532#0" expanded="true" />
-            <element signature="e#4562#4563#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/BaseSetUp.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="591">
+          <caret line="39" column="38" lean-forward="true" selection-start-line="39" selection-start-column="38" selection-end-line="39" selection-end-column="38" />
+          <folding>
+            <element signature="imports" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/test/acceptance_tests/AdminHelper.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="126">
-          <caret line="6" column="16" lean-forward="false" selection-start-line="6" selection-start-column="16" selection-end-line="6" selection-end-column="16" />
+        <state relative-caret-position="252">
+          <caret line="12" column="0" lean-forward="true" selection-start-line="12" selection-start-column="0" selection-end-line="12" selection-end-column="0" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/use_cases/Set_Project_Manager_Status.feature">
+    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/UserSteps.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="105">
-          <caret line="5" column="10" lean-forward="false" selection-start-line="5" selection-start-column="10" selection-end-line="5" selection-end-column="10" />
+        <state relative-caret-position="241">
+          <caret line="60" column="56" lean-forward="true" selection-start-line="60" selection-start-column="56" selection-end-line="60" selection-end-column="56" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/UserHelper.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="357">
+          <caret line="17" column="5" lean-forward="false" selection-start-line="17" selection-start-column="5" selection-end-line="17" selection-end-column="5" />
           <folding />
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/LoginLogoutSteps.java">
+    <entry file="file://$PROJECT_DIR$/src/planner/domain/Project.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="21">
-          <caret line="16" column="13" lean-forward="false" selection-start-line="16" selection-start-column="13" selection-end-line="16" selection-end-column="13" />
+        <state relative-caret-position="1305">
+          <caret line="158" column="16" lean-forward="false" selection-start-line="158" selection-start-column="16" selection-end-line="158" selection-end-column="16" />
+          <folding>
+            <element signature="e#6178#6179#0" expanded="true" />
+            <element signature="e#6223#6224#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/domain/User.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="161">
+          <caret line="142" column="0" lean-forward="true" selection-start-line="142" selection-start-column="0" selection-end-line="142" selection-end-column="0" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/domain/Activity.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="927">
+          <caret line="57" column="0" lean-forward="true" selection-start-line="57" selection-start-column="0" selection-end-line="57" selection-end-column="0" />
+          <folding>
+            <element signature="e#1555#1556#0" expanded="true" />
+            <element signature="e#1615#1616#0" expanded="true" />
+            <element signature="e#1676#1677#0" expanded="true" />
+            <element signature="e#1732#1733#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/src/planner/app/Planner.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="189">
+          <caret line="336" column="0" lean-forward="true" selection-start-line="336" selection-start-column="0" selection-end-line="336" selection-end-column="0" />
           <folding>
             <element signature="imports" expanded="true" />
           </folding>
@@ -1123,49 +1198,17 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/use_cases/Developer_Login.feature">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        <state relative-caret-position="294">
+          <caret line="14" column="50" lean-forward="true" selection-start-line="14" selection-start-column="50" selection-end-line="14" selection-end-column="50" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/UserSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="161">
-          <caret line="32" column="0" lean-forward="false" selection-start-line="32" selection-start-column="0" selection-end-line="32" selection-end-column="0" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/src/planner/app/Planner.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="172">
-          <caret line="261" column="16" lean-forward="false" selection-start-line="261" selection-start-column="16" selection-end-line="261" selection-end-column="16" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#2089#2090#0" expanded="true" />
-            <element signature="e#2132#2133#0" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/use_cases/User_Logout.feature">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
-          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <caret line="0" column="20" lean-forward="true" selection-start-line="0" selection-start-column="20" selection-end-line="0" selection-end-column="20" />
           <folding />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/test/acceptance_tests/ManagerSteps.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="46">
-          <caret line="53" column="5" lean-forward="true" selection-start-line="53" selection-start-column="5" selection-end-line="53" selection-end-column="5" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>

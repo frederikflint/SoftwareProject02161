@@ -1,5 +1,6 @@
 package planner.app;
 
+import planner.domain.Activity;
 import planner.domain.Project;
 import planner.domain.User;
 import planner.domain.WorkHours;
@@ -264,6 +265,8 @@ public class Planner {
 
         if(!(users.contains(user))){
             throw new OperationNotAllowedException("The user you are trying to promote is not a part of the planner");
+        } else if(project.getManager() != null){
+            throw new OperationNotAllowedException("Project already has a registered project manager");
         }
 
         project.setProjectManager(user);
@@ -324,12 +327,13 @@ public class Planner {
 
         // Check if a given user is available
         for (User user : users) {
-            for (WorkHours workHour : user.getWorkHours()) {
 
-                if(user.getWorkHours() == null){
-                    availableUsers.add(user);
-                    break;
-                }
+            if(user.getWorkHours().isEmpty()){
+                availableUsers.add(user);
+                break;
+            }
+
+            for (WorkHours workHour : user.getWorkHours()) {
 
                 if (!(workHour.getStartTime().after(activityStartTime)) && !(workHour.getEndTime().before(activityEndTime))) {
                     if (!(workHour.getStartTime().equals(activityStartTime)) && !(workHour.getEndTime().equals(activityEndTime))) {
