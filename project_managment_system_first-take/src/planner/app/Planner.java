@@ -348,6 +348,20 @@ public class Planner {
         return availableUsers;
     }
 
+
+    public int getTimeSpent(Activity activity, User user) throws Exception {
+        int timeSpentOnActivity = 0;
+        for (WorkHours WH : user.getWorkHours()) {
+            if(WH.getActivity().equals(activity)) {
+                timeSpentOnActivity = timeSpentOnActivity + WH.getWorkTimeInMinutes();
+            }
+        }
+        if(timeSpentOnActivity == 0) {
+            throw new Exception("No registered time spent");
+        }
+        return timeSpentOnActivity;
+    }
+
     /**
      * Search the projects <LIST> for a specific project
      * @param title The project title
@@ -383,4 +397,5 @@ public class Planner {
     public User getActiveUser() {
         return activeUser;
     }
+
 }

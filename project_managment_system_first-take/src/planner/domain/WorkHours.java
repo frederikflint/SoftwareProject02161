@@ -16,7 +16,8 @@ public class WorkHours {
         this.activity = activity;
         this.startTime = startTime;
         this.endTime = endTime;
-        workTimeInMinutes = endTime.get(Calendar.HOUR_OF_DAY) - startTime.get(Calendar.HOUR_OF_DAY);
+        workTimeInMinutes = (endTime.get(Calendar.HOUR_OF_DAY)*60 + endTime.get(Calendar.MINUTE)) -
+                (startTime.get(Calendar.HOUR_OF_DAY)*60 + startTime.get(Calendar.MINUTE));
     }
 
     /**************************
