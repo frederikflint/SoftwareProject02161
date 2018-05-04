@@ -75,13 +75,13 @@ public class UserSteps {
         }
     }
 
-    @Given("^the developer enters a valid project number, name, description, start and end date$")
+    @Given("^the developer enters a valid project$")
     public void theDeveloperEntersAValidProjectNumberNameDescriptionStartAndEndDate() throws Exception {
         project = projectHelper.getValidProject();
     }
 
 
-    @Then("^the project with that project number, name, description and start and end date is created$")
+    @Then("^the project is created$")
     public void theProjectWithThatProjectNumberNameDescriptionAndStartAndEndDateIsCreated() throws Exception {
         assertTrue(planner.projects.contains(project));
     }

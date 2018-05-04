@@ -16,6 +16,7 @@ public class ProjectHelper {
 
     public Project getValidProject() {
         startDate.set(1,1);
+
         endDate.set(2,1);
         project = new Project("Titel", startDate, endDate);
 

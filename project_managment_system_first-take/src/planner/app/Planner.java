@@ -1,5 +1,6 @@
 package planner.app;
 
+import planner.domain.Activity;
 import planner.domain.Project;
 import planner.domain.User;
 import planner.domain.WorkHours;
