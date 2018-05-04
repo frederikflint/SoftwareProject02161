@@ -17,18 +17,17 @@ import planner.domain.User;
 public class LoginLogoutSteps {
 
     private Planner planner;
-    private User user = new User("dd","1234");
+    private User user;
 
     private ErrorMessageHolder errorMessage;
+    private UserHelper userHelper;
 
 
-    public LoginLogoutSteps(Planner planner, ErrorMessageHolder errorMessage) {
+    public LoginLogoutSteps(Planner planner, ErrorMessageHolder errorMessage, UserHelper userHelper) {
         this.planner = planner;
         this.errorMessage = errorMessage;
-
-        planner.users.add(user);
+        this.userHelper = userHelper;
     }
-
 
     @Given("^that there is no active user on the system$")
     public void thatThereIsNoActiveUserOnTheSystem() throws Exception {
@@ -85,22 +84,5 @@ public class LoginLogoutSteps {
     public void theUserIsLoggedOff() throws Exception {
         assertFalse(planner.activeSession());
     }
-
-    @Given("^the username is \"([^\"]*)\" and password \"([^\"]*)\"$")
-    public void theUsernameIsAndPassword(String credentials, String password) throws Exception {
-//        assertThat(planner.adminHelper.getCredentials(),is(equalTo(credentials)));
-//        assertThat(planner.adminHelper.getPassword(),is(equalTo(password)));
-//        planner.userLogIn(credentials, password);
-    }
-
-    @When("^the admin login succeeds$")
-    public void theAdminLoginSucceeds() throws Exception {
-    }
-
-    @Then("^the admin is logged in$")
-    public void theAdminIsLoggedIn() throws Exception {
-//        assertTrue(planner.activeUser.isAdmin());
-    }
-
 
 }

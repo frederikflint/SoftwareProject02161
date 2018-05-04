@@ -19,7 +19,6 @@ public class ManagerSteps {
     private User user;
     private User admin;
     private Project project;
-    private Activity activity;
 
     private ErrorMessageHolder errorMessage;
     public UserHelper userHelper;
@@ -42,33 +41,43 @@ public class ManagerSteps {
         assertTrue(planner.activeAdmin());
     }
 
-    @Given("^a project is defind$")
-    public void aProjectIsDefind() throws Exception {
-        project = projectHelper.getValidProject();
-        planner.projects.add(project);
-    }
 
     @Given("^that a project has no project manager$")
     public void thatAProjectHasNoProjectManager() throws Exception {
         assertEquals(project.getManager(), null);
     }
 
-    @Given("^a developer is defined$")
-    public void aDeveloperIsDefined() throws Exception {
-        user = userHelper.getUser();
-        planner.users.add(user);
-        assertFalse(planner.getUsers().isEmpty());
-    }
-
     @When("^the admin assigns user to project manager$")
     public void theAdminAssignsUserToProjectManager() throws Exception {
-        planner.assignProjectManager(user, planner.getProjects().get(0));
-        planner.userLogOut();
+        try {
+            planner.assignProjectManager(user, planner.getProjects().get(0));
+            planner.userLogOut();
+        }catch (Exception e){
+            errorMessage.setErrorMessage(e.getMessage());
+        }
     }
 
     @Then("^the user is project manager$")
     public void theUserIsProjectManager() throws Exception {
         assertEquals(project.getManager(),user);
     }
+
+    @Given("^a project has a project manager$")
+    public void aProjectHasAProjectManager() throws Exception {
+        project.setProjectManager(user);
+        assertFalse(project.getManager().equals(null));
+    }
+
+    @When("^the administrator removes the project manager status from the user$")
+    public void theAdministratorRemovesTheProjectManagerStatusFromTheUser() throws Exception {
+        planner.removeProjectManager(project);
+    }
+
+    @Then("^the developer is no longer project manager$")
+    public void theDeveloperIsNoLongerProjectManager() throws Exception {
+        assertEquals(project.getManager(), null);
+    }
+
+
 
 }

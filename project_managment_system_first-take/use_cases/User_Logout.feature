@@ -3,6 +3,7 @@ Feature: User logout
   Actor: User
 
   Scenario: User can logoff
-    Given that there is an active user on the system
+    Given a developer is defined
+    And that there is an active user on the system
     When the user logs off the system
     Then the user is logged off
