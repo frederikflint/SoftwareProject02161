@@ -47,6 +47,7 @@ public class Project {
             throw new OperationNotAllowedException("This user is already a part of the project");
         } else {
             users.add(user);
+
         }
 
         // TODO: add this project to the user user.addProject(this.project);
