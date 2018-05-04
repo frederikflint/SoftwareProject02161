@@ -36,10 +36,13 @@ public class LoginLogoutSteps {
         assertFalse(planner.activeSession());
     }
 
-    @Given("^there is a developer with username \"([^\"]*)\" registered in the system$")
-    public void thereIsADeveloperWithUsernameRegisteredInTheSystem(String credentials) throws Exception {
-        assertTrue(planner.getUser(credentials).getCredentials().equals(credentials));
+    @Given("^there is a developer with username \"([^\"]*)\" and password \"([^\"]*)\" registered in the system$")
+    public void thereIsADeveloperWithUsernameAndPasswordRegisteredInTheSystem(String arg1, String arg2) throws Exception {
+        user = new User(arg1,arg2);
+        planner.users.add(user);
+        assertTrue(planner.getUser(arg1)!=null);
     }
+
 
     @When("^the password \"([^\"]*)\" is entered correctly$")
     public void thePasswordIsEnteredCorrectly(String password) throws Exception {
@@ -66,6 +69,13 @@ public class LoginLogoutSteps {
         }
     }
 
+    @Given("^there is a developer with username \"([^\"]*)\" registered in the system$")
+    public void thereIsADeveloperWithUsernameRegisteredInTheSystem(String arg1) throws Exception {
+        user = new User(arg1,"rightpassword");
+        planner.users.add(user);
+        assertTrue(planner.getUser(arg1)!=null);
+    }
+
     @Given("^the password \"([^\"]*)\" does not match the credentials$")
     public void thePasswordDoesNotMatchTheCredentials(String password) throws Exception {
         assertThat(planner.getUser(user.getCredentials()).getPassword(),is(not(password)));
@@ -73,6 +83,7 @@ public class LoginLogoutSteps {
 
     @Given("^that there is an active user on the system$")
     public void thatThereIsAnActiveUserOnTheSystem() throws Exception {
+        user = userHelper.getUser();
         planner.userLogIn(user.getCredentials(),user.getPassword());
         assertTrue(planner.activeSession());
     }

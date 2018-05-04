@@ -56,10 +56,10 @@ public class ProjectManagerSteps {
         assertTrue(newProject.getManager().equals(projectManager));
     }
 
-    @Given("^a developer is available$")
-    public void aDeveloperIsAvailable() throws Exception {
-        User newUser = new User("new","1234");
-        planner.users.add(newUser);
+    @Given("^that a developer is available$")
+    public void thatADeveloperIsAvailable() throws Exception {
+        user = new User("new","1234");
+        planner.users.add(user);
 
         Calendar startTime = Calendar.getInstance();
         Calendar endTime = Calendar.getInstance();
@@ -68,40 +68,37 @@ public class ProjectManagerSteps {
         assertTrue(planner.getAvailableUsers(startTime,endTime) != null);
     }
 
-    @When("^the project manager adds the developer to the project$")
-    public void theProjectManagerAddsTheDeveloperToTheProject() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @Then("^the developer is included in the project$")
-    public void theDeveloperIsIncludedInTheProject() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
-    @Given("^that a developer is available$")
-    public void thatADeveloperIsAvailable() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
-    }
-
     @When("^the project manager retrieves the list$")
     public void theProjectManagerRetrievesTheList() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Calendar startTime = Calendar.getInstance();
+        Calendar endTime = Calendar.getInstance();
+        endTime.add(Calendar.DATE,1);
+        planner.getAvailableUsers(startTime,endTime);
     }
 
     @Then("^the available developers appear on the available list$")
     public void theAvailableDevelopersAppearOnTheAvailableList() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Calendar startTime = Calendar.getInstance();
+        Calendar endTime = Calendar.getInstance();
+        endTime.add(Calendar.DATE,1);
+        assertTrue(planner.getAvailableUsers(startTime,endTime)!=null);
     }
 
     @Given("^that no developer is available$")
     public void thatNoDeveloperIsAvailable() throws Exception {
-        // Write code here that turns the phrase above into concrete actions
-        throw new PendingException();
+        Calendar startTime = Calendar.getInstance();
+        Calendar endTime = Calendar.getInstance();
+        endTime.add(Calendar.DATE,1);
+    }
+
+    @When("^the project manager adds the developer to the project$")
+    public void theProjectManagerAddsTheDeveloperToTheProject() throws Exception {
+        project.addUser(user);
+    }
+
+    @Then("^the developer is included in the project$")
+    public void theDeveloperIsIncludedInTheProject() throws Exception {
+        assertTrue(project.getUsers().contains(user));
     }
 
 
