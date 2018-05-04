@@ -3,13 +3,18 @@ package planner.domain;
 import java.util.Calendar;
 
 /**
- *
+ * The time registration of a user.
  */
 public class WorkHours {
 
+    // The activity that is associated with the project
     private Activity activity;
+
+    // The time of your registration
     private Calendar startTime;
     private Calendar endTime;
+
+    // The total work time
     private int workTimeInMinutes;
 
     public WorkHours (Activity activity, Calendar startTime, Calendar endTime) {

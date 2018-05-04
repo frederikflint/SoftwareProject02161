@@ -27,6 +27,8 @@ public class LoginLogoutSteps {
         this.planner = planner;
         this.errorMessage = errorMessage;
         this.userHelper = userHelper;
+
+        planner.users.add(userHelper.getUser());
     }
 
     @Given("^that there is no active user on the system$")

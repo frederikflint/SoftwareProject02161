@@ -45,7 +45,7 @@ public class TimeSteps {
 
     @Given("^the developer is assigned to an activity$")
     public void theDeveloperIsAssignedToAnActivity() throws Exception {
-        activity = new Activity(new Project("titel",Calendar.getInstance(),Calendar.getInstance()),"Activity");
+        activity = activityHelper.getActivity();
         planner.getActiveUser().addActivity(activity);
     }
 

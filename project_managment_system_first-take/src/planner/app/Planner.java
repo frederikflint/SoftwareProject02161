@@ -312,7 +312,6 @@ public class Planner {
         return foundUser;
     }
 
-
     /**
      * Get users that are available for work
      * @param activityStartTime
@@ -327,14 +326,11 @@ public class Planner {
 
         // Check if a given user is available
         for (User user : users) {
-
             if(user.getWorkHours().isEmpty()){
                 availableUsers.add(user);
                 break;
             }
-
             for (WorkHours workHour : user.getWorkHours()) {
-
                 if (!(workHour.getStartTime().after(activityStartTime)) && !(workHour.getEndTime().before(activityEndTime))) {
                     if (!(workHour.getStartTime().equals(activityStartTime)) && !(workHour.getEndTime().equals(activityEndTime))) {
                         availableUsers.add(user);
@@ -353,6 +349,13 @@ public class Planner {
     }
 
 
+    /**
+     *
+     * @param activity
+     * @param user
+     * @return
+     * @throws Exception
+     */
     public int getTimeSpent(Activity activity, User user) throws Exception {
         int timeSpentOnActivity = 0;
         for (WorkHours WH : user.getWorkHours()) {

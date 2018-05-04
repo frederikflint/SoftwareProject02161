@@ -15,13 +15,13 @@ public class ActivityHelper {
 
     public Activity getActivity() {
         if(activity == null) {
-            activity = new Activity(new Project("ExampleProject", Calendar.getInstance(), Calendar.getInstance()),"ActivityID");
+            activity = new Activity(Calendar.getInstance(), Calendar.getInstance(), "ActivityID");
         }
         return activity;
     }
 
     public Activity getExampleActivty(Project project, String ID){
-        Activity activity = new Activity(project, ID);
+        Activity activity = new Activity(Calendar.getInstance(), Calendar.getInstance(), ID);
         return activity;
     }
 
