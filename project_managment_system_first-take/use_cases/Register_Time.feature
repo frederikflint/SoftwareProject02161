@@ -23,7 +23,7 @@ Feature: Register time
 
 #  Scenario:  developer wants to see registered time spent
 #    Given that a developer is logged in
-#    And the developer wants to see registered time spent
+#    And the developer has time registered to an activity
 #    When the developer checks time spent
 #    Then the time spent registered by the developer is displayed
 

@@ -14,12 +14,20 @@ public class Activity {
     private int estimatedTimeSpent;
     private int currentTimeSpent = 0;
     //TODO: Skal vi tilføje start og slut tid for en aktivitet, så vi kan se om "users" kan tage den?
+    /*
+        Ja, det er nok en god ide
+        --> ELLER: Vi laver en boolean der hedder "isDone"
+     */
 
     // Generated ID to identify this activity
     private String ID;
 
     public Activity(Project project, String ID) {
         //TODO: Er det altid et project der "associated" med?
+        /*
+            Tror jeg er et krav til aktiviteter.
+            Kun personlige activiteter er et problem ellers, men der laver vi bare et project der hedder "personal activities", hvor alle er med.
+         */
         this.project = project;
         this.ID = ID;
     }

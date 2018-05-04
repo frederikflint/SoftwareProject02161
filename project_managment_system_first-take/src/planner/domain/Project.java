@@ -50,6 +50,9 @@ public class Project {
         }
 
         // TODO: add this project to the user user.addProject(this.project);
+        /*
+            Problematisk i JAVA, bliver nok nødt til at passe projected med.
+         */
 
     }
 
@@ -69,6 +72,9 @@ public class Project {
         }
 
         // TODO: remove this project from the user user.removeProject(this.project);
+         /*
+            Problematisk i JAVA, bliver nok nødt til at passe projected med.
+         */
     }
 
     /**
@@ -117,6 +123,10 @@ public class Project {
     public void addActivityToProjectUser(Activity activity, User activeUser, User user) throws OperationNotAllowedException {
 
         //TODO: Måske vi burde se om den user vi tilføjer til har tid?
+        /*
+            Eller også skal vi bare sige at man godt kan tilføje tid fra to forskellige aktiviteter
+            Altså hvis vi definerer programmets rammer sådan at selve programmet bliver simplere at lave.
+         */
 
         if(!(manager.equals(activeUser))){
             throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
