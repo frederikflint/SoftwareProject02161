@@ -163,7 +163,7 @@ public class Planner {
     public void createProject(Project project) throws OperationNotAllowedException, AuthenticationException  {
         checkSession();
 
-        if((projects.contains(project))){
+        if(projects.contains(project)){
             throw new OperationNotAllowedException("Project is already in the planner");
         } else if(getProject(project.getTitle()) != null){
             throw new OperationNotAllowedException("A project with that title is in the planner");

@@ -27,7 +27,7 @@ public class ProjectHelper {
         return project;
     }
 
-    public Project getInvalidProject() {
+    public Project getInvalidTimeProject() {
         startDate.set(2018,1,19,8,0);
         endDate.set(2018,1,1,8,0);
         project = new Project("IKKETitel", startDate, endDate);
