@@ -1,7 +1,5 @@
 package planner.app;
 
-import acceptance_tests.Developer;
-import planner.domain.Activity;
 import planner.domain.Project;
 import planner.domain.User;
 import planner.domain.WorkHours;
@@ -59,11 +57,19 @@ public class Planner {
     }
 
     /**
-     * Is there a active session on the system
+     * Is there an active user log in on the system.
      * @return boolean. Is there a ongoing session.
      */
     public boolean activeSession(){
         return activeUser != null;
+    }
+
+    /**
+     * Is the active user an admin.
+     * @return
+     */
+    public boolean activeAdmin(){
+        return activeUser.isAdmin();
     }
 
     /**
@@ -77,12 +83,23 @@ public class Planner {
     }
 
     /**
-     * Is there an active admin session on the system.
-     * @throws AuthenticationException Throw error if there isn't an active admin sessions.
+     * Is there an active adminHelper session on the system?
+     * @throws AuthenticationException Throw error if there isn't an active adminHelper sessions.
      */
     public void checkAdminSession() throws AuthenticationException {
         if (activeUser.isAdmin()) {
             throw new AuthenticationException("Administrator required");
+        }
+    }
+
+    /**
+     *  Check if the active user haas  manager right for a given project.
+     * @param project
+     * @throws AuthenticationException Throw if the user haven't got manager right for this project.
+     */
+    public void checkManagerRights(Project project) throws  AuthenticationException{
+        if(project.getManager().equals(activeUser)){
+            throw new AuthenticationException("You need to have project manager rights to edit this project");
         }
     }
 
@@ -108,7 +125,7 @@ public class Planner {
      * @param password Password
      * @throws OperationNotAllowedException If the session is not a Admin session throw exception.
      *                                      If the developers is in the system throw exception.
-     * @throws AuthenticationException If the user is not a admin.
+     * @throws AuthenticationException If the user is not a adminHelper.
      */
     public void createUser(String credentials, String password) throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
@@ -123,7 +140,7 @@ public class Planner {
      * Delete a given user from the system.
      * @param user
      * @throws OperationNotAllowedException If the user is not on the system throw exception.
-     * @throws AuthenticationException If the user is not a admin.
+     * @throws AuthenticationException If the user is not a adminHelper.
      */
     public void deleteUser(User user)throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
@@ -131,6 +148,12 @@ public class Planner {
         if(!(users.contains(user))){
             throw new OperationNotAllowedException("No user with the given credentials" + user.getCredentials() + "found");
         } else {
+            // Make sure the deleted user is not still in associated project.
+            for (Project project : user.getProjects()) {
+                // Remove the user from the associated projects.
+                project.removeUser(user);
+            }
+            // Remove the user from the planner.
             users.remove(user);
         }
     }
@@ -159,23 +182,78 @@ public class Planner {
     }
 
     /**
-     * Remove a project form the planner.
+     * Remove a project from the planner.
      * @param project
      * @throws OperationNotAllowedException The project you are trying to remove is not on the system.
-     * @throws AuthenticationException The user is not a admin.
+     * @throws AuthenticationException The user is not a adminHelper.
      */
     public void deleteProject(Project project) throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
 
+        // Remove the project from
         if(!(projects.contains(project))){
             throw new OperationNotAllowedException("No project with the given title " + project.getTitle() + " was found");
         } else {
+            // Get the users associated to this project
+            // and remove the project from the user.
+            for (User user : project.getUsers()) {
+                user.removeProject(project);
+            }
+            // Remove the actual project from the planner
             projects.remove(project);
         }
+
     }
 
     /**
-     * Assign project manager status to a user.
+     * Assign a user to to a project.
+     * Furthermore, add the given project to the user.
+     * @param user
+     * @param project
+     * @throws OperationNotAllowedException
+     * @throws AuthenticationException
+     */
+    public void assignUserToProject(User user, Project project) throws  OperationNotAllowedException, AuthenticationException{
+        checkSession();
+        checkManagerRights(project);
+
+        // Add the user to the project.
+        try {
+            project.addUser(user);
+        } catch (OperationNotAllowedException e){
+            throw new OperationNotAllowedException(e.getMessage());
+        }
+
+        // Add the project to the user.
+        user.addProject(project);
+    }
+
+    /**
+     * Remove a user from a given project.
+     * Furthermore, remove the the project from the user.
+     * @param user
+     * @param project
+     * @throws OperationNotAllowedException
+     * @throws AuthenticationException
+     */
+    public void removeUserFromProjet(User user, Project project) throws  OperationNotAllowedException, AuthenticationException{
+        checkSession();
+        checkManagerRights(project);
+
+        // Remove the user from the project.
+        try {
+            project.removeUser(user);
+        } catch (OperationNotAllowedException e){
+            throw new OperationNotAllowedException(e.getMessage());
+        }
+
+        // Remove the project from the user.
+        user.removeProject(project);
+
+    }
+
+    /**
+     * Assign project manager status to a user for a given project.
      * @param user A user
      * @param project
      * @throws OperationNotAllowedException the user you are trying to promote is not a part of the system.

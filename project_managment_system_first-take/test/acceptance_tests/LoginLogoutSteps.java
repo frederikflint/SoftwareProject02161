@@ -88,8 +88,8 @@ public class LoginLogoutSteps {
 
     @Given("^the username is \"([^\"]*)\" and password \"([^\"]*)\"$")
     public void theUsernameIsAndPassword(String credentials, String password) throws Exception {
-//        assertThat(planner.admin.getCredentials(),is(equalTo(credentials)));
-//        assertThat(planner.admin.getPassword(),is(equalTo(password)));
+//        assertThat(planner.adminHelper.getCredentials(),is(equalTo(credentials)));
+//        assertThat(planner.adminHelper.getPassword(),is(equalTo(password)));
 //        planner.userLogIn(credentials, password);
     }
 
