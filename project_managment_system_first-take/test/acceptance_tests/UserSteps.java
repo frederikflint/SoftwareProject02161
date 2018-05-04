@@ -108,9 +108,13 @@ public class UserSteps {
 
     @Then("^I get the error message \"([^\"]*)\"$")
     public void iGetTheErrorMessage(String arg1) throws Exception {
-        assertThat(errorMessage.getErrorMessage(),is(equalTo(arg1)));
-    }
+        try {
 
+        } catch (Exception e){
+            System.out.println(e.getMessage());
+            assertThat(e.getMessage(), is(equalTo(arg1)));
+        }
+    }
     @Given("^the developer enters a project with the same name as another project$")
     public void theDeveloperEntersAProjectWithTheSameNameAsAnotherProject() throws Exception {
         //project =

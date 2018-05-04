@@ -4,7 +4,7 @@ Feature: Developer login
 
   Scenario: Developer can login
     Given that there is no active user on the system
-    And there is a developer with username "nl" registered in the system
+    And there is a developer with username "nl" and password "12345" registered in the system
     When the password "12345" is entered correctly
     Then the developer is logged in
 
