@@ -52,6 +52,14 @@ public class Activity {
         return currentTimeSpent;
     }
 
+    public void setEstimatedTimeSpent(int estimatedTimeSpent) {
+        this.estimatedTimeSpent = estimatedTimeSpent;
+    }
+
+    public void setCurrentTimeSpent(int currentTimeSpent) {
+        this.currentTimeSpent = currentTimeSpent;
+    }
+
     public String getID() {
         return ID;
     }
