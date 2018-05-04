@@ -21,14 +21,14 @@ Feature: Register time
     When the developer registers an invalid amount of time
     Then the developer gets the error message: "The input of time spent is not valid"
 
-#  Scenario:  developer wants to see registered time spent
-#    Given that a developer is logged in
-#    And the developer has time registered to an activity
-#    When the developer checks time spent
-#    Then the time spent registered by the developer is displayed
+  Scenario: developer wants to see registered time spent to an activity
+    Given that a developer is logged in
+    And the developer has time registered to an activity
+    When the developer checks time spent
+    Then the time spent registered by the developer is displayed
 
-#  Scenario:  developer wants to see registered time spent, but hasn't registered any time
-#    Given that a developer is logged in
-#    And the developer wants to see registered time spent
-#    When the developer checks time spent
-#    Then I get the error message "No registered time spent"
+  Scenario:  developer wants to see registered time spent, but hasn't registered any time
+    Given that a developer is logged in
+    And the developer has no time registered to an activity
+    When the developer checks time spent
+    Then the developer gets the error message: "No registered time spent"

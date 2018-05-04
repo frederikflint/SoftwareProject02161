@@ -41,7 +41,6 @@ public class UserSteps {
         this.activityHelper = activityHelper;
     }
 
-
     @Given("^that the user is not logged in$")
     public void thatTheUserIsNotLoggedIn() throws Exception {
         assertThat(planner.activeUser,is(equalTo(null)));

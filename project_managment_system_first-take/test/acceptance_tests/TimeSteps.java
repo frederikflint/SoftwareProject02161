@@ -28,6 +28,8 @@ public class TimeSteps {
     public ProjectHelper projectHelper;
     public ActivityHelper activityHelper;
 
+    private int helperInt;
+
     Calendar startTime = Calendar.getInstance();
     Calendar endTime = Calendar.getInstance();
 
@@ -63,12 +65,13 @@ public class TimeSteps {
     @Then("^the registered time is registered to the activity$")
     public void theRegisteredTimeIsRegisteredToTheActivity() throws Exception {
         assertFalse(activity.getCurrentTimeSpent() == 0);
-        //
+        // TODO: Måske mere test
     }
 
     @Then("^the registered time is registered to the developer$")
     public void theRegisteredTimeIsRegisteredToTheDeveloper() throws Exception {
         assertFalse(planner.getActiveUser().getWorkHours().isEmpty());
+        // TODO: Måske mere test
     }
 
     @Given("^the developer is not assigned to the activity$")
@@ -92,5 +95,41 @@ public class TimeSteps {
         }
     }
 
+    @Given("^the developer has time registered to an activity$")
+    public void theDeveloperHasTimeRegisteredToAnActivity() throws Exception {
+        activity = activityHelper.getActivity();
+        planner.getActiveUser().addActivity(activity);
+        startTime.set(2018,3,5,8,0);
+        endTime.set(2018, 3,5,16,0);
+        planner.getActiveUser().registerTime(activity, startTime, endTime,planner.getActiveUser());
+        helperInt = (endTime.get(Calendar.HOUR_OF_DAY)*60 + endTime.get(Calendar.MINUTE)) - (startTime.get(Calendar.HOUR_OF_DAY)*60 + startTime.get(Calendar.MINUTE));
+        startTime.set(2018, 3,7,8,10);
+        endTime.set(2018,3,7,10,0);
+        planner.getActiveUser().registerTime(activity,startTime,endTime,planner.getActiveUser());
+        helperInt = helperInt + planner.getActiveUser().getWorkHours().get(1).getWorkTimeInMinutes();
+    }
+
+    @When("^the developer checks time spent$")
+    public void theDeveloperChecksTimeSpent() throws Exception {
+        //planner.getTimeSpent(activity, planner.getActiveUser());
+
+        try {
+            planner.getTimeSpent(activity,planner.getActiveUser());
+        } catch (Exception e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+
+        // TODO: Her skal nok findes ud af hvad vi skal gøre omkring >visning af tidsforbrug< !
+    }
+
+    @Then("^the time spent registered by the developer is displayed$")
+    public void theTimeSpentRegisteredByTheDeveloperIsDisplayed() throws Exception {
+        assertThat(helperInt, is(equalTo(planner.getTimeSpent(activity,planner.getActiveUser()))));
+    }
+
+    @Given("^the developer has no time registered to an activity$")
+    public void theDeveloperHasNoTimeRegisteredToAnActivity() throws Exception {
+        assertThat(planner.getActiveUser().getWorkHours().isEmpty(), is(true));
+    }
 
 }

@@ -1,17 +1,23 @@
 package acceptance_tests;
 
+import static org.hamcrest.CoreMatchers.equalTo;
+import static org.hamcrest.CoreMatchers.not;
+import static org.hamcrest.CoreMatchers.is;
+import static org.junit.Assert.*;
+
 import cucumber.api.java.en.Given;
+import cucumber.api.java.en.Then;
+import cucumber.api.java.en.When;
+
 import planner.app.Planner;
 import planner.domain.Activity;
 import planner.domain.Project;
 import planner.domain.User;
 
-import static org.junit.Assert.assertTrue;
-
 public class ManagerSteps {
     private Planner planner;
     private User user;
-    private Admin admin;
+    private User admin;
     private Project project;
     private Activity activity;
 
@@ -26,18 +32,43 @@ public class ManagerSteps {
         this.userHelper = userHelper;
         this.projectHelper = projectHelper;
         this.adminHelper = adminHelper;
-        planner.users.add(adminHelper.getAdmin());
     }
 
     @Given("^that the administrator is logged in$")
     public void thatTheAdministratorIsLoggedIn() throws Exception {
-        planner.userLogIn(adminHelper.getAdmin().getCredentials(), adminHelper.getAdmin().getPassword());
+        admin = adminHelper.getAdmin();
+        planner.users.add(admin);
+        planner.userLogIn(admin.getCredentials(),admin.getPassword());
         assertTrue(planner.activeAdmin());
+    }
+
+    @Given("^a project is defind$")
+    public void aProjectIsDefind() throws Exception {
+        project = projectHelper.getValidProject();
+        planner.projects.add(project);
     }
 
     @Given("^that a project has no project manager$")
     public void thatAProjectHasNoProjectManager() throws Exception {
+        assertEquals(project.getManager(), null);
+    }
 
+    @Given("^a developer is defined$")
+    public void aDeveloperIsDefined() throws Exception {
+        user = userHelper.getUser();
+        planner.users.add(user);
+        assertFalse(planner.getUsers().isEmpty());
+    }
+
+    @When("^the admin assigns user to project manager$")
+    public void theAdminAssignsUserToProjectManager() throws Exception {
+        planner.assignProjectManager(user, planner.getProjects().get(0));
+        planner.userLogOut();
+    }
+
+    @Then("^the user is project manager$")
+    public void theUserIsProjectManager() throws Exception {
+        assertEquals(project.getManager(),user);
     }
 
 }
