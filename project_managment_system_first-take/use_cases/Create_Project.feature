@@ -4,9 +4,9 @@ Feature: Create Project
 
   Scenario: A project is created successfully
     Given that a developer is logged in
-    And the developer enters a valid project number, name, description, start and end date
+    And the developer enters a valid project
     When the developer creates the project
-    Then the project with that project number, name, description and start and end date is created
+    Then the project is created
 
   Scenario: The developer doesn't enter valid start and end dates
     Given that a developer is logged in

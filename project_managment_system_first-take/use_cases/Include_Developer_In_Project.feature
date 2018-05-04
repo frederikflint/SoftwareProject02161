@@ -3,12 +3,14 @@
 #  Actors: Project manager
 #
 #  Scenario: The project manager includes a developer in a project
-#    Given that the project manager is logged in
+#    Given that a developer is logged in
+#    And that the developer is a project manager
 #    And a developer is available
 #    When the project manager adds the developer to the project
 #    Then the developer is included in the project
-
-#  Scenario: A project manager is not logged in, trying to include a developer in a project
+#
+#  Scenario: A project manager is not logged in, trying to include a developer
+#  in a project
 #    Given that the project manager is not logged in
 #    And a developer is available
 #    When the project manager adds the developer to the project
