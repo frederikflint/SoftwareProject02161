@@ -473,6 +473,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "a project is defind",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ManagerSteps.aProjectIsDefind()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "that a project has no project manager",
   "keyword": "And "
 });
@@ -486,24 +496,30 @@ formatter.step({
   "name": "a developer is defined",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "ManagerSteps.aDeveloperIsDefined()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
-  "name": "the user is registered as project manager of the project",
+  "name": "the admin assigns user to project manager",
   "keyword": "When "
 });
-formatter.match({});
+formatter.match({
+  "location": "ManagerSteps.theAdminAssignsUserToProjectManager()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 formatter.step({
   "name": "the user is project manager",
   "keyword": "Then "
 });
-formatter.match({});
+formatter.match({
+  "location": "ManagerSteps.theUserIsProjectManager()"
+});
 formatter.result({
-  "status": "undefined"
+  "status": "passed"
 });
 });

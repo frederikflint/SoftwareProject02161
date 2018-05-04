@@ -4,9 +4,10 @@ Feature: Set project manager status
 
   Scenario: Administrator assigns a developer as project manager to a project.
     Given that the administrator is logged in
+    And a project is defind
     And that a project has no project manager
     And a developer is defined
-    When the user is registered as project manager of the project
+    When the admin assigns user to project manager
     Then the user is project manager
 
 

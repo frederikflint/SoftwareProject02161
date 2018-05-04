@@ -87,7 +87,7 @@ public class Planner {
      * @throws AuthenticationException Throw error if there isn't an active adminHelper sessions.
      */
     public void checkAdminSession() throws AuthenticationException {
-        if (activeUser.isAdmin()) {
+        if (!activeUser.isAdmin()) {
             throw new AuthenticationException("Administrator required");
         }
     }
@@ -300,6 +300,8 @@ public class Planner {
         User foundUser = null;
 
         for (User user : users) {
+
+            // Does the search params match.
             if (Objects.equals(user.getCredentials(), credentials)){
                 foundUser =  user;
             }
@@ -353,10 +355,12 @@ public class Planner {
      */
     public Project getProject(String title) {
 
-        // Set the initial currentProject as null
+        // Set the initial currentProject as null.
         Project currentProject = null;
 
         for (Project project : projects) {
+
+            // Does the search params match.
             if (Objects.equals(project.getTitle(), title)){
                 currentProject =  project;
             }
