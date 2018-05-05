@@ -432,6 +432,9 @@ public class Planner {
                 currentActivity =  activity;
             }
         }
+        if (currentActivity == null) {
+            throw new OperationNotAllowedException("Activity doesnt exist");
+        }
         return currentActivity;
     }
 

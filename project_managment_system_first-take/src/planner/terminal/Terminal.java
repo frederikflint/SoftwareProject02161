@@ -309,7 +309,6 @@ public class Terminal {
         }
 
         adminFeatureScreen();
-
     }
 
     private void createActivity() {
