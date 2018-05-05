@@ -20,8 +20,6 @@ public class Terminal {
         Terminal terminal = new Terminal();
         System.out.println("test");
         terminal.startPrompt();
-
-
     }
 
     public void startPrompt() {

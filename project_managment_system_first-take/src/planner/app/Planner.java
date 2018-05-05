@@ -193,17 +193,16 @@ public class Planner {
 
         // Remove the project from
         if(!(projects.contains(project))){
-            throw new OperationNotAllowedException("No project with the given title " + project.getTitle() + " was found");
-        } else {
+            throw new OperationNotAllowedException("No project with the given title was found");
+        } else if(users.isEmpty()) {
             // Get the users associated to this project
             // and remove the project from the user.
             for (User user : project.getUsers()) {
                 user.removeProject(project);
             }
-            // Remove the actual project from the planner
-            projects.remove(project);
         }
-
+        // Remove the actual project from the planner
+        projects.remove(project);
     }
 
     /**
@@ -374,7 +373,7 @@ public class Planner {
      * @param title The project title
      * @return Returns the specific found project
      */
-    public Project getProject(String title) {
+    public Project getProject(String title) throws OperationNotAllowedException {
 
         // Set the initial currentProject as null.
         Project currentProject = null;

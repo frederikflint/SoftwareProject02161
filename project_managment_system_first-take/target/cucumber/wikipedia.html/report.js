@@ -1,4 +1,145 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Create_Project.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Create_Developer.feature");
+formatter.feature({
+  "name": "Create developer",
+  "description": "  Description: Admin creates a developer to the system\n  Actor: Administrator",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "An administrator creates a developer to the system",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the administrator is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ManagerSteps.thatTheAdministratorIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a developer with credentials \"ff\" is not defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "CRUD.aDeveloperWithCredentialsIsNotDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the administrator creates the developer with credentials \"ff\" and password \"1234\" from the system",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "CRUD.theAdministratorCreatesTheDeveloperWithCredentialsAndPasswordFromTheSystem(String,String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer with credentials \"ff\" is added to the system",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "CRUD.theDeveloperWithCredentialsIsAddedToTheSystem(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "An administrator creates a developer already defined in the system",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the administrator is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ManagerSteps.thatTheAdministratorIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a developer with credentials \"nn\" is defined in the system",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "CRUD.aDeveloperWithCredentialsIsDefinedInTheSystem(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the administrator creates the developer with credentials \"nn\" and password \"1234\" to the system",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "CRUD.theAdministratorCreatesTheDeveloperWithCredentialsAndPasswordToTheSystem(String,String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"This developer is already defined in the system\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "A user without administrator rights tries to create a developer",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that there is an active user on the system",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.thatThereIsAnActiveUserOnTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that the administrator is not logged in",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "CRUD.thatTheAdministratorIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user creates the developer with credentials \"mn\" and password \"1234\" from the system",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "CRUD.theUserCreatesTheDeveloperWithCredentialsAndPasswordFromTheSystem(String,String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"Administrator required\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/Create_Project.feature");
 formatter.feature({
   "name": "Create Project",
   "description": "  Description: A developer creates a project\n  Actors: Developer",
@@ -45,6 +186,343 @@ formatter.step({
 });
 formatter.match({
   "location": "UserSteps.theProjectWithThatProjectNumberNameDescriptionAndStartAndEndDateIsCreated()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "The developer doesn\u0027t enter valid start date",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that a developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer enters a project with an invalid start date",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperEntersAProjectWithAnInvalidStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer creates the project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperCreatesTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"Invalid time for project\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "The developer enters a project that already exists in the planner",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that a developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a project already exist in the planner",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.aProjectAlreadyExistInThePlanner()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer enters a project with the same name as another project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperEntersAProjectWithTheSameNameAsAnotherProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer creates the project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperCreatesTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"Project is already in the planner\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/Delete_Developer.feature");
+formatter.feature({
+  "name": "Delete developer",
+  "description": "  Description: Admin deletes a developer from the system\n  Actor: Administrator",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "An administrator deletes a developer from the system",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the administrator is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ManagerSteps.thatTheAdministratorIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a developer with credentials \"ff\" and password \"1234\" is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "CRUD.aDeveloperWithCredentialsAndPasswordIsDefined(String,String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the administrator deletes the developer with credentials \"ff\" from the system",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "CRUD.theAdministratorDeletesTheDeveloperWithCredentialsFromTheSystem(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer with credentials \"ff\" is removed from the system",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "CRUD.theDeveloperWithCredentialsIsRemovedFromTheSystem(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "An administrator tries to delete a developer not given in the system",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the administrator is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ManagerSteps.thatTheAdministratorIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a developer with credentials \"ff\" and password \"1234\" is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "CRUD.aDeveloperWithCredentialsAndPasswordIsDefined(String,String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the administrator tries to delete the developer with credentials \"mvc\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "CRUD.theAdministratorTriesToDeleteTheDeveloperWithCredentials(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"No such user is defined in the system\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "The administrator is not logged in, but tries to remove a developer from the system",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that there is an active user on the system",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "LoginLogoutSteps.thatThereIsAnActiveUserOnTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that the administrator is not logged in",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "CRUD.thatTheAdministratorIsNotLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the administrator deletes a developer with credentials \"ff\" from the system",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "CRUD.theAdministratorDeletesADeveloperWithCredentialsFromTheSystem(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"Administrator rights required for this action\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/Delete_Project.feature");
+formatter.feature({
+  "name": "Delete project",
+  "description": "  Description: Administrator deletes a project\n  Actor: Administrator",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Administrator deletes a project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the administrator is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ManagerSteps.thatTheAdministratorIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a project with title \"Heisenberg\" is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.aProjectWithTitleIsDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the administrator deletes the project with title \"Heisenberg\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theAdministratorDeletesTheProjectWithTitle(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project with title \"Heisenberg\" is deleted",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.theProjectWithTitleIsDeleted(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Administrator deletes a project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the administrator is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "ManagerSteps.thatTheAdministratorIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a project with title \"Heisenberg\" is not defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.aProjectWithTitleIsNotDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the administrator deletes the project with title \"Heisenberg\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theAdministratorDeletesTheProjectWithTitle(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"No such project in the system\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "passed"
@@ -665,18 +1143,8 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "a developer is defined",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "BaseSetUp.aDeveloperIsDefined()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
   "name": "that there is an active user on the system",
-  "keyword": "And "
+  "keyword": "Given "
 });
 formatter.match({
   "location": "LoginLogoutSteps.thatThereIsAnActiveUserOnTheSystem()"

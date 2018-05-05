@@ -1,14 +1,15 @@
-#Feature: Delete project
-#  Description: Administrator deletes a project
-#  Actor: Administrator
-#
-#  Scenario: Administrator deletes a project
-#    Given that the administrator is logged in
-#    When the administrator deletes a project
-#    Then the project is deleted
-#
-#  Scenario: Administrator deletes a project that doesn't exist
-#    Given that the administrator is logged in
-#    When the administrator deletes a project
-#    And that project doesn't exist
-#    Then I get the error message "the entered project doesn't exist"
+Feature: Delete project
+  Description: Administrator deletes a project
+  Actor: Administrator
+
+  Scenario: Administrator deletes a project
+    Given that the administrator is logged in
+    And a project with title "Heisenberg" is defined
+    When the administrator deletes the project with title "Heisenberg"
+    Then the project with title "Heisenberg" is deleted
+
+  Scenario: Administrator deletes a project
+    Given that the administrator is logged in
+    And a project with title "Heisenberg" is not defined
+    When the administrator deletes the project with title "Heisenberg"
+    Then I get the error message "No such project in the system"
