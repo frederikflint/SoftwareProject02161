@@ -40,19 +40,15 @@ public class Terminal {
         String password = input.next();
         try {
             planner.userLogIn(username,password);
-
             if(planner.activeUser.isAdmin()){
                 adminFeatureScreen();
             } else {
                 userFeatureScreen();
             }
-
         } catch (OperationNotAllowedException | AuthenticationException e) {
             System.out.println(e.getMessage());
             startPrompt();
         }
-
-
     }
 
     private void adminFeatureScreen(){
@@ -83,7 +79,6 @@ public class Terminal {
             System.out.println("Dit input matcher ikke mulighederne");
             adminFeatureScreen();
         }
-
     }
 
     private void userFeatureScreen() {
@@ -130,7 +125,6 @@ public class Terminal {
     }
 
     private void unregisterUser(){
-
         if(planner.getUsers().isEmpty()){
             System.out.println("Ingen registrerede brugere på systemt");
             adminFeatureScreen();
@@ -144,16 +138,13 @@ public class Terminal {
         System.out.println("Skriv brugernavnet på den bruger du vil have slettet");
         String in = input.next();
         User user = planner.getUser(in);
-
         try {
             planner.deleteUser(user);
             System.out.println("Brugeren " + user.getCredentials() + " er nu slettet fra systemet");
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
-
         adminFeatureScreen();
-
     }
 
     private void assignProjectManager(){
@@ -164,8 +155,6 @@ public class Terminal {
         }
 
     }
-
-
 
     private void createActivity() {
         System.out.println("-1 for at gå tilbage");
@@ -182,7 +171,6 @@ public class Terminal {
         if (x.equals("1")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
-            
         } else  if (x.equals("2")) {
             try {
                 planner.getActiveUser().addActivity(new Activity(start, end, titel));
@@ -203,10 +191,9 @@ public class Terminal {
         System.out.println(" 0: Januar \n 1: Februar \n 2: Marts \n 3: April \n 4: Maj \n 5: Juni \n 6: Juli \n" +
                 " 7: August \n 8: September \n 9: Oktober \n 10: November \n 11: December");
         month = input.next();
-
         if (month.matches("0|1|2|3|4|5|6|7|8|9|10|11")) {
             System.out.println("Hvilken dag i måneden?");
-            System.out.println("1 - 31");
+            System.out.println("0 - 31");
             day = input.next();
             if (!day.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31")) {
                 System.out.println("Prøv igen");
@@ -218,7 +205,6 @@ public class Terminal {
             System.out.println("Prøv igen");
             setMonthAndDay();
         }
-
     }
 
     private void createProject() {
@@ -292,7 +278,7 @@ public class Terminal {
     }
 
     public void setHourAndMinute(){
-        System.out.println("Indtast time på dagen (0-23:");
+        System.out.println("Indtast time på dagen (0-23):");
         System.out.println("Indtast -1 for at gå tilbage");
         hour = input.next();
 
