@@ -35,7 +35,11 @@ public class Planner {
      * @param password The developers password
      * @throws AuthenticationException If the developers is logged in throw error. If the user us typed in wrong throw error.
      */
-    public void userLogIn(String credentials, String password) throws AuthenticationException{
+    public void userLogIn(String credentials, String password) throws OperationNotAllowedException, AuthenticationException{
+
+        if(users.isEmpty()){
+            throw new OperationNotAllowedException("There is no users on this planner");
+        }
 
         // Is there a user session?
         // Before anything clear the session
@@ -46,8 +50,8 @@ public class Planner {
         // Go through each of the registered Developers and check the password and credentials.
         // If the current one is present set that user as an active user session.
         for (User user : users) {
-            if (Objects.equals(user.getCredentials(), credentials) &&
-                    Objects.equals(user.getPassword(), password)) {
+            if ((user.getCredentials().equals(credentials)) &&
+                    (user.getPassword().equals(password))) {
                 //Set the active session
                 activeUser = user;
             } else {
