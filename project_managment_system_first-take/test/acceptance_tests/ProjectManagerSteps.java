@@ -3,6 +3,7 @@ package acceptance_tests;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.*;
 
@@ -46,7 +47,6 @@ public class ProjectManagerSteps {
 
     @Given("^that the developer is a project manager$")
     public void thatTheDeveloperIsAProjectManager() throws Exception {
-        project = projectHelper.getValidProject();
 
         planner.createProject(project);
         project.setProjectManager(planner.getActiveUser());
@@ -60,17 +60,22 @@ public class ProjectManagerSteps {
 
         startTime = Calendar.getInstance();
         Calendar endTime = Calendar.getInstance();
-        endTime.add(Calendar.DATE, 1);
+        startTime.set(2018, 5, 21, 12, 30);
+        endTime.set(2018, 6, 21, 12, 30);
 
         assertTrue(planner.getAvailableUsers(startTime, endTime) != null);
     }
 
     @When("^the developer adds a developer to the project$")
     public void theDeveloperAddsADeveloperToTheProject() throws Exception {
-        project.addUser(user);
+        try {
+            planner.assignUserToProject(user,project);
+        } catch (OperationNotAllowedException | AuthenticationException e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
     }
 
-    @Then("^the developer is included in the project$")
+    @Then("^the developer is added to the project$")
     public void theDeveloperIsIncludedInTheProject() throws Exception {
         assertTrue(project.getUsers().contains(user));
     }
@@ -101,6 +106,21 @@ public class ProjectManagerSteps {
         assertFalse(planner.activeUser.equals(project.getManager()));
     }
 
+
+    @Then("^the developer is not added to the project$")
+    public void theDeveloperIsNotIncludedInTheProject() throws Exception {
+        assertFalse(project.getUsers().contains(user));
+
+        assertThat(project.getUsers(),not(hasItem(user)));
+
+    }
+
+    @Given("^that the developer is part of the project$")
+    public void thatTheDeveloperIsPartOfTheProject() throws Exception {
+        //user = userHelper.getUser();
+        project.addUser(planner.getActiveUser());
+    }
+
     @When("^the project manager asks for a list$")
     public void theProjectManagerAsksForAList() throws Exception {
         try{
@@ -108,6 +128,7 @@ public class ProjectManagerSteps {
         } catch (Exception e){
             e.getMessage();
         }
+
     }
 
     @Then("^the project manager gets a list of available developers$")
