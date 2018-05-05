@@ -1,7 +1,10 @@
 package planner.terminal;
 
+import com.sun.corba.se.spi.orb.Operation;
 import planner.app.AuthenticationException;
+import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
+import planner.domain.Project;
 
 import java.util.Calendar;
 import java.util.Scanner;
@@ -21,10 +24,7 @@ public class Terminal {
 
     public static void main(String[] args){
         Terminal terminal = new Terminal();
-        System.out.println("test");
         terminal.startPrompt();
-
-
     }
 
     public void startPrompt() {
@@ -48,7 +48,17 @@ public class Terminal {
     }
 
     private void registerUser() {
-
+        System.out.println("Hvad skal dit brugernavn være?");
+        String username = input.next();
+        System.out.println("Hvad skal dit password være?");
+        String password = input.next();
+        try {
+            planner.createUser(username,password);
+        } catch (OperationNotAllowedException | AuthenticationException e) {
+            System.out.println(e.getMessage());
+            registerUser();
+        }
+        startPrompt();
     }
 
     //TODO: Hvad er det vi har testet for i forhold til LOGIN ?
@@ -60,7 +70,7 @@ public class Terminal {
         boolean error = false;
         try {
             planner.userLogIn(username,password);
-        } catch (AuthenticationException e) {
+        } catch (OperationNotAllowedException | AuthenticationException e) {
             System.out.println(e.getMessage());
             error = true;
         }
@@ -68,9 +78,8 @@ public class Terminal {
         if (!error) {
             featureScreen();
         } else {
-            logIn();
+            startPrompt();
         }
-
     }
 
     private void featureScreen() {
@@ -78,7 +87,7 @@ public class Terminal {
         System.out.println("1: Registrer tid");
         System.out.println("2: Opret projekt");
         System.out.println("3: Opret aktivitet");
-        System.out.println("4: ");
+        System.out.println("4: Log ud");
 
         String in = input.next();
 
@@ -89,7 +98,12 @@ public class Terminal {
         } else if (in.equals("3")) {
             createActivity();
         } else if (in.equals("4")) {
-
+            try {
+                planner.userLogOut();
+            } catch (OperationNotAllowedException e) {
+                System.out.println(e.getMessage());
+                featureScreen();
+            }
         } else {
             System.out.println("Ikke godt nok");
             featureScreen();
@@ -98,7 +112,8 @@ public class Terminal {
     }
 
     private void createActivity() {
-        System.out.println("Opretter aktivitet:");
+        //System.out.println("-1 for at gå tilbage");
+        System.out.println("Opretter aktivitet...");
         System.out.println("Indtast titel:");
         String titel = input.next();
         Calendar start = Calendar.getInstance();
@@ -142,7 +157,30 @@ public class Terminal {
     }
 
     private void createProject() {
-
+        System.out.println("-1 for at gå tilbage");
+        System.out.println("Opretter projekt...");
+        System.out.println("Indtast titel:");
+        String titel = input.next();
+        if (titel.equals("-1")) {
+            featureScreen();
+        }
+        Calendar start = Calendar.getInstance();
+        Calendar end = Calendar.getInstance();
+        System.out.println("Kendes start tidspunkt? Ja: 1, Nej: 2");
+        String x = input.next();
+        if (x.equals("1")){
+            setTime();
+            start.set(2018,Integer.parseInt(m),Integer.parseInt(d));
+        } else  if (x.equals("2")) {
+            try {
+                planner.createProject(new Project(titel,start,end));
+            } catch (OperationNotAllowedException | AuthenticationException e) {
+                System.out.println(e.getMessage());
+            }
+        } else {
+            System.out.println("Forkerte information - prøv igen");
+            createProject();
+        }
     }
 
     private void registerTime() {
