@@ -1,6 +1,5 @@
 package planner.terminal;
 
-import com.sun.corba.se.spi.orb.Operation;
 import planner.app.AuthenticationException;
 import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
@@ -12,7 +11,6 @@ import java.util.Scanner;
 public class Terminal {
 
     //Terminal terminal;
-
     Planner planner = new Planner();
     Scanner input = new Scanner(System.in);
 
@@ -26,22 +24,8 @@ public class Terminal {
 
     public void startPrompt() {
         System.out.println("Velkommen til SoftwareHuset A/S. Vælg venligst en funktion:");
-        System.out.println("Indtast et nummer:");
-        System.out.println("1: Log in");
-        System.out.println("2: Registrer bruger");
-        System.out.println("3: ??");
-
-        String in = input.next();
-        if (in.equals("1")){
-            logIn();
-        } else if (in.equals("2")) {
-            registerUser();
-        } else if (in.equals("3")) {
-
-        } else {
-            System.out.println("Ikke godt nok");
-            startPrompt();
-        }
+        System.out.println("Log ind");
+        logIn();
     }
 
     private void registerUser() {
@@ -64,28 +48,39 @@ public class Terminal {
         String username = input.next();
         System.out.println("Indtast password:");
         String password = input.next();
-        boolean error = false;
         try {
             planner.userLogIn(username,password);
+            
+            if(planner.activeUser.isAdmin()){
+                adminFeatureScreen();
+            } else {
+                userFeatureScreen();
+            }
+
         } catch (OperationNotAllowedException | AuthenticationException e) {
             System.out.println(e.getMessage());
-            error = true;
-        }
-
-        if (!error) {
-            featureScreen();
-        } else {
             startPrompt();
         }
+
     }
 
-    private void featureScreen() {
+    private void adminFeatureScreen(){
+        System.out.println("Indtast et nummer:");
+        System.out.println("1: Registrer bruger");
+        String in = input.next();
+
+        if (in.equals("1")){
+            registerUser();
+        }
+
+    }
+
+    private void userFeatureScreen() {
         System.out.println("Indtast et nummer:");
         System.out.println("1: Registrer tid");
         System.out.println("2: Opret projekt");
         System.out.println("3: Opret aktivitet");
         System.out.println("4: Log ud");
-
         String in = input.next();
 
         if (in.equals("1")){
@@ -97,13 +92,14 @@ public class Terminal {
         } else if (in.equals("4")) {
             try {
                 planner.userLogOut();
+                startPrompt();
             } catch (OperationNotAllowedException e) {
                 System.out.println(e.getMessage());
-                featureScreen();
+                userFeatureScreen();
             }
         } else {
             System.out.println("Ikke godt nok");
-            featureScreen();
+            userFeatureScreen();
         }
 
     }
@@ -159,7 +155,7 @@ public class Terminal {
         System.out.println("Indtast titel:");
         String titel = input.next();
         if (titel.equals("-1")) {
-            featureScreen();
+            userFeatureScreen();
         }
         Calendar start = Calendar.getInstance();
         Calendar end = Calendar.getInstance();
