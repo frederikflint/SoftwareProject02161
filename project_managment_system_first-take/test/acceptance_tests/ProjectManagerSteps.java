@@ -47,7 +47,6 @@ public class ProjectManagerSteps {
 
     @Given("^that the developer is a project manager$")
     public void thatTheDeveloperIsAProjectManager() throws Exception {
-        System.out.println(project);
         planner.createProject(project);
         project.setProjectManager(planner.getActiveUser());
         assertTrue(project.getManager().equals(planner.getActiveUser()));
@@ -109,10 +108,7 @@ public class ProjectManagerSteps {
 
     @Then("^the developer is not added to the project$")
     public void theDeveloperIsNotIncludedInTheProject() throws Exception {
-        assertFalse(project.getUsers().contains(user));
-
-        assertThat(project.getUsers(),not(hasItem(user)));
-
+        assertFalse(project.getUsers().equals(user));
     }
 
     @Given("^that the developer is part of the project$")

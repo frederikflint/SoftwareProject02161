@@ -117,7 +117,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
 });
 formatter.result({
-  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:51)\r\n\tat ✽.that the developer is a project manager(use_cases/Create_Activity.feature:19)\r\n",
+  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:50)\r\n\tat ✽.that the developer is a project manager(use_cases/Create_Activity.feature:19)\r\n",
   "status": "failed"
 });
 formatter.step({
@@ -957,6 +957,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "that the developer is part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatTheDeveloperIsPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "the developer is not a project manager",
   "keyword": "And "
 });
@@ -1079,8 +1089,7 @@ formatter.match({
   "location": "ProjectManagerSteps.theDeveloperIsNotIncludedInTheProject()"
 });
 formatter.result({
-  "error_message": "java.lang.AssertionError\r\n\tat org.junit.Assert.fail(Assert.java:86)\r\n\tat org.junit.Assert.assertTrue(Assert.java:41)\r\n\tat org.junit.Assert.assertFalse(Assert.java:64)\r\n\tat org.junit.Assert.assertFalse(Assert.java:74)\r\n\tat acceptance_tests.ProjectManagerSteps.theDeveloperIsNotIncludedInTheProject(ProjectManagerSteps.java:112)\r\n\tat ✽.the developer is not added to the project(use_cases/Include_Developer_In_Project.feature:30)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.uri("use_cases/List_Of_Activities.feature");
 formatter.feature({
@@ -1207,7 +1216,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
 });
 formatter.result({
-  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:51)\r\n\tat ✽.that the developer is a project manager(use_cases/List_Of_Available_Developers.feature:7)\r\n",
+  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:50)\r\n\tat ✽.that the developer is a project manager(use_cases/List_Of_Available_Developers.feature:7)\r\n",
   "status": "failed"
 });
 formatter.step({
@@ -1273,7 +1282,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
 });
 formatter.result({
-  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:51)\r\n\tat ✽.that the developer is a project manager(use_cases/List_Of_Available_Developers.feature:15)\r\n",
+  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:50)\r\n\tat ✽.that the developer is a project manager(use_cases/List_Of_Available_Developers.feature:15)\r\n",
   "status": "failed"
 });
 formatter.step({
@@ -1676,7 +1685,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
 });
 formatter.result({
-  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:51)\r\n\tat ✽.that the developer is a project manager(use_cases/Remove_Activity.feature:20)\r\n",
+  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:50)\r\n\tat ✽.that the developer is a project manager(use_cases/Remove_Activity.feature:20)\r\n",
   "status": "failed"
 });
 formatter.step({
@@ -1752,7 +1761,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
 });
 formatter.result({
-  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:51)\r\n\tat ✽.that the developer is a project manager(use_cases/Remove_Activity.feature:29)\r\n",
+  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:50)\r\n\tat ✽.that the developer is a project manager(use_cases/Remove_Activity.feature:29)\r\n",
   "status": "failed"
 });
 formatter.step({
