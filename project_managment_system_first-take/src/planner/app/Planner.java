@@ -35,7 +35,11 @@ public class Planner {
      * @param password The developers password
      * @throws AuthenticationException If the developers is logged in throw error. If the user us typed in wrong throw error.
      */
-    public void userLogIn(String credentials, String password) throws AuthenticationException{
+    public void userLogIn(String credentials, String password) throws OperationNotAllowedException, AuthenticationException{
+
+        if(users.isEmpty()){
+            throw new OperationNotAllowedException("There is no users on this planner");
+        }
 
         // Is there a user session?
         // Before anything clear the session
