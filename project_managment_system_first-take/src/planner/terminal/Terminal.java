@@ -23,14 +23,22 @@ public class Terminal {
 
     public static void main(String[] args){
         Terminal terminal = new Terminal();
+        terminal.fakeSetup();
         terminal.startPrompt();
+    }
+
+    private void fakeSetup(){
+        /**
+         * FAKE data
+         */
+        planner.users.add(new User("test","test"));
+        planner.projects.add(new Project("projekt", null,null));
     }
 
     private void startPrompt() {
         System.out.println("Velkommen til SoftwareHuset A/S. Vælg venligst en funktion:");
         logIn();
     }
-
 
     private void logIn() {
         System.out.println("Log ind");
@@ -52,30 +60,32 @@ public class Terminal {
             startPrompt();
         }
 
-
     }
 
     private void adminFeatureScreen(){
         System.out.println("Indtast et nummer:");
         System.out.println("1: Bruger liste");
-        System.out.println("2: Registrer bruger");
-        System.out.println("3: Slet bruger");
-        System.out.println("4: Forfrem bruger til projekt manager");
-        System.out.println("5: Fjern projekt manager titel");
-        System.out.println("6: Log ud");
+        System.out.println("2: Projekt liste");
+        System.out.println("3: Registrer bruger");
+        System.out.println("4: Slet bruger");
+        System.out.println("5: Forfrem bruger til projekt manager");
+        System.out.println("6: Fjern projekt manager titel");
+        System.out.println("7: Log ud");
         String in = input.next();
 
         if (in.equals("1")){
             getUserList();
-        } else if (in.equals("2")){
+        } else if (in.equals("2")) {
+            getProjectList();
+        }else if (in.equals("3")){
             registerUser();
-        } else if (in.equals("3")) {
-            unregisterUser();
         } else if (in.equals("4")) {
-            assignProjectManager();
+            unregisterUser();
         } else if (in.equals("5")) {
             assignProjectManager();
         } else if (in.equals("6")) {
+            removeProjectManager();
+        } else if (in.equals("7")) {
             try {
                 planner.userLogOut();
                 startPrompt();
@@ -160,6 +170,7 @@ public class Terminal {
             adminFeatureScreen();
         }
 
+        System.out.println("Registrerede projekter: ");
         for (Project project: planner.getProjects()) {
             System.out.println(project.getTitle());
         }
@@ -199,6 +210,7 @@ public class Terminal {
         String in = input.next();
         User user = planner.getUser(in);
 
+        System.out.println("-1 for at gå tilbage");
         if (in.equals("-1")) {
             userFeatureScreen();
         }
@@ -224,6 +236,7 @@ public class Terminal {
 
         }
 
+        System.out.println("-1 for at gå tilbage");
         if (in.equals("-1")) {
             userFeatureScreen();
         }
@@ -249,7 +262,6 @@ public class Terminal {
             adminFeatureScreen();
         }
 
-        System.out.println("-1 for at gå tilbage");
         System.out.println("Registrerede brugere: ");
         for (User user: planner.getUsers()) {
             System.out.println(user.getCredentials());
@@ -257,16 +269,41 @@ public class Terminal {
         System.out.println("Skriv brugernavnet på den bruger du vil have forfremmet");
         User user = setUser();
 
+        System.out.println("Registrerede projekter: ");
         for (Project project: planner.getProjects()) {
-            System.out.println(user.getCredentials());
+            System.out.println(project.getTitle());
         }
 
-        System.out.println("Skriv brugernavnet på den bruger du vil have forfremmet");
+        System.out.println("Skriv navnet på det projekt du vil have " + user.getCredentials() + " forfremmet i");
         Project project = setProject();
 
         try {
             planner.assignProjectManager(user, project);
-            System.out.println("Brugeren " + user.getCredentials() + " er nu manager for " + project.getTitle());
+            System.out.println("Brugeren " + user.getCredentials() + " er nu manager for projektet " + project.getTitle());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        adminFeatureScreen();
+    }
+
+    private void removeProjectManager(){
+        if(planner.getProjects().isEmpty()){
+            System.out.println("Ingen registrerede projekter på systemt");
+            adminFeatureScreen();
+        }
+
+        System.out.println("Registrerede projekter: ");
+        for (Project project: planner.getProjects()) {
+            System.out.println(project.getTitle());
+        }
+
+        System.out.println("Skriv navnet på det projekt hvor du vil fjerne manageren");
+        Project project = setProject();
+
+        try {
+            planner.removeProjectManager(project);
+            System.out.println("Manageren fra " + project.getTitle() + " er nu fjernet");
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -274,8 +311,6 @@ public class Terminal {
         adminFeatureScreen();
 
     }
-
-
 
     private void createActivity() {
         System.out.println("-1 for at gå tilbage");
@@ -292,8 +327,7 @@ public class Terminal {
         if (x.equals("1")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
-            
-        } else  if (x.equals("2")) {
+        } else if (x.equals("2")) {
             //TODO: Create activity i planner ????
             try {
                 planner.getActiveUser().addActivity(new Activity(start, end, titel));
@@ -313,9 +347,8 @@ public class Terminal {
         System.out.println(" 0: Januar \n 1: Februar \n 2: Marts \n 3: April \n 4: Maj \n 5: Juni \n 6: Juli \n" +
                 " 7: August \n 8: September \n 9: Oktober \n 10: November \n 11: December");
         month = input.next();
-
         if (month.equals("-1")) {
-
+            userFeatureScreen();
         } else if (month.matches("0|1|2|3|4|5|6|7|8|9|10|11")) {
             System.out.println("Hvilken dag i måneden?");
             System.out.println("0 - 30");
@@ -346,17 +379,26 @@ public class Terminal {
         if (x.equals("1")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
+            try {
+                planner.createProject(new Project(titel,start,end));
+                userFeatureScreen();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+                createProject();
+            }
         } else if (x.equals("2")) {
             try {
                 planner.createProject(new Project(titel,start,end));
                 userFeatureScreen();
             } catch (OperationNotAllowedException | AuthenticationException e) {
                 System.out.println(e.getMessage());
+                createProject();
             }
         } else {
             System.out.println("Forkerte information - prøv igen");
             createProject();
         }
+
     }
 
     private void registerTime() {
@@ -373,7 +415,6 @@ public class Terminal {
         try {
             activity = planner.getActivity(ID);
             registerTimeStepTwo(activity);
-
         } catch (OperationNotAllowedException e) {
             System.out.println(e.getMessage());
             registerTime();
@@ -400,11 +441,13 @@ public class Terminal {
     }
 
     public void setHourAndMinute(){
-        System.out.println("Indtast time på dagen (0-23:");
-        //System.out.println("Indtast -1 for at gå tilbage");
+        System.out.println("Indtast time på dagen (0-23):");
+        System.out.println("Indtast -1 for at gå tilbage");
         hour = input.next();
 
-        if (hour.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23")) {
+        if (hour.equals("-1")) {
+            userFeatureScreen();
+        } else if (hour.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23")) {
             System.out.println("Hvilket minut i timen?");
             System.out.println("0 - 59");
             day = input.next();
@@ -412,8 +455,6 @@ public class Terminal {
                 System.out.println("Prøv igen");
                 setHourAndMinute();
             }
-        } else if (hour.equals("-1")) {
-            createActivity();
         } else {
             System.out.println("Prøv igen");
             setHourAndMinute();

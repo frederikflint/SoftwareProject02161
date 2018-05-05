@@ -209,8 +209,8 @@ public class UserSteps {
         activity = activityHelper.getInvalidActivity();
     }
 
-    @Given("^the user is a part of the project$")
-    public void theUserIsAPartOfTheProject() throws Exception {
+    @Given("^the developer is a part of the project$")
+    public void theDeveloperIsAPartOfTheProject() throws Exception {
         planner.getProject("Heisenberg").setProjectManager(planner.activeUser);
         planner.getProject("Heisenberg").addUser(planner.activeUser);
     }
