@@ -333,7 +333,7 @@ public class Planner {
      * @return The available users
      * @throws Exception There are no users available.
      */
-    public List<User> getAvailableUsers(Calendar activityStartTime, Calendar activityEndTime) throws Exception {
+    public List<User> getAvailableUsers(Calendar activityStartTime, Calendar activityEndTime) throws AuthenticationException {
         checkSession();
 
         List<User> availableUsers = new ArrayList<>();
@@ -353,13 +353,21 @@ public class Planner {
             }
         }
 
-        if(availableUsers.isEmpty()){
-            throw new Exception("There are no available users");
-        }
 
         return availableUsers;
     }
 
+    /**
+     * Is there any available users on the planner
+     * @param activityStartTime
+     * @param activityEndTime
+     * @throws Exception
+     */
+    public void isThereAvailableUsers(Calendar activityStartTime, Calendar activityEndTime) throws Exception {
+        if(getAvailableUsers(activityStartTime,activityEndTime).isEmpty()){
+            throw new Exception("There are no available users");
+        }
+    }
 
     /**
      *

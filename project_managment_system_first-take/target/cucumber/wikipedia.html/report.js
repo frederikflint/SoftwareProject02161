@@ -1092,6 +1092,132 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("use_cases/List_Of_Available_Developers.feature");
+formatter.feature({
+  "name": "list of available developers",
+  "description": "  Description: project manager gets a list of available developers\n  Actors: Project manager",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Project manager checks list of available developers",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that the developer is a project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that a developer is available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatADeveloperIsAvailable()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager asks for a list",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theProjectManagerAsksForAList()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager gets a list of available developers",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theProjectManagerGetsAListOfAvailableDevelopers()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Project manager check an empty list of available developers",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer enters a valid activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperEntersAValidActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that the developer is a project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that no developer is available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatNoDeveloperIsAvailable()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager asks for a list",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theProjectManagerAsksForAList()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"No developer is currently available\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/Register_Time.feature");
 formatter.feature({
   "name": "Register time",

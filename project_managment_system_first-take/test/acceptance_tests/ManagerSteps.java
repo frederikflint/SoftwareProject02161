@@ -22,22 +22,18 @@ public class ManagerSteps {
 
     private ErrorMessageHolder errorMessage;
     public UserHelper userHelper;
-    public AdminHelper adminHelper;
     public ProjectHelper projectHelper;
 
-    public ManagerSteps(Planner planner, ErrorMessageHolder errorMessage, UserHelper userHelper, ProjectHelper projectHelper, AdminHelper adminHelper) {
+    public ManagerSteps(Planner planner, ErrorMessageHolder errorMessage, UserHelper userHelper, ProjectHelper projectHelper) {
         this.planner = planner;
         this.errorMessage = errorMessage;
         this.userHelper = userHelper;
         this.projectHelper = projectHelper;
-        this.adminHelper = adminHelper;
     }
 
     @Given("^that the administrator is logged in$")
     public void thatTheAdministratorIsLoggedIn() throws Exception {
-        admin = adminHelper.getAdmin();
-        planner.users.add(admin);
-        planner.userLogIn(admin.getCredentials(),admin.getPassword());
+        planner.userLogIn("admin","admin123");
         assertTrue(planner.activeAdmin());
     }
 
@@ -77,7 +73,6 @@ public class ManagerSteps {
     public void theDeveloperIsNoLongerProjectManager() throws Exception {
         assertEquals(project.getManager(), null);
     }
-
 
 
 }

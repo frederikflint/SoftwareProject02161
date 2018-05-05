@@ -13,15 +13,13 @@ public class BaseSetUp {
 
     private ErrorMessageHolder errorMessage;
     public UserHelper userHelper;
-    public AdminHelper adminHelper;
     public ProjectHelper projectHelper;
 
-    public BaseSetUp(Planner planner, ErrorMessageHolder errorMessage, UserHelper userHelper, ProjectHelper projectHelper, AdminHelper adminHelper) {
+    public BaseSetUp(Planner planner, ErrorMessageHolder errorMessage, UserHelper userHelper, ProjectHelper projectHelper) {
         this.planner = planner;
         this.errorMessage = errorMessage;
         this.userHelper = userHelper;
         this.projectHelper = projectHelper;
-        this.adminHelper = adminHelper;
     }
 
 

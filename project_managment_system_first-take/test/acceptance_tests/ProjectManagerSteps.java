@@ -9,6 +9,7 @@ import static org.junit.Assert.*;
 
 import cucumber.api.PendingException;
 import cucumber.api.java.ca.Cal;
+import cucumber.api.java.cy_gb.A;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -30,18 +31,18 @@ public class ProjectManagerSteps {
     private Project project;
     private Activity activity;
 
+    private Calendar startTime = Calendar.getInstance();
+    private Calendar endTime = Calendar.getInstance();
+
     private ErrorMessageHolder errorMessage;
     public UserHelper userHelper;
-    public AdminHelper adminHelper;
     public ProjectHelper projectHelper;
 
-    public ProjectManagerSteps(Planner planner, ErrorMessageHolder errorMessage, UserHelper userHelper, ProjectHelper projectHelper, AdminHelper adminHelper) {
+    public ProjectManagerSteps(Planner planner, ErrorMessageHolder errorMessage, UserHelper userHelper, ProjectHelper projectHelper) {
         this.planner = planner;
         this.errorMessage = errorMessage;
         this.userHelper = userHelper;
         this.projectHelper = projectHelper;
-        this.adminHelper = adminHelper;
-        planner.users.add(adminHelper.getAdmin());
     }
 
     @Given("^that the developer is a project manager$")
@@ -57,7 +58,7 @@ public class ProjectManagerSteps {
         user = userHelper.getUser();
         planner.users.add(user);
 
-        Calendar startTime = Calendar.getInstance();
+        startTime = Calendar.getInstance();
         Calendar endTime = Calendar.getInstance();
         startTime.set(2018, 5, 21, 12, 30);
         endTime.set(2018, 6, 21, 12, 30);
@@ -75,7 +76,7 @@ public class ProjectManagerSteps {
     }
 
     @Then("^the developer is added to the project$")
-    public void theDeveloperIsAddedToTheProject() throws Exception {
+    public void theDeveloperIsIncludedInTheProject() throws Exception {
         assertTrue(project.getUsers().contains(user));
     }
 
@@ -83,8 +84,8 @@ public class ProjectManagerSteps {
     public void aDeveloperIsUnavailable() throws Exception {
         user = userHelper.getUser();
         planner.users.add(user);
-        Calendar startTime = Calendar.getInstance();
-        Calendar endTime = Calendar.getInstance();
+        startTime = Calendar.getInstance();
+        endTime = Calendar.getInstance();
         startTime.set(2018, 3, 21, 12, 30);
         endTime.set(2018, 4, 21, 12, 30);
 
@@ -105,9 +106,9 @@ public class ProjectManagerSteps {
         assertFalse(planner.activeUser.equals(project.getManager()));
     }
 
+
     @Then("^the developer is not added to the project$")
     public void theDeveloperIsNotIncludedInTheProject() throws Exception {
-        System.out.println(project.getUsers().contains(user));
         assertFalse(project.getUsers().contains(user));
 
         assertThat(project.getUsers(),not(hasItem(user)));
@@ -119,6 +120,32 @@ public class ProjectManagerSteps {
         //user = userHelper.getUser();
         project.addUser(planner.getActiveUser());
     }
+
+    @When("^the project manager asks for a list$")
+    public void theProjectManagerAsksForAList() throws Exception {
+        try{
+            planner.getAvailableUsers(startTime,endTime);
+        } catch (Exception e){
+            e.getMessage();
+        }
+
+    }
+
+    @Then("^the project manager gets a list of available developers$")
+    public void theProjectManagerGetsAListOfAvailableDevelopers() throws Exception {
+        try {
+            planner.getAvailableUsers(startTime, endTime);
+        } catch (Exception e){
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+    }
+
+
+    @Given("^that no developer is available$")
+    public void thatNoDeveloperIsAvailable() throws Exception {
+        assertTrue(planner.getAvailableUsers(startTime,endTime).isEmpty());
+    }
+
 
 //    @Given("^that the developer is not a project manager$")
 //    public void thatTheDeveloperIsNotAProjectManager() throws Exception {
