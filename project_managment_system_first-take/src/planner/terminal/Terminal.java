@@ -23,7 +23,16 @@ public class Terminal {
 
     public static void main(String[] args){
         Terminal terminal = new Terminal();
+        terminal.fakeSetup();
         terminal.startPrompt();
+    }
+
+    private void fakeSetup(){
+        /**
+         * FAKE data
+         */
+        planner.users.add(new User("test","test"));
+        planner.projects.add(new Project("projekt", null,null));
     }
 
     private void startPrompt() {
@@ -58,24 +67,27 @@ public class Terminal {
     private void adminFeatureScreen(){
         System.out.println("Indtast et nummer:");
         System.out.println("1: Bruger liste");
-        System.out.println("2: Registrer bruger");
-        System.out.println("3: Slet bruger");
-        System.out.println("4: Forfrem bruger til projekt manager");
-        System.out.println("5: Fjern projekt manager titel");
-        System.out.println("6: Log ud");
+        System.out.println("2: Projekt liste");
+        System.out.println("3: Registrer bruger");
+        System.out.println("4: Slet bruger");
+        System.out.println("5: Forfrem bruger til projekt manager");
+        System.out.println("6: Fjern projekt manager titel");
+        System.out.println("7: Log ud");
         String in = input.next();
 
         if (in.equals("1")){
             getUserList();
-        } else if (in.equals("2")){
+        } else if (in.equals("2")) {
+            getProjectList();
+        }else if (in.equals("3")){
             registerUser();
-        } else if (in.equals("3")) {
-            unregisterUser();
         } else if (in.equals("4")) {
-            assignProjectManager();
+            unregisterUser();
         } else if (in.equals("5")) {
             assignProjectManager();
         } else if (in.equals("6")) {
+            removeProjectManager();
+        } else if (in.equals("7")) {
             try {
                 planner.userLogOut();
                 startPrompt();
@@ -160,6 +172,7 @@ public class Terminal {
             adminFeatureScreen();
         }
 
+        System.out.println("Registrerede projekter: ");
         for (Project project: planner.getProjects()) {
             System.out.println(project.getTitle());
         }
@@ -199,6 +212,7 @@ public class Terminal {
         String in = input.next();
         User user = planner.getUser(in);
 
+        System.out.println("-1 for at gå tilbage");
         if (in.equals("-1")) {
             userFeatureScreen();
         }
@@ -224,6 +238,7 @@ public class Terminal {
 
         }
 
+        System.out.println("-1 for at gå tilbage");
         if (in.equals("-1")) {
             userFeatureScreen();
         }
@@ -249,7 +264,6 @@ public class Terminal {
             adminFeatureScreen();
         }
 
-        System.out.println("-1 for at gå tilbage");
         System.out.println("Registrerede brugere: ");
         for (User user: planner.getUsers()) {
             System.out.println(user.getCredentials());
@@ -257,11 +271,12 @@ public class Terminal {
         System.out.println("Skriv brugernavnet på den bruger du vil have forfremmet");
         User user = setUser();
 
+        System.out.println("Registrerede projekter: ");
         for (Project project: planner.getProjects()) {
-            System.out.println(user.getCredentials());
+            System.out.println(project.getTitle());
         }
 
-        System.out.println("Skriv brugernavnet på den bruger du vil have forfremmet");
+        System.out.println("Skriv navnet på det projekt du vil have " + user.getCredentials() + " forfremmet i");
         Project project = setProject();
 
         try {
@@ -275,7 +290,30 @@ public class Terminal {
 
     }
 
+    private void removeProjectManager(){
+        if(planner.getProjects().isEmpty()){
+            System.out.println("Ingen registrerede projekter på systemt");
+            adminFeatureScreen();
+        }
 
+        System.out.println("Registrerede projekter: ");
+        for (Project project: planner.getProjects()) {
+            System.out.println(project.getTitle());
+        }
+
+        System.out.println("Skriv navnet på det projekt hvor du vil fjerne manageren");
+        Project project = setProject();
+
+        try {
+            planner.removeProjectManager(project);
+            System.out.println("Manageren fra " + project.getTitle() + " er nu fjernet");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        adminFeatureScreen();
+
+    }
 
     private void createActivity() {
         System.out.println("-1 for at gå tilbage");
@@ -346,17 +384,26 @@ public class Terminal {
         if (x.equals("1")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
+            try {
+                planner.createProject(new Project(titel,start,end));
+                userFeatureScreen();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+                createProject();
+            }
         } else if (x.equals("2")) {
             try {
                 planner.createProject(new Project(titel,start,end));
                 userFeatureScreen();
             } catch (OperationNotAllowedException | AuthenticationException e) {
                 System.out.println(e.getMessage());
+                createProject();
             }
         } else {
             System.out.println("Forkerte information - prøv igen");
             createProject();
         }
+
     }
 
     private void registerTime() {
