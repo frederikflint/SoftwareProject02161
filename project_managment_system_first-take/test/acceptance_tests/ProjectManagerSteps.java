@@ -90,14 +90,24 @@ public class ProjectManagerSteps {
         assertTrue(planner.getAvailableUsers(startTime, endTime).contains(user));
     }
 
-
-    @Given("^that the developer is not a project manager$")
-    public void thatTheDeveloperIsNotAProjectManager() throws Exception {
+    @Given("^a valid project is defined$")
+    public void aValidProjectIsDefined() throws Exception {
         project = projectHelper.getValidProject();
-
-        planner.createProject(project);
-        assertFalse(project.getManager().equals(planner.getActiveUser()));
     }
+
+    @Given("^the developer is not a project manager$")
+    public void theDeveloperIsNotAProjectManager() throws Exception {
+        assertFalse(planner.activeUser.equals(project.getManager()));
+    }
+
+
+//    @Given("^that the developer is not a project manager$")
+//    public void thatTheDeveloperIsNotAProjectManager() throws Exception {
+//        project = projectHelper.getValidProject();
+//
+//        planner.createProject(project);
+//        assertFalse(project.getManager().equals(planner.getActiveUser()));
+//    }
 }
 
 
