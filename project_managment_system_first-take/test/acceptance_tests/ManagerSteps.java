@@ -38,8 +38,9 @@ public class ManagerSteps {
     }
 
 
-    @Given("^that a project has no project manager$")
-    public void thatAProjectHasNoProjectManager() throws Exception {
+    @Given("^that the project has no project manager$")
+    public void thatTheProjectHasNoProjectManager() throws Exception {
+        System.out.println(project);
         assertEquals(project.getManager(), null);
     }
 

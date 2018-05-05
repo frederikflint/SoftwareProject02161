@@ -1937,11 +1937,11 @@ formatter.result({
 formatter.uri("use_cases/Set_Project_Manager_Status.feature");
 formatter.feature({
   "name": "Set project manager status",
-  "description": "  Description: Register developer as project manager\n  Actors: Admin",
+  "description": "  Description: Promote developer to project manager\n  Actors: Administrator",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "Administrator assigns a developer as project manager to a project.",
+  "name": "Administrator promotes a developer to project manager of a project.",
   "description": "",
   "keyword": "Scenario"
 });
@@ -1956,73 +1956,25 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "a project is defined",
-  "keyword": "And "
-});
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
-formatter.step({
-  "name": "that a project has no project manager",
+  "name": "a valid project is defined",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ManagerSteps.thatAProjectHasNoProjectManager()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "a developer is defined",
-  "keyword": "And "
-});
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
-formatter.step({
-  "name": "the admin assigns user to project manager",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ManagerSteps.theAdminAssignsUserToProjectManager()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "the user is project manager",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "ManagerSteps.theUserIsProjectManager()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.scenario({
-  "name": "Assign project manager status when project already has a project manager",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "that the administrator is logged in",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ManagerSteps.thatTheAdministratorIsLoggedIn()"
+  "location": "ProjectManagerSteps.aValidProjectIsDefined()"
 });
 formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "a project is defined",
+  "name": "that the project has no project manager",
   "keyword": "And "
 });
-formatter.match({});
+formatter.match({
+  "location": "ManagerSteps.thatTheProjectHasNoProjectManager()"
+});
 formatter.result({
-  "status": "undefined"
+  "error_message": "java.lang.NullPointerException\r\n\tat acceptance_tests.ManagerSteps.thatTheProjectHasNoProjectManager(ManagerSteps.java:44)\r\n\tat ✽.that the project has no project manager(use_cases/Set_Project_Manager_Status.feature:8)\r\n",
+  "status": "failed"
 });
 formatter.step({
   "name": "a developer is defined",
@@ -2031,136 +1983,6 @@ formatter.step({
 formatter.match({});
 formatter.result({
   "status": "undefined"
-});
-formatter.step({
-  "name": "a project has a project manager",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ManagerSteps.aProjectHasAProjectManager()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "the admin assigns user to project manager",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ManagerSteps.theAdminAssignsUserToProjectManager()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "I get the error message \"Project already has a registered project manager\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "UserSteps.iGetTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.scenario({
-  "name": "Remove project manager status",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "that the administrator is logged in",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ManagerSteps.thatTheAdministratorIsLoggedIn()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "a project is defined",
-  "keyword": "And "
-});
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
-formatter.step({
-  "name": "a developer is defined",
-  "keyword": "And "
-});
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
-formatter.step({
-  "name": "a project has a project manager",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ManagerSteps.aProjectHasAProjectManager()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "the administrator removes the project manager status from the user",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ManagerSteps.theAdministratorRemovesTheProjectManagerStatusFromTheUser()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "the developer is no longer project manager",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "ManagerSteps.theDeveloperIsNoLongerProjectManager()"
-});
-formatter.result({
-  "status": "skipped"
-});
-formatter.scenario({
-  "name": "Assigns a developer as project manager to a project without admin rights.",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "a developer is defined",
-  "keyword": "Given "
-});
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
-formatter.step({
-  "name": "that a developer is logged in",
-  "keyword": "And "
-});
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
-formatter.step({
-  "name": "a project is defined",
-  "keyword": "And "
-});
-formatter.match({});
-formatter.result({
-  "status": "undefined"
-});
-formatter.step({
-  "name": "that a project has no project manager",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ManagerSteps.thatAProjectHasNoProjectManager()"
-});
-formatter.result({
-  "status": "skipped"
 });
 formatter.step({
   "name": "the admin assigns user to project manager",
