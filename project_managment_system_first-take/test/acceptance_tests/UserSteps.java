@@ -120,7 +120,6 @@ public class UserSteps {
         try {
 
         } catch (Exception e){
-            System.out.println(e.getMessage());
             assertThat(e.getMessage(), is(equalTo(arg1)));
         }
     }
