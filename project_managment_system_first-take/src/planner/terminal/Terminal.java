@@ -29,7 +29,7 @@ public class Terminal {
 
     private void fakeSetup(){
         /**
-         * FAKE data
+         * FAKE data for the planner
          */
         planner.users.add(new User("test","test"));
         planner.projects.add(new Project("projekt", null,null));
@@ -74,9 +74,9 @@ public class Terminal {
         String in = input.nextLine();
 
         if (in.equals("1")){
-            getUserList();
+            getPlannerUserList();
         } else if (in.equals("2")) {
-            getProjectList();
+            getPlannerProjectList();
         }else if (in.equals("3")){
             registerUser();
         } else if (in.equals("4")) {
@@ -149,7 +149,7 @@ public class Terminal {
         adminFeatureScreen();
     }
 
-    private void getUserList(){
+    private void getPlannerUserList(){
 
         if(planner.getUsers().isEmpty()){
             System.out.println("Ingen registrerede brugere på systemt");
@@ -164,7 +164,7 @@ public class Terminal {
         adminFeatureScreen();
     }
 
-    private void getProjectList(){
+    private void getPlannerProjectList(){
         if(planner.getUsers().isEmpty()){
             System.out.println("Ingen registrerede projekter på systemt");
             adminFeatureScreen();

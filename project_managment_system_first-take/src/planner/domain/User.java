@@ -18,6 +18,9 @@ public class User {
     // Is the user a adminHelper of the system
     protected Boolean isAdmin = false;
 
+    // The projects the user are managing
+    private List<Project> managerProjects = new ArrayList<>();
+
     // User activities
     private List<Activity> activities = new ArrayList<Activity>();
 
@@ -103,6 +106,10 @@ public class User {
         }
     }
 
+    public void addManageProject(Project project){
+        managerProjects.add(project);
+    }
+
     /**
      * Remove a project from the user.
      * @param project
@@ -114,6 +121,10 @@ public class User {
         } else {
             projects.remove(project);
         }
+    }
+
+    public void removeManagerProject(Project project){
+        managerProjects.remove(project);
     }
 
     // TODO: Skal forbedres til terminal-udgave...

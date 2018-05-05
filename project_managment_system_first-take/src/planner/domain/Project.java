@@ -176,7 +176,7 @@ public class Project {
      *  Setters and getters   *
      **************************/
 
-    public void setProjectManager(User projectManager ) {
+    public void setProjectManager(User projectManager ){
         this.manager = projectManager;
     }
 

@@ -279,7 +279,14 @@ public class Planner {
             throw new OperationNotAllowedException("Project already has a registered project manager");
         }
 
+        // Admin has the rights to just add the user
+        project.addUser(user);
+        user.addProject(project);
+
+        // Set the manager association
         project.setProjectManager(user);
+        project.getManager().addManageProject(project);
+
     }
 
     /**
@@ -289,7 +296,11 @@ public class Planner {
      */
     public void removeProjectManager(Project project) throws AuthenticationException{
         checkAdminSession();
+
+        // Remove the manager association
+        project.getManager().removeManagerProject(project);
         project.setProjectManager(null);
+
     }
     
     /*********************
