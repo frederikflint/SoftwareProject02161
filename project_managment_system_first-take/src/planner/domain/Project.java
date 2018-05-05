@@ -1,8 +1,11 @@
 package planner.domain;
 
 import planner.app.OperationNotAllowedException;
+
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
+import java.util.Objects;
 
 /**
  * A project of the planner
@@ -10,10 +13,10 @@ import java.util.List;
 public class Project {
 
     // List of project activities
-    private List<Activity> activities;
+    private List<Activity> activities = new ArrayList<>();
 
     // List of project users
-    private List<User> users;
+    private List<User> users = new ArrayList<>();
 
     // Project manager
     private User manager;
@@ -80,6 +83,25 @@ public class Project {
             activities.add(activty);
         }
     }
+
+    public List<Activity> getActivities(){
+        return activities;
+    }
+
+    public Activity getActivity(String title){
+        // Set the initial currentProject as null.
+        Activity currentActivity = null;
+
+        for (Activity activity : activities) {
+
+            // Does the search params match.
+            if (Objects.equals(activity.getTitle(), title)){
+                currentActivity =  activity;
+            }
+        }
+        return currentActivity;
+    }
+
 
     /**
      * Remove a given activity form the project

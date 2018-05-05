@@ -28,6 +28,7 @@ public class UserSteps {
     private Planner planner;
     private User user;
     private Project project;
+    private Activity activity;
 
     private ActivityHelper activityHelper;
     private ErrorMessageHolder errorMessage;
@@ -131,7 +132,7 @@ public class UserSteps {
         startDate.set(1,1);
         endDate.set(2,1);
         planner.createProject(new Project(arg1,startDate,endDate));
-        assertTrue(planner.getProject(arg1)!=null);
+        assertTrue(planner.getProjects().contains(planner.getProject(arg1)));
     }
 
     @When("^the administrator deletes the project with title \"([^\"]*)\"$")
@@ -184,5 +185,83 @@ public class UserSteps {
         assertEquals(planner.getActiveUser().getActivities().isEmpty(), true);
 
     }
+
+    @Given("^the developer enters a valid activity$")
+    public void theDeveloperEntersAValidActivity() throws Exception {
+        activity = activityHelper.getActivity();
+    }
+
+    @When("^the developer creates the activity$")
+    public void theDeveloperCreatesTheActivity() throws Exception {
+        try {
+            planner.activeUser.addActivity(activity);
+        } catch (OperationNotAllowedException e){
+            e.getMessage();
+        }
+    }
+
+    @Then("^the activity is created$")
+    public void theActivityIsCreated() throws Exception {
+        planner.activeUser.getActivities().contains(activity);
+    }
+
+    @Given("^the developer enters an activity with an invalid start date$")
+    public void theDeveloperEntersAnActivityWithAnInvalidStartDate() throws Exception {
+        activity = activityHelper.getInvalidActivity();
+    }
+
+    @Given("^the user is a part of the project$")
+    public void theUserIsAPartOfTheProject() throws Exception {
+        planner.getProject("Heisenberg").setProjectManager(planner.activeUser);
+        planner.getProject("Heisenberg").addUser(planner.activeUser);
+    }
+
+
+    @When("^the project manager creates the project activity$")
+    public void theProjectManagerCreatesTheProjectActivity() throws Exception {
+        planner.getProject("Heisenberg").addActivity(activity,planner.activeUser);
+    }
+
+    @Then("^the activity is added to the project$")
+    public void theActivityIsAddedToTheProject() throws Exception {
+        assertTrue(planner.getProject("Heisenberg").getActivities().contains(activity));
+    }
+
+    @Given("^there is a activity with the title \"([^\"]*)\" defined$")
+    public void thereIsAActivityWithTheTitleDefined(String arg1) throws Exception {
+        Calendar startDate = Calendar.getInstance();
+        Calendar endDate = Calendar.getInstance();
+        startDate.set(2018,0,0,0,0);
+        endDate.set(2018,1,0,0,0);
+        activity = new Activity(startDate,endDate,arg1);
+        planner.activeUser.addActivity(activity);
+
+        assertTrue(planner.activeUser.getActivities().contains(activity));
+    }
+
+    @When("^the developer removes the activity$")
+    public void theDeveloperRemovesTheActivity() throws Exception {
+        planner.activeUser.removeActivity(activity);
+    }
+
+    @Then("^the activity is removed$")
+    public void theActivityIsRemoved() throws Exception {
+        assertFalse(planner.activeUser.getActivities().contains(activity));
+    }
+
+    @When("^the project manager removes the activity with title \"([^\"]*)\"$")
+    public void theProjectManagerRemovesTheActivityWithTitle(String arg1) throws Exception {
+        try{
+            planner.getProject("Heisenberg").removeActivity(planner.getProject("Heisenberg").getActivity(arg1),planner.activeUser);
+        } catch (OperationNotAllowedException e){
+            e.getMessage();
+        }
+    }
+
+    @Then("^the activity with title \"([^\"]*)\" is removed from the project$")
+    public void theActivityWithTitleIsRemovedFromTheProject(String arg1) throws Exception {
+        assertFalse(planner.getProject("Heisenberg").getActivities().contains(planner.getProject("Heisenberg").getActivity(arg1)));
+    }
+
 
 }
