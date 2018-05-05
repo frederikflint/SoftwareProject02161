@@ -279,7 +279,7 @@ public class Terminal {
 
         try {
             planner.assignProjectManager(user, project);
-            System.out.println("Brugeren " + user.getCredentials() + " er nu manager for " + project.getTitle());
+            System.out.println("Brugeren " + user.getCredentials() + " er nu manager for projektet " + project.getTitle());
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
