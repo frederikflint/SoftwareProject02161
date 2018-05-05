@@ -80,5 +80,9 @@ public class Activity {
         return users;
     }
 
+    public String getTitle() {
+        return ID;
+    }
+
 
 }

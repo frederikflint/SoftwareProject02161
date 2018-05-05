@@ -319,6 +319,7 @@ public class Planner {
                 foundUser =  user;
             }
         }
+
         return foundUser;
     }
 
@@ -395,6 +396,21 @@ public class Planner {
             }
         }
         return currentProject;
+    }
+
+    public Activity getActivity(String title) throws OperationNotAllowedException {
+
+        // Set the initial currentProject as null.
+        Activity currentActivity = null;
+
+        for (Activity activity : getActiveUser().getActivities()) {
+
+            // Does the search params match.
+            if (activity.getID().equals(title)){
+                currentActivity =  activity;
+            }
+        }
+        return currentActivity;
     }
 
     public List<User> getUsers() {
