@@ -345,8 +345,6 @@ public class Planner {
                     if (!(workHour.getStartTime().equals(activityStartTime)) && !(workHour.getEndTime().equals(activityEndTime))) {
                         availableUsers.add(user);
                     }
-                } else {
-                    break;
                 }
             }
         }

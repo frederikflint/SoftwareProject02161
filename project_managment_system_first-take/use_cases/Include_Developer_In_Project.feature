@@ -1,26 +1,21 @@
-#Feature: Include developer in project
-#  Description: Project manager includes a developer in a project
-#  Actors: Project manager
-#
-#  Scenario: The project manager includes a developer in a project
-#    Given that a developer is logged in
-#    And that the developer is a project manager
-#    And a developer is available
+Feature: Include developer in project
+  Description: Project manager includes a developer in a project
+  Actors: Project manager
+
+  Scenario: The project manager adds a developer to a project
+    Given that the developer is logged in
+    And that the developer is a project manager
+    And that a developer is available
+    When the project manager adds the developer to the project
+    Then the developer is included in the project
+
+#  Scenario: A project manager who is not logged in tries to add a developer
+#  to a project
+#    Given that the user is not logged in
+#    And that a developer is available
 #    When the project manager adds the developer to the project
-#    Then the developer is included in the project
-#
-#  Scenario: A project manager is not logged in, trying to include a developer
-#  in a project
-#    Given that the project manager is not logged in
-#    And a developer is available
-#    When the project manager adds the developer to the project
-#    Then I get the error message "This action required project manager rights"
-#
-#  Scenario: A project manager includes an unavailable developer in a project
-#    Given that the project manager is logged in
-#    And a developer is unavailable
-#    When the project manager adds the developer to the project
-#    Then I get the error message "Developer is not available in this period"
+#    Then I get the error message "This action requires project manager rights"
+
 #
 #  Scenario: A project manager assigns a available developer to an activity
 #    Given that the project manager is logged in
