@@ -64,13 +64,17 @@ public class ProjectManagerSteps {
         assertTrue(planner.getAvailableUsers(startTime, endTime) != null);
     }
 
-    @When("^the project manager adds the developer to the project$")
-    public void theProjectManagerAddsTheDeveloperToTheProject() throws Exception {
-        project.addUser(user);
+    @When("^the developer adds a developer to the project$")
+    public void theDeveloperAddsADeveloperToTheProject() throws Exception {
+        try {
+            project.addUser(user);
+        } catch (OperationNotAllowedException e) {
+            e.getMessage();
+        }
     }
 
-    @Then("^the developer is included in the project$")
-    public void theDeveloperIsIncludedInTheProject() throws Exception {
+    @Then("^the developer is added to the project$")
+    public void theDeveloperIsAddedToTheProject() throws Exception {
         assertTrue(project.getUsers().contains(user));
     }
 
@@ -80,16 +84,38 @@ public class ProjectManagerSteps {
         planner.users.add(user);
         Calendar startTime = Calendar.getInstance();
         Calendar endTime = Calendar.getInstance();
-        startTime.set(2018,3, 21,12,30);
-        endTime.set(2018,4, 21,12,30);
+        startTime.set(2018, 3, 21, 12, 30);
+        endTime.set(2018, 4, 21, 12, 30);
 
-        activity = new Activity(startTime,endTime,"activity");
+        activity = new Activity(startTime, endTime, "activity");
         user.addActivity(activity);
-        planner.getActiveUser().registerTime(activity,startTime,endTime,user);
+        planner.getActiveUser().registerTime(activity, startTime, endTime, user);
 
-        assertTrue(planner.getAvailableUsers(startTime,endTime).contains(user));
+        assertTrue(planner.getAvailableUsers(startTime, endTime).contains(user));
     }
 
+    @Given("^a valid project is defined$")
+    public void aValidProjectIsDefined() throws Exception {
+        project = projectHelper.getValidProject();
+    }
+
+    @Given("^the developer is not a project manager$")
+    public void theDeveloperIsNotAProjectManager() throws Exception {
+        assertFalse(planner.activeUser.equals(project.getManager()));
+    }
+
+    @Then("^the developer is not added to the project$")
+    public void theDeveloperIsNotIncludedInTheProject() throws Exception {
+        assertFalse(project.getUsers().contains(user));
+    }
+
+//    @Given("^that the developer is not a project manager$")
+//    public void thatTheDeveloperIsNotAProjectManager() throws Exception {
+//        project = projectHelper.getValidProject();
+//
+//        planner.createProject(project);
+//        assertFalse(project.getManager().equals(planner.getActiveUser()));
+//    }
 }
 
 
