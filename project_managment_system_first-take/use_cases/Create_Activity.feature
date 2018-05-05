@@ -19,7 +19,7 @@ Feature: Add activity
     And that the developer is a project manager
     And a project with title "Heisenberg" is defined
     And the developer enters a valid activity
-    And the user is a part of the project
+    And the developer is a part of the project
     When the project manager creates the project activity
     Then the activity is added to the project
 #

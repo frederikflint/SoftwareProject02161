@@ -66,11 +66,15 @@ public class ProjectManagerSteps {
 
     @When("^the developer adds a developer to the project$")
     public void theDeveloperAddsADeveloperToTheProject() throws Exception {
-        project.addUser(user);
+        try {
+            project.addUser(user);
+        } catch (OperationNotAllowedException e) {
+            e.getMessage();
+        }
     }
 
-    @Then("^the developer is included in the project$")
-    public void theDeveloperIsIncludedInTheProject() throws Exception {
+    @Then("^the developer is added to the project$")
+    public void theDeveloperIsAddedToTheProject() throws Exception {
         assertTrue(project.getUsers().contains(user));
     }
 
@@ -100,6 +104,10 @@ public class ProjectManagerSteps {
         assertFalse(planner.activeUser.equals(project.getManager()));
     }
 
+    @Then("^the developer is not added to the project$")
+    public void theDeveloperIsNotIncludedInTheProject() throws Exception {
+        assertFalse(project.getUsers().contains(user));
+    }
 
 //    @Given("^that the developer is not a project manager$")
 //    public void thatTheDeveloperIsNotAProjectManager() throws Exception {

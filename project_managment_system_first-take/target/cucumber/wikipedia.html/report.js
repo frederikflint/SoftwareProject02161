@@ -140,11 +140,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is a part of the project",
+  "name": "the developer is a part of the project",
   "keyword": "And "
 });
 formatter.match({
-  "location": "UserSteps.theUserIsAPartOfTheProject()"
+  "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
 });
 formatter.result({
   "status": "passed"
@@ -881,6 +881,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "a valid project is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefined()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "that a developer is available",
   "keyword": "And "
 });
@@ -901,11 +911,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the developer is included in the project",
+  "name": "the developer is added to the project",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "ProjectManagerSteps.theDeveloperIsIncludedInTheProject()"
+  "location": "ProjectManagerSteps.theDeveloperIsAddedToTheProject()"
 });
 formatter.result({
   "status": "passed"
@@ -936,6 +946,17 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "the developer is a part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
+});
+formatter.result({
+  "error_message": "java.lang.NullPointerException\r\n\tat acceptance_tests.UserSteps.theDeveloperIsAPartOfTheProject(UserSteps.java:215)\r\n\tat ✽.the developer is a part of the project(use_cases/Include_Developer_In_Project.feature:16)\r\n",
+  "status": "failed"
+});
+formatter.step({
   "name": "the developer is not a project manager",
   "keyword": "And "
 });
@@ -943,7 +964,7 @@ formatter.match({
   "location": "ProjectManagerSteps.theDeveloperIsNotAProjectManager()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "that a developer is available",
@@ -953,7 +974,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatADeveloperIsAvailable()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
   "name": "the developer adds a developer to the project",
@@ -963,17 +984,17 @@ formatter.match({
   "location": "ProjectManagerSteps.theDeveloperAddsADeveloperToTheProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.step({
-  "name": "the developer is included in the project",
+  "name": "the developer is not added to the project",
   "keyword": "Then "
 });
 formatter.match({
-  "location": "ProjectManagerSteps.theDeveloperIsIncludedInTheProject()"
+  "location": "ProjectManagerSteps.theDeveloperIsNotIncludedInTheProject()"
 });
 formatter.result({
-  "status": "passed"
+  "status": "skipped"
 });
 formatter.uri("use_cases/List_Of_Activities.feature");
 formatter.feature({
@@ -1444,11 +1465,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is a part of the project",
+  "name": "the developer is a part of the project",
   "keyword": "And "
 });
 formatter.match({
-  "location": "UserSteps.theUserIsAPartOfTheProject()"
+  "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
 });
 formatter.result({
   "status": "passed"
@@ -1519,11 +1540,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is a part of the project",
+  "name": "the developer is a part of the project",
   "keyword": "And "
 });
 formatter.match({
-  "location": "UserSteps.theUserIsAPartOfTheProject()"
+  "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
 });
 formatter.result({
   "status": "passed"
@@ -1594,11 +1615,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is a part of the project",
+  "name": "the developer is a part of the project",
   "keyword": "And "
 });
 formatter.match({
-  "location": "UserSteps.theUserIsAPartOfTheProject()"
+  "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
 });
 formatter.result({
   "status": "passed"
