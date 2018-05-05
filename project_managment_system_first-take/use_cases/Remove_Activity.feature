@@ -1,12 +1,21 @@
-#Feature: Remove activity
-#  Description: An activity is removed by developer or project manager
-#  Actors: Developer or project manager
-#
-#  Scenario: Remove a personal activity
-#    Given that the developer is logged in
-#    And there is a personal activity with a given title and type
-#    When that activity is removed
-#    Then that activity is removed from the developer activities
+Feature: Remove activity
+  Description: An activity is removed by developer or project manager
+  Actors: Developer or project manager
+
+  Scenario: Remove a personal activity
+    Given that a developer is logged in
+    And there is a activity with the title "Herimundus" defined
+    When the developer removes the activity
+    Then the activity is removed
+
+  Scenario: Remove a project activity
+    Given that a developer is logged in
+    And a project with title "Heisenberg" is defined
+    And that the developer is a project manager
+    And the user is a part of the project
+    And there is a activity with the title "Herimundus" defined
+    When the project manager removes the activity with title "Herimundus"
+    Then the activity with title "Herimundus" is removed from the project
 #
 #  Scenario: Remove a project activity
 #    Given a project manager is logged in
