@@ -270,10 +270,7 @@ public class Terminal {
         }
 
         adminFeatureScreen();
-
     }
-
-
 
     private void createActivity() {
         System.out.println("-1 for at gå tilbage");
@@ -369,7 +366,6 @@ public class Terminal {
         try {
             activity = planner.getActivity(ID);
             registerTimeStepTwo(activity);
-
         } catch (OperationNotAllowedException e) {
             System.out.println(e.getMessage());
             registerTime();
@@ -401,7 +397,7 @@ public class Terminal {
         hour = input.next();
 
         if (hour.equals("-1")) {
-
+            userFeatureScreen();
         } else if (hour.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23")) {
             System.out.println("Hvilket minut i timen?");
             System.out.println("0 - 59");
