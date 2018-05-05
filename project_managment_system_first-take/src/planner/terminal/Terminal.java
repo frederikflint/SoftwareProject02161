@@ -98,7 +98,7 @@ public class Terminal {
     }
 
     private void createActivity() {
-        System.out.println("Opretter projekt:");
+        System.out.println("Opretter aktivitet:");
         System.out.println("Indtast titel:");
         String titel = input.next();
         Calendar start = Calendar.getInstance();
