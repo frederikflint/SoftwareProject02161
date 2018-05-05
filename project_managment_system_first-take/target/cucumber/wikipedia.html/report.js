@@ -852,11 +852,11 @@ formatter.result({
 formatter.uri("use_cases/Include_Developer_In_Project.feature");
 formatter.feature({
   "name": "Include developer in project",
-  "description": "  Description: Project manager includes a developer in a project\n  Actors: Project manager",
+  "description": "  Description: Project manager includes a developer in a project\n  Actors: Developer",
   "keyword": "Feature"
 });
 formatter.scenario({
-  "name": "The project manager adds a developer to a project",
+  "name": "The developer who is a project manager adds a developer to a project",
   "description": "",
   "keyword": "Scenario"
 });
@@ -891,11 +891,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the project manager adds the developer to the project",
+  "name": "the developer adds a developer to the project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "ProjectManagerSteps.theProjectManagerAddsTheDeveloperToTheProject()"
+  "location": "ProjectManagerSteps.theDeveloperAddsADeveloperToTheProject()"
 });
 formatter.result({
   "status": "passed"
@@ -926,11 +926,21 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "that the developer is a project manager",
+  "name": "a valid project is defined",
   "keyword": "And "
 });
 formatter.match({
-  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
+  "location": "ProjectManagerSteps.aValidProjectIsDefined()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is not a project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theDeveloperIsNotAProjectManager()"
 });
 formatter.result({
   "status": "passed"
@@ -946,11 +956,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the project manager adds the developer to the project",
+  "name": "the developer adds a developer to the project",
   "keyword": "When "
 });
 formatter.match({
-  "location": "ProjectManagerSteps.theProjectManagerAddsTheDeveloperToTheProject()"
+  "location": "ProjectManagerSteps.theDeveloperAddsADeveloperToTheProject()"
 });
 formatter.result({
   "status": "passed"
