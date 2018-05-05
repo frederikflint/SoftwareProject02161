@@ -46,8 +46,8 @@ public class Planner {
         // Go through each of the registered Developers and check the password and credentials.
         // If the current one is present set that user as an active user session.
         for (User user : users) {
-            if (Objects.equals(user.getCredentials(), credentials) &&
-                    Objects.equals(user.getPassword(), password)) {
+            if ((user.getCredentials().equals(credentials)) &&
+                    (user.getPassword().equals(password))) {
                 //Set the active session
                 activeUser = user;
             } else {
