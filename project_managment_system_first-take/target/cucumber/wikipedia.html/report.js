@@ -10,11 +10,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -55,11 +55,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -100,11 +100,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -140,11 +140,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is a part of the project",
+  "name": "the developer is a part of the project",
   "keyword": "And "
 });
 formatter.match({
-  "location": "UserSteps.theUserIsAPartOfTheProject()"
+  "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
 });
 formatter.result({
   "status": "passed"
@@ -322,11 +322,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -367,11 +367,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -412,11 +412,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -849,6 +849,153 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("use_cases/Include_Developer_In_Project.feature");
+formatter.feature({
+  "name": "Include developer in project",
+  "description": "  Description: Project manager includes a developer in a project\n  Actors: Developer",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "The developer who is a project manager adds a developer to a project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that the developer is a project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a valid project is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefined()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that a developer is available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatADeveloperIsAvailable()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer adds a developer to the project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theDeveloperAddsADeveloperToTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is added to the project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theDeveloperIsAddedToTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "The developer is not project manager and adds a developer to a project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a valid project is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefined()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is a part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
+});
+formatter.result({
+  "error_message": "java.lang.NullPointerException\r\n\tat acceptance_tests.UserSteps.theDeveloperIsAPartOfTheProject(UserSteps.java:215)\r\n\tat ✽.the developer is a part of the project(use_cases/Include_Developer_In_Project.feature:16)\r\n",
+  "status": "failed"
+});
+formatter.step({
+  "name": "the developer is not a project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theDeveloperIsNotAProjectManager()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.step({
+  "name": "that a developer is available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatADeveloperIsAvailable()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.step({
+  "name": "the developer adds a developer to the project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theDeveloperAddsADeveloperToTheProject()"
+});
+formatter.result({
+  "status": "skipped"
+});
+formatter.step({
+  "name": "the developer is not added to the project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theDeveloperIsNotIncludedInTheProject()"
+});
+formatter.result({
+  "status": "skipped"
+});
 formatter.uri("use_cases/List_Of_Activities.feature");
 formatter.feature({
   "name": "List of activities",
@@ -861,11 +1008,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -906,11 +1053,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -945,122 +1092,6 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
-formatter.uri("use_cases/List_Of_Available_Developers.feature");
-formatter.feature({
-  "name": "list of available developers",
-  "description": "  Description: project manager gets a list of available developers\n  Actors: Project manager",
-  "keyword": "Feature"
-});
-formatter.scenario({
-  "name": "Project manager checks list of available developers",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "that a developer is logged in",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "that the developer is a project manager",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "that a developer is available",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.thatADeveloperIsAvailable()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the project manager retrieves the list",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theProjectManagerRetrievesTheList()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the available developers appear on the available list",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theAvailableDevelopersAppearOnTheAvailableList()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Project manager check an empty list of available developers",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "that a developer is logged in",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "that the developer is a project manager",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "that no developer is available",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.thatNoDeveloperIsAvailable()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the project manager retrieves the list",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theProjectManagerRetrievesTheList()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "I get the error message \"No developer is currently available\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "UserSteps.iGetTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
 formatter.uri("use_cases/Register_Time.feature");
 formatter.feature({
   "name": "Register time",
@@ -1073,11 +1104,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1123,16 +1154,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "developer registers time to a project the developer is not registered to",
+  "name": "developer registers time to an activity the developer is not registered to",
   "description": "",
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1173,11 +1204,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1218,11 +1249,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1263,11 +1294,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1314,11 +1345,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1354,16 +1385,61 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
+  "name": "Remove a personal activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a activity with the title \"Herimundus\" is not defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.thereIsAActivityWithTheTitleIsNotDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer removes the activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperRemovesTheActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity is removed",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.theActivityIsRemoved()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
   "name": "Remove a project activity",
   "description": "",
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1389,11 +1465,161 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the user is a part of the project",
+  "name": "the developer is a part of the project",
   "keyword": "And "
 });
 formatter.match({
-  "location": "UserSteps.theUserIsAPartOfTheProject()"
+  "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a activity with the title \"Herimundus\" defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.thereIsAActivityWithTheTitleDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager removes the activity with title \"Herimundus\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theProjectManagerRemovesTheActivityWithTitle(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity with title \"Herimundus\" is removed from the project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.theActivityWithTitleIsRemovedFromTheProject(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Remove a project activity failure",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a project with title \"Heisenberg\" is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.aProjectWithTitleIsDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that the developer is a project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is a part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is not an activity with the title \"Herimundus\" defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.thereIsNotAnActivityWithTheTitleDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager removes the activity with title \"Herimundus\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theProjectManagerRemovesTheActivityWithTitle(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"No such activity defined\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Remove a project activity unsuccessfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a project with title \"Heisenberg\" is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.aProjectWithTitleIsDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is not project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperIsNotProjectManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is a part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
 });
 formatter.result({
   "status": "passed"

@@ -40,7 +40,6 @@ public class Terminal {
         logIn();
     }
 
-
     private void logIn() {
         System.out.println("Log ind");
         System.out.println("Indtast brugernavn:");
@@ -60,7 +59,6 @@ public class Terminal {
             System.out.println(e.getMessage());
             startPrompt();
         }
-
 
     }
 
@@ -330,8 +328,7 @@ public class Terminal {
         if (x.equals("1")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
-            
-        } else  if (x.equals("2")) {
+        } else if (x.equals("2")) {
             //TODO: Create activity i planner ????
             try {
                 planner.getActiveUser().addActivity(new Activity(start, end, titel));
@@ -351,17 +348,16 @@ public class Terminal {
         System.out.println(" 0: Januar \n 1: Februar \n 2: Marts \n 3: April \n 4: Maj \n 5: Juni \n 6: Juli \n" +
                 " 7: August \n 8: September \n 9: Oktober \n 10: November \n 11: December");
         month = input.next();
-
-        if (month.matches("0|1|2|3|4|5|6|7|8|9|10|11")) {
+        if (month.equals("-1")) {
+            userFeatureScreen();
+        } else if (month.matches("0|1|2|3|4|5|6|7|8|9|10|11")) {
             System.out.println("Hvilken dag i måneden?");
-            System.out.println("1 - 31");
+            System.out.println("0 - 30");
             day = input.next();
-            if (!day.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31")) {
+            if (!day.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30")) {
                 System.out.println("Prøv igen");
                 setMonthAndDay();
             }
-        } else if (month.equals("-1")) {
-            createActivity();
         } else {
             System.out.println("Prøv igen");
             setMonthAndDay();
@@ -447,11 +443,13 @@ public class Terminal {
     }
 
     public void setHourAndMinute(){
-        System.out.println("Indtast time på dagen (0-23:");
-        //System.out.println("Indtast -1 for at gå tilbage");
+        System.out.println("Indtast time på dagen (0-23):");
+        System.out.println("Indtast -1 for at gå tilbage");
         hour = input.next();
 
-        if (hour.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23")) {
+        if (hour.equals("-1")) {
+
+        } else if (hour.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23")) {
             System.out.println("Hvilket minut i timen?");
             System.out.println("0 - 59");
             day = input.next();
@@ -459,8 +457,6 @@ public class Terminal {
                 System.out.println("Prøv igen");
                 setHourAndMinute();
             }
-        } else if (hour.equals("-1")) {
-            createActivity();
         } else {
             System.out.println("Prøv igen");
             setHourAndMinute();

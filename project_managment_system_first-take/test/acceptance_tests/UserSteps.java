@@ -210,8 +210,8 @@ public class UserSteps {
         activity = activityHelper.getInvalidActivity();
     }
 
-    @Given("^the user is a part of the project$")
-    public void theUserIsAPartOfTheProject() throws Exception {
+    @Given("^the developer is a part of the project$")
+    public void theDeveloperIsAPartOfTheProject() throws Exception {
         planner.getProject("Heisenberg").setProjectManager(planner.activeUser);
         planner.getProject("Heisenberg").addUser(planner.activeUser);
     }
@@ -241,7 +241,11 @@ public class UserSteps {
 
     @When("^the developer removes the activity$")
     public void theDeveloperRemovesTheActivity() throws Exception {
-        planner.activeUser.removeActivity(activity);
+        try {
+            planner.activeUser.removeActivity(activity);
+        } catch (OperationNotAllowedException e){
+            e.getMessage();
+        }
     }
 
     @Then("^the activity is removed$")
@@ -263,5 +267,20 @@ public class UserSteps {
         assertFalse(planner.getProject("Heisenberg").getActivities().contains(planner.getProject("Heisenberg").getActivity(arg1)));
     }
 
+    @Given("^there is not an activity with the title \"([^\"]*)\" defined$")
+    public void thereIsNotAnActivityWithTheTitleDefined(String arg1) throws Exception {
+        assertFalse(planner.getProject("Heisenberg").getActivities().contains(planner.getProject("Heisenberg").getActivity(arg1)));
+
+    }
+
+    @Given("^there is a activity with the title \"([^\"]*)\" is not defined$")
+    public void thereIsAActivityWithTheTitleIsNotDefined(String arg1) throws Exception {
+        assertFalse(planner.activeUser.getActivities().contains(activity));
+    }
+
+    @Given("^the developer is not project manager$")
+    public void theDeveloperIsNotProjectManager() throws Exception {
+        assertFalse(planner.activeUser.equals(planner.getProject("Heisenberg").getManager()));
+    }
 
 }
