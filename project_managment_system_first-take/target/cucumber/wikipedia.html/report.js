@@ -1,4 +1,175 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Create_Developer.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Create_Activity.feature");
+formatter.feature({
+  "name": "Add activity",
+  "description": "  Description: An activity is added\n  Actors: Developer",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "An activity is created successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that a developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer enters a valid activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperEntersAValidActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer creates the activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperCreatesTheActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity is created",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.theActivityIsCreated()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "The developer doesn\u0027t enter valid start date",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that a developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer enters an activity with an invalid start date",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperEntersAnActivityWithAnInvalidStartDate()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer creates the activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperCreatesTheActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"Invalid time for activity\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Add a project activity successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that a developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that the developer is a project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a project with title \"Heisenberg\" is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.aProjectWithTitleIsDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer enters a valid activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperEntersAValidActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is a part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theUserIsAPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager creates the project activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theProjectManagerCreatesTheProjectActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity is added to the project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.theActivityIsAddedToTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/Create_Developer.feature");
 formatter.feature({
   "name": "Create developer",
   "description": "  Description: Admin creates a developer to the system\n  Actor: Administrator",
@@ -1127,6 +1298,132 @@ formatter.step({
 });
 formatter.match({
   "location": "TimeSteps.theDeveloperGetsTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/Remove_Activity.feature");
+formatter.feature({
+  "name": "Remove activity",
+  "description": "  Description: An activity is removed by developer or project manager\n  Actors: Developer or project manager",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Remove a personal activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that a developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a activity with the title \"Herimundus\" defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.thereIsAActivityWithTheTitleDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer removes the activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperRemovesTheActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity is removed",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.theActivityIsRemoved()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Remove a project activity",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that a developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a project with title \"Heisenberg\" is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.aProjectWithTitleIsDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that the developer is a project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the user is a part of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theUserIsAPartOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "there is a activity with the title \"Herimundus\" defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.thereIsAActivityWithTheTitleDefined(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager removes the activity with title \"Herimundus\"",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theProjectManagerRemovesTheActivityWithTitle(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity with title \"Herimundus\" is removed from the project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.theActivityWithTitleIsRemovedFromTheProject(String)"
 });
 formatter.result({
   "status": "passed"
