@@ -9,7 +9,7 @@ Feature: Register time
     Then the registered time is registered to the activity
     And the registered time is registered to the developer
 
-  Scenario: developer registers time to a project the developer is not registered to
+  Scenario: developer registers time to an activity the developer is not registered to
     Given that a developer is logged in
     And the developer is not assigned to the activity
     When the developer registers time spent on the activity
