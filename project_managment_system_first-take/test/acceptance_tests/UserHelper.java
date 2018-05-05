@@ -6,9 +6,7 @@ public class UserHelper {
     private User user;
 
     public User getUser() {
-        if (user == null) {
-            user = exampleUser();
-        }
+        user = exampleUser();
         return user;
     }
 

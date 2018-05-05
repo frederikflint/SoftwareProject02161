@@ -3,6 +3,7 @@ package acceptance_tests;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.*;
 
@@ -45,7 +46,6 @@ public class ProjectManagerSteps {
 
     @Given("^that the developer is a project manager$")
     public void thatTheDeveloperIsAProjectManager() throws Exception {
-        project = projectHelper.getValidProject();
 
         planner.createProject(project);
         project.setProjectManager(planner.getActiveUser());
@@ -59,7 +59,8 @@ public class ProjectManagerSteps {
 
         Calendar startTime = Calendar.getInstance();
         Calendar endTime = Calendar.getInstance();
-        endTime.add(Calendar.DATE, 1);
+        startTime.set(2018, 5, 21, 12, 30);
+        endTime.set(2018, 6, 21, 12, 30);
 
         assertTrue(planner.getAvailableUsers(startTime, endTime) != null);
     }
@@ -67,9 +68,9 @@ public class ProjectManagerSteps {
     @When("^the developer adds a developer to the project$")
     public void theDeveloperAddsADeveloperToTheProject() throws Exception {
         try {
-            project.addUser(user);
-        } catch (OperationNotAllowedException e) {
-            e.getMessage();
+            planner.assignUserToProject(user,project);
+        } catch (OperationNotAllowedException | AuthenticationException e) {
+            errorMessage.setErrorMessage(e.getMessage());
         }
     }
 
@@ -106,7 +107,17 @@ public class ProjectManagerSteps {
 
     @Then("^the developer is not added to the project$")
     public void theDeveloperIsNotIncludedInTheProject() throws Exception {
+        System.out.println(project.getUsers().contains(user));
         assertFalse(project.getUsers().contains(user));
+
+        assertThat(project.getUsers(),not(hasItem(user)));
+
+    }
+
+    @Given("^that the developer is part of the project$")
+    public void thatTheDeveloperIsPartOfTheProject() throws Exception {
+        //user = userHelper.getUser();
+        project.addUser(planner.getActiveUser());
     }
 
 //    @Given("^that the developer is not a project manager$")

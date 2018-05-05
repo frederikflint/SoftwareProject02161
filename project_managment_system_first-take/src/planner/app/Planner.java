@@ -109,8 +109,11 @@ public class Planner {
      * @param project
      * @throws AuthenticationException Throw if the user haven't got manager right for this project.
      */
-    public void checkManagerRights(Project project) throws  AuthenticationException{
-        if(project.getManager().equals(activeUser)){
+    public void checkManagerRights(Project project) throws AuthenticationException {
+        if (project.getManager() == null) {
+            throw new AuthenticationException("You need to have project manager rights to edit this project");
+        }
+        if(!project.getManager().equals(activeUser)){
             throw new AuthenticationException("You need to have project manager rights to edit this project");
         }
     }
@@ -224,7 +227,7 @@ public class Planner {
      * @throws OperationNotAllowedException
      * @throws AuthenticationException
      */
-    public void assignUserToProject(User user, Project project) throws  OperationNotAllowedException, AuthenticationException{
+    public void assignUserToProject(User user, Project project) throws OperationNotAllowedException, AuthenticationException {
         checkSession();
         checkManagerRights(project);
 
