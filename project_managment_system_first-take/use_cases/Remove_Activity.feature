@@ -3,19 +3,19 @@ Feature: Remove activity
   Actors: Developer or project manager
 
   Scenario: Remove a personal activity
-    Given that a developer is logged in
+    Given that the developer is logged in
     And there is a activity with the title "Herimundus" defined
     When the developer removes the activity
     Then the activity is removed
 
   Scenario: Remove a personal activity
-    Given that a developer is logged in
+    Given that the developer is logged in
     And there is a activity with the title "Herimundus" is not defined
     When the developer removes the activity
     Then the activity is removed
 
   Scenario: Remove a project activity
-    Given that a developer is logged in
+    Given that the developer is logged in
     And a project with title "Heisenberg" is defined
     And that the developer is a project manager
     And the user is a part of the project
@@ -24,7 +24,7 @@ Feature: Remove activity
     Then the activity with title "Herimundus" is removed from the project
 
   Scenario: Remove a project activity failure
-    Given that a developer is logged in
+    Given that the developer is logged in
     And a project with title "Heisenberg" is defined
     And that the developer is a project manager
     And the user is a part of the project
@@ -33,7 +33,7 @@ Feature: Remove activity
     Then I get the error message "No such activity defined"
 
   Scenario: Remove a project activity unsuccessfully
-    Given that a developer is logged in
+    Given that the developer is logged in
     And a project with title "Heisenberg" is defined
     And the developer is not project manager
     And the user is a part of the project

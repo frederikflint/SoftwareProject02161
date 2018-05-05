@@ -3,19 +3,19 @@ Feature: Add activity
   Actors: Developer
 
   Scenario: An activity is created successfully
-    Given that a developer is logged in
+    Given that the developer is logged in
     And the developer enters a valid activity
     When the developer creates the activity
     Then the activity is created
 
   Scenario: The developer doesn't enter valid start date
-    Given that a developer is logged in
+    Given that the developer is logged in
     And the developer enters an activity with an invalid start date
     When the developer creates the activity
     Then I get the error message "Invalid time for activity"
 
   Scenario: Add a project activity successfully
-    Given that a developer is logged in
+    Given that the developer is logged in
     And that the developer is a project manager
     And a project with title "Heisenberg" is defined
     And the developer enters a valid activity

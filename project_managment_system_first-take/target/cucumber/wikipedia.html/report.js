@@ -10,11 +10,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -55,11 +55,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -100,11 +100,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -322,11 +322,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -367,11 +367,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -412,11 +412,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -849,6 +849,122 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
+formatter.uri("use_cases/Include_Developer_In_Project.feature");
+formatter.feature({
+  "name": "Include developer in project",
+  "description": "  Description: Project manager includes a developer in a project\n  Actors: Project manager",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "The project manager adds a developer to a project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that the developer is a project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that a developer is available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatADeveloperIsAvailable()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager adds the developer to the project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theProjectManagerAddsTheDeveloperToTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is included in the project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theDeveloperIsIncludedInTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "The developer is not project manager and adds a developer to a project",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that the developer is a project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "that a developer is available",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.thatADeveloperIsAvailable()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager adds the developer to the project",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theProjectManagerAddsTheDeveloperToTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is included in the project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theDeveloperIsIncludedInTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
 formatter.uri("use_cases/List_Of_Activities.feature");
 formatter.feature({
   "name": "List of activities",
@@ -861,11 +977,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -906,11 +1022,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -945,122 +1061,6 @@ formatter.match({
 formatter.result({
   "status": "passed"
 });
-formatter.uri("use_cases/List_Of_Available_Developers.feature");
-formatter.feature({
-  "name": "list of available developers",
-  "description": "  Description: project manager gets a list of available developers\n  Actors: Project manager",
-  "keyword": "Feature"
-});
-formatter.scenario({
-  "name": "Project manager checks list of available developers",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "that a developer is logged in",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "that the developer is a project manager",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "that a developer is available",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.thatADeveloperIsAvailable()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the project manager retrieves the list",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theProjectManagerRetrievesTheList()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the available developers appear on the available list",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theAvailableDevelopersAppearOnTheAvailableList()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Project manager check an empty list of available developers",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "that a developer is logged in",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "that the developer is a project manager",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "that no developer is available",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.thatNoDeveloperIsAvailable()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the project manager retrieves the list",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theProjectManagerRetrievesTheList()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "I get the error message \"No developer is currently available\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "UserSteps.iGetTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
 formatter.uri("use_cases/Register_Time.feature");
 formatter.feature({
   "name": "Register time",
@@ -1073,11 +1073,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1128,11 +1128,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1173,11 +1173,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1218,11 +1218,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1263,11 +1263,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1314,11 +1314,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1359,11 +1359,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1404,11 +1404,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1479,11 +1479,11 @@ formatter.scenario({
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
@@ -1549,16 +1549,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
-  "name": "Remove a project activity",
+  "name": "Remove a project activity unsuccessfully",
   "description": "",
   "keyword": "Scenario"
 });
 formatter.step({
-  "name": "that a developer is logged in",
+  "name": "that the developer is logged in",
   "keyword": "Given "
 });
 formatter.match({
-  "location": "UserSteps.thatADeveloperIsLoggedIn()"
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
 });
 formatter.result({
   "status": "passed"
