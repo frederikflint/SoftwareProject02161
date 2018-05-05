@@ -13,14 +13,11 @@ public class Terminal {
 
     //Terminal terminal;
 
-    //ErrorMessageHolder errorMessage;
-
     Planner planner = new Planner();
     Scanner input = new Scanner(System.in);
 
     String m = "";
     String d = "";
-
 
     public static void main(String[] args){
         Terminal terminal = new Terminal();

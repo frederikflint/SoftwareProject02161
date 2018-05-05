@@ -13,7 +13,6 @@ public class AdminHelper {
 
     private User exampleAdmin(){
         User user = new User("admin", "admin123");
-        user.setAdmin(true);
         return user;
     }
 
