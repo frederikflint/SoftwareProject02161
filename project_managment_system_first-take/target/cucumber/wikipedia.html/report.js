@@ -1,6 +1,6 @@
 $(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Create_Activity.feature");
 formatter.feature({
-  "name": "Add activity",
+  "name": "Create activity",
   "description": "  Description: An activity is added\n  Actors: Developer",
   "keyword": "Feature"
 });
@@ -110,6 +110,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "a valid project is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefined()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "that the developer is a project manager",
   "keyword": "And "
 });
@@ -117,8 +127,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
 });
 formatter.result({
-  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:50)\r\n\tat ✽.that the developer is a project manager(use_cases/Create_Activity.feature:19)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.step({
   "name": "a project with title \"Heisenberg\" is defined",
@@ -128,7 +137,7 @@ formatter.match({
   "location": "UserSteps.aProjectWithTitleIsDefined(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer enters a valid activity",
@@ -138,7 +147,7 @@ formatter.match({
   "location": "UserSteps.theDeveloperEntersAValidActivity()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer is a part of the project",
@@ -148,7 +157,7 @@ formatter.match({
   "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "the project manager creates the project activity",
@@ -158,7 +167,7 @@ formatter.match({
   "location": "UserSteps.theProjectManagerCreatesTheProjectActivity()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "the activity is added to the project",
@@ -168,7 +177,7 @@ formatter.match({
   "location": "UserSteps.theActivityIsAddedToTheProject()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.uri("use_cases/Create_Developer.feature");
 formatter.feature({

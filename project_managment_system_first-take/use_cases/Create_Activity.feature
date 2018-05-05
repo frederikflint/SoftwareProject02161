@@ -1,4 +1,4 @@
-Feature: Add activity
+Feature: Create activity
   Description: An activity is added
   Actors: Developer
 
@@ -16,6 +16,7 @@ Feature: Add activity
 
   Scenario: Add a project activity successfully
     Given that the developer is logged in
+    And a valid project is defined
     And that the developer is a project manager
     And a project with title "Heisenberg" is defined
     And the developer enters a valid activity
