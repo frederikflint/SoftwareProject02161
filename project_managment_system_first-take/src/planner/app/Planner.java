@@ -1,9 +1,6 @@
 package planner.app;
 
-import planner.domain.Activity;
-import planner.domain.Project;
-import planner.domain.User;
-import planner.domain.WorkHours;
+import planner.domain.*;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -17,7 +14,7 @@ import java.util.Objects;
 public class Planner {
 
     // The admin of the system
-    private User admin = new User("admin","admin123");
+    private Admin admin = new Admin("admin","admin123");
 
     // The active developer of the system
     public User activeUser;
@@ -143,7 +140,7 @@ public class Planner {
      * @throws AuthenticationException If the user is not a adminHelper.
      */
     public void createUser(String credentials, String password) throws OperationNotAllowedException, AuthenticationException{
-        //checkAdminSession();
+        checkAdminSession();
 
         if (getUser(credentials) != null){
             throw new OperationNotAllowedException("Developer is registered");
