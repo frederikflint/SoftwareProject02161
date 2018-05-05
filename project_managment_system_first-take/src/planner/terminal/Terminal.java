@@ -124,7 +124,6 @@ public class Terminal {
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
             
         } else  if (x.equals("2")) {
-            //TODO: Create activity i planner ????
             try {
                 planner.getActiveUser().addActivity(new Activity(start, end, titel));
             } catch (OperationNotAllowedException e) {
@@ -176,7 +175,7 @@ public class Terminal {
         if (x.equals("1")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
-        } else  if (x.equals("2")) {
+        } else if (x.equals("2")) {
             try {
                 planner.createProject(new Project(titel,start,end));
             } catch (OperationNotAllowedException | AuthenticationException e) {
@@ -186,6 +185,7 @@ public class Terminal {
             System.out.println("Forkerte information - prøv igen");
             createProject();
         }
+        userFeatureScreen();
     }
 
     private void registerTime() {
@@ -226,14 +226,17 @@ public class Terminal {
             System.out.println(e.getMessage());
             
         }
+        userFeatureScreen();
     }
 
     public void setHourAndMinute(){
         System.out.println("Indtast time på dagen (0-23:");
-        //System.out.println("Indtast -1 for at gå tilbage");
+        System.out.println("Indtast -1 for at gå tilbage");
         hour = input.next();
 
-        if (hour.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23")) {
+        if (hour.equals("-1")) {
+            createActivity();
+        } else if (hour.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23")) {
             System.out.println("Hvilket minut i timen?");
             System.out.println("0 - 59");
             day = input.next();
@@ -241,8 +244,6 @@ public class Terminal {
                 System.out.println("Prøv igen");
                 setHourAndMinute();
             }
-        } else if (hour.equals("-1")) {
-            createActivity();
         } else {
             System.out.println("Prøv igen");
             setHourAndMinute();
