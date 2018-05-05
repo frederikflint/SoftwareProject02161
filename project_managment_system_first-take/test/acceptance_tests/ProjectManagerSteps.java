@@ -64,8 +64,8 @@ public class ProjectManagerSteps {
         assertTrue(planner.getAvailableUsers(startTime, endTime) != null);
     }
 
-    @When("^the project manager adds the developer to the project$")
-    public void theProjectManagerAddsTheDeveloperToTheProject() throws Exception {
+    @When("^the developer adds a developer to the project$")
+    public void theDeveloperAddsADeveloperToTheProject() throws Exception {
         project.addUser(user);
     }
 
@@ -80,16 +80,24 @@ public class ProjectManagerSteps {
         planner.users.add(user);
         Calendar startTime = Calendar.getInstance();
         Calendar endTime = Calendar.getInstance();
-        startTime.set(2018,3, 21,12,30);
-        endTime.set(2018,4, 21,12,30);
+        startTime.set(2018, 3, 21, 12, 30);
+        endTime.set(2018, 4, 21, 12, 30);
 
-        activity = new Activity(startTime,endTime,"activity");
+        activity = new Activity(startTime, endTime, "activity");
         user.addActivity(activity);
-        planner.getActiveUser().registerTime(activity,startTime,endTime,user);
+        planner.getActiveUser().registerTime(activity, startTime, endTime, user);
 
-        assertTrue(planner.getAvailableUsers(startTime,endTime).contains(user));
+        assertTrue(planner.getAvailableUsers(startTime, endTime).contains(user));
     }
 
+
+    @Given("^that the developer is not a project manager$")
+    public void thatTheDeveloperIsNotAProjectManager() throws Exception {
+        project = projectHelper.getValidProject();
+
+        planner.createProject(project);
+        assertFalse(project.getManager().equals(planner.getActiveUser()));
+    }
 }
 
 
