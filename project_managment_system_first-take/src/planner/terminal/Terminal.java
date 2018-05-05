@@ -191,16 +191,16 @@ public class Terminal {
         System.out.println(" 0: Januar \n 1: Februar \n 2: Marts \n 3: April \n 4: Maj \n 5: Juni \n 6: Juli \n" +
                 " 7: August \n 8: September \n 9: Oktober \n 10: November \n 11: December");
         month = input.next();
-        if (month.matches("0|1|2|3|4|5|6|7|8|9|10|11")) {
+        if (month.equals("-1")) {
+
+        } else if (month.matches("0|1|2|3|4|5|6|7|8|9|10|11")) {
             System.out.println("Hvilken dag i måneden?");
-            System.out.println("0 - 31");
+            System.out.println("0 - 30");
             day = input.next();
-            if (!day.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31")) {
+            if (!day.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30")) {
                 System.out.println("Prøv igen");
                 setMonthAndDay();
             }
-        } else if (month.equals("-1")) {
-            createActivity();
         } else {
             System.out.println("Prøv igen");
             setMonthAndDay();
