@@ -7,9 +7,10 @@ public class helpMads {
     static Scanner scanner = new Scanner(System.in);
 
     public static void main(String[] args){
-        String x = scanner.next();
-        System.out.println(x.matches("1|2|3"));
-
+        for (int i = 0; i < 60; i++) {
+            System.out.print(i +"|");
+        }
+        System.out.println("");
     }
 
 }
