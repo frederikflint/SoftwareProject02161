@@ -16,6 +16,9 @@ import java.util.Objects;
  */
 public class Planner {
 
+    // The admin of the system
+    private User admin = new User("admin","admin123");
+
     // The active developer of the system
     public User activeUser;
 
@@ -37,6 +40,13 @@ public class Planner {
      */
     public void userLogIn(String credentials, String password) throws OperationNotAllowedException, AuthenticationException{
 
+        // Active Admin
+        if(admin.getCredentials().equals(credentials) && admin.getPassword().equals(password)){
+            activeUser = admin;
+            return;
+        }
+
+        // If there is no users on the system
         if(users.isEmpty()){
             throw new OperationNotAllowedException("There is no users on this planner");
         }

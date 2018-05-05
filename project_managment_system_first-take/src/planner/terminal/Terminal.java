@@ -1,6 +1,7 @@
 package planner.terminal;
 
 import planner.app.AuthenticationException;
+import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
 
 import java.util.Calendar;
@@ -10,14 +11,11 @@ public class Terminal {
 
     //Terminal terminal;
 
-    //ErrorMessageHolder errorMessage;
-
     Planner planner = new Planner();
     Scanner input = new Scanner(System.in);
 
     String m = "";
     String d = "";
-
 
     public static void main(String[] args){
         Terminal terminal = new Terminal();
@@ -58,7 +56,7 @@ public class Terminal {
         boolean error = false;
         try {
             planner.userLogIn(username,password);
-        } catch (AuthenticationException e) {
+        } catch (OperationNotAllowedException | AuthenticationException e) {
             System.out.println(e.getMessage());
             error = true;
         }
