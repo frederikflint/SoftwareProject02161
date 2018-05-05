@@ -43,9 +43,9 @@ public class Terminal {
     private void logIn() {
         System.out.println("Log ind");
         System.out.println("Indtast brugernavn:");
-        String username = input.next();
+        String username = input.nextLine();
         System.out.println("Indtast password:");
-        String password = input.next();
+        String password = input.nextLine();
         try {
             planner.userLogIn(username,password);
 
@@ -71,7 +71,7 @@ public class Terminal {
         System.out.println("5: Forfrem bruger til projekt manager");
         System.out.println("6: Fjern projekt manager titel");
         System.out.println("7: Log ud");
-        String in = input.next();
+        String in = input.nextLine();
 
         if (in.equals("1")){
             getUserList();
@@ -105,7 +105,7 @@ public class Terminal {
         System.out.println("2: Opret projekt");
         System.out.println("3: Opret aktivitet");
         System.out.println("4: Log ud");
-        String in = input.next();
+        String in = input.nextLine();
 
         if (in.equals("1")){
             registerTime();
@@ -130,14 +130,14 @@ public class Terminal {
     private void registerUser() {
         System.out.println("-1 for at gå tilbage");
         System.out.println("Hvad skal dit brugernavn være?");
-        String username = input.next();
+        String username = input.nextLine();
 
         if (username.equals("-1")) {
             adminFeatureScreen();
         }
 
         System.out.println("Hvad skal dit password være?");
-        String password = input.next();
+        String password = input.nextLine();
 
         try {
             planner.createUser(username,password);
@@ -207,7 +207,7 @@ public class Terminal {
 
     private User setUser(){
 
-        String in = input.next();
+        String in = input.nextLine();
         User user = planner.getUser(in);
 
         System.out.println("-1 for at gå tilbage");
@@ -227,7 +227,7 @@ public class Terminal {
 
     private Project setProject(){
 
-        String in = input.next();
+        String in = input.nextLine();
         Project project = null;
 
         try {
@@ -316,14 +316,14 @@ public class Terminal {
         System.out.println("-1 for at gå tilbage");
         System.out.println("Opretter aktivitet...");
         System.out.println("Indtast titel:");
-        String titel = input.next();
+        String titel = input.nextLine();
         if (titel.equals("-1")) {
             userFeatureScreen();
         }
         Calendar start = Calendar.getInstance();
         Calendar end = Calendar.getInstance();
         System.out.println("Kendes start tidspunkt? Ja: 1, Nej: 2");
-        String x = input.next();
+        String x = input.nextLine();
         if (x.equals("1")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
@@ -346,13 +346,13 @@ public class Terminal {
         //System.out.println("Indtast -1 for at gå tilbage");
         System.out.println(" 0: Januar \n 1: Februar \n 2: Marts \n 3: April \n 4: Maj \n 5: Juni \n 6: Juli \n" +
                 " 7: August \n 8: September \n 9: Oktober \n 10: November \n 11: December");
-        month = input.next();
+        month = input.nextLine();
         if (month.equals("-1")) {
             userFeatureScreen();
         } else if (month.matches("0|1|2|3|4|5|6|7|8|9|10|11")) {
             System.out.println("Hvilken dag i måneden?");
             System.out.println("0 - 30");
-            day = input.next();
+            day = input.nextLine();
             if (!day.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30")) {
                 System.out.println("Prøv igen");
                 setMonthAndDay();
@@ -368,14 +368,14 @@ public class Terminal {
         System.out.println("-1 for at gå tilbage");
         System.out.println("Opretter projekt...");
         System.out.println("Indtast titel:");
-        String titel = input.next();
+        String titel = input.nextLine();
         if (titel.equals("-1")) {
             userFeatureScreen();
         }
         Calendar start = Calendar.getInstance();
         Calendar end = Calendar.getInstance();
         System.out.println("Kendes start tidspunkt? Ja: 1, Nej: 2");
-        String x = input.next();
+        String x = input.nextLine();
         if (x.equals("1")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
@@ -407,7 +407,7 @@ public class Terminal {
         for (Activity activity : planner.getActiveUser().getActivities()) {
             System.out.println(activity.getID());
         }
-        String ID = input.next();
+        String ID = input.nextLine();
         if (ID.equals("-1")) {
             userFeatureScreen();
         }
@@ -443,14 +443,14 @@ public class Terminal {
     public void setHourAndMinute(){
         System.out.println("Indtast time på dagen (0-23):");
         System.out.println("Indtast -1 for at gå tilbage");
-        hour = input.next();
+        hour = input.nextLine();
 
         if (hour.equals("-1")) {
             userFeatureScreen();
         } else if (hour.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23")) {
             System.out.println("Hvilket minut i timen?");
             System.out.println("0 - 59");
-            day = input.next();
+            day = input.nextLine();
             if (!day.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59")) {
                 System.out.println("Prøv igen");
                 setHourAndMinute();

@@ -354,13 +354,17 @@ public class Planner {
         return availableUsers;
     }
 
+    /**
+     * Is there any available users on the planner
+     * @param activityStartTime
+     * @param activityEndTime
+     * @throws Exception
+     */
     public void isThereAvailableUsers(Calendar activityStartTime, Calendar activityEndTime) throws Exception {
         if(getAvailableUsers(activityStartTime,activityEndTime).isEmpty()){
             throw new Exception("There are no available users");
         }
-
     }
-
 
     /**
      *
