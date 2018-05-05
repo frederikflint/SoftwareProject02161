@@ -20,6 +20,15 @@ Feature: Include developer in project
     Then the developer is not added to the project
     And I get the error message "You need to have project manager rights to edit this project"
 
+  Scenario: The developer who is a project manager adds an unavailable developer to the project
+    Given that the developer is logged in
+    And a valid project is defined
+    And that the developer is part of the project
+    And that the developer is a project manager
+    And the developer is unavailable
+    When the developer adds a developer to the project
+    Then the developer is not added to the project
+
 #  Scenario: A project manager who is not logged in tries to add a developer
 #  to a project
 #    Given that the user is not logged in
