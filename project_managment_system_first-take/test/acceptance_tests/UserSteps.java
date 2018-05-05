@@ -4,12 +4,15 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import planner.app.AuthenticationException;
+import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
 import planner.domain.Activity;
 import planner.domain.Project;
 import planner.domain.User;
 
 
+import java.util.Calendar;
 import java.util.List;
 
 import static org.hamcrest.CoreMatchers.equalTo;
@@ -100,6 +103,11 @@ public class UserSteps {
         project = projectHelper.getInvalidTimeProject();
     }
 
+    @Given("^the developer enters a project with an invalid start date$")
+    public void theDeveloperEntersAProjectWithAnInvalidStartDate() throws Exception {
+        project = projectHelper.getInvalidTimeProject();
+    }
+
     @Given("^a project already exist in the planner$")
     public void aProjectAlreadyExistInThePlanner() throws Exception {
         project = projectHelper.getValidProject();
@@ -115,9 +123,38 @@ public class UserSteps {
             assertThat(e.getMessage(), is(equalTo(arg1)));
         }
     }
+
+    @Given("^a project with title \"([^\"]*)\" is defined$")
+    public void aProjectWithTitleIsDefined(String arg1) throws Exception {
+        Calendar startDate = Calendar.getInstance();
+        Calendar endDate = Calendar.getInstance();
+        startDate.set(1,1);
+        endDate.set(2,1);
+        planner.createProject(new Project(arg1,startDate,endDate));
+        assertTrue(planner.getProject(arg1)!=null);
+    }
+
+    @When("^the administrator deletes the project with title \"([^\"]*)\"$")
+    public void theAdministratorDeletesTheProjectWithTitle(String arg1) throws Exception {
+        try {
+            planner.deleteProject(planner.getProject(arg1));
+        } catch (OperationNotAllowedException | AuthenticationException e){
+            e.getMessage();
+        }
+    }
+
+    @Then("^the project with title \"([^\"]*)\" is deleted$")
+    public void theProjectWithTitleIsDeleted(String arg1) throws Exception {
+        assertEquals(planner.getProject(arg1),null);
+    }
+
+    @Given("^a project with title \"([^\"]*)\" is not defined$")
+    public void aProjectWithTitleIsNotDefined(String arg1) throws Exception {
+        assertEquals(planner.getProject(arg1),null);
+    }
+
     @Given("^the developer enters a project with the same name as another project$")
     public void theDeveloperEntersAProjectWithTheSameNameAsAnotherProject() throws Exception {
-        //project =
         assertTrue(planner.getProjects().get(planner.getProjects().indexOf(project)).getTitle().equals(project.getTitle()));
     }
 
