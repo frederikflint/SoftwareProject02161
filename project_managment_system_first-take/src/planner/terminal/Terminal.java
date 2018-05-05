@@ -31,7 +31,7 @@ public class Terminal {
         logIn();
     }
 
-    //TODO: Hvad er det vi har testet for i forhold til LOGIN ?
+
     private void logIn() {
         System.out.println("Log ind");
         System.out.println("Indtast brugernavn:");
@@ -57,22 +57,25 @@ public class Terminal {
 
     private void adminFeatureScreen(){
         System.out.println("Indtast et nummer:");
-        System.out.println("1: Registrer bruger");
-        System.out.println("2: Slet bruger");
-        System.out.println("3: Forfrem bruger til projekt manager");
-        System.out.println("4: Fjern projekt manager titel");
-        System.out.println("5: Log ud");
+        System.out.println("1: Bruger liste");
+        System.out.println("2: Registrer bruger");
+        System.out.println("3: Slet bruger");
+        System.out.println("4: Forfrem bruger til projekt manager");
+        System.out.println("5: Fjern projekt manager titel");
+        System.out.println("6: Log ud");
         String in = input.next();
 
         if (in.equals("1")){
+            getUserList();
+        } else if (in.equals("2")){
             registerUser();
-        } else if (in.equals("2")) {
-            unregisterUser();
         } else if (in.equals("3")) {
-            assignProjectManager();
+            unregisterUser();
         } else if (in.equals("4")) {
             assignProjectManager();
         } else if (in.equals("5")) {
+            assignProjectManager();
+        } else if (in.equals("6")) {
             try {
                 planner.userLogOut();
                 startPrompt();
@@ -115,10 +118,17 @@ public class Terminal {
     }
 
     private void registerUser() {
+        System.out.println("-1 for at gå tilbage");
         System.out.println("Hvad skal dit brugernavn være?");
         String username = input.next();
+
+        if (username.equals("-1")) {
+            adminFeatureScreen();
+        }
+
         System.out.println("Hvad skal dit password være?");
         String password = input.next();
+
         try {
             planner.createUser(username,password);
             System.out.println("Brugeren " + username + " er nu registeret");
@@ -129,21 +139,49 @@ public class Terminal {
         adminFeatureScreen();
     }
 
+    private void getUserList(){
+
+        if(planner.getUsers().isEmpty()){
+            System.out.println("Ingen registrerede brugere på systemt");
+            adminFeatureScreen();
+        }
+
+        System.out.println("Registrerede brugere: ");
+        for (User user: planner.getUsers()) {
+            System.out.println(user.getCredentials());
+        }
+
+        adminFeatureScreen();
+    }
+
+    private void getProjectList(){
+        if(planner.getUsers().isEmpty()){
+            System.out.println("Ingen registrerede projekter på systemt");
+            adminFeatureScreen();
+        }
+
+        for (Project project: planner.getProjects()) {
+            System.out.println(project.getTitle());
+        }
+
+        adminFeatureScreen();
+    }
+
     private void unregisterUser(){
 
         if(planner.getUsers().isEmpty()){
             System.out.println("Ingen registrerede brugere på systemt");
             adminFeatureScreen();
-            return;
         }
 
+        System.out.println("-1 for at gå tilbage");
         System.out.println("Registrerede brugere: ");
         for (User user: planner.getUsers()) {
-            System.out.println("- " + user.getCredentials());
+            System.out.println(user.getCredentials());
         }
         System.out.println("Skriv brugernavnet på den bruger du vil have slettet");
-        String in = input.next();
-        User user = planner.getUser(in);
+
+        User user = setUser();
 
         try {
             planner.deleteUser(user);
@@ -156,12 +194,84 @@ public class Terminal {
 
     }
 
+    private User setUser(){
+
+        String in = input.next();
+        User user = planner.getUser(in);
+
+        if (in.equals("-1")) {
+            userFeatureScreen();
+        }
+
+        if(user == null){
+            System.out.println("Brugeren " + in + " findes ikke på systemet");
+            System.out.println("Prøv igen");
+            return setUser();
+        } else {
+            return user;
+        }
+
+    }
+
+    private Project setProject(){
+
+        String in = input.next();
+        Project project = null;
+
+        try {
+            project = planner.getProject(in);
+        }catch (Exception e){
+
+        }
+
+        if (in.equals("-1")) {
+            userFeatureScreen();
+        }
+
+        if(project == null){
+            System.out.println("Brugeren " + in + " findes ikke på systemet");
+            System.out.println("Prøv igen");
+            return setProject();
+        } else {
+            return project;
+        }
+
+    }
+
     private void assignProjectManager(){
         if(planner.getUsers().isEmpty()){
             System.out.println("Ingen registrerede brugere på systemt");
             adminFeatureScreen();
-            return;
         }
+
+        if(planner.getProjects().isEmpty()){
+            System.out.println("Ingen registrerede projekter på systemt");
+            adminFeatureScreen();
+        }
+
+        System.out.println("-1 for at gå tilbage");
+        System.out.println("Registrerede brugere: ");
+        for (User user: planner.getUsers()) {
+            System.out.println(user.getCredentials());
+        }
+        System.out.println("Skriv brugernavnet på den bruger du vil have forfremmet");
+        User user = setUser();
+
+        for (Project project: planner.getProjects()) {
+            System.out.println(user.getCredentials());
+        }
+
+        System.out.println("Skriv brugernavnet på den bruger du vil have forfremmet");
+        Project project = setProject();
+
+        try {
+            planner.assignProjectManager(user, project);
+            System.out.println("Brugeren " + user.getCredentials() + " er nu manager for " + project.getTitle());
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        adminFeatureScreen();
 
     }
 
@@ -184,6 +294,7 @@ public class Terminal {
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
             
         } else  if (x.equals("2")) {
+            //TODO: Create activity i planner ????
             try {
                 planner.getActiveUser().addActivity(new Activity(start, end, titel));
             } catch (OperationNotAllowedException e) {
@@ -194,7 +305,6 @@ public class Terminal {
             System.out.println("Forkerte information - prøv igen");
             createActivity();
         }
-        userFeatureScreen();
     }
 
     private void setMonthAndDay() {
@@ -239,6 +349,7 @@ public class Terminal {
         } else if (x.equals("2")) {
             try {
                 planner.createProject(new Project(titel,start,end));
+                userFeatureScreen();
             } catch (OperationNotAllowedException | AuthenticationException e) {
                 System.out.println(e.getMessage());
             }
@@ -246,7 +357,6 @@ public class Terminal {
             System.out.println("Forkerte information - prøv igen");
             createProject();
         }
-        userFeatureScreen();
     }
 
     private void registerTime() {
@@ -276,7 +386,6 @@ public class Terminal {
         Calendar start = Calendar.getInstance();
         Calendar end = Calendar.getInstance();
         setMonthAndDay();
-        setHourAndMinute();
         start.set(2018,Integer.parseInt(month),Integer.parseInt(day),Integer.parseInt(hour),Integer.parseInt(minute));
         System.out.println("Hvornår sluttede du aktiviteten?");
         setMonthAndDay();
@@ -288,24 +397,23 @@ public class Terminal {
             System.out.println(e.getMessage());
             
         }
-        userFeatureScreen();
     }
 
     public void setHourAndMinute(){
         System.out.println("Indtast time på dagen (0-23:");
-        System.out.println("Indtast -1 for at gå tilbage");
+        //System.out.println("Indtast -1 for at gå tilbage");
         hour = input.next();
 
-        if (hour.equals("-1")) {
-            createActivity();
-        } else if (hour.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23")) {
+        if (hour.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23")) {
             System.out.println("Hvilket minut i timen?");
             System.out.println("0 - 59");
-            minute = input.next();
-            if (!minute.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59")) {
+            day = input.next();
+            if (!day.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59")) {
                 System.out.println("Prøv igen");
                 setHourAndMinute();
             }
+        } else if (hour.equals("-1")) {
+            createActivity();
         } else {
             System.out.println("Prøv igen");
             setHourAndMinute();

@@ -12,6 +12,7 @@ import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
 import planner.app.AuthenticationException;
+import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
 import planner.domain.Activity;
 import planner.domain.Project;
@@ -44,51 +45,23 @@ public class ProjectManagerSteps {
 
     @Given("^that the developer is a project manager$")
     public void thatTheDeveloperIsAProjectManager() throws Exception {
-        User projectManager = new User("pm","1234");
+        project = projectHelper.getValidProject();
 
-        Calendar startTime = Calendar.getInstance();
-        Calendar endTime = Calendar.getInstance();
-        endTime.add(Calendar.DATE,1);
-        Project newProject = new Project("projekt",startTime,endTime);
-
-        planner.createProject(newProject);
-        newProject.setProjectManager(projectManager);
-        assertTrue(newProject.getManager().equals(projectManager));
+        planner.createProject(project);
+        project.setProjectManager(planner.getActiveUser());
+        assertTrue(project.getManager().equals(planner.getActiveUser()));
     }
 
     @Given("^that a developer is available$")
     public void thatADeveloperIsAvailable() throws Exception {
-        user = new User("new","1234");
+        user = userHelper.getUser();
         planner.users.add(user);
 
         Calendar startTime = Calendar.getInstance();
         Calendar endTime = Calendar.getInstance();
-        endTime.add(Calendar.DATE,1);
+        endTime.add(Calendar.DATE, 1);
 
-        assertTrue(planner.getAvailableUsers(startTime,endTime) != null);
-    }
-
-    @When("^the project manager retrieves the list$")
-    public void theProjectManagerRetrievesTheList() throws Exception {
-        Calendar startTime = Calendar.getInstance();
-        Calendar endTime = Calendar.getInstance();
-        endTime.add(Calendar.DATE,1);
-        planner.getAvailableUsers(startTime,endTime);
-    }
-
-    @Then("^the available developers appear on the available list$")
-    public void theAvailableDevelopersAppearOnTheAvailableList() throws Exception {
-        Calendar startTime = Calendar.getInstance();
-        Calendar endTime = Calendar.getInstance();
-        endTime.add(Calendar.DATE,1);
-        assertTrue(planner.getAvailableUsers(startTime,endTime)!=null);
-    }
-
-    @Given("^that no developer is available$")
-    public void thatNoDeveloperIsAvailable() throws Exception {
-        Calendar startTime = Calendar.getInstance();
-        Calendar endTime = Calendar.getInstance();
-        endTime.add(Calendar.DATE,1);
+        assertTrue(planner.getAvailableUsers(startTime, endTime) != null);
     }
 
     @When("^the project manager adds the developer to the project$")
@@ -101,47 +74,47 @@ public class ProjectManagerSteps {
         assertTrue(project.getUsers().contains(user));
     }
 
+    @Given("^a developer is unavailable$")
+    public void aDeveloperIsUnavailable() throws Exception {
+        user = userHelper.getUser();
+        planner.users.add(user);
+        Calendar startTime = Calendar.getInstance();
+        Calendar endTime = Calendar.getInstance();
+        startTime.set(2018,3, 21,12,30);
+        endTime.set(2018,4, 21,12,30);
 
+        activity = new Activity(startTime,endTime,"activity");
+        user.addActivity(activity);
+        planner.getActiveUser().registerTime(activity,startTime,endTime,user);
 
-//    @Given("^that the developer is a project manager$")
-//    public void thatTheDeveloperIsAProjectManager() throws Exception {
-//        user = new User("pm","1234");
-//        project = projectHelper.getValidProject();
-//
-//        planner.createProject(project);
-//        project.setProjectManager(user);
-//        assertTrue(project.getManager().equals(user));
-//    }
-//
-//    @Given("^a developer is available$")
-//    public void aDeveloperIsAvailable() throws Exception {
-//        user = userHelper.getUser();
-//
-//        planner.users.add(user);
-//        System.out.println(user);
-//
-//        Calendar startTime = Calendar.getInstance();
-//        Calendar endTime = Calendar.getInstance();
-//        endTime.add(Calendar.DATE,1);
-//
-//        assertTrue(planner.getAvailableUsers(startTime,endTime) != null);
-//
-//    }
-//
-//    @When("^the project manager adds the developer to the project$")
-//    public void theProjectManagerAddsTheDeveloperToTheProject() throws Exception {
-//        user = new User("ny","1234");
-//        Calendar startTime = Calendar.getInstance();
-//        Calendar endTime = Calendar.getInstance();
-//        endTime.add(Calendar.DATE,1);
-//        project = new Project("nyt projekt", startTime, endTime);
-//
-//        planner.createProject(project);
-//        System.out.println(project+ "\n" + user);
-//        project.addUser(user);
-//    }
-//
-//    @Then("^the developer is included in the project$")
-//    public void theDeveloperIsIncludedInTheProject() throws Exception {
-//    }
+        assertTrue(planner.getAvailableUsers(startTime,endTime).contains(user));
+    }
+
 }
+
+
+//    @When("^the project manager retrieves the list$")
+//    public void theProjectManagerRetrievesTheList() throws Exception {
+//        Calendar startTime = Calendar.getInstance();
+//        Calendar endTime = Calendar.getInstance();
+//        endTime.add(Calendar.DATE,1);
+//        planner.getAvailableUsers(startTime,endTime);
+//    }
+//
+//    @Then("^the available developers appear on the available list$")
+//    public void theAvailableDevelopersAppearOnTheAvailableList() throws Exception {
+//        Calendar startTime = Calendar.getInstance();
+//        Calendar endTime = Calendar.getInstance();
+//        endTime.add(Calendar.DATE,1);
+//        assertTrue(planner.getAvailableUsers(startTime,endTime)!=null);
+//    }
+//
+//    @Given("^that no developer is available$")
+//    public void thatNoDeveloperIsAvailable() throws Exception {
+//        Calendar startTime = Calendar.getInstance();
+//        Calendar endTime = Calendar.getInstance();
+//        endTime.add(Calendar.DATE,1);
+//    }
+//
+//
+//

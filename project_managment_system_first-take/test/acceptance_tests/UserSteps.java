@@ -71,8 +71,8 @@ public class UserSteps {
         }
     }
 
-    @Given("^that a developer is logged in$")
-    public void thatADeveloperIsLoggedIn() throws Exception {
+    @Given("^that the developer is logged in$")
+    public void thatTheDeveloperIsLoggedIn() throws Exception {
         if(planner.getActiveUser() == null){
             planner.activeUser = helper.getUser();
         }
