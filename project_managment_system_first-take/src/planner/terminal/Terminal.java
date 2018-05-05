@@ -5,6 +5,7 @@ import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
 import planner.domain.Activity;
 import planner.domain.Project;
+import planner.domain.User;
 
 import java.util.Calendar;
 import java.util.Scanner;
@@ -25,35 +26,21 @@ public class Terminal {
         terminal.startPrompt();
     }
 
-    public void startPrompt() {
+    private void startPrompt() {
         System.out.println("Velkommen til SoftwareHuset A/S. Vælg venligst en funktion:");
-        System.out.println("Log ind");
         logIn();
     }
 
-    private void registerUser() {
-        System.out.println("Hvad skal dit brugernavn være?");
-        String username = input.next();
-        System.out.println("Hvad skal dit password være?");
-        String password = input.next();
-        try {
-            planner.createUser(username,password);
-        } catch (OperationNotAllowedException | AuthenticationException e) {
-            System.out.println(e.getMessage());
-            registerUser();
-        }
-        startPrompt();
-    }
-
     //TODO: Hvad er det vi har testet for i forhold til LOGIN ?
-    public void logIn() {
+    private void logIn() {
+        System.out.println("Log ind");
         System.out.println("Indtast brugernavn:");
         String username = input.next();
         System.out.println("Indtast password:");
         String password = input.next();
         try {
             planner.userLogIn(username,password);
-            
+
             if(planner.activeUser.isAdmin()){
                 adminFeatureScreen();
             } else {
@@ -71,10 +58,30 @@ public class Terminal {
     private void adminFeatureScreen(){
         System.out.println("Indtast et nummer:");
         System.out.println("1: Registrer bruger");
+        System.out.println("2: Slet bruger");
+        System.out.println("3: Forfrem bruger til projekt manager");
+        System.out.println("4: Fjern projekt manager titel");
+        System.out.println("5: Log ud");
         String in = input.next();
 
         if (in.equals("1")){
             registerUser();
+        } else if (in.equals("2")) {
+            unregisterUser();
+        } else if (in.equals("3")) {
+            assignProjectManager();
+        } else if (in.equals("4")) {
+            assignProjectManager();
+        } else if (in.equals("5")) {
+            try {
+                planner.userLogOut();
+                startPrompt();
+            }catch (OperationNotAllowedException e){
+                System.out.println(e.getMessage());
+            }
+        } else {
+            System.out.println("Dit input matcher ikke mulighederne");
+            adminFeatureScreen();
         }
 
     }
@@ -106,6 +113,59 @@ public class Terminal {
             userFeatureScreen();
         }
     }
+
+    private void registerUser() {
+        System.out.println("Hvad skal dit brugernavn være?");
+        String username = input.next();
+        System.out.println("Hvad skal dit password være?");
+        String password = input.next();
+        try {
+            planner.createUser(username,password);
+            System.out.println("Brugeren " + username + " er nu registeret");
+        } catch (OperationNotAllowedException | AuthenticationException e) {
+            System.out.println(e.getMessage());
+            registerUser();
+        }
+        adminFeatureScreen();
+    }
+
+    private void unregisterUser(){
+
+        if(planner.getUsers().isEmpty()){
+            System.out.println("Ingen registrerede brugere på systemt");
+            adminFeatureScreen();
+            return;
+        }
+
+        System.out.println("Registrerede brugere: ");
+        for (User user: planner.getUsers()) {
+            System.out.println("- " + user.getCredentials());
+        }
+        System.out.println("Skriv brugernavnet på den bruger du vil have slettet");
+        String in = input.next();
+        User user = planner.getUser(in);
+
+        try {
+            planner.deleteUser(user);
+            System.out.println("Brugeren " + user.getCredentials() + " er nu slettet fra systemet");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        adminFeatureScreen();
+
+    }
+
+    private void assignProjectManager(){
+        if(planner.getUsers().isEmpty()){
+            System.out.println("Ingen registrerede brugere på systemt");
+            adminFeatureScreen();
+            return;
+        }
+
+    }
+
+
 
     private void createActivity() {
         System.out.println("-1 for at gå tilbage");
