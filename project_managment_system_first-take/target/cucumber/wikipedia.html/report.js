@@ -1218,6 +1218,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "a valid project is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefined()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "that the developer is a project manager",
   "keyword": "And "
 });
@@ -1225,8 +1235,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
 });
 formatter.result({
-  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:50)\r\n\tat ✽.that the developer is a project manager(use_cases/List_Of_Available_Developers.feature:7)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.step({
   "name": "that a developer is available",
@@ -1236,7 +1245,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatADeveloperIsAvailable()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "the project manager asks for a list",
@@ -1246,7 +1255,7 @@ formatter.match({
   "location": "ProjectManagerSteps.theProjectManagerAsksForAList()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "the project manager gets a list of available developers",
@@ -1256,7 +1265,7 @@ formatter.match({
   "location": "ProjectManagerSteps.theProjectManagerGetsAListOfAvailableDevelopers()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Project manager check an empty list of available developers",
@@ -1269,6 +1278,16 @@ formatter.step({
 });
 formatter.match({
   "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a valid project is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefined()"
 });
 formatter.result({
   "status": "passed"
@@ -1291,8 +1310,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
 });
 formatter.result({
-  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:50)\r\n\tat ✽.that the developer is a project manager(use_cases/List_Of_Available_Developers.feature:15)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.step({
   "name": "that no developer is available",
@@ -1302,7 +1320,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatNoDeveloperIsAvailable()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "the project manager asks for a list",
@@ -1312,7 +1330,7 @@ formatter.match({
   "location": "ProjectManagerSteps.theProjectManagerAsksForAList()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "I get the error message \"No developer is currently available\"",
@@ -1322,7 +1340,7 @@ formatter.match({
   "location": "UserSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.uri("use_cases/Register_Time.feature");
 formatter.feature({
@@ -1677,6 +1695,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "a valid project is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefined()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "a project with title \"Heisenberg\" is defined",
   "keyword": "And "
 });
@@ -1694,8 +1722,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
 });
 formatter.result({
-  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:50)\r\n\tat ✽.that the developer is a project manager(use_cases/Remove_Activity.feature:20)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer is a part of the project",
@@ -1705,7 +1732,7 @@ formatter.match({
   "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "there is a activity with the title \"Herimundus\" defined",
@@ -1715,7 +1742,7 @@ formatter.match({
   "location": "UserSteps.thereIsAActivityWithTheTitleDefined(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "the project manager removes the activity with title \"Herimundus\"",
@@ -1725,7 +1752,7 @@ formatter.match({
   "location": "UserSteps.theProjectManagerRemovesTheActivityWithTitle(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "the activity with title \"Herimundus\" is removed from the project",
@@ -1735,7 +1762,7 @@ formatter.match({
   "location": "UserSteps.theActivityWithTitleIsRemovedFromTheProject(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Remove a project activity failure",
@@ -1753,6 +1780,16 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
+  "name": "a valid project is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefined()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
   "name": "a project with title \"Heisenberg\" is defined",
   "keyword": "And "
 });
@@ -1770,8 +1807,7 @@ formatter.match({
   "location": "ProjectManagerSteps.thatTheDeveloperIsAProjectManager()"
 });
 formatter.result({
-  "error_message": "java.lang.NullPointerException\r\n\tat planner.app.Planner.createProject(Planner.java:189)\r\n\tat acceptance_tests.ProjectManagerSteps.thatTheDeveloperIsAProjectManager(ProjectManagerSteps.java:50)\r\n\tat ✽.that the developer is a project manager(use_cases/Remove_Activity.feature:29)\r\n",
-  "status": "failed"
+  "status": "passed"
 });
 formatter.step({
   "name": "the developer is a part of the project",
@@ -1781,7 +1817,7 @@ formatter.match({
   "location": "UserSteps.theDeveloperIsAPartOfTheProject()"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "there is not an activity with the title \"Herimundus\" defined",
@@ -1791,7 +1827,7 @@ formatter.match({
   "location": "UserSteps.thereIsNotAnActivityWithTheTitleDefined(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "the project manager removes the activity with title \"Herimundus\"",
@@ -1801,7 +1837,7 @@ formatter.match({
   "location": "UserSteps.theProjectManagerRemovesTheActivityWithTitle(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "I get the error message \"No such activity defined\"",
@@ -1811,7 +1847,7 @@ formatter.match({
   "location": "UserSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.scenario({
   "name": "Remove a project activity unsuccessfully",
@@ -1824,6 +1860,16 @@ formatter.step({
 });
 formatter.match({
   "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a valid project is defined",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefined()"
 });
 formatter.result({
   "status": "passed"
