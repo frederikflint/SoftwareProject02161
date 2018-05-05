@@ -31,7 +31,6 @@ public class Terminal {
         logIn();
     }
 
-
     private void logIn() {
         System.out.println("Log ind");
         System.out.println("Indtast brugernavn:");
@@ -51,7 +50,6 @@ public class Terminal {
             System.out.println(e.getMessage());
             startPrompt();
         }
-
 
     }
 
@@ -315,7 +313,7 @@ public class Terminal {
         month = input.next();
 
         if (month.equals("-1")) {
-
+            userFeatureScreen();
         } else if (month.matches("0|1|2|3|4|5|6|7|8|9|10|11")) {
             System.out.println("Hvilken dag i måneden?");
             System.out.println("0 - 30");
@@ -400,7 +398,7 @@ public class Terminal {
     }
 
     public void setHourAndMinute(){
-        System.out.println("Indtast time på dagen (0-23:");
+        System.out.println("Indtast time på dagen (0-23):");
         //System.out.println("Indtast -1 for at gå tilbage");
         hour = input.next();
 
