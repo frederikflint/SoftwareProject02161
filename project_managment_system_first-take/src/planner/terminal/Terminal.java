@@ -276,7 +276,6 @@ public class Terminal {
         }
 
         System.out.println("Indtast nummeret på det projekt du ønsker at se");
-
         Integer in = null;
 
         try {
@@ -285,11 +284,16 @@ public class Terminal {
             getManageProjectUserList();
         }
 
-        //TODO: AOUT OF BOUND
-        Project project = planner.activeUser.getManagerProjects().get(in - 1);
+        Project project = null;
 
+        try {
+            project = planner.activeUser.getManagerProjects().get(in - 1);
+        }catch (Exception e){
+            System.out.println("Intet projekt matcher det nummer");
+            getManageProjectUserList();
+        }
 
-        System.out.println("Brugerne tilknyttet til projektet " + "\"" + planner.activeUser.getManagerProjects().get(in - 1).getTitle() + "\"" + " er:");
+        System.out.println("Brugerne tilknyttet til projektet " + "\"" + project.getTitle() + "\"" + " er:");
         for (User user: project.getUsers()) {
             if(project.getManager().equals(user)){
                 System.out.println("- " + user.getCredentials() + " (Manager)");
