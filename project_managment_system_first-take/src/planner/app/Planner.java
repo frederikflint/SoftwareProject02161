@@ -146,7 +146,7 @@ public class Planner {
         checkAdminSession();
 
         if (getUser(credentials) != null){
-            throw new OperationNotAllowedException("Developer is registered");
+            throw new OperationNotAllowedException("Developer is already registered");
         }
         users.add(new User(credentials, password));
     }
@@ -161,7 +161,7 @@ public class Planner {
         checkAdminSession();
 
         if(!(users.contains(user))){
-            throw new OperationNotAllowedException("No user with the given credentials" + user.getCredentials() + "found");
+            throw new OperationNotAllowedException("No such user is defined in the system");
         } else {
             // Make sure the deleted user is not still in associated project.
             for (Project project : user.getProjects()) {
@@ -433,10 +433,6 @@ public class Planner {
 
     public List<Project> getProjects() {
         return projects;
-    }
-
-    public User getActiveUser(User activeUser) {
-        return activeUser;
     }
 
     public User getActiveUser() {

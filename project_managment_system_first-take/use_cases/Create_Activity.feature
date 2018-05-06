@@ -8,11 +8,11 @@ Feature: Create activity
     When the developer creates the activity
     Then the activity is created
 
-  Scenario: The developer doesn't enter valid start date
-    Given that the developer is logged in
-    And the developer enters an activity with an invalid start date
-    When the developer creates the activity
-    Then I get the error message "Invalid time for activity"
+#  Scenario: The developer doesn't enter valid start date
+#    Given that the developer is logged in
+#    And the developer enters an activity with an invalid start date
+#    When the developer creates the activity
+#    Then I get the error message "Invalid time for activity"
 
   Scenario: Add a project activity successfully
     Given that the developer is logged in

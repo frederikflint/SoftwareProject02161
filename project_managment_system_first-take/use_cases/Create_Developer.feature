@@ -12,7 +12,7 @@ Feature: Create developer
     Given that the administrator is logged in
     And a developer with credentials "nn" is defined in the system
     When the administrator creates the developer with credentials "nn" and password "1234" to the system
-    Then I get the error message "This developer is already defined in the system"
+    Then I get the error message "Developer is already registered"
     
    Scenario: A user without administrator rights tries to create a developer
      Given that there is an active user on the system
