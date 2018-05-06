@@ -18,8 +18,6 @@ import planner.domain.User;
 public class CRUD {
 
     private Planner planner;
-    private User user;
-    private Project project;
 
     private ActivityHelper activityHelper;
     private ErrorMessageHolder errorMessage;
