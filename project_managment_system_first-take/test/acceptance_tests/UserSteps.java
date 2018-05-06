@@ -232,14 +232,11 @@ public class UserSteps {
 
     @When("^the project manager removes the activity with title \"([^\"]*)\"$")
     public void theProjectManagerRemovesTheActivityWithTitle(String arg1) throws Exception {
-
-        System.out.println(planner.activeUser.getActivities().contains(activity));
-
         Project project = planner.getProject("Heisenberg");
 
-        try{
+        try {
             project.removeActivity(project.getActivity(arg1),planner.getActiveUser());
-        } catch (OperationNotAllowedException e){
+        } catch (Exception e){
             errorMessage.setErrorMessage(e.getMessage());
         }
 
@@ -279,7 +276,8 @@ public class UserSteps {
 
     @Given("^the developer is not project manager$")
     public void theDeveloperIsNotProjectManager() throws Exception {
-        assertTrue(planner.getActiveUser().getManagerProjects().isEmpty());
+        planner.getProject("Heisenberg").setProjectManager(new User("nyManager","123"));
+        assertFalse(planner.activeUser.equals(planner.getProject("Heisenberg").getManager()));
     }
 
 }
