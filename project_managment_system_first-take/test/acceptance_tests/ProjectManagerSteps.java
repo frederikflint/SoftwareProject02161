@@ -241,9 +241,20 @@ public class ProjectManagerSteps {
         assertTrue(project.getManager().equals(planner.activeUser));
     }
 
+    @Given("^the project already contains that activity$")
+    public void theProjectAlreadyContainsThatActivity() throws Exception {
+        project.addActivity(activity,planner.activeUser);
+        assertTrue(project.getActivities().contains(activity));
+
+    }
+
     @When("^the project manager creates the project activity$")
     public void theProjectManagerCreatesTheProjectActivity() throws Exception {
-        project.addActivity(activity,planner.activeUser);
+        try {
+            project.addActivity(activity, planner.activeUser);
+        } catch (OperationNotAllowedException e){
+            errorMessage.setErrorMessage(e.getMessage());
+        }
     }
 
     @Given("^the developer enters a project with an invalid time consumption$")

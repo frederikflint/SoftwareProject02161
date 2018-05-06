@@ -5,7 +5,7 @@ Feature: Delete project
   Scenario: Manager deletes a project
     Given that the developer is logged in
     And a project with title "Heisenberg" is defined
-    When the administrator deletes the project with title "Heisenberg"
+    When the manager deletes the project with title "Heisenberg"
     Then the project with title "Heisenberg" is deleted
 
   Scenario: Developer deletes a project unsuccessfully
@@ -13,4 +13,3 @@ Feature: Delete project
     And a valid project is defined in the system by another developer
     When the developer removes the project
     Then I get the error message "You need to have project manager rights to edit this project"
-

@@ -42,7 +42,7 @@ public class User {
      */
     public void addActivity(Activity activity) throws OperationNotAllowedException {
         if(activities.contains(activity)){
-            throw new OperationNotAllowedException("This activity is already add to your account");
+            throw new OperationNotAllowedException("The activity is already created");
         } else {
             activities.add(activity);
         }

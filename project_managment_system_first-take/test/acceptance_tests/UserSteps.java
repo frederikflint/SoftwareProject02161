@@ -122,13 +122,18 @@ public class UserSteps {
         assertTrue(planner.activeAdmin());
     }
 
-    @When("^the administrator deletes the project with title \"([^\"]*)\"$")
-    public void theAdministratorDeletesTheProjectWithTitle(String arg1) throws Exception {
+    @When("^the manager deletes the project with title \"([^\"]*)\"$")
+    public void theManagerDeletesTheProjectWithTitle(String arg1) throws Exception {
         try {
             planner.deleteProject(planner.getProject(arg1));
         } catch (OperationNotAllowedException | AuthenticationException e){
             errorMessage.setErrorMessage(e.getMessage());
         }
+    }
+
+    @Then("^the developer is a project manager of the project$")
+    public void theDeveloperIsAProjectManagerOfTheProject() throws Exception {
+        assertTrue(project.getManager().equals(planner.activeUser));
     }
 
     @Then("^the project with title \"([^\"]*)\" is deleted$")
@@ -170,7 +175,12 @@ public class UserSteps {
     @Given("^the developer has no activities in his list of activities$")
     public void the_developer_has_no_activities_in_his_list_of_activities() throws Exception {
         assertEquals(planner.getActiveUser().getActivities().isEmpty(), true);
+    }
 
+    @Given("^the activity is already registered to the developer$")
+    public void theActivityIsAlreadyRegisteredToTheDeveloper() throws Exception {
+        planner.activeUser.addActivity(activity);
+        assertTrue(planner.activeUser.getActivities().contains(activity));
     }
 
     @Given("^the developer enters a valid activity$")
