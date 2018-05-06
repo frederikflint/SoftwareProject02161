@@ -196,7 +196,6 @@ public class Planner {
             // Add the user to that project
             try {
                 project.addUser(getActiveUser());
-                //System.out.println(getActiveUser().getCredentials() + "5");
             } catch (OperationNotAllowedException e) {
                 throw new OperationNotAllowedException(e.getMessage());
             }
@@ -207,7 +206,6 @@ public class Planner {
             // Add the manager association
             project.setProjectManager(getActiveUser());
             getActiveUser().addManageProject(project);
-            //System.out.println("create blev gennemført");
         }
 
     }
