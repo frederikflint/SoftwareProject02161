@@ -193,7 +193,6 @@ public class Planner {
             projects.add(project);
 
             // Set associations
-
             // Add the user to that project
             try {
                 project.addUser(getActiveUser());
@@ -201,6 +200,9 @@ public class Planner {
             } catch (OperationNotAllowedException e) {
                 throw new OperationNotAllowedException(e.getMessage());
             }
+
+            // Add the user association
+            getActiveUser().addProject(project);
 
             // Add the manager association
             project.setProjectManager(getActiveUser());
@@ -217,7 +219,8 @@ public class Planner {
      * @throws AuthenticationException The user is not a adminHelper.
      */
     public void deleteProject(Project project) throws OperationNotAllowedException, AuthenticationException{
-        checkAdminSession();
+        checkManagerRights(project);
+
         // Remove the project from
         if(!(projects.contains(project))){
             throw new OperationNotAllowedException("No project with the given title was found");
