@@ -22,6 +22,8 @@ public class Planner {
     // All the developers on the system
     public List<User> users =  new ArrayList<>();
 
+    List<User> availableUsers = new ArrayList<>();
+
     // All the projects on the system
     public List<Project> projects = new ArrayList<>();
 
@@ -355,23 +357,25 @@ public class Planner {
     public List<User> getAvailableUsers(Calendar activityStartTime, Calendar activityEndTime) throws AuthenticationException {
         checkSession();
 
-        List<User> availableUsers = new ArrayList<>();
-
         // Check if a given user is available
         for (User user : users) {
             if(user.getWorkHours().isEmpty()){
-                availableUsers.add(user);
+                if(!getActiveUser().equals(user)){
+                    availableUsers.add(user);
+                }
                 break;
             }
+
             for (WorkHours workHour : user.getWorkHours()) {
                 if (!(workHour.getStartTime().after(activityStartTime)) && !(workHour.getEndTime().before(activityEndTime))) {
                     if (!(workHour.getStartTime().equals(activityStartTime)) && !(workHour.getEndTime().equals(activityEndTime))) {
-                        availableUsers.add(user);
+                        if(!getActiveUser().equals(user)){
+                            availableUsers.add(user);
+                        }
                     }
                 }
             }
         }
-
 
         return availableUsers;
     }
@@ -384,7 +388,7 @@ public class Planner {
      */
     public void isThereAvailableUsers(Calendar activityStartTime, Calendar activityEndTime) throws Exception {
         if(getAvailableUsers(activityStartTime,activityEndTime).isEmpty()){
-            throw new Exception("There are no available users");
+            throw new Exception("No developer is currently available");
         }
     }
 

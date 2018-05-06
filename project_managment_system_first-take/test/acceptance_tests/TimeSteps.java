@@ -20,7 +20,6 @@ public class TimeSteps {
 
     private Planner planner;
     private User user;
-    private Admin admin;
     private Project project;
     private Activity activity;
 

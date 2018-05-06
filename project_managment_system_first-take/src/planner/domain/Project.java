@@ -1,5 +1,6 @@
 package planner.domain;
 
+import planner.app.AuthenticationException;
 import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
 
@@ -74,7 +75,12 @@ public class Project {
      * @throws OperationNotAllowedException The active user is not a part og the project.
      *                                      The activity is already a part og the project.
      */
-    public void addActivity(Activity activty, User activeUser) throws OperationNotAllowedException {
+    public void addActivity(Activity activty, User activeUser) throws OperationNotAllowedException, AuthenticationException {
+
+        if(!activeUser.equals(getManager())){
+            throw new AuthenticationException("You need to have project manager rights to edit this project");
+        }
+
         if (!(users.contains(activeUser))) {
             throw new OperationNotAllowedException("You are not a part of this project");
         } else if (activities.contains(activty)) {
@@ -110,13 +116,18 @@ public class Project {
      * @throws OperationNotAllowedException If you do not have manager rights throw error.
      *                                      You can't remove an activity that is not a part of the project.
      */
-    public void removeActivity(Activity activty, User activeUser) throws OperationNotAllowedException {
+    public void removeActivity(Activity activty, User activeUser) throws OperationNotAllowedException, AuthenticationException{
+
+        if(!activeUser.equals(getManager())){
+            throw new AuthenticationException("You need to have project manager rights to edit this project");
+        }
+
         if (!(users.contains(activeUser))) {
             throw new OperationNotAllowedException("You are not a part of this project");
         } else if(!(activities.contains(activty))){
             throw new OperationNotAllowedException("The activity you are trying to remove is not in this project");
         } else {
-            activities.add(activty);
+            activities.remove(activty);
         }
     }
 
@@ -129,7 +140,11 @@ public class Project {
      *                                      The user has to be a part of the project to add activity.
      *                                      The activity has to be a part of the project to add it.
      */
-    public void addActivityToProjectUser(Activity activity, User activeUser, User user) throws OperationNotAllowedException {
+    public void addActivityToProjectUser(Activity activity, User activeUser, User user) throws OperationNotAllowedException, AuthenticationException {
+
+        if(!activeUser.equals(getManager())){
+            throw new AuthenticationException("You need to have project manager rights to edit this project");
+        }
 
         if(!(manager.equals(activeUser))){
             throw new OperationNotAllowedException("You need to have project manager rights to edit this project");
