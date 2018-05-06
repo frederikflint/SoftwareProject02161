@@ -118,6 +118,22 @@ public class ProjectManagerSteps {
         planner.createProject(project);
     }
 
+    @Given("^a valid project is defined in the system by another developer$")
+    public void aValidProjectIsDefinedInTheSystemByAnotherDeveloper() throws Exception {
+        project = projectHelper.getValidProject();
+        planner.projects.add(project);
+    }
+
+    @When("^the developer removes the project$")
+    public void theDeveloperRemovesTheProject() throws Exception {
+        try {
+            planner.deleteProject(project);
+        }catch (Exception e){
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+
+    }
+
     @Then("^the activity is added to the project$")
     public void theActivityIsAddedToTheProject() throws Exception {
         assertTrue(project.getActivities().contains(activity));
@@ -137,9 +153,9 @@ public class ProjectManagerSteps {
     @When("^the project manager asks for a list$")
     public void theProjectManagerAsksForAList() throws Exception {
         try{
-            planner.getAvailableUsers(startTime,endTime);
+            planner.isThereAvailableUsers(startTime,endTime);
         } catch (Exception e){
-            e.getMessage();
+            errorMessage.setErrorMessage(e.getMessage());
         }
 
     }
@@ -183,8 +199,6 @@ public class ProjectManagerSteps {
     public void theAdminAssignsUserToProjectManager() throws Exception {
         try {
             planner.changeProjectManager(user, project);
-            // TODO: Hvorfor log ud ???
-            //planner.userLogOut();
         }catch (Exception e){
             errorMessage.setErrorMessage(e.getMessage());
         }

@@ -371,7 +371,7 @@ public class Terminal {
         for (WorkHours work: activeUser.getWorkHours()) {
             System.out.println("- " + work.getActivity().getTitle());
         }
-        
+
         userFeatureScreen();
     }
 

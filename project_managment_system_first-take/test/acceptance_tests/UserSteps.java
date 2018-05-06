@@ -76,10 +76,9 @@ public class UserSteps {
 
     @Given("^that the developer is logged in$")
     public void thatTheDeveloperIsLoggedIn() throws Exception {
-        if(planner.getActiveUser() == null){
-            planner.activeUser = helper.getUser();
-        }
-
+        User user =  helper.getUser();
+        planner.getUsers().add(user);
+        planner.userLogIn(user.getCredentials(),user.getPassword());
     }
 
     @Given("^a project already exist in the planner$")
@@ -90,7 +89,7 @@ public class UserSteps {
 
     @Then("^I get the error message \"([^\"]*)\"$")
     public void iGetTheErrorMessage(String arg1) throws Exception {
-        assertTrue(errorMessage.getErrorMessage().equals(arg1));
+        assertEquals(errorMessage.getErrorMessage(), arg1);
     }
 
     @Given("^a project with title \"([^\"]*)\" is defined$")
@@ -101,12 +100,8 @@ public class UserSteps {
         try {
             planner.createProject(new Project(arg1, startDate, endDate));
             planner.assignUserToProject(planner.getActiveUser(), planner.getProject(arg1));
-//            planner.getProject(arg1).getUsers().add(planner.getActiveUser());
-//            System.out.println(planner.getProject(arg1));
-//            System.out.println(planner.getProject(arg1).getUsers().isEmpty() + "empty?");
         } catch (Exception e) {
             errorMessage.setErrorMessage(e.getMessage());
-            System.out.println(errorMessage.getErrorMessage() + "11");
         }
 
         assertTrue(planner.getProjects().contains(planner.getProject(arg1)));
@@ -130,22 +125,15 @@ public class UserSteps {
     @When("^the administrator deletes the project with title \"([^\"]*)\"$")
     public void theAdministratorDeletesTheProjectWithTitle(String arg1) throws Exception {
         try {
-            System.out.println("2.5");
-            System.out.println(planner.getProject(arg1).getTitle());
             planner.deleteProject(planner.getProject(arg1));
-            System.out.println(project.getTitle() + "3");
         } catch (OperationNotAllowedException | AuthenticationException e){
             errorMessage.setErrorMessage(e.getMessage());
-            System.out.println(errorMessage.getErrorMessage() + "4");
         }
     }
 
     @Then("^the project with title \"([^\"]*)\" is deleted$")
     public void theProjectWithTitleIsDeleted(String arg1) throws Exception {
         assertTrue(planner.getProject(arg1) == null);
-        System.out.println(planner.getProject(arg1));
-        System.out.println(planner.getProject(arg1).getTitle());
-
     }
 
     @Given("^a project with title \"([^\"]*)\" is not defined$")
@@ -229,6 +217,7 @@ public class UserSteps {
 
     @When("^the developer removes the activity$")
     public void theDeveloperRemovesTheActivity() throws Exception {
+
         try {
             planner.activeUser.removeActivity(activity);
         } catch (OperationNotAllowedException e){
@@ -243,11 +232,29 @@ public class UserSteps {
 
     @When("^the project manager removes the activity with title \"([^\"]*)\"$")
     public void theProjectManagerRemovesTheActivityWithTitle(String arg1) throws Exception {
+
+        System.out.println(planner.activeUser.getActivities().contains(activity));
+
+        Project project = planner.getProject("Heisenberg");
+
         try{
-            planner.getProject("Heisenberg").removeActivity(planner.getProject("Heisenberg").getActivity(arg1),planner.activeUser);
+            project.removeActivity(project.getActivity(arg1),planner.getActiveUser());
         } catch (OperationNotAllowedException e){
             errorMessage.setErrorMessage(e.getMessage());
         }
+
+    }
+
+    @Given("^there is a activity project with the title \"([^\"]*)\" defined$")
+    public void thereIsAActivityProjectWithTheTitleDefined(String arg1) throws Exception {
+        Calendar startDate = Calendar.getInstance();
+        Calendar endDate = Calendar.getInstance();
+        startDate.set(2018,0,0,0,0);
+        endDate.set(2018,1,0,0,0);
+        activity = new Activity(startDate,endDate,arg1);
+        planner.getProject("Heisenberg").addActivity(activity, planner.getActiveUser());
+
+        assertTrue(planner.getProject("Heisenberg").getActivities().contains(activity));
     }
 
     @Then("^the activity with title \"([^\"]*)\" is removed from the project$")
@@ -255,10 +262,14 @@ public class UserSteps {
         assertFalse(planner.getProject("Heisenberg").getActivities().contains(planner.getProject("Heisenberg").getActivity(arg1)));
     }
 
+    @Then("^the activity with title \"([^\"]*)\" is not removed from the project$")
+    public void theActivityWithTitleIsNotRemovedFromTheProject(String arg1) throws Exception {
+        assertTrue(planner.getProject("Heisenberg").getActivity(arg1) != null);
+    }
+
     @Given("^there is not an activity with the title \"([^\"]*)\" defined$")
     public void thereIsNotAnActivityWithTheTitleDefined(String arg1) throws Exception {
-        assertFalse(planner.getProject("Heisenberg").getActivities().contains(planner.getProject("Heisenberg").getActivity(arg1)));
-
+       assertFalse(planner.getProject("Heisenberg").getActivities().contains(planner.getProject("Heisenberg").getActivity(arg1)));
     }
 
     @Given("^there is a activity with the title \"([^\"]*)\" is not defined$")
@@ -268,11 +279,7 @@ public class UserSteps {
 
     @Given("^the developer is not project manager$")
     public void theDeveloperIsNotProjectManager() throws Exception {
-        User nyProjMan = new User("nyprojMan","1234");
-        planner.users.add(nyProjMan);
-        planner.changeProjectManager(nyProjMan,project2);
-
-        assertFalse(planner.activeUser.equals(planner.getProject("Heisenberg").getManager()));
+        assertTrue(planner.getActiveUser().getManagerProjects().isEmpty());
     }
 
 }

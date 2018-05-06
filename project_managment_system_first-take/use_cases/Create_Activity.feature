@@ -21,7 +21,7 @@ Feature: Create activity
     And the developer enters a valid activity
     When the project manager creates the project activity
     Then the activity is added to the project
-#
+
 #  Scenario: Add a project activity unsuccessfully
 #    Given that a project is defined
 #    And a project manager is logged in

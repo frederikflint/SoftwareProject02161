@@ -39,6 +39,7 @@ Feature: Remove activity
     And a valid project is defined
     And a project with title "Heisenberg" is defined
     And the developer is not project manager
-    And there is a activity with the title "Herimundus" defined
+    And there is a activity project with the title "Herimundus" defined
     When the project manager removes the activity with title "Herimundus"
-    Then the activity with title "Herimundus" is removed from the project
+    Then the activity with title "Herimundus" is not removed from the project
+    And I get the error message "You need to have project manager rights to edit this project"
