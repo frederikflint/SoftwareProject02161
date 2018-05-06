@@ -17,6 +17,9 @@ public class Terminal {
     Planner planner = new Planner();
     Scanner input = new Scanner(System.in);
 
+    Calendar start = Calendar.getInstance();
+    Calendar end = Calendar.getInstance();
+
     String month = "";
     String day = "";
     String hour = "";
@@ -78,12 +81,12 @@ public class Terminal {
      ******************/
 
     private void startPrompt() {
-        System.out.println("Velkommen til SoftwareHuset A/S. Vælg venligst en funktion:");
+        System.out.println("Velkommen til SoftwareHuset A/S.");
         logIn();
     }
 
     private void logIn() {
-        System.out.println("Log ind");
+        System.out.println("Log venligst ind");
         System.out.println("Indtast brugernavn:");
         String username = input.nextLine();
         System.out.println("Indtast password:");
@@ -92,7 +95,7 @@ public class Terminal {
             planner.userLogIn(username,password);
 
             if(planner.activeUser.isAdmin()){
-                System.out.println("Velkommen til admin panelet");
+                System.out.println("Velkommen til systemets kontrolpanel");
                 adminFeatureScreen();
             } else {
                 System.out.println("Velkommen " + planner.activeUser.getCredentials());
@@ -254,10 +257,10 @@ public class Terminal {
         System.out.println("Skriv brugernavnet på den bruger du vil have slettet");
         User user = setUser();
 
-        System.out.println("Er du sikker på du vil slette brugeren " + "\"" + user.getCredentials()+ "\"? Ja: 1, Nej: 2");
+        System.out.println("Er du sikker på du vil slette brugeren " + "\"" + user.getCredentials()+ "\"? Ja: j, Nej: n");
         String in = input.nextLine();
 
-        if(in.equals("2")){
+        if(in.equals("n")){
             adminFeatureScreen();
         }
 
@@ -279,10 +282,10 @@ public class Terminal {
     private void userFeatureScreen() {
         System.out.println("Indtast et nummer:");
         System.out.println("1: Registrer tid");
-        System.out.println("2: Se Registreret tid");
+        System.out.println("2: Se registreret tid");
         System.out.println("3: Opret projekt");
         System.out.println("4: Opret aktivitet");
-        System.out.println("5: Manager panel");
+        System.out.println("5: Manager kontrolpanel");
         System.out.println("6: Log ud");
         String in = input.nextLine();
 
@@ -319,16 +322,14 @@ public class Terminal {
     private void createProject() {
         System.out.println("-1 for at gå tilbage");
         System.out.println("Opretter projekt...");
-        System.out.println("Indtast titel:");
+        System.out.println("Indtast navn på projektet:");
         String titel = input.nextLine();
         if (titel.equals("-1")) {
             userFeatureScreen();
         }
-        Calendar start = Calendar.getInstance();
-        Calendar end = Calendar.getInstance();
-        System.out.println("Kendes start tidspunkt? Ja: 1, Nej: 2");
+        System.out.println("Kendes starttidspunkt på projektet? Ja: j, Nej: n");
         String x = input.nextLine();
-        if (x.equals("1")){
+        if (x.equals("j")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
             try {
@@ -338,7 +339,7 @@ public class Terminal {
                 System.out.println(e.getMessage());
                 createProject();
             }
-        } else if (x.equals("2")) {
+        } else if (x.equals("n")) {
             try {
                 planner.createProject(new Project(titel,start,end));
                 userFeatureScreen();
@@ -347,7 +348,7 @@ public class Terminal {
                 createProject();
             }
         } else {
-            System.out.println("Forkerte information - prøv igen");
+            System.out.println("Indtast 'j' for Ja og 'n' for Nej  - prøv igen");
             createProject();
         }
     }
@@ -700,7 +701,7 @@ public class Terminal {
 
     private void registerTime() {
         System.out.println("-1 for at gå tilbage");
-        System.out.println("Registrer tid på en aktivitet. Indtast et titel på aktiviteten:");
+        System.out.println("Registrer tid på en aktivitet. Indtast en titel på aktiviteten:");
         for (Activity activity : planner.getActiveUser().getActivities()) {
             System.out.println(activity.getID());
         }
