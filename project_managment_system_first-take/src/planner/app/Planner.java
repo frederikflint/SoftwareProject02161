@@ -188,10 +188,18 @@ public class Planner {
             throw new OperationNotAllowedException("Project is already in the planner");
         } else if(getProject(project.getTitle()) != null){
             throw new OperationNotAllowedException("A project with that title is in the planner");
-        } else if (project.getEstimatedEndTime().before(project.getEstimatedStartTime())) {
-            throw new OperationNotAllowedException("Invalid time for project");
         } else {
+            // Add the project to the planner projects list
             projects.add(project);
+
+            // Set associations
+
+            // Add the user to that project
+            project.addUser(getActiveUser());
+
+            // Add the manager association
+            project.setProjectManager(getActiveUser());
+            getActiveUser().addManageProject(project);
         }
 
     }
@@ -273,13 +281,11 @@ public class Planner {
      * @throws OperationNotAllowedException the user you are trying to promote is not a part of the system.
      * @throws AuthenticationException If the session is not a Admin session throw exception.
      */
-    public void assignProjectManager(User user, Project project) throws OperationNotAllowedException, AuthenticationException{
+    public void changeProjectManager(User user, Project project) throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
 
         if(!(users.contains(user))){
             throw new OperationNotAllowedException("The user you are trying to promote is not a part of the planner");
-        } else if(project.getManager() != null){
-            throw new OperationNotAllowedException("Project already has a registered project manager");
         }
 
         // Admin has the rights to just add the user
@@ -292,20 +298,6 @@ public class Planner {
         // Set the manager association
         project.setProjectManager(user);
         project.getManager().addManageProject(project);
-
-    }
-
-    /**
-     *
-     * @param project
-     * @throws AuthenticationException If the session is not a Admin session throw exception.
-     */
-    public void removeProjectManager(Project project) throws AuthenticationException{
-        checkAdminSession();
-
-        // Remove the manager association
-        project.getManager().removeManagerProject(project);
-        project.setProjectManager(null);
 
     }
 

@@ -1,15 +1,11 @@
 package acceptance_tests;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.*;
 
-import cucumber.api.PendingException;
-import cucumber.api.java.ca.Cal;
-import cucumber.api.java.cy_gb.A;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -164,7 +160,7 @@ public class ProjectManagerSteps {
     @When("^the admin assigns user to project manager$")
     public void theAdminAssignsUserToProjectManager() throws Exception {
         try {
-            planner.assignProjectManager(user, project);
+            planner.changeProjectManager(user, project);
             // TODO: Hvorfor log ud ???
             //planner.userLogOut();
         }catch (Exception e){
@@ -185,7 +181,7 @@ public class ProjectManagerSteps {
 
     @When("^the administrator removes the project manager status from the user$")
     public void theAdministratorRemovesTheProjectManagerStatusFromTheUser() throws Exception {
-        planner.removeProjectManager(project);
+//        planner.removeProjectManager(project);
     }
 
     @Then("^the developer is no longer project manager$")
