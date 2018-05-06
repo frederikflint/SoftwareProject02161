@@ -258,7 +258,7 @@ public class Planner {
      * @throws OperationNotAllowedException
      * @throws AuthenticationException
      */
-    public void removeUserFromProjet(User user, Project project) throws  OperationNotAllowedException, AuthenticationException{
+    public void removeUserFromProject(User user, Project project) throws  OperationNotAllowedException, AuthenticationException{
         checkSession();
         checkManagerRights(project);
 
@@ -282,7 +282,8 @@ public class Planner {
      * @throws AuthenticationException If the session is not a Admin session throw exception.
      */
     public void changeProjectManager(User user, Project project) throws OperationNotAllowedException, AuthenticationException{
-        checkAdminSession();
+        checkSession();
+        checkManagerRights(project);
 
         if(!(users.contains(user))){
             throw new OperationNotAllowedException("The user you are trying to promote is not a part of the planner");
@@ -295,7 +296,10 @@ public class Planner {
             user.addProject(project);
         }
 
-        // Set the manager association
+        // Remove the old association
+        activeUser.getManagerProjects().remove(project);
+
+        // Set the new manager association
         project.setProjectManager(user);
         project.getManager().addManageProject(project);
 
