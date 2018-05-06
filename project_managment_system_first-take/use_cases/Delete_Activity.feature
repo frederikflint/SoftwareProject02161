@@ -1,4 +1,4 @@
-Feature: Remove activity
+Feature: Delete activity
   Description: An activity is removed by developer or project manager
   Actors: Developer or project manager
 
@@ -38,8 +38,7 @@ Feature: Remove activity
     Given that the developer is logged in
     And a valid project is defined
     And a project with title "Heisenberg" is defined
-    And the developer is not project manager
     And there is a activity project with the title "Herimundus" defined
+    And the developer is not project manager
     When the project manager removes the activity with title "Herimundus"
-    Then the activity with title "Herimundus" is not removed from the project
-    And I get the error message "You need to have project manager rights to edit this project"
+    Then I get the error message "You need to have project manager rights to edit this project"

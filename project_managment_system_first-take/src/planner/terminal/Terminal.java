@@ -8,6 +8,7 @@ import planner.domain.Project;
 import planner.domain.User;
 import planner.domain.WorkHours;
 
+import java.text.DecimalFormat;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
@@ -17,6 +18,7 @@ public class Terminal {
     //Terminal terminal;
     Planner planner = new Planner();
     Scanner input = new Scanner(System.in);
+    DecimalFormat df = new DecimalFormat("#.##");
 
 
     String month = "";
@@ -283,12 +285,11 @@ public class Terminal {
         System.out.println("2: Se registreret tid");
         System.out.println("3: Se aktiviteter");
         System.out.println("4: Se projekter");
-        System.out.println("5: Hjælp en bruger med en aktivitet");
-        System.out.println("6: Opret en aktivitet");
-        System.out.println("7: Opret et projekt");
-        System.out.println("8: Fjern en aktivitet");
-        System.out.println("9: Manager kontrolpanel");
-        System.out.println("10: Log ud");
+        System.out.println("5: Opret en aktivitet");
+        System.out.println("6: Opret et projekt");
+        System.out.println("7: Fjern en aktivitet");
+        System.out.println("8: Manager kontrolpanel");
+        System.out.println("9: Log ud");
         String in = input.nextLine();
 
         if (in.equals("1")){
@@ -299,15 +300,13 @@ public class Terminal {
             getActivities();
         } else if (in.equals("4")){
             getProjects();
-        } else if (in.equals("5")) {
-            userFeatureScreen();
-        }else if (in.equals("6")) {
+        }else if (in.equals("5")) {
             createActivity();
-        } else if (in.equals("7")) {
+        } else if (in.equals("6")) {
             createProject();
-        } else if (in.equals("8")) {
+        } else if (in.equals("7")) {
             removeActivity();
-        }else if (in.equals("9")) {
+        }else if (in.equals("8")) {
             if(planner.activeUser.getManagerProjects().isEmpty()){
                 System.out.println("Du er ikke manager for nogen projekter");
                 userFeatureScreen();
@@ -315,7 +314,7 @@ public class Terminal {
                 System.out.println("Dit manager panel");
                 managerFeatureScreen();
             }
-        } else if (in.equals("10")) {
+        } else if (in.equals("9")) {
             try {
                 planner.userLogOut();
                 startPrompt();
@@ -365,13 +364,12 @@ public class Terminal {
             userFeatureScreen();
         }
 
-
-        System.out.println("Du har registreret tid for følgende aktiviteter " );
+        System.out.println("Du har registreret tid på følgende aktiviteter: " );
         User activeUser = planner.getActiveUser();
         for (WorkHours work: activeUser.getWorkHours()) {
-            System.out.println("- " + work.getActivity().getTitle());
+            System.out.println("- Aktivitet: " + work.getActivity().getTitle() +
+                               ", Tidsforbrug: " + df.format((double) work.getWorkTimeInMinutes() / 60.0) + " timer");
         }
-
         userFeatureScreen();
     }
 

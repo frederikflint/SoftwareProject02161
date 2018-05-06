@@ -122,13 +122,18 @@ public class UserSteps {
         assertTrue(planner.activeAdmin());
     }
 
-    @When("^the administrator deletes the project with title \"([^\"]*)\"$")
-    public void theAdministratorDeletesTheProjectWithTitle(String arg1) throws Exception {
+    @When("^the manager deletes the project with title \"([^\"]*)\"$")
+    public void theManagerDeletesTheProjectWithTitle(String arg1) throws Exception {
         try {
             planner.deleteProject(planner.getProject(arg1));
         } catch (OperationNotAllowedException | AuthenticationException e){
             errorMessage.setErrorMessage(e.getMessage());
         }
+    }
+
+    @Then("^the developer is a project manager of the project$")
+    public void theDeveloperIsAProjectManagerOfTheProject() throws Exception {
+        assertTrue(project.getManager().equals(planner.activeUser));
     }
 
     @Then("^the project with title \"([^\"]*)\" is deleted$")
@@ -170,7 +175,12 @@ public class UserSteps {
     @Given("^the developer has no activities in his list of activities$")
     public void the_developer_has_no_activities_in_his_list_of_activities() throws Exception {
         assertEquals(planner.getActiveUser().getActivities().isEmpty(), true);
+    }
 
+    @Given("^the activity is already registered to the developer$")
+    public void theActivityIsAlreadyRegisteredToTheDeveloper() throws Exception {
+        planner.activeUser.addActivity(activity);
+        assertTrue(planner.activeUser.getActivities().contains(activity));
     }
 
     @Given("^the developer enters a valid activity$")
@@ -232,14 +242,11 @@ public class UserSteps {
 
     @When("^the project manager removes the activity with title \"([^\"]*)\"$")
     public void theProjectManagerRemovesTheActivityWithTitle(String arg1) throws Exception {
-
-        System.out.println(planner.activeUser.getActivities().contains(activity));
-
         Project project = planner.getProject("Heisenberg");
 
-        try{
+        try {
             project.removeActivity(project.getActivity(arg1),planner.getActiveUser());
-        } catch (OperationNotAllowedException e){
+        } catch (Exception e){
             errorMessage.setErrorMessage(e.getMessage());
         }
 
@@ -279,7 +286,8 @@ public class UserSteps {
 
     @Given("^the developer is not project manager$")
     public void theDeveloperIsNotProjectManager() throws Exception {
-        assertTrue(planner.getActiveUser().getManagerProjects().isEmpty());
+        planner.getProject("Heisenberg").setProjectManager(new User("nyManager","123"));
+        assertFalse(planner.activeUser.equals(planner.getProject("Heisenberg").getManager()));
     }
 
 }
