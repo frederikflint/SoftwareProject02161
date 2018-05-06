@@ -194,8 +194,9 @@ public class Planner {
 
             // Set associations
 
-            // Add the user to that project
+            // Add the user association
             project.addUser(getActiveUser());
+            getActiveUser().addProject(project);
 
             // Add the manager association
             project.setProjectManager(getActiveUser());
@@ -211,7 +212,7 @@ public class Planner {
      * @throws AuthenticationException The user is not a adminHelper.
      */
     public void deleteProject(Project project) throws OperationNotAllowedException, AuthenticationException{
-        checkAdminSession();
+        checkManagerRights(project);
 
         // Remove the project from
         if(!(projects.contains(project))){
