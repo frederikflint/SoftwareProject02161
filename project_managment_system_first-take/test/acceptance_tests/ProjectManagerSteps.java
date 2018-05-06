@@ -45,8 +45,8 @@ public class ProjectManagerSteps {
         this.projectHelper = projectHelper;
     }
 
-    @Given("^that the developer is a project manager$")
-    public void thatTheDeveloperIsAProjectManager() throws Exception {
+    @Given("^the developer is project manager$")
+    public void thatTheDeveloperIsProjectManager() throws Exception {
         planner.createProject(project);
         project.setProjectManager(planner.getActiveUser());
         assertTrue(project.getManager().equals(planner.getActiveUser()));
@@ -110,8 +110,8 @@ public class ProjectManagerSteps {
         assertFalse(project.getUsers().equals(user));
     }
 
-    @Given("^that the developer is part of the project$")
-    public void thatTheDeveloperIsPartOfTheProject() throws Exception {
+    @Given("^the developer is part of the project$")
+    public void theDeveloperIsPartOfTheProject() throws Exception {
         project.addUser(planner.getActiveUser());
     }
 
@@ -158,8 +158,8 @@ public class ProjectManagerSteps {
         planner.users.add(user);
     }
 
-    @When("^the admin assigns user to project manager$")
-    public void theAdminAssignsUserToProjectManager() throws Exception {
+    @When("^the admin promotes developer to project manager$")
+    public void theAdminPromotesDeveloperToProjectManager() throws Exception {
         try {
             planner.assignProjectManager(user, project);
         }catch (Exception e){
@@ -172,8 +172,8 @@ public class ProjectManagerSteps {
         assertEquals(project.getManager(),user);
     }
 
-    @Given("^a project has a project manager$")
-    public void aProjectHasAProjectManager() throws Exception {
+    @Given("^the project has a project manager$")
+    public void theProjectHasAProjectManager() throws Exception {
         project.setProjectManager(user);
         assertFalse(project.getManager().equals(null));
     }
