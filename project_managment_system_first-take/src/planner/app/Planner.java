@@ -443,10 +443,6 @@ public class Planner {
         return projects;
     }
 
-    public User getActiveUser(User activeUser) {
-        return activeUser;
-    }
-
     public User getActiveUser() {
         return activeUser;
     }
