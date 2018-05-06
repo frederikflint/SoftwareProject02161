@@ -9,11 +9,11 @@ Feature: Create Project
     Then the project is created
     And the developer is project manager of the project
 
-  Scenario: The developer doesn't enter valid start date
-    Given that the developer is logged in
-    And the developer enters a project with an invalid start date
-    When the developer creates the project
-    Then I get the error message "Invalid time for project"
+#  Scenario: The developer doesn't enter valid start date
+#    Given that the developer is logged in
+#    And the developer enters a project with an invalid start date
+#    When the developer creates the project
+#    Then I get the error message "Invalid time for project"
 
   Scenario: The developer enters a project that already exists in the planner
     Given that the developer is logged in

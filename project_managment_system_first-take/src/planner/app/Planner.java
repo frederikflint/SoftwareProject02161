@@ -195,11 +195,17 @@ public class Planner {
             // Set associations
 
             // Add the user to that project
-            project.addUser(getActiveUser());
+            try {
+                project.addUser(getActiveUser());
+                //System.out.println(getActiveUser().getCredentials() + "5");
+            } catch (OperationNotAllowedException e) {
+                throw new OperationNotAllowedException(e.getMessage());
+            }
 
             // Add the manager association
             project.setProjectManager(getActiveUser());
             getActiveUser().addManageProject(project);
+            //System.out.println("create blev gennemført");
         }
 
     }
@@ -216,13 +222,22 @@ public class Planner {
         // Remove the project from
         if(!(projects.contains(project))){
             throw new OperationNotAllowedException("No project with the given title was found");
-        } else if(users.isEmpty()) {
+        }
+        System.out.println(project.getTitle() + "1");
+        if(!project.getUsers().isEmpty()) {
             // Get the users associated to this project
             // and remove the project from the user.
             for (User user : project.getUsers()) {
-                user.removeProject(project);
+                try {
+                    System.out.println("2.6");
+                    user.removeProject(project);
+                } catch (OperationNotAllowedException e) {
+                    System.out.println("");
+                    throw new OperationNotAllowedException(e.getMessage());
+                }
             }
         }
+        System.out.println(project.getTitle() + "2");
         // Remove the actual project from the planner
         projects.remove(project);
     }
@@ -398,7 +413,7 @@ public class Planner {
      * @param title The project title
      * @return Returns the specific found project
      */
-    public Project getProject(String title) throws OperationNotAllowedException {
+    public Project getProject(String title) {
 
         // Set the initial currentProject as null.
         Project currentProject = null;
@@ -406,7 +421,7 @@ public class Planner {
         for (Project project : projects) {
 
             // Does the search params match.
-            if (Objects.equals(project.getTitle(), title)){
+            if (project.getTitle().equals(title)){
                 currentProject =  project;
             }
         }

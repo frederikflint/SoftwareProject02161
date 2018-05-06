@@ -4,6 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import jdk.jfr.events.ExceptionThrownEvent;
 import org.mockito.internal.creation.SuspendMethod;
 import planner.app.AuthenticationException;
 import planner.app.OperationNotAllowedException;
@@ -95,9 +96,17 @@ public class UserSteps {
     public void aProjectWithTitleIsDefined(String arg1) throws Exception {
         Calendar startDate = Calendar.getInstance();
         Calendar endDate = Calendar.getInstance();
-        startDate.set(1,1);
-        endDate.set(2,1);
-        planner.createProject(new Project(arg1,startDate,endDate));
+
+        try {
+            planner.createProject(new Project(arg1, startDate, endDate));
+            planner.assignUserToProject(planner.getActiveUser(), planner.getProject(arg1));
+//            planner.getProject(arg1).getUsers().add(planner.getActiveUser());
+//            System.out.println(planner.getProject(arg1));
+//            System.out.println(planner.getProject(arg1).getUsers().isEmpty() + "empty?");
+        } catch (Exception e) {
+            errorMessage.setErrorMessage(e.getMessage());
+            System.out.println(errorMessage.getErrorMessage() + "11");
+        }
         assertTrue(planner.getProjects().contains(planner.getProject(arg1)));
     }
 
@@ -119,20 +128,26 @@ public class UserSteps {
     @When("^the administrator deletes the project with title \"([^\"]*)\"$")
     public void theAdministratorDeletesTheProjectWithTitle(String arg1) throws Exception {
         try {
+            System.out.println("2.5");
+            System.out.println(planner.getProject(arg1).getTitle());
             planner.deleteProject(planner.getProject(arg1));
+            System.out.println(project.getTitle() + "3");
         } catch (OperationNotAllowedException | AuthenticationException e){
             errorMessage.setErrorMessage(e.getMessage());
+            System.out.println(errorMessage.getErrorMessage() + "4");
         }
     }
 
     @Then("^the project with title \"([^\"]*)\" is deleted$")
     public void theProjectWithTitleIsDeleted(String arg1) throws Exception {
-        assertEquals(planner.getProject(arg1),null);
+        assertTrue(planner.getProject(arg1) == null);
+        System.out.println(planner.getProject(arg1));
+        System.out.println(planner.getProject(arg1).getTitle());
     }
 
     @Given("^a project with title \"([^\"]*)\" is not defined$")
     public void aProjectWithTitleIsNotDefined(String arg1) throws Exception {
-        assertEquals(planner.getProject(arg1),null);
+        assertTrue(planner.getProject(arg1) == null);
     }
 
     @Given("^the developer enters a project with the same name as another project$")
