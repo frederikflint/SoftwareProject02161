@@ -4,6 +4,7 @@ import cucumber.api.PendingException;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
+import org.mockito.internal.creation.SuspendMethod;
 import planner.app.AuthenticationException;
 import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
@@ -27,7 +28,7 @@ public class UserSteps {
 
     private Planner planner;
     private User user;
-    private Project project;
+    public Project project;
     private Activity activity;
 
     private ActivityHelper activityHelper;
@@ -79,36 +80,6 @@ public class UserSteps {
 
     }
 
-    @When("^the developer creates the project$")
-    public void theDeveloperCreatesTheProject() throws Exception {
-        try {
-            planner.createProject(project);
-        } catch (Exception e) {
-            errorMessage.setErrorMessage(e.getMessage());
-        }
-    }
-
-    @Given("^the developer enters a valid project$")
-    public void theDeveloperEntersAValidProjectNumberNameDescriptionStartAndEndDate() throws Exception {
-        project = projectHelper.getValidProject();
-    }
-
-
-    @Then("^the project is created$")
-    public void theProjectWithThatProjectNumberNameDescriptionAndStartAndEndDateIsCreated() throws Exception {
-        assertTrue(planner.projects.contains(project));
-    }
-
-    @Given("^the developer enters a project with an invalid time consumption$")
-    public void theDeveloperEntersAnInvalidProjectNumberNameDescriptionStartOrEndDate() throws Exception {
-        project = projectHelper.getInvalidTimeProject();
-    }
-
-    @Given("^the developer enters a project with an invalid start date$")
-    public void theDeveloperEntersAProjectWithAnInvalidStartDate() throws Exception {
-        project = projectHelper.getInvalidTimeProject();
-    }
-
     @Given("^a project already exist in the planner$")
     public void aProjectAlreadyExistInThePlanner() throws Exception {
         project = projectHelper.getValidProject();
@@ -128,6 +99,21 @@ public class UserSteps {
         endDate.set(2,1);
         planner.createProject(new Project(arg1,startDate,endDate));
         assertTrue(planner.getProjects().contains(planner.getProject(arg1)));
+    }
+
+    @When("^the developer creates the project$")
+    public void theDeveloperCreatesTheProject() throws Exception {
+        try {
+            planner.createProject(project);
+        } catch (Exception e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+    }
+
+    @Given("^the administrator is logged in$")
+    public void thatTheAdministratorIsLoggedIn() throws Exception {
+        planner.userLogIn("admin","admin123");
+        assertTrue(planner.activeAdmin());
     }
 
     @When("^the administrator deletes the project with title \"([^\"]*)\"$")
@@ -208,18 +194,7 @@ public class UserSteps {
     @Given("^the developer is a part of the project$")
     public void theDeveloperIsAPartOfTheProject() throws Exception {
         planner.getProject("Heisenberg").setProjectManager(planner.activeUser);
-        planner.getProject("Heisenberg").addUser(planner.activeUser);
-    }
-
-
-    @When("^the project manager creates the project activity$")
-    public void theProjectManagerCreatesTheProjectActivity() throws Exception {
-        planner.getProject("Heisenberg").addActivity(activity,planner.activeUser);
-    }
-
-    @Then("^the activity is added to the project$")
-    public void theActivityIsAddedToTheProject() throws Exception {
-        assertTrue(planner.getProject("Heisenberg").getActivities().contains(activity));
+//        planner.getProject("Heisenberg").addUser(planner.activeUser);
     }
 
     @Given("^there is a activity with the title \"([^\"]*)\" defined$")
