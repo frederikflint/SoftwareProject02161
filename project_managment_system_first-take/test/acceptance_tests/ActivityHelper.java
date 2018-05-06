@@ -23,11 +23,11 @@ public class ActivityHelper {
         }
         return activity;
     }
-
-    public Activity getExampleActivty(Project project, String ID){
-        Activity activity = new Activity(Calendar.getInstance(), Calendar.getInstance(), ID);
-        return activity;
-    }
+//
+//    public Activity getExampleActivty(Project project, String ID){
+//        Activity activity = new Activity(Calendar.getInstance(), Calendar.getInstance(), ID);
+//        return activity;
+//    }
 
     public Activity getInvalidActivity() {
         startDate.set(2018,1,19,8,0);
