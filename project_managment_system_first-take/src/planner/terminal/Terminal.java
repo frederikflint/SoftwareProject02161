@@ -663,7 +663,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
-            removeUserFromProject();
+            removeProject();
         }
 
         Project project = null;
@@ -672,7 +672,7 @@ public class Terminal {
             project = planner.activeUser.getManagerProjects().get(in - 1);
         }catch (Exception e){
             System.out.println("Intet projekt matcher det nummer");
-            removeUserFromProject();
+            removeProject();
         }
 
 

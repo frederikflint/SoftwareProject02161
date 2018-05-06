@@ -224,6 +224,7 @@ public class Planner {
                 user.removeProject(project);
             }
         }
+
         // Remove the actual project from the planner
         projects.remove(project);
     }
