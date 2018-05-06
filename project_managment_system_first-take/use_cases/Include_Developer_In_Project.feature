@@ -5,7 +5,7 @@ Feature: Include developer in project
   Scenario: The developer who is a project manager adds a developer to the project
     Given that the developer is logged in
     And a valid project is defined
-    And that the developer is part of the project
+    And the developer is part of the project
     And that the developer is a project manager
     And that a developer is available
     When the developer adds a developer to the project
@@ -14,7 +14,7 @@ Feature: Include developer in project
   Scenario: The developer is not project manager and adds a developer to a project
     Given that the developer is logged in
     And a valid project is defined
-    And that the developer is part of the project
+    And the developer is part of the project
     And the developer is not a project manager
     And that a developer is available
     When the developer adds a developer to the project
@@ -24,11 +24,13 @@ Feature: Include developer in project
   Scenario: The developer who is a project manager adds an unavailable developer to the project
     Given that the developer is logged in
     And a valid project is defined
-    And that the developer is part of the project
+    And the developer is part of the project
     And that the developer is a project manager
     And the developer is unavailable
     When the developer adds a developer to the project
     Then the developer is not added to the project
+
+  //TODO; NÅR AVAILABLE ALLEREDE ER PÅ PROJEKTET
 
 #  Scenario: A project manager who is not logged in tries to add a developer
 #  to a project
