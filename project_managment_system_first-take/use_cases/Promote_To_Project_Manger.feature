@@ -25,7 +25,7 @@ Feature: Promote to project manager
     And a valid project is defined
     And that the project has no project manager
     And a developer is defined
-    And the developer is not part of the project
+    And not part
     When the admin promotes developer to project manager
     Then I get the error message "Developer must be a part of the project"
 
