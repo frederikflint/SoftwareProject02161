@@ -16,6 +16,7 @@ Feature: Remove activity
 
   Scenario: Remove a project activity
     Given that the developer is logged in
+    And a valid project is defined
     And a project with title "Heisenberg" is defined
     And that the developer is a project manager
     And the developer is a part of the project
@@ -25,6 +26,7 @@ Feature: Remove activity
 
   Scenario: Remove a project activity failure
     Given that the developer is logged in
+    And a valid project is defined
     And a project with title "Heisenberg" is defined
     And that the developer is a project manager
     And the developer is a part of the project
@@ -34,6 +36,7 @@ Feature: Remove activity
 
   Scenario: Remove a project activity unsuccessfully
     Given that the developer is logged in
+    And a valid project is defined
     And a project with title "Heisenberg" is defined
     And the developer is not project manager
     And the developer is a part of the project

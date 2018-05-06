@@ -4,6 +4,7 @@ Feature: list of available developers
 
   Scenario: Project manager checks list of available developers
     Given that the developer is logged in
+    And a valid project is defined
     And that the developer is a project manager
     And that a developer is available
     When the project manager asks for a list
@@ -11,6 +12,7 @@ Feature: list of available developers
 
   Scenario: Project manager check an empty list of available developers
     Given that the developer is logged in
+    And a valid project is defined
     And the developer enters a valid activity
     And that the developer is a project manager
     And that no developer is available

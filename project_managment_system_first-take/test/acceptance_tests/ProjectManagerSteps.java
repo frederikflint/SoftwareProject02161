@@ -47,7 +47,6 @@ public class ProjectManagerSteps {
 
     @Given("^that the developer is a project manager$")
     public void thatTheDeveloperIsAProjectManager() throws Exception {
-
         planner.createProject(project);
         project.setProjectManager(planner.getActiveUser());
         assertTrue(project.getManager().equals(planner.getActiveUser()));
@@ -80,8 +79,8 @@ public class ProjectManagerSteps {
         assertTrue(project.getUsers().contains(user));
     }
 
-    @Given("^a developer is unavailable$")
-    public void aDeveloperIsUnavailable() throws Exception {
+    @Given("^the developer is unavailable$")
+    public void theDeveloperIsUnavailable() throws Exception {
         user = userHelper.getUser();
         planner.users.add(user);
         startTime = Calendar.getInstance();
@@ -109,15 +108,11 @@ public class ProjectManagerSteps {
 
     @Then("^the developer is not added to the project$")
     public void theDeveloperIsNotIncludedInTheProject() throws Exception {
-        assertFalse(project.getUsers().contains(user));
-
-        assertThat(project.getUsers(),not(hasItem(user)));
-
+        assertFalse(project.getUsers().equals(user));
     }
 
     @Given("^that the developer is part of the project$")
     public void thatTheDeveloperIsPartOfTheProject() throws Exception {
-        //user = userHelper.getUser();
         project.addUser(planner.getActiveUser());
     }
 
