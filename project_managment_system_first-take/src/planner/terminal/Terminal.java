@@ -337,7 +337,7 @@ public class Terminal {
         }
 
         System.out.println("-1 for at gå tilbage");
-        System.out.println("Registrer tid på en aktivitet. Indtast en titel på aktiviteten:");
+        System.out.println("Registrer tid på en aktivitet.");
         for (Activity activity : planner.getActiveUser().getActivities()) {
             System.out.println("- " + activity.getID());
         }
