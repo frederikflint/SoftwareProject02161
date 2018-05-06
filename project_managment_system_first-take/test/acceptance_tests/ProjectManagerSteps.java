@@ -1,15 +1,11 @@
 package acceptance_tests;
 
-import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.CoreMatchers.not;
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.*;
 
-import cucumber.api.PendingException;
-import cucumber.api.java.ca.Cal;
-import cucumber.api.java.cy_gb.A;
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
 import cucumber.api.java.en.When;
@@ -45,8 +41,8 @@ public class ProjectManagerSteps {
         this.projectHelper = projectHelper;
     }
 
-    @Given("^the developer is project manager$")
-    public void thatTheDeveloperIsProjectManager() throws Exception {
+    @Given("^that the developer is a project manager$")
+    public void thatTheDeveloperIsAProjectManager() throws Exception {
         planner.createProject(project);
         project.setProjectManager(planner.getActiveUser());
         assertTrue(project.getManager().equals(planner.getActiveUser()));
@@ -105,13 +101,14 @@ public class ProjectManagerSteps {
         assertFalse(planner.activeUser.equals(project.getManager()));
     }
 
+
     @Then("^the developer is not added to the project$")
     public void theDeveloperIsNotIncludedInTheProject() throws Exception {
         assertFalse(project.getUsers().equals(user));
     }
 
-    @Given("^the developer is part of the project$")
-    public void theDeveloperIsPartOfTheProject() throws Exception {
+    @Given("^that the developer is part of the project$")
+    public void thatTheDeveloperIsPartOfTheProject() throws Exception {
         project.addUser(planner.getActiveUser());
     }
 
@@ -120,8 +117,9 @@ public class ProjectManagerSteps {
         try{
             planner.getAvailableUsers(startTime,endTime);
         } catch (Exception e){
-            errorMessage.setErrorMessage(e.getMessage());
+            e.getMessage();
         }
+
     }
 
     @Then("^the project manager gets a list of available developers$")
@@ -132,6 +130,7 @@ public class ProjectManagerSteps {
             errorMessage.setErrorMessage(e.getMessage());
         }
     }
+
 
     @Given("^that no developer is available$")
     public void thatNoDeveloperIsAvailable() throws Exception {
@@ -158,10 +157,12 @@ public class ProjectManagerSteps {
         planner.users.add(user);
     }
 
-    @When("^the admin promotes developer to project manager$")
-    public void theAdminPromotesDeveloperToProjectManager() throws Exception {
+    @When("^the admin assigns user to project manager$")
+    public void theAdminAssignsUserToProjectManager() throws Exception {
         try {
-            planner.assignProjectManager(user, project);
+            planner.changeProjectManager(user, project);
+            // TODO: Hvorfor log ud ???
+            //planner.userLogOut();
         }catch (Exception e){
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -172,19 +173,55 @@ public class ProjectManagerSteps {
         assertEquals(project.getManager(),user);
     }
 
-    @Given("^the project has a project manager$")
-    public void theProjectHasAProjectManager() throws Exception {
+    @Given("^a project has a project manager$")
+    public void aProjectHasAProjectManager() throws Exception {
         project.setProjectManager(user);
         assertFalse(project.getManager().equals(null));
     }
 
     @When("^the administrator removes the project manager status from the user$")
     public void theAdministratorRemovesTheProjectManagerStatusFromTheUser() throws Exception {
-        planner.removeProjectManager(project);
+//        planner.removeProjectManager(project);
     }
 
     @Then("^the developer is no longer project manager$")
     public void theDeveloperIsNoLongerProjectManager() throws Exception {
         assertEquals(project.getManager(), null);
     }
+
+
+//    @Given("^that the developer is not a project manager$")
+//    public void thatTheDeveloperIsNotAProjectManager() throws Exception {
+//        project = projectHelper.getValidProject();
+//
+//        planner.createProject(project);
+//        assertFalse(project.getManager().equals(planner.getActiveUser()));
+//    }
 }
+
+
+//    @When("^the project manager retrieves the list$")
+//    public void theProjectManagerRetrievesTheList() throws Exception {
+//        Calendar startTime = Calendar.getInstance();
+//        Calendar endTime = Calendar.getInstance();
+//        endTime.add(Calendar.DATE,1);
+//        planner.getAvailableUsers(startTime,endTime);
+//    }
+//
+//    @Then("^the available developers appear on the available list$")
+//    public void theAvailableDevelopersAppearOnTheAvailableList() throws Exception {
+//        Calendar startTime = Calendar.getInstance();
+//        Calendar endTime = Calendar.getInstance();
+//        endTime.add(Calendar.DATE,1);
+//        assertTrue(planner.getAvailableUsers(startTime,endTime)!=null);
+//    }
+//
+//    @Given("^that no developer is available$")
+//    public void thatNoDeveloperIsAvailable() throws Exception {
+//        Calendar startTime = Calendar.getInstance();
+//        Calendar endTime = Calendar.getInstance();
+//        endTime.add(Calendar.DATE,1);
+//    }
+//
+//
+//

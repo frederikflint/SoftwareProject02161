@@ -25,9 +25,9 @@ public class WorkHours {
                 (startTime.get(Calendar.HOUR_OF_DAY)*60 + startTime.get(Calendar.MINUTE));
     }
 
-    /**************************
-     *  Setters and getters   *
-     **************************/
+    /***********************
+     * Setters and getters *
+     ***********************/
 
     public Activity getActivity() {
         return activity;

@@ -28,6 +28,10 @@ public class Terminal {
         terminal.startPrompt();
     }
 
+
+    /***************
+     *  FAKE DATA  *
+     ***************/
     private void fakeSetup(){
         /**
          * FAKE data for the planner
@@ -46,33 +50,32 @@ public class Terminal {
             planner.users.add(new User("user" + (i),"123"));
         }
 
-        for (int i = 1; i <= 2; i++){
-            planner.projects.add(new Project("projekt " + (i),null,null));
-        }
-
         planner.users.add(managerUser);
-        planner.projects.add(project);
 
-        // Assign project manager
+        // Create project
         try {
-            planner.userLogIn("admin","admin123");
+            planner.userLogIn("manager","123");
         } catch (Exception e){
-
+            System.out.println(e.getMessage());
         }
 
         try {
-            planner.assignProjectManager(managerUser,project);
+            planner.createProject(project);
         } catch (Exception e){
-
+            System.out.println(e.getMessage());
         }
 
         try {
             planner.userLogOut();
         } catch (Exception e){
-
+            System.out.println(e.getMessage());
         }
 
     }
+
+    /******************
+     * Terminal setup *
+     ******************/
 
     private void startPrompt() {
         System.out.println("Velkommen til SoftwareHuset A/S. Vælg venligst en funktion:");
@@ -103,15 +106,63 @@ public class Terminal {
 
     }
 
+    /***********
+     * Setters *
+     ***********/
+
+    private User setUser(){
+
+        String in = input.nextLine();
+        User user = planner.getUser(in);
+
+        if(user == null){
+            System.out.println("Brugeren " + "\"" + in + "\"" + " findes ikke på systemet");
+            System.out.println("Prøv igen");
+            return setUser();
+        } else {
+            return user;
+        }
+
+    }
+
+    private Project setProject(){
+
+        System.out.println("-1 for at gå tilbage");
+        String in = input.nextLine();
+        Project project = null;
+
+        try {
+            project = planner.getProject(in);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        if (in.equals("-1")) {
+            userFeatureScreen();
+        }
+
+        if(project == null){
+            System.out.println("Projektet " + "\"" + in + "\"" + " findes ikke på systemet");
+            System.out.println("Prøv igen");
+            return setProject();
+        } else {
+            return project;
+        }
+
+    }
+
+    /******************
+     * Admin Features *
+     ******************/
+
     private void adminFeatureScreen(){
         System.out.println("Indtast et nummer:");
         System.out.println("1: Bruger liste");
         System.out.println("2: Projekt liste");
         System.out.println("3: Registrer bruger");
         System.out.println("4: Slet bruger");
-        System.out.println("5: Forfrem bruger til projekt manager");
-        System.out.println("6: Fjern projekt manager titel");
-        System.out.println("7: Log ud");
+        System.out.println("5: Skift manager");
+        System.out.println("6: Log ud");
         String in = input.nextLine();
 
         if (in.equals("1")){
@@ -123,10 +174,8 @@ public class Terminal {
         } else if (in.equals("4")) {
             unregisterUser();
         } else if (in.equals("5")) {
-            assignProjectManager();
+            changeProjectManager();
         } else if (in.equals("6")) {
-            removeProjectManager();
-        } else if (in.equals("7")) {
             try {
                 planner.userLogOut();
                 startPrompt();
@@ -139,6 +188,138 @@ public class Terminal {
         }
 
     }
+
+    private void getPlannerUserList(){
+
+        if(planner.getUsers().isEmpty()){
+            System.out.println("Ingen registrerede brugere på systemt");
+            adminFeatureScreen();
+        }
+
+        System.out.println("Registrerede brugere: ");
+        for (User user: planner.getUsers()) {
+            System.out.println("- " + user.getCredentials());
+        }
+
+        adminFeatureScreen();
+    }
+
+    private void getPlannerProjectList(){
+
+        if(planner.getUsers().isEmpty()){
+            System.out.println("Ingen registrerede projekter på systemt");
+            adminFeatureScreen();
+        }
+
+        System.out.println("Registrerede projekter: ");
+        for (Project project: planner.getProjects()) {
+            System.out.println("- " + project.getTitle());
+        }
+        adminFeatureScreen();
+    }
+
+    private void registerUser() {
+        System.out.println("-1 for at gå tilbage");
+        System.out.println("Hvad skal dit brugernavn være?");
+        String username = input.nextLine();
+
+        if (username.equals("-1")) {
+            adminFeatureScreen();
+        }
+
+        System.out.println("Hvad skal dit password være?");
+        String password = input.nextLine();
+
+        try {
+            planner.createUser(username,password);
+            System.out.println("Brugeren " + "\"" + username + "\"" + " er nu registreret");
+        } catch (OperationNotAllowedException | AuthenticationException e) {
+            System.out.println(e.getMessage());
+            registerUser();
+        }
+        adminFeatureScreen();
+    }
+
+    private void unregisterUser(){
+
+        if(planner.getUsers().isEmpty()){
+            System.out.println("Ingen registrerede brugere på systemt");
+            adminFeatureScreen();
+        }
+
+        System.out.println("-1 for at gå tilbage");
+        System.out.println("Registrerede brugere: ");
+        for (User user: planner.getUsers()) {
+            System.out.println("- " + user.getCredentials());
+        }
+        System.out.println("Skriv brugernavnet på den bruger du vil have slettet");
+
+        User user = setUser();
+
+        try {
+            planner.deleteUser(user);
+            System.out.println("Brugeren " + "\"" + user.getCredentials()+ "\""  + " er nu slettet fra systemet");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        adminFeatureScreen();
+
+    }
+
+    private void changeProjectManager(){
+        if(planner.getUsers().isEmpty()){
+            System.out.println("Ingen registrerede brugere på systemt");
+            adminFeatureScreen();
+        }
+
+        if(planner.getProjects().isEmpty()){
+            System.out.println("Ingen registrerede projekter på systemt");
+            adminFeatureScreen();
+        }
+
+        System.out.println("");
+
+        System.out.println("Registrerede projekter: ");
+        for (Project project: planner.getProjects()) {
+            System.out.println("- " + project.getTitle());
+        }
+
+        System.out.println("Skriv navnet på det projekt du vil have ændret manageren i");
+        Project project = setProject();
+
+        System.out.println("Er du sikker på du bil skifte manageren " + "\"" + project.getManager().getCredentials() + "\""  + " for projektet " + "\"" + project.getTitle() + "\"" );
+        System.out.println("1 for Ja");
+        System.out.println("2 for Nej");
+        String in = input.nextLine();
+
+        if(in.equals("2")){
+            adminFeatureScreen();
+        }
+
+
+        System.out.println("Registrerede brugere: ");
+        for (User user: planner.getUsers()) {
+            System.out.println("- " + user.getCredentials());
+        }
+        System.out.println("Skriv brugernavnet på den bruger du vil forfremme til manager for projektet " + "\"" +project.getTitle() + "\"");
+        User user = setUser();
+
+
+
+        try {
+            planner.changeProjectManager(user, project);
+            System.out.println("Brugeren " + "\"" + user.getCredentials() + "\"" + " er nu manager for projektet " + "\"" +project.getTitle() + "\"");
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        adminFeatureScreen();
+    }
+
+    /*****************
+     * User Features *
+     *****************/
 
     private void userFeatureScreen() {
         System.out.println("Indtast et nummer:");
@@ -180,6 +361,75 @@ public class Terminal {
         }
     }
 
+    private void createProject() {
+        System.out.println("-1 for at gå tilbage");
+        System.out.println("Opretter projekt...");
+        System.out.println("Indtast titel:");
+        String titel = input.nextLine();
+        if (titel.equals("-1")) {
+            userFeatureScreen();
+        }
+        Calendar start = Calendar.getInstance();
+        Calendar end = Calendar.getInstance();
+        System.out.println("Kendes start tidspunkt? Ja: 1, Nej: 2");
+        String x = input.nextLine();
+        if (x.equals("1")){
+            setMonthAndDay();
+            start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
+            try {
+                planner.createProject(new Project(titel,start,end));
+                userFeatureScreen();
+            }catch (Exception e){
+                System.out.println(e.getMessage());
+                createProject();
+            }
+        } else if (x.equals("2")) {
+            try {
+                planner.createProject(new Project(titel,start,end));
+                userFeatureScreen();
+            } catch (OperationNotAllowedException | AuthenticationException e) {
+                System.out.println(e.getMessage());
+                createProject();
+            }
+        } else {
+            System.out.println("Forkerte information - prøv igen");
+            createProject();
+        }
+    }
+
+    private void createActivity() {
+        System.out.println("-1 for at gå tilbage");
+        System.out.println("Opretter aktivitet...");
+        System.out.println("Indtast titel:");
+        String titel = input.nextLine();
+        if (titel.equals("-1")) {
+            userFeatureScreen();
+        }
+        Calendar start = Calendar.getInstance();
+        Calendar end = Calendar.getInstance();
+        System.out.println("Kendes start tidspunkt? Ja: 1, Nej: 2");
+        String x = input.nextLine();
+        if (x.equals("1")){
+            setMonthAndDay();
+            start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
+        } else if (x.equals("2")) {
+            //TODO: Create activity i planner ????
+            try {
+                planner.getActiveUser().addActivity(new Activity(start, end, titel));
+            } catch (OperationNotAllowedException e) {
+                System.out.println(e.getMessage());
+                createActivity();
+            }
+        } else {
+            System.out.println("Forkerte information - prøv igen");
+            createActivity();
+        }
+    }
+
+    /********************
+     * Manager Features *
+     ********************/
+
     private void managerFeatureScreen(){
         System.out.println("Indtast et nummer:");
         System.out.println("1: Se dine manager projekter");
@@ -203,58 +453,6 @@ public class Terminal {
             System.out.println("Dit input matcher ikke mulighederne");
             managerFeatureScreen();
         }
-    }
-
-    private void registerUser() {
-        System.out.println("-1 for at gå tilbage");
-        System.out.println("Hvad skal dit brugernavn være?");
-        String username = input.nextLine();
-
-        if (username.equals("-1")) {
-            adminFeatureScreen();
-        }
-
-        System.out.println("Hvad skal dit password være?");
-        String password = input.nextLine();
-
-        try {
-            planner.createUser(username,password);
-            System.out.println("Brugeren " + "\"" + username + "\"" + " er nu registreret");
-        } catch (OperationNotAllowedException | AuthenticationException e) {
-            System.out.println(e.getMessage());
-            registerUser();
-        }
-        adminFeatureScreen();
-    }
-
-
-    private void getPlannerUserList(){
-
-        if(planner.getUsers().isEmpty()){
-            System.out.println("Ingen registrerede brugere på systemt");
-            adminFeatureScreen();
-        }
-
-        System.out.println("Registrerede brugere: ");
-        for (User user: planner.getUsers()) {
-            System.out.println("- " + user.getCredentials());
-        }
-
-        adminFeatureScreen();
-    }
-
-    private void getPlannerProjectList(){
-
-        if(planner.getUsers().isEmpty()){
-            System.out.println("Ingen registrerede projekter på systemt");
-            adminFeatureScreen();
-        }
-
-        System.out.println("Registrerede projekter: ");
-        for (Project project: planner.getProjects()) {
-            System.out.println("- " + project.getTitle());
-        }
-        adminFeatureScreen();
     }
 
     private void getManageProjectList(){
@@ -281,6 +479,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
+            System.out.println("Intet projekt matcher dette nummer");
             getManageProjectUserList();
         }
 
@@ -442,163 +641,6 @@ public class Terminal {
         managerFeatureScreen();
     }
 
-    private void unregisterUser(){
-
-        if(planner.getUsers().isEmpty()){
-            System.out.println("Ingen registrerede brugere på systemt");
-            adminFeatureScreen();
-        }
-
-        System.out.println("-1 for at gå tilbage");
-        System.out.println("Registrerede brugere: ");
-        for (User user: planner.getUsers()) {
-            System.out.println("- " + user.getCredentials());
-        }
-        System.out.println("Skriv brugernavnet på den bruger du vil have slettet");
-
-        User user = setUser();
-
-        try {
-            planner.deleteUser(user);
-            System.out.println("Brugeren " + "\"" + user.getCredentials()+ "\""  + " er nu slettet fra systemet");
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-        adminFeatureScreen();
-
-    }
-
-    private User setUser(){
-
-        String in = input.nextLine();
-        User user = planner.getUser(in);
-
-        if(user == null){
-            System.out.println("Brugeren " + "\"" + in + "\"" + " findes ikke på systemet");
-            System.out.println("Prøv igen");
-            return setUser();
-        } else {
-            return user;
-        }
-
-    }
-
-    private Project setProject(){
-
-        System.out.println("-1 for at gå tilbage");
-        String in = input.nextLine();
-        Project project = null;
-
-        try {
-            project = planner.getProject(in);
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-        if (in.equals("-1")) {
-            userFeatureScreen();
-        }
-
-        if(project == null){
-            System.out.println("Projektet " + "\"" + in + "\"" + " findes ikke på systemet");
-            System.out.println("Prøv igen");
-            return setProject();
-        } else {
-            return project;
-        }
-
-    }
-
-    private void assignProjectManager(){
-        if(planner.getUsers().isEmpty()){
-            System.out.println("Ingen registrerede brugere på systemt");
-            adminFeatureScreen();
-        }
-
-        if(planner.getProjects().isEmpty()){
-            System.out.println("Ingen registrerede projekter på systemt");
-            adminFeatureScreen();
-        }
-
-        System.out.println("Registrerede brugere: ");
-        for (User user: planner.getUsers()) {
-            System.out.println("- " + user.getCredentials());
-        }
-        System.out.println("Skriv brugernavnet på den bruger du vil have forfremmet");
-        User user = setUser();
-
-        System.out.println("Registrerede projekter: ");
-        for (Project project: planner.getProjects()) {
-            System.out.println("- " + project.getTitle());
-        }
-
-        System.out.println("Skriv navnet på det projekt du vil have " + "\"" + user.getCredentials() + "\"" + " forfremmet i");
-        Project project = setProject();
-
-        try {
-            planner.assignProjectManager(user, project);
-            System.out.println("Brugeren " + "\"" + user.getCredentials() + "\"" + " er nu manager for projektet " + "\"" +project.getTitle() + "\"");
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-        adminFeatureScreen();
-    }
-
-    private void removeProjectManager(){
-        if(planner.getProjects().isEmpty()){
-            System.out.println("Ingen registrerede projekter på systemt");
-            adminFeatureScreen();
-        }
-
-        System.out.println("Registrerede projekter: ");
-        for (Project project: planner.getProjects()) {
-            System.out.println("- " + project.getTitle());
-        }
-
-        System.out.println("Skriv navnet på det projekt hvor du vil fjerne manageren");
-        Project project = setProject();
-        String manager = project.getManager().getCredentials();
-
-        try {
-            planner.removeProjectManager(project);
-            System.out.println("Manageren " + "\"" + manager + "\"" + " er fjernet fra projektet " + "\"" + project.getTitle() + "\"");
-        }catch (Exception e){
-            System.out.println(e.getMessage());
-        }
-
-        adminFeatureScreen();
-    }
-
-    private void createActivity() {
-        System.out.println("-1 for at gå tilbage");
-        System.out.println("Opretter aktivitet...");
-        System.out.println("Indtast titel:");
-        String titel = input.nextLine();
-        if (titel.equals("-1")) {
-            userFeatureScreen();
-        }
-        Calendar start = Calendar.getInstance();
-        Calendar end = Calendar.getInstance();
-        System.out.println("Kendes start tidspunkt? Ja: 1, Nej: 2");
-        String x = input.nextLine();
-        if (x.equals("1")){
-            setMonthAndDay();
-            start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
-        } else if (x.equals("2")) {
-            //TODO: Create activity i planner ????
-            try {
-                planner.getActiveUser().addActivity(new Activity(start, end, titel));
-            } catch (OperationNotAllowedException e) {
-                System.out.println(e.getMessage());
-                createActivity();
-            }
-        } else {
-            System.out.println("Forkerte information - prøv igen");
-            createActivity();
-        }
-    }
 
     private void setMonthAndDay() {
         System.out.println("Indtast måned:");
@@ -623,42 +665,6 @@ public class Terminal {
 
     }
 
-    private void createProject() {
-        System.out.println("-1 for at gå tilbage");
-        System.out.println("Opretter projekt...");
-        System.out.println("Indtast titel:");
-        String titel = input.nextLine();
-        if (titel.equals("-1")) {
-            userFeatureScreen();
-        }
-        Calendar start = Calendar.getInstance();
-        Calendar end = Calendar.getInstance();
-        System.out.println("Kendes start tidspunkt? Ja: 1, Nej: 2");
-        String x = input.nextLine();
-        if (x.equals("1")){
-            setMonthAndDay();
-            start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
-            try {
-                planner.createProject(new Project(titel,start,end));
-                userFeatureScreen();
-            }catch (Exception e){
-                System.out.println(e.getMessage());
-                createProject();
-            }
-        } else if (x.equals("2")) {
-            try {
-                planner.createProject(new Project(titel,start,end));
-                userFeatureScreen();
-            } catch (OperationNotAllowedException | AuthenticationException e) {
-                System.out.println(e.getMessage());
-                createProject();
-            }
-        } else {
-            System.out.println("Forkerte information - prøv igen");
-            createProject();
-        }
-
-    }
 
     private void registerTime() {
         System.out.println("-1 for at gå tilbage");
