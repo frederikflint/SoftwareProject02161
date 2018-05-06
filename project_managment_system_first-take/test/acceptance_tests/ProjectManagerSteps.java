@@ -142,6 +142,58 @@ public class ProjectManagerSteps {
     }
 
 
+    @Given("^that the administrator is logged in$")
+    public void thatTheAdministratorIsLoggedIn() throws Exception {
+        planner.userLogIn("admin","admin123");
+        assertTrue(planner.activeAdmin());
+    }
+
+
+    @Given("^that the project has no project manager$")
+    public void thatTheProjectHasNoProjectManager() throws Exception {
+        assertTrue(project.getManager() == null);
+        assertEquals(project.getManager(), null);
+    }
+
+    @Given("^a developer is defined$")
+    public void aDeveloperIsDefined() throws Exception {
+        user = userHelper.getUser();
+        planner.users.add(user);
+    }
+
+    @When("^the admin assigns user to project manager$")
+    public void theAdminAssignsUserToProjectManager() throws Exception {
+        try {
+            planner.assignProjectManager(user, project);
+            // TODO: Hvorfor log ud ???
+            //planner.userLogOut();
+        }catch (Exception e){
+            errorMessage.setErrorMessage(e.getMessage());
+        }
+    }
+
+    @Then("^the user is project manager$")
+    public void theUserIsProjectManager() throws Exception {
+        assertEquals(project.getManager(),user);
+    }
+
+    @Given("^a project has a project manager$")
+    public void aProjectHasAProjectManager() throws Exception {
+        project.setProjectManager(user);
+        assertFalse(project.getManager().equals(null));
+    }
+
+    @When("^the administrator removes the project manager status from the user$")
+    public void theAdministratorRemovesTheProjectManagerStatusFromTheUser() throws Exception {
+        planner.removeProjectManager(project);
+    }
+
+    @Then("^the developer is no longer project manager$")
+    public void theDeveloperIsNoLongerProjectManager() throws Exception {
+        assertEquals(project.getManager(), null);
+    }
+
+
 //    @Given("^that the developer is not a project manager$")
 //    public void thatTheDeveloperIsNotAProjectManager() throws Exception {
 //        project = projectHelper.getValidProject();
