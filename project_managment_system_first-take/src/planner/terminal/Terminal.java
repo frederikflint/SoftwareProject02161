@@ -38,27 +38,19 @@ public class Terminal {
         System.out.println("Fake user: credentials: testuser, Pass: test");
         System.out.println("----------------------------------------");
         User managerUser = new User("manager","123");
-        User user = new User("testuser","test");
-        Project project = new Project("projekt 1", null,null);
+        Project project = new Project("projekt", null,null);
 
+
+        // FAKE DATA
         for (int i = 0; i <= 5; i++){
-            planner.users.add(new User("user" + i,"user" + i));
+            planner.users.add(new User("user" + (i+1),"123"));
         }
 
-        // Assign user to project
-        try {
-            project.addUser(user);
-        }catch (Exception e){
-
+        for (int i = 0; i <= 2; i++){
+            planner.projects.add(new Project("projekt " + (i+1),null,null));
         }
 
         planner.users.add(managerUser);
-        planner.users.add(user);
-        try {
-            user.addProject(project);
-        }catch (Exception e){
-
-        }
         planner.projects.add(project);
 
         // Assign project manager
@@ -227,7 +219,7 @@ public class Terminal {
 
         try {
             planner.createUser(username,password);
-            System.out.println("Brugeren " + "\"" + username + "\"" + " er nu registeret");
+            System.out.println("Brugeren " + "\"" + username + "\"" + " er nu registreret");
         } catch (OperationNotAllowedException | AuthenticationException e) {
             System.out.println(e.getMessage());
             registerUser();
@@ -431,7 +423,7 @@ public class Terminal {
         System.out.println("-1 for at gå tilbage");
         System.out.println("Registrerede brugere: ");
         for (User user: planner.getUsers()) {
-            System.out.println(user.getCredentials());
+            System.out.println("- " + user.getCredentials());
         }
         System.out.println("Skriv brugernavnet på den bruger du vil have slettet");
 
