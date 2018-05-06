@@ -250,7 +250,7 @@ public class Planner {
      * @throws OperationNotAllowedException
      * @throws AuthenticationException
      */
-    public void removeUserFromProjet(User user, Project project) throws  OperationNotAllowedException, AuthenticationException{
+    public void removeUserFromProject(User user, Project project) throws  OperationNotAllowedException, AuthenticationException{
         checkSession();
         checkManagerRights(project);
 

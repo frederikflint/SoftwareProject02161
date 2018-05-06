@@ -30,8 +30,6 @@ Feature: Include developer in project
     When the developer adds a developer to the project
     Then the developer is not added to the project
 
-  //TODO; NÅR AVAILABLE ALLEREDE ER PÅ PROJEKTET
-
 #  Scenario: A project manager who is not logged in tries to add a developer
 #  to a project
 #    Given that the user is not logged in
