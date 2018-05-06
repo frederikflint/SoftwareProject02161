@@ -566,14 +566,13 @@ public class Terminal {
 
 
         try {
-            planner.removeUserFromProjet(user,project);
+            planner.removeUserFromProject(user,project);
             System.out.println("Brugeren " + "\"" + user.getCredentials() + "\"" + " blev fjernet fra projektet " + "\"" + project.getTitle() + "\"" );
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
 
         managerFeatureScreen();
-
     }
 
     private void getManageProjectActivtyList(){
