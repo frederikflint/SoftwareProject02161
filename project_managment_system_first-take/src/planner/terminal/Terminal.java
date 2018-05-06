@@ -460,6 +460,13 @@ public class Terminal {
         if (x.equals("j")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
+            try {
+                planner.getActiveUser().addActivity(new Activity(start, end, titel));
+                userFeatureScreen();
+            } catch (OperationNotAllowedException e) {
+                System.out.println(e.getMessage());
+                createActivity();
+            }
         } else if (x.equals("n")) {
             try {
                 planner.getActiveUser().addActivity(new Activity(start, end, titel));
@@ -805,7 +812,9 @@ public class Terminal {
         System.out.println("Hvornår startede du?");
         Calendar start = Calendar.getInstance();
         Calendar end = Calendar.getInstance();
+        System.out.println("nået op til");
         setMonthAndDay();
+        System.out.println("Nået forbi");
         setHourAndMinute();
         start.set(2018,Integer.parseInt(month),Integer.parseInt(day),Integer.parseInt(hour),Integer.parseInt(minute));
         System.out.println("Hvornår sluttede du aktiviteten?");
@@ -837,11 +846,12 @@ public class Terminal {
                 System.out.println("Prøv igen");
                 setMonthAndDay();
             }
+            System.out.println("efter day");
         } else {
             System.out.println("Prøv igen");
             setMonthAndDay();
         }
-
+        System.out.println("sidst i day");
     }
 
 
