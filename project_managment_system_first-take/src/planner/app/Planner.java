@@ -212,7 +212,6 @@ public class Planner {
      */
     public void deleteProject(Project project) throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();
-
         // Remove the project from
         if(!(projects.contains(project))){
             throw new OperationNotAllowedException("No project with the given title was found");

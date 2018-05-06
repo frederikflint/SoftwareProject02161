@@ -29,6 +29,7 @@ public class UserSteps {
     private Planner planner;
     private User user;
     public Project project;
+    private Project project2;
     private Activity activity;
 
     private ActivityHelper activityHelper;
@@ -88,7 +89,7 @@ public class UserSteps {
 
     @Then("^I get the error message \"([^\"]*)\"$")
     public void iGetTheErrorMessage(String arg1) throws Exception {
-        assertThat(errorMessage.getErrorMessage(), is(equalTo(arg1)));
+        assertTrue(errorMessage.getErrorMessage().equals(arg1));
     }
 
     @Given("^a project with title \"([^\"]*)\" is defined$")
@@ -97,7 +98,8 @@ public class UserSteps {
         Calendar endDate = Calendar.getInstance();
         startDate.set(1,1);
         endDate.set(2,1);
-        planner.createProject(new Project(arg1,startDate,endDate));
+        project2 = new Project(arg1,startDate,endDate);
+        planner.createProject(project2);
         assertTrue(planner.getProjects().contains(planner.getProject(arg1)));
     }
 
@@ -127,6 +129,7 @@ public class UserSteps {
 
     @Then("^the project with title \"([^\"]*)\" is deleted$")
     public void theProjectWithTitleIsDeleted(String arg1) throws Exception {
+        System.out.println(planner.getProject(arg1).getTitle());
         assertEquals(planner.getProject(arg1),null);
     }
 
@@ -250,6 +253,10 @@ public class UserSteps {
 
     @Given("^the developer is not project manager$")
     public void theDeveloperIsNotProjectManager() throws Exception {
+        User nyProjMan = new User("nyprojMan","1234");
+        planner.users.add(nyProjMan);
+        planner.changeProjectManager(nyProjMan,project2);
+
         assertFalse(planner.activeUser.equals(planner.getProject("Heisenberg").getManager()));
     }
 
