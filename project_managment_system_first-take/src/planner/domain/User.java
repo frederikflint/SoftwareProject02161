@@ -164,6 +164,10 @@ public class User {
         return projects;
     }
 
+    public List<Project> getManagerProjects() {
+        return managerProjects;
+    }
+
     public List<WorkHours> getWorkHours() {
         return workHours;
     }

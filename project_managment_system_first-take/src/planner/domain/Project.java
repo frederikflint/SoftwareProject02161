@@ -49,7 +49,6 @@ public class Project {
             throw new OperationNotAllowedException("This user is already a part of the project");
         } else {
             users.add(user);
-
         }
 
     }
@@ -64,7 +63,7 @@ public class Project {
         if (!(users.contains(user))){
             throw new OperationNotAllowedException("The given user is not a part og this project");
         } else {
-            users.add(user);
+            users.remove(user);
         }
     }
 

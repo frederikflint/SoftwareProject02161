@@ -61,11 +61,11 @@ public class Planner {
                     (user.getPassword().equals(password))) {
                 //Set the active session
                 activeUser = user;
-            } else {
-                throw new AuthenticationException("Your credentials or password was wrong");
+                return;
             }
         }
 
+        throw new AuthenticationException("Your credentials or password was wrong");
     }
 
     /**
@@ -283,8 +283,11 @@ public class Planner {
         }
 
         // Admin has the rights to just add the user
-        project.addUser(user);
-        user.addProject(project);
+        if(!user.getProjects().contains(project)){
+            project.addUser(user);
+        } else if (!user.getProjects().contains(project)){
+            user.addProject(project);
+        }
 
         // Set the manager association
         project.setProjectManager(user);
@@ -305,12 +308,6 @@ public class Planner {
         project.setProjectManager(null);
 
     }
-    
-    /*********************
-     *  User Responders  *
-     *********************/
-
-    //TODO: Hvis vi har mere tid kunne vi tilføje notifikationer til brugeren.
 
     /**************************
      *  Setters and getters   *
