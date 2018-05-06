@@ -1,6 +1,5 @@
 package WhiteBoxTests;
 
-import javafx.scene.layout.Pane;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -47,7 +46,7 @@ public class WhiteBox_CreateProject {
 
         //action
         planner.createProject(project1);
-        
+
         //assertionTest
         assertTrue(planner.getProject(project1.getTitle())!=null);
     }
