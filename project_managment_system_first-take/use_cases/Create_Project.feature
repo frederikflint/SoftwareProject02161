@@ -5,8 +5,9 @@ Feature: Create Project
   Scenario: A project is created successfully
     Given that the developer is logged in
     And the developer enters a valid project
-    When the developer creates the project
+    When the developer creates a project
     Then the project is created
+    And the developer is project manager of the project
 
   Scenario: The developer doesn't enter valid start date
     Given that the developer is logged in

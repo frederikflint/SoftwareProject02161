@@ -3,7 +3,7 @@ Feature: Delete project
   Actor: Administrator
 
   Scenario: Administrator deletes a project
-    Given that the administrator is logged in
+    Given the administrator is logged in
     And a project with title "Heisenberg" is defined
     When the administrator deletes the project with title "Heisenberg"
     Then the project with title "Heisenberg" is deleted

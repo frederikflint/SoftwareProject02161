@@ -5,6 +5,7 @@ import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.core.IsCollectionContaining.hasItem;
 import static org.hamcrest.core.IsNull.notNullValue;
 import static org.junit.Assert.*;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import cucumber.api.java.en.Given;
 import cucumber.api.java.en.Then;
@@ -16,6 +17,7 @@ import planner.domain.Activity;
 import planner.domain.Project;
 import planner.domain.User;
 
+import javax.swing.text.html.StyleSheet;
 import java.util.Calendar;
 
 
@@ -39,6 +41,15 @@ public class ProjectManagerSteps {
         this.errorMessage = errorMessage;
         this.userHelper = userHelper;
         this.projectHelper = projectHelper;
+    }
+
+    @When("^the developer creates a project$")
+    public void theDeveloperCreatesTheProject() throws Exception {
+        try {
+            planner.createProject(project);
+        } catch (Exception e) {
+            errorMessage.setErrorMessage(e.getMessage());
+        }
     }
 
     @Given("^that the developer is a project manager$")
@@ -99,6 +110,17 @@ public class ProjectManagerSteps {
     @Given("^the developer is not a project manager$")
     public void theDeveloperIsNotAProjectManager() throws Exception {
         assertFalse(planner.activeUser.equals(project.getManager()));
+    }
+
+    @Given("^a valid project is defined in the system$")
+    public void aValidProjectIsDefinedInTheSystem() throws Exception {
+        project = projectHelper.getValidProject();
+        planner.createProject(project);
+    }
+
+    @Then("^the activity is added to the project$")
+    public void theActivityIsAddedToTheProject() throws Exception {
+        assertTrue(project.getActivities().contains(activity));
     }
 
 
@@ -187,6 +209,37 @@ public class ProjectManagerSteps {
     @Then("^the developer is no longer project manager$")
     public void theDeveloperIsNoLongerProjectManager() throws Exception {
         assertEquals(project.getManager(), null);
+    }
+
+    @Given("^the developer enters a valid project$")
+    public void theDeveloperEntersAValidProjectNumberNameDescriptionStartAndEndDate() throws Exception {
+        project = projectHelper.getValidProject();
+    }
+
+
+    @Then("^the project is created$")
+    public void theProjectWithThatProjectNumberNameDescriptionAndStartAndEndDateIsCreated() throws Exception {
+        assertTrue(planner.projects.contains(project));
+    }
+
+    @Then("^the developer is project manager of the project$")
+    public void theDeveloperIsProjectManagerOfTheProject() throws Exception {
+        assertTrue(project.getManager().equals(planner.activeUser));
+    }
+
+    @When("^the project manager creates the project activity$")
+    public void theProjectManagerCreatesTheProjectActivity() throws Exception {
+        project.addActivity(activity,planner.activeUser);
+    }
+
+    @Given("^the developer enters a project with an invalid time consumption$")
+    public void theDeveloperEntersAnInvalidProjectNumberNameDescriptionStartOrEndDate() throws Exception {
+        project = projectHelper.getInvalidTimeProject();
+    }
+
+    @Given("^the developer enters a project with an invalid start date$")
+    public void theDeveloperEntersAProjectWithAnInvalidStartDate() throws Exception {
+        project = projectHelper.getInvalidTimeProject();
     }
 
 

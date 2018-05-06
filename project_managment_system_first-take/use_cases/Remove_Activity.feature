@@ -39,7 +39,6 @@ Feature: Remove activity
     And a valid project is defined
     And a project with title "Heisenberg" is defined
     And the developer is not project manager
-    And the developer is a part of the project
     And there is a activity with the title "Herimundus" defined
     When the project manager removes the activity with title "Herimundus"
     Then the activity with title "Herimundus" is removed from the project
