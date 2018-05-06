@@ -105,7 +105,6 @@ public class ProjectManagerSteps {
         assertFalse(planner.activeUser.equals(project.getManager()));
     }
 
-
     @Then("^the developer is not added to the project$")
     public void theDeveloperIsNotIncludedInTheProject() throws Exception {
         assertFalse(project.getUsers().equals(user));
@@ -123,7 +122,6 @@ public class ProjectManagerSteps {
         } catch (Exception e){
             errorMessage.setErrorMessage(e.getMessage());
         }
-
     }
 
     @Then("^the project manager gets a list of available developers$")
@@ -134,7 +132,6 @@ public class ProjectManagerSteps {
             errorMessage.setErrorMessage(e.getMessage());
         }
     }
-
 
     @Given("^that no developer is available$")
     public void thatNoDeveloperIsAvailable() throws Exception {
@@ -165,8 +162,6 @@ public class ProjectManagerSteps {
     public void theAdminAssignsUserToProjectManager() throws Exception {
         try {
             planner.assignProjectManager(user, project);
-            // TODO: Hvorfor log ud ???
-            //planner.userLogOut();
         }catch (Exception e){
             errorMessage.setErrorMessage(e.getMessage());
         }
@@ -192,40 +187,4 @@ public class ProjectManagerSteps {
     public void theDeveloperIsNoLongerProjectManager() throws Exception {
         assertEquals(project.getManager(), null);
     }
-
-
-//    @Given("^that the developer is not a project manager$")
-//    public void thatTheDeveloperIsNotAProjectManager() throws Exception {
-//        project = projectHelper.getValidProject();
-//
-//        planner.createProject(project);
-//        assertFalse(project.getManager().equals(planner.getActiveUser()));
-//    }
 }
-
-
-//    @When("^the project manager retrieves the list$")
-//    public void theProjectManagerRetrievesTheList() throws Exception {
-//        Calendar startTime = Calendar.getInstance();
-//        Calendar endTime = Calendar.getInstance();
-//        endTime.add(Calendar.DATE,1);
-//        planner.getAvailableUsers(startTime,endTime);
-//    }
-//
-//    @Then("^the available developers appear on the available list$")
-//    public void theAvailableDevelopersAppearOnTheAvailableList() throws Exception {
-//        Calendar startTime = Calendar.getInstance();
-//        Calendar endTime = Calendar.getInstance();
-//        endTime.add(Calendar.DATE,1);
-//        assertTrue(planner.getAvailableUsers(startTime,endTime)!=null);
-//    }
-//
-//    @Given("^that no developer is available$")
-//    public void thatNoDeveloperIsAvailable() throws Exception {
-//        Calendar startTime = Calendar.getInstance();
-//        Calendar endTime = Calendar.getInstance();
-//        endTime.add(Calendar.DATE,1);
-//    }
-//
-//
-//
