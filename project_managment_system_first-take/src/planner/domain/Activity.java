@@ -32,9 +32,9 @@ public class Activity {
         currentTimeSpent = currentTimeSpent + additionalTime;
     }
 
-    /**************************
-     *  Setters and getters   *
-     **************************/
+    /***********************
+     * Setters and getters *
+     ***********************/
 
     public Project getProject() {
         return project;

@@ -25,9 +25,9 @@ public class Planner {
     // All the projects on the system
     public List<Project> projects = new ArrayList<>();
 
-    /********************
-     *  Authentication  *
-     ********************/
+    /******************
+     * Authentication *
+     ******************/
 
     /**
      * Set an active user session for the planner.
@@ -130,9 +130,9 @@ public class Planner {
         activeUser = null;
     }
 
-    /***********************
-     *  Planner Operations *
-     ***********************/
+    /**********************
+     * Planner Operations *
+     **********************/
 
     /**
      * Add a new user to the system
@@ -301,9 +301,9 @@ public class Planner {
 
     }
 
-    /**************************
-     *  Setters and getters   *
-     **************************/
+    /***********************
+     * Setters and getters *
+     ***********************/
 
     /**
      * Search the developers <LIST>  for a specific developer
