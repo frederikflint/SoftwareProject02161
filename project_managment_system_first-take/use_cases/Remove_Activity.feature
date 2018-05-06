@@ -32,7 +32,7 @@ Feature: Remove activity
     And the developer is a part of the project
     And there is not an activity with the title "Herimundus" defined
     When the project manager removes the activity with title "Herimundus"
-    Then I get the error message "No such activity defined"
+    Then I get the error message "The activity you are trying to remove is not in this project"
 
   Scenario: Remove a project activity unsuccessfully
     Given that the developer is logged in

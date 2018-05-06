@@ -117,11 +117,7 @@ public class UserSteps {
 
     @Then("^I get the error message \"([^\"]*)\"$")
     public void iGetTheErrorMessage(String arg1) throws Exception {
-        try {
-
-        } catch (Exception e){
-            assertThat(e.getMessage(), is(equalTo(arg1)));
-        }
+        assertThat(errorMessage.getErrorMessage(), is(equalTo(arg1)));
     }
 
     @Given("^a project with title \"([^\"]*)\" is defined$")
@@ -139,7 +135,7 @@ public class UserSteps {
         try {
             planner.deleteProject(planner.getProject(arg1));
         } catch (OperationNotAllowedException | AuthenticationException e){
-            e.getMessage();
+            errorMessage.setErrorMessage(e.getMessage());
         }
     }
 
@@ -195,7 +191,7 @@ public class UserSteps {
         try {
             planner.activeUser.addActivity(activity);
         } catch (OperationNotAllowedException e){
-            e.getMessage();
+            errorMessage.setErrorMessage(e.getMessage());
         }
     }
 
@@ -243,7 +239,7 @@ public class UserSteps {
         try {
             planner.activeUser.removeActivity(activity);
         } catch (OperationNotAllowedException e){
-            e.getMessage();
+            errorMessage.setErrorMessage(e.getMessage());
         }
     }
 
@@ -257,7 +253,7 @@ public class UserSteps {
         try{
             planner.getProject("Heisenberg").removeActivity(planner.getProject("Heisenberg").getActivity(arg1),planner.activeUser);
         } catch (OperationNotAllowedException e){
-            e.getMessage();
+            errorMessage.setErrorMessage(e.getMessage());
         }
     }
 
