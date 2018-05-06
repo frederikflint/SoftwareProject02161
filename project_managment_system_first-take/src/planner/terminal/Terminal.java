@@ -35,19 +35,19 @@ public class Terminal {
 
         System.out.println("Fake manager: credentials: manager, Pass: 123");
         System.out.println("----------------------------------------");
-        System.out.println("Fake user: credentials: testuser, Pass: test");
+        System.out.println("Fake users: credentials: user1..6, Pass: 123");
         System.out.println("----------------------------------------");
         User managerUser = new User("manager","123");
         Project project = new Project("projekt", null,null);
 
 
         // FAKE DATA
-        for (int i = 0; i <= 5; i++){
-            planner.users.add(new User("user" + (i+1),"123"));
+        for (int i = 1; i <= 5; i++){
+            planner.users.add(new User("user" + (i),"123"));
         }
 
-        for (int i = 0; i <= 2; i++){
-            planner.projects.add(new Project("projekt " + (i+1),null,null));
+        for (int i = 1; i <= 2; i++){
+            planner.projects.add(new Project("projekt " + (i),null,null));
         }
 
         planner.users.add(managerUser);
@@ -285,6 +285,7 @@ public class Terminal {
             getManageProjectUserList();
         }
 
+        //TODO: AOUT OF BOUND
         Project project = planner.activeUser.getManagerProjects().get(in - 1);
 
 
