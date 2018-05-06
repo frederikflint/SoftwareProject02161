@@ -18,4 +18,4 @@ Feature: Delete developer
     Given that there is an active user on the system
     And that the administrator is not logged in
     When the administrator deletes a developer with credentials "ff" from the system
-    Then I get the error message "Administrator rights required for this action"
+    Then I get the error message "Administrator required"

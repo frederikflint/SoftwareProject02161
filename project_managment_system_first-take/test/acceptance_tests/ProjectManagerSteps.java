@@ -121,7 +121,7 @@ public class ProjectManagerSteps {
         try{
             planner.getAvailableUsers(startTime,endTime);
         } catch (Exception e){
-            e.getMessage();
+            errorMessage.setErrorMessage(e.getMessage());
         }
 
     }

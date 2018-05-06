@@ -56,7 +56,7 @@ public class CRUD {
             planner.deleteUser(planner.getUser(arg1));
         }
         catch (Exception e){
-            e.getMessage();
+            errorMessage.setErrorMessage(e.getMessage());
         }
     }
 
@@ -65,7 +65,7 @@ public class CRUD {
         try {
             planner.checkAdminSession();
         } catch (Exception e){
-            e.getMessage();
+            errorMessage.setErrorMessage(e.getMessage());
         }
     }
 
@@ -74,7 +74,7 @@ public class CRUD {
        try {
            planner.deleteUser(planner.getUser(arg1));
        } catch (Exception e){
-           e.getMessage();
+           errorMessage.setErrorMessage(e.getMessage());
        }
     }
 
@@ -104,7 +104,7 @@ public class CRUD {
         try {
             planner.createUser(arg1,arg2);
         } catch (Exception e){
-            e.getMessage();
+            errorMessage.setErrorMessage(e.getMessage());
         }
     }
 
@@ -113,7 +113,7 @@ public class CRUD {
         try {
             planner.createUser(arg1,arg2);
         } catch(Exception e){
-            e.getMessage();
+            errorMessage.setErrorMessage(e.getMessage());
         }
     }
 
