@@ -143,12 +143,12 @@ public class Planner {
      * @throws AuthenticationException If the user is not a adminHelper.
      */
     public void createUser(String credentials, String password) throws OperationNotAllowedException, AuthenticationException{
-        checkAdminSession();
+        checkAdminSession();                                            //1
 
-        if (getUser(credentials) != null){
+        if (getUser(credentials) != null){                              //2
             throw new OperationNotAllowedException("Developer is already registered");
         }
-        users.add(new User(credentials, password));
+        users.add(new User(credentials, password));                     //3
     }
 
     /**
