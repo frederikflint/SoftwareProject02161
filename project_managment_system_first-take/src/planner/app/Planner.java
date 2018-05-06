@@ -196,7 +196,6 @@ public class Planner {
             // Add the user to that project
             try {
                 project.addUser(getActiveUser());
-                //System.out.println(getActiveUser().getCredentials() + "5");
             } catch (OperationNotAllowedException e) {
                 throw new OperationNotAllowedException(e.getMessage());
             }
@@ -207,7 +206,6 @@ public class Planner {
             // Add the manager association
             project.setProjectManager(getActiveUser());
             getActiveUser().addManageProject(project);
-            //System.out.println("create blev gennemført");
         }
 
     }
@@ -225,21 +223,21 @@ public class Planner {
         if(!(projects.contains(project))){
             throw new OperationNotAllowedException("No project with the given title was found");
         }
-        System.out.println(project.getTitle() + "1");
         if(!project.getUsers().isEmpty()) {
             // Get the users associated to this project
             // and remove the project from the user.
             for (User user : project.getUsers()) {
                 try {
-                    System.out.println("2.6");
                     user.removeProject(project);
                 } catch (OperationNotAllowedException e) {
-                    System.out.println("");
                     throw new OperationNotAllowedException(e.getMessage());
                 }
             }
         }
-        System.out.println(project.getTitle() + "2");
+
+        // Remove manager associated to this project
+        getActiveUser().removeManagerProject(project);
+
         // Remove the actual project from the planner
         projects.remove(project);
     }

@@ -6,6 +6,7 @@ import planner.app.Planner;
 import planner.domain.Activity;
 import planner.domain.Project;
 import planner.domain.User;
+import planner.domain.WorkHours;
 
 import java.util.Calendar;
 import java.util.List;
@@ -17,8 +18,6 @@ public class Terminal {
     Planner planner = new Planner();
     Scanner input = new Scanner(System.in);
 
-    Calendar start = Calendar.getInstance();
-    Calendar end = Calendar.getInstance();
 
     String month = "";
     String day = "";
@@ -283,13 +282,13 @@ public class Terminal {
         System.out.println("1: Registrer tid");
         System.out.println("2: Se registreret tid");
         System.out.println("3: Se aktiviteter");
-        System.out.println("5: Se projekter");
-        System.out.println("5: Hjælp en anden bruger med en aktivitet");
-        System.out.println("4: Opret en aktivitet");
-        System.out.println("6: Opret et projekt");
-        System.out.println("4: Fjern en aktivitet");
-        System.out.println("7: Manager kontrolpanel");
-        System.out.println("8: Log ud");
+        System.out.println("4: Se projekter");
+        System.out.println("5: Hjælp en bruger med en aktivitet");
+        System.out.println("6: Opret en aktivitet");
+        System.out.println("7: Opret et projekt");
+        System.out.println("8: Fjern en aktivitet");
+        System.out.println("9: Manager kontrolpanel");
+        System.out.println("10: Log ud");
         String in = input.nextLine();
 
         if (in.equals("1")){
@@ -299,12 +298,16 @@ public class Terminal {
         } else if (in.equals("3")){
             getActivities();
         } else if (in.equals("4")){
-            createActivity();
-        } else if (in.equals("5")) {
             getProjects();
-        } else if (in.equals("6")) {
+        } else if (in.equals("5")) {
+            userFeatureScreen();
+        }else if (in.equals("6")) {
+            createActivity();
+        } else if (in.equals("7")) {
             createProject();
-        }else if (in.equals("7")) {
+        } else if (in.equals("8")) {
+            removeActivity();
+        }else if (in.equals("9")) {
             if(planner.activeUser.getManagerProjects().isEmpty()){
                 System.out.println("Du er ikke manager for nogen projekter");
                 userFeatureScreen();
@@ -312,7 +315,7 @@ public class Terminal {
                 System.out.println("Dit manager panel");
                 managerFeatureScreen();
             }
-        } else if (in.equals("8")) {
+        } else if (in.equals("10")) {
             try {
                 planner.userLogOut();
                 startPrompt();
@@ -327,11 +330,20 @@ public class Terminal {
     }
 
     private void registerTime() {
+
+        if(planner.getActiveUser().getActivities().size() == 0){
+            System.out.println("Du har igen aktiviteter og registere tid for");
+            userFeatureScreen();
+        }
+
         System.out.println("-1 for at gå tilbage");
         System.out.println("Registrer tid på en aktivitet. Indtast en titel på aktiviteten:");
         for (Activity activity : planner.getActiveUser().getActivities()) {
-            System.out.println(activity.getID());
+            System.out.println("- " + activity.getID());
         }
+
+        System.out.println("Indtast titlen på den aktivitet du vil registrere");
+
         String ID = input.nextLine();
         if (ID.equals("-1")) {
             userFeatureScreen();
@@ -348,12 +360,24 @@ public class Terminal {
 
     private void getRegisteredTime() {
 
+        if(planner.getActiveUser().getWorkHours().size() == 0){
+            System.out.println("Du har ikke registreret tid for nogen aktiviteter");
+            userFeatureScreen();
+        }
+
+
+        System.out.println("Du har registreret tid for følgende aktiviteter " );
+        User activeUser = planner.getActiveUser();
+        for (WorkHours work: activeUser.getWorkHours()) {
+            System.out.println("- " + work.getActivity().getTitle());
+        }
+        
         userFeatureScreen();
     }
 
     private void getActivities(){
 
-        if(planner.activeUser.getProjects().size() == 0){
+        if(planner.getActiveUser().getActivities().size() == 0){
             System.out.println("Du har ingen aktiviteter");
             userFeatureScreen();
         }
@@ -393,6 +417,8 @@ public class Terminal {
         if (titel.equals("-1")) {
             userFeatureScreen();
         }
+        Calendar start = Calendar.getInstance();
+        Calendar end = Calendar.getInstance();
         System.out.println("Kendes starttidspunkt på projektet? Ja: j, Nej: n");
         String x = input.nextLine();
         if (x.equals("j")){
@@ -429,12 +455,12 @@ public class Terminal {
         }
         Calendar start = Calendar.getInstance();
         Calendar end = Calendar.getInstance();
-        System.out.println("Kendes start tidspunkt? Ja: 1, Nej: 2");
+        System.out.println("Kendes start tidspunkt? Ja: j, Nej: n");
         String x = input.nextLine();
-        if (x.equals("1")){
+        if (x.equals("j")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
-        } else if (x.equals("2")) {
+        } else if (x.equals("n")) {
             try {
                 planner.getActiveUser().addActivity(new Activity(start, end, titel));
                 userFeatureScreen();
@@ -447,6 +473,12 @@ public class Terminal {
             createActivity();
         }
     }
+
+    private void removeActivity() {
+
+        userFeatureScreen();
+    }
+
 
     /********************
      * Manager Features *
@@ -461,7 +493,7 @@ public class Terminal {
         System.out.println("5: Se ledige brugere");
         System.out.println("6: Tilføj en aktivitet til et projekt");
         System.out.println("7: Tilføj en aktivitet til en bruger af et projekt");
-        System.out.println("8 Tilføj en bruger til et projekt");
+        System.out.println("8: Tilføj en bruger til et projekt");
         System.out.println("9: Skift manager for et projekt");
         System.out.println("10: Fjern en bruger fra et projekt");
         System.out.println("11: Fjern en aktivitet fra et projekt");
@@ -700,39 +732,6 @@ public class Terminal {
     }
 
     private void getManageProjectActivtyList(){
-
-        List mP = planner.activeUser.getManagerProjects();
-
-        System.out.println("Vælg et af følgende projekter:  ");
-        for (Project project: planner.activeUser.getManagerProjects()) {
-            System.out.println((mP.indexOf(project)+1)+ ": " + project.getTitle());
-        }
-
-        System.out.println("Indtast nummeret på det projekt");
-
-        Integer in = null;
-
-        try {
-            in = Integer.parseInt(input.nextLine());
-        }catch (Exception e){
-            getManageProjectUserList();
-        }
-
-        Project project = null;
-
-        try {
-            project = planner.activeUser.getManagerProjects().get(in - 1);
-        }catch (Exception e){
-            System.out.println("Intet projekt matcher det nummer");
-            assignUserToProject();
-        }
-
-        System.out.println("Brugerne for projektet " + "\"" + project.getTitle() + "\"" + " er:");
-        for (Activity activity: project.getActivities()) {
-            System.out.println("- " + activity.getTitle());
-        }
-
-        managerFeatureScreen();
     }
 
     private void changeProjectManager(){
