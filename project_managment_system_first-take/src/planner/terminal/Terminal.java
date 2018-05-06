@@ -368,9 +368,9 @@ public class Terminal {
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
         } else if (x.equals("2")) {
-            //TODO: Create activity i planner ????
             try {
                 planner.getActiveUser().addActivity(new Activity(start, end, titel));
+                userFeatureScreen();
             } catch (OperationNotAllowedException e) {
                 System.out.println(e.getMessage());
                 createActivity();
@@ -673,30 +673,6 @@ public class Terminal {
 
 
 
-    private void setMonthAndDay() {
-        System.out.println("Indtast måned:");
-        //System.out.println("Indtast -1 for at gå tilbage");
-        System.out.println(" 0: Januar \n 1: Februar \n 2: Marts \n 3: April \n 4: Maj \n 5: Juni \n 6: Juli \n" +
-                " 7: August \n 8: September \n 9: Oktober \n 10: November \n 11: December");
-        month = input.nextLine();
-        if (month.equals("-1")) {
-            userFeatureScreen();
-        } else if (month.matches("0|1|2|3|4|5|6|7|8|9|10|11")) {
-            System.out.println("Hvilken dag i måneden?");
-            System.out.println("0 - 30");
-            day = input.nextLine();
-            if (!day.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30")) {
-                System.out.println("Prøv igen");
-                setMonthAndDay();
-            }
-        } else {
-            System.out.println("Prøv igen");
-            setMonthAndDay();
-        }
-
-    }
-
-
     private void registerTime() {
         System.out.println("-1 for at gå tilbage");
         System.out.println("Registrer tid på en aktivitet. Indtast et titel på aktiviteten:");
@@ -723,6 +699,7 @@ public class Terminal {
         Calendar start = Calendar.getInstance();
         Calendar end = Calendar.getInstance();
         setMonthAndDay();
+        setHourAndMinute();
         start.set(2018,Integer.parseInt(month),Integer.parseInt(day),Integer.parseInt(hour),Integer.parseInt(minute));
         System.out.println("Hvornår sluttede du aktiviteten?");
         setMonthAndDay();
@@ -730,11 +707,36 @@ public class Terminal {
         end.set(2018,Integer.parseInt(month),Integer.parseInt(day),Integer.parseInt(hour),Integer.parseInt(minute));
         try {
             planner.getActiveUser().registerTime(activity, start, end, planner.getActiveUser());
+            userFeatureScreen();
         } catch (Exception e) {
             System.out.println(e.getMessage());
-            
+            userFeatureScreen();
         }
     }
+
+    private void setMonthAndDay() {
+        System.out.println("Indtast måned:");
+        System.out.println("Indtast -1 for at gå tilbage");
+        System.out.println(" 0: Januar \n 1: Februar \n 2: Marts \n 3: April \n 4: Maj \n 5: Juni \n 6: Juli \n" +
+                " 7: August \n 8: September \n 9: Oktober \n 10: November \n 11: December");
+        month = input.nextLine();
+        if (month.equals("-1")) {
+            userFeatureScreen();
+        } else if (month.matches("0|1|2|3|4|5|6|7|8|9|10|11")) {
+            System.out.println("Hvilken dag i måneden?");
+            System.out.println("0 - 30");
+            day = input.nextLine();
+            if (!day.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30")) {
+                System.out.println("Prøv igen");
+                setMonthAndDay();
+            }
+        } else {
+            System.out.println("Prøv igen");
+            setMonthAndDay();
+        }
+
+    }
+
 
     public void setHourAndMinute(){
         System.out.println("Indtast time på dagen (0-23):");
@@ -746,8 +748,8 @@ public class Terminal {
         } else if (hour.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23")) {
             System.out.println("Hvilket minut i timen?");
             System.out.println("0 - 59");
-            day = input.nextLine();
-            if (!day.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59")) {
+            minute = input.nextLine();
+            if (!minute.matches("0|1|2|3|4|5|6|7|8|9|10|11|12|13|14|15|16|17|18|19|20|21|22|23|24|25|26|27|28|29|30|31|32|33|34|35|36|37|38|39|40|41|42|43|44|45|46|47|48|49|50|51|52|53|54|55|56|57|58|59")) {
                 System.out.println("Prøv igen");
                 setHourAndMinute();
             }
