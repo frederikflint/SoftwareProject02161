@@ -35,7 +35,7 @@ public class Terminal {
 
         System.out.println("Fake manager: credentials: manager, Pass: 123");
         System.out.println("----------------------------------------");
-        System.out.println("Fake users: credentials: user1..6, Pass: 123");
+        System.out.println("Fake users: credentials: user1..5, Pass: 123");
         System.out.println("----------------------------------------");
         User managerUser = new User("manager","123");
         Project project = new Project("projekt", null,null);
@@ -315,10 +315,19 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
-            getManageProjectUserList();
+            System.out.println("");
+            assignUserToProject();
         }
 
-        Project project = planner.activeUser.getManagerProjects().get(in - 1);
+        Project project = null;
+
+        try {
+            project = planner.activeUser.getManagerProjects().get(in - 1);
+        }catch (Exception e){
+            System.out.println("Intet projekt matcher det nummer");
+            assignUserToProject();
+        }
+
 
         System.out.println("Vælg en bruger der skal tilføjes til " + "\"" + project.getTitle() + "\"");
         for (User user: planner.getUsers()) {
@@ -356,13 +365,20 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
-            getManageProjectUserList();
+            removeUserFromProject();
         }
 
-        Project project = planner.activeUser.getManagerProjects().get(in - 1);
+        Project project = null;
+
+        try {
+            project = planner.activeUser.getManagerProjects().get(in - 1);
+        }catch (Exception e){
+            System.out.println("Intet projekt matcher det nummer");
+            removeUserFromProject();
+        }
 
         if(project.getUsers().size() == 1){
-            System.out.println("Der er ingen brugere tilknyttet projketet " + "\"" +project.getTitle() + "\"");
+            System.out.println("Der er ingen brugere tilknyttet projektet " + "\"" + project.getTitle() + "\"");
             managerFeatureScreen();
         }
 
@@ -373,7 +389,7 @@ public class Terminal {
             }
         }
 
-        System.out.println("Skriv brugernavnet på den bruger du vil fjerne");
+        System.out.println("Skriv brugernavnet på den bruger du vil fjerne fra " + "\"" + project.getTitle() + "\"");
         User user = setUser();
 
         try {
@@ -406,8 +422,17 @@ public class Terminal {
             getManageProjectUserList();
         }
 
-        System.out.println("Brugerne for projektet " + "\"" + planner.activeUser.getManagerProjects().get(in - 1).getTitle() + "\"" + " er:");
-        for (Activity activity: planner.activeUser.getManagerProjects().get(in - 1).getActivities()) {
+        Project project = null;
+
+        try {
+            project = planner.activeUser.getManagerProjects().get(in - 1);
+        }catch (Exception e){
+            System.out.println("Intet projekt matcher det nummer");
+            assignUserToProject();
+        }
+
+        System.out.println("Brugerne for projektet " + "\"" + project.getTitle() + "\"" + " er:");
+        for (Activity activity: project.getActivities()) {
             System.out.println("- " + activity.getTitle());
         }
 
