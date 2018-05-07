@@ -1,6 +1,6 @@
-Feature: Developer login
+Feature: Login
   Description: The developer logs into the system
-  Actor: Developer
+  Actor: User
 
   Scenario: Developer can login
     Given that there is no active user on the system

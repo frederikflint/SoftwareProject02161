@@ -558,7 +558,7 @@ public class Terminal {
         System.out.println("10: Remove a user of a project");
         System.out.println("11: Remove an activity from a project");
         System.out.println("12: Remove a project");
-        System.out.println("13: Return");
+        System.out.println("13: Back");
         String in = input.nextLine();
 
         if (in.equals("1")){

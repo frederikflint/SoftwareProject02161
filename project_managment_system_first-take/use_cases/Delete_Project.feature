@@ -1,6 +1,6 @@
 Feature: Delete project
   Description: Administrator deletes a project
-  Actor: Administrator
+  Actor: Project manager
 
   Scenario: Manager deletes a project
     Given that the developer is logged in

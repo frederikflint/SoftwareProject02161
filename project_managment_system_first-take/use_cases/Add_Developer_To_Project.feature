@@ -1,6 +1,6 @@
 Feature: Add developer to project
   Description: Project manager includes a developer in a project
-  Actors: Developer who is project manager
+  Actors: Project manager
 
   Scenario: The developer who is a project manager adds a developer to the project
     Given that the developer is logged in
