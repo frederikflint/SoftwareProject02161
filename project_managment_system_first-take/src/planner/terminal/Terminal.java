@@ -770,7 +770,7 @@ public class Terminal {
 
         try {
             user.addActivity(activity);
-            System.out.println("Brugeren " + "\"" + user.getCredentials() + "\"" + " har fået tilføjet til aktiviteten " + "\"" + activity.getTitle() + "\"" );
+            System.out.println("Brugeren " + "\"" + user.getCredentials() + "\"" + " har fået tilføjet aktiviteten " + "\"" + activity.getTitle() + "\"" );
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -935,7 +935,7 @@ public class Terminal {
             System.out.println(("- " + activity.getTitle()));
         }
 
-        System.out.println("Skriv navnet på den aktivtet du vil fjerne fra " + "\"" + project.getTitle() + "\"");
+        System.out.println("Skriv navnet på den aktivtet du vil fjerne fra projektet " + "\"" + project.getTitle() + "\"");
         Activity activity = setProjectActivity(project);
 
         System.out.println("Er du sikker på du vil slette aktiviteten " + "\"" + activity.getTitle()+ "\" fra projektet " + "\"" + project.getTitle() + "\"? Ja: j, Nej: n");
