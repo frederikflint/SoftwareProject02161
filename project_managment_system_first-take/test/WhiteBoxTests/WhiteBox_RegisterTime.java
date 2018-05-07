@@ -30,7 +30,7 @@ public class WhiteBox_RegisterTime {
     public ExpectedException expectedException = ExpectedException.none();
 
     @Test
-    public void testInputSetA() throws OperationNotAllowedException, AuthenticationException {
+    public void testInputSetA() throws Exception {
         //Given
         planner.users.add(user1);
         planner.userLogIn(user1.getCredentials(),user1.getPassword());
@@ -43,15 +43,51 @@ public class WhiteBox_RegisterTime {
         //Setup
         slutTid.add(Calendar.HOUR_OF_DAY,5);
 
-        try {
-            user1.registerTime(activity1, startTid, slutTid, planner.activeUser);
-        } catch (Exception e) {
-            e.printStackTrace();
-        }
+        user1.registerTime(activity1, startTid, slutTid, user1);
 
         //Final check
         //Checks that 5 hours = 5_HOURS*60_MINUTES/HOUR is registered now.
         assertTrue(activity1.getCurrentTimeSpent()==5*60);
+    }
+
+    @Test
+    public void testInputSetB() throws AuthenticationException, OperationNotAllowedException{
+        //Expected
+        expectedException.expect(Exception.class);
+        expectedException.expectMessage("The input of time spent is not valid");
+
+        //Given
+        planner.users.add(user1);
+        planner.userLogIn(user1.getCredentials(),user1.getPassword());
+        user1.addActivity(activity1);
+
+        //First check
+        assertFalse(user1.getActivities().isEmpty());
+
+        //Setup
+        startTid.add(Calendar.HOUR_OF_DAY,5);
+
+        user1.registerTime(activity1, startTid, slutTid, user1);
+    }
+
+    @Test
+    public void testInputSetC() throws AuthenticationException, OperationNotAllowedException {
+        //Expected
+        expectedException.expect(Exception.class);
+        expectedException.expectMessage("You are not assigned to this activity");
+
+        //Given
+        planner.users.add(user1);
+        planner.userLogIn(user1.getCredentials(),user1.getPassword());
+
+        //First check
+        assertTrue(user1.getActivities().isEmpty());
+
+        //Setup
+        slutTid.add(Calendar.HOUR_OF_DAY,5);
+
+        //Action
+        user1.registerTime(activity1,startTid,slutTid,user1);
 
     }
 }

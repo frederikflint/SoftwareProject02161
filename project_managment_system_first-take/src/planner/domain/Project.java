@@ -15,7 +15,7 @@ import java.util.Objects;
 public class Project {
 
     // List of project activities
-    private List<Activity> activities = new ArrayList<>();
+    public List<Activity> activities = new ArrayList<>();
 
     // List of project users
     private List<User> users = new ArrayList<>();
