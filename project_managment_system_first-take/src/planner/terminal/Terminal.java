@@ -510,6 +510,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
+            System.out.println("Ikke et nummer. Prøv igen.");
             removeProject();
         }
 
@@ -616,7 +617,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
-            System.out.println("Intet projekt matcher dette nummer");
+            System.out.println("Ikke et nummer. Prøv igen.");
             getManageProjectUserList();
         }
 
@@ -686,7 +687,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
-            System.out.println("");
+            System.out.println("Ikke et nummer. Prøv igen.");
             assignUserToProject();
         }
 
@@ -734,7 +735,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
-            System.out.println("");
+            System.out.println("Ikke et nummer. Prøv igen.");
             assignUserToActivity();
         }
 
@@ -792,7 +793,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
-            System.out.println("");
+            System.out.println("Ikke et nummer. Prøv igen.");
             createActivityToProject();
         }
 
@@ -853,6 +854,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
+            System.out.println("Ikke et nummer. Prøv igen.");
             removeUserFromProject();
         }
 
@@ -913,6 +915,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
+            System.out.println("Ikke et nummer. Prøv igen.");
             removeActivityFromProject();
         }
 
@@ -970,6 +973,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
+            System.out.println("Ikke et nummer. Prøv igen.");
             removeProject();
         }
 
@@ -1020,7 +1024,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
-            System.out.println("Forkert nummer");
+            System.out.println("Ikke et nummer. Prøv igen.");
             getManageProjectActivityList();
         }
 
@@ -1062,7 +1066,7 @@ public class Terminal {
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
-            System.out.println("Forkert nummer");
+            System.out.println("Ikke et nummer. Prøv igen.");
             getManageProjectUserActivityList();
         }
 
@@ -1112,13 +1116,13 @@ public class Terminal {
             System.out.println((mP.indexOf(project)+1)+ ": " + project.getTitle());
         }
 
-        System.out.println("Indtast nummeret på det projekt");
-
+        System.out.println("Indtast nummeret på et projekt");
         Integer in = null;
 
         try {
             in = Integer.parseInt(input.nextLine());
         }catch (Exception e){
+            System.out.println("Ikke et nummer. Prøv igen.");
             changeProjectManager();
         }
 
