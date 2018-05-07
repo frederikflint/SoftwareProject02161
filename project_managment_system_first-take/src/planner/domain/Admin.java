@@ -8,4 +8,8 @@ public class Admin extends User {
         super(credentials,password);
     }
 
+    @Override
+    public boolean isAdmin() {
+        return isAdmin;
+    }
 }
