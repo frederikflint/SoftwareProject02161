@@ -148,6 +148,8 @@ public class Planner {
 
         if (getUser(credentials) != null){                              //2
             throw new OperationNotAllowedException("Developer is already registered");
+        } else if (credentials.length() > 4){
+            throw new OperationNotAllowedException("Your credentials must have a maximum of 4 characters");
         }
         users.add(new User(credentials, password));
     }
