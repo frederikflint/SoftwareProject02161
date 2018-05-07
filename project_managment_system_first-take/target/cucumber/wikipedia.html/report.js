@@ -1,7 +1,143 @@
-$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Add_Developer_To_Project.feature");
+$(document).ready(function() {var formatter = new CucumberHTML.DOMFormatter($('.cucumber-report'));formatter.uri("use_cases/Add_Activity_To_project.feature");
+formatter.feature({
+  "name": "Add activity to project",
+  "description": "  Description: Project manager includes a developer in a project\n  Actors: Project manager",
+  "keyword": "Feature"
+});
+formatter.scenario({
+  "name": "Add a project activity successfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a valid project is defined in the system",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefinedInTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is project manager of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theDeveloperIsProjectManagerOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer enters a valid activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperEntersAValidActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager creates the project activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theProjectManagerCreatesTheProjectActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity is added to the project",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theActivityIsAddedToTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Add a project activity unsuccessfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a valid project is defined in the system",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefinedInTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is project manager of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theDeveloperIsProjectManagerOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project already contains that activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theProjectAlreadyContainsThatActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager creates the project activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theProjectManagerCreatesTheProjectActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"The activity is already a part of the project\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.uri("use_cases/Add_Developer_To_Project.feature");
 formatter.feature({
   "name": "Add developer to project",
-  "description": "  Description: Project manager includes a developer in a project\n  Actors: Developer who is project manager",
+  "description": "  Description: Project manager includes a developer in a project\n  Actors: Project manager",
   "keyword": "Feature"
 });
 formatter.scenario({
@@ -307,136 +443,6 @@ formatter.result({
 });
 formatter.step({
   "name": "I get the error message \"The activity is already created\"",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "UserSteps.iGetTheErrorMessage(String)"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Add a project activity successfully",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "that the developer is logged in",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "a valid project is defined in the system",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.aValidProjectIsDefinedInTheSystem()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the developer is project manager of the project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theDeveloperIsProjectManagerOfTheProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the developer enters a valid activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "UserSteps.theDeveloperEntersAValidActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the project manager creates the project activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theProjectManagerCreatesTheProjectActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the activity is added to the project",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theActivityIsAddedToTheProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.scenario({
-  "name": "Add a project activity unsuccessfully",
-  "description": "",
-  "keyword": "Scenario"
-});
-formatter.step({
-  "name": "that the developer is logged in",
-  "keyword": "Given "
-});
-formatter.match({
-  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "a valid project is defined in the system",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.aValidProjectIsDefinedInTheSystem()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the developer is project manager of the project",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theDeveloperIsProjectManagerOfTheProject()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the project already contains that activity",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theProjectAlreadyContainsThatActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "the project manager creates the project activity",
-  "keyword": "When "
-});
-formatter.match({
-  "location": "ProjectManagerSteps.theProjectManagerCreatesTheProjectActivity()"
-});
-formatter.result({
-  "status": "passed"
-});
-formatter.step({
-  "name": "I get the error message \"The activity is already a part of the project\"",
   "keyword": "Then "
 });
 formatter.match({
@@ -1187,7 +1193,7 @@ formatter.result({
 formatter.uri("use_cases/Delete_Project.feature");
 formatter.feature({
   "name": "Delete project",
-  "description": "  Description: Administrator deletes a project\n  Actor: Administrator",
+  "description": "  Description: Administrator deletes a project\n  Actor: Project manager",
   "keyword": "Feature"
 });
 formatter.scenario({
@@ -1282,8 +1288,8 @@ formatter.result({
 });
 formatter.uri("use_cases/Developer_Login.feature");
 formatter.feature({
-  "name": "Developer login",
-  "description": "  Description: The developer logs into the system\n  Actor: Developer",
+  "name": "Login",
+  "description": "  Description: The developer logs into the system\n  Actor: User",
   "keyword": "Feature"
 });
 formatter.scenario({

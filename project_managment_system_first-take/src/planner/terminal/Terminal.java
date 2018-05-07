@@ -41,7 +41,8 @@ public class Terminal {
         /**
          * FAKE data for the planner
          */
-
+        System.out.println("ADMIN: credentials: ad, Pass: 123");
+        System.out.println("----------------------------------------");
         System.out.println("Fake manager: credentials: m, Pass: 123");
         System.out.println("----------------------------------------");
         System.out.println("Fake users: credentials: u1..5, Pass: 123");
@@ -558,7 +559,7 @@ public class Terminal {
         System.out.println("10: Remove a user of a project");
         System.out.println("11: Remove an activity from a project");
         System.out.println("12: Remove a project");
-        System.out.println("13: Return");
+        System.out.println("13: Back");
         String in = input.nextLine();
 
         if (in.equals("1")){
