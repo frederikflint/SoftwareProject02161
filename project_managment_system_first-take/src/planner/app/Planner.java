@@ -14,7 +14,7 @@ import java.util.Objects;
 public class Planner {
 
     // The admin of the system
-    private Admin admin = new Admin("admin","admin123");
+    private Admin admin = new Admin("ad","123");
 
     // The active developer of the system
     public User activeUser;
@@ -95,7 +95,7 @@ public class Planner {
     }
 
     /**
-     * Is there an active adminHelper session on the system?
+     * Is there an active admin session on the system?
      * @throws AuthenticationException Throw error if there isn't an active adminHelper sessions.
      */
     public void checkAdminSession() throws AuthenticationException {
@@ -147,6 +147,8 @@ public class Planner {
 
         if (getUser(credentials) != null){                              //2
             throw new OperationNotAllowedException("Developer is already registered");
+        } if(credentials.length() >= 4){
+            throw new OperationNotAllowedException("Your credentials must have a maximum of 4 characters");
         }
         users.add(new User(credentials, password));                     //3
     }

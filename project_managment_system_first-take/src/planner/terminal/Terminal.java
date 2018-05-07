@@ -33,7 +33,6 @@ public class Terminal {
         terminal.startPrompt();
     }
 
-
     /***************
      *  FAKE DATA  *
      ***************/
@@ -42,9 +41,9 @@ public class Terminal {
          * FAKE data for the planner
          */
 
-        System.out.println("Fake manager: credentials: manager, Pass: 123");
+        System.out.println("Fake manager: credentials: m, Pass: 123");
         System.out.println("----------------------------------------");
-        System.out.println("Fake users: credentials: user1..5, Pass: 123");
+        System.out.println("Fake users: credentials: u1..5, Pass: 123");
         System.out.println("----------------------------------------");
         User managerUser = new User("manager","123");
         Project project = new Project("projekt", null,null);
@@ -52,14 +51,14 @@ public class Terminal {
 
         // FAKE DATA
         for (int i = 1; i <= 5; i++){
-            planner.users.add(new User("user" + (i),"123"));
+            planner.users.add(new User("u" + (i),"123"));
         }
 
         planner.users.add(managerUser);
 
         // Create project
         try {
-            planner.userLogIn("manager","123");
+            planner.userLogIn("m","123");
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -239,6 +238,11 @@ public class Terminal {
         System.out.println("-1 for at gå tilbage");
         System.out.println("Hvad skal dit brugernavn være?");
         String username = input.nextLine();
+
+        if(username.length() >= 4){
+            System.out.println("Brugernavnet skal være på max 4 bogstaver");
+            registerUser();
+        }
 
         if (username.equals("-1")) {
             adminFeatureScreen();

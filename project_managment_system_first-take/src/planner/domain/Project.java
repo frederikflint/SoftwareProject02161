@@ -3,6 +3,7 @@ package planner.domain;
 import planner.app.AuthenticationException;
 import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
+import java.util.UUID;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -24,6 +25,7 @@ public class Project {
     private User manager;
 
     // Project title
+    // and unique identifier
     private String title;
 
     // Estimated project time
