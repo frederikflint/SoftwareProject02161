@@ -19,8 +19,9 @@ public class WhiteBox_DeleteProject {
 
     private Planner planner = new Planner();
     private User projectMan = new User("pM", "123");
-    private Project projekt1 = new Project("projekt1",Calendar.getInstance(),Calendar.getInstance());
-    private Project projekt2 = new Project("projekt2",Calendar.getInstance(),Calendar.getInstance());
+    private User developer = new User("dV","123");
+    private Project project1 = new Project("projekt1",Calendar.getInstance(),Calendar.getInstance());
+    private Project project2 = new Project("project2",Calendar.getInstance(),Calendar.getInstance());
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -32,21 +33,21 @@ public class WhiteBox_DeleteProject {
 
         planner.userLogIn(projectMan.getCredentials(),projectMan.getPassword());
 
-        planner.createProject(projekt1);
-        planner.createProject(projekt2);
+        planner.createProject(project1);
+        planner.createProject(project2);
 
         //First check
-        assertTrue(planner.getProject(projekt1.getTitle())!=null);
-        assertTrue(planner.getProject(projekt2.getTitle())!=null);
-        assertTrue(projekt1.getManager().equals(projectMan));
-        assertFalse(projekt1.getUsers().isEmpty());
+        assertTrue(planner.getProject(project1.getTitle())!=null);
+        assertTrue(planner.getProject(project2.getTitle())!=null);
+        assertTrue(project1.getManager().equals(projectMan));
+        assertFalse(project1.getUsers().isEmpty());
 
         //Action
-        planner.deleteProject(projekt1);
+        planner.deleteProject(project1);
 
         //Final check
-        assertFalse(planner.getProject(projekt1.getTitle())!=null);
-        assertTrue(planner.getProject(projekt2.getTitle())!=null);
+        assertFalse(planner.getProject(project1.getTitle())!=null);
+        assertTrue(planner.getProject(project2.getTitle())!=null);
     }
 
     @Test
@@ -58,16 +59,16 @@ public class WhiteBox_DeleteProject {
         //Given//
         planner.users.add(projectMan);
         planner.userLogIn(projectMan.getCredentials(),projectMan.getPassword());
-        //Have to create project to be manager though it will be removed
-        planner.createProject(projekt1);
+        //Have to create project to become manager though it will be removed
+        planner.createProject(project1);
         //Here we remove the project again, to get the expected errormessage
-        planner.projects.remove(projekt1);
+        planner.projects.remove(project1);
 
         //First check
         assertTrue(planner.getProjects().isEmpty());
 
         //Action
-        planner.deleteProject(projekt1);
+        planner.deleteProject(project1);
     }
 
     @Test
@@ -77,15 +78,15 @@ public class WhiteBox_DeleteProject {
         expectedException.expectMessage("You need to have project manager rights to edit this project");
 
         //Given//
-        planner.users.add(projectMan);
-        planner.userLogIn(projectMan.getCredentials(),projectMan.getPassword());
+        planner.users.add(developer);
+        planner.userLogIn(developer.getCredentials(),developer.getPassword());
         //Add project without giving the developer manager rights
-        planner.projects.add(projekt1);
+        planner.projects.add(project1);
 
         //First check
-        assertTrue(planner.getProject(projekt1.getTitle())!=null);
+        assertTrue(planner.getProject(project1.getTitle())!=null);
 
         //Action
-        planner.deleteProject(projekt1);
+        planner.deleteProject(project1);
     }
 }

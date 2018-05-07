@@ -14,12 +14,13 @@ import java.util.Calendar;
 
 import static junit.framework.TestCase.assertTrue;
 
-public class WhiteBox_AddProjectActivity {
+public class WhiteBox_AddActivity {
 
     private Planner planner = new Planner();
-    private User user1 = new User("u1", "123");
+    private User projectMan = new User("dv","123");
+    private User developer = new User("u1", "123");
     private Activity activity1 = new Activity(Calendar.getInstance(), Calendar.getInstance(), "aktivitet1");
-    private Project projekt1 = new Project("projekt1", Calendar.getInstance(), Calendar.getInstance());
+    private Project project1 = new Project("project1", Calendar.getInstance(), Calendar.getInstance());
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -27,19 +28,19 @@ public class WhiteBox_AddProjectActivity {
     @Test
     public void testInputSetA() throws Exception {
         //Given
-        planner.users.add(user1);
-        planner.userLogIn(user1.getCredentials(),user1.getPassword());
-        planner.createProject(projekt1);
+        planner.users.add(projectMan);
+        planner.userLogIn(projectMan.getCredentials(), projectMan.getPassword());
+        planner.createProject(project1);
 
         //First check
-        assertTrue(projekt1.getManager().equals(user1));
-        assertTrue(projekt1.getActivities().isEmpty());
+        assertTrue(project1.getManager().equals(projectMan));
+        assertTrue(project1.getActivity(activity1.getTitle())==null);
 
         //Action
-        projekt1.addActivity(activity1,user1);
+        project1.addActivity(activity1, projectMan);
 
         //Final check
-        assertTrue(projekt1.getActivity(activity1.getTitle())!=null);
+        assertTrue(project1.getActivity(activity1.getTitle())!=null);
     }
 
     @Test
@@ -49,16 +50,16 @@ public class WhiteBox_AddProjectActivity {
         expectedException.expectMessage("The activity is already a part of the project");
 
         //Given
-        planner.users.add(user1);
-        planner.userLogIn(user1.getCredentials(),user1.getPassword());
-        planner.createProject(projekt1);
-        projekt1.activities.add(activity1);
+        planner.users.add(projectMan);
+        planner.userLogIn(projectMan.getCredentials(), projectMan.getPassword());
+        planner.createProject(project1);
+        project1.activities.add(activity1);
 
         //First check
-        assertTrue(projekt1.getActivity(activity1.getTitle())!=null);
+        assertTrue(project1.getActivity(activity1.getTitle())!=null);
 
         //Action
-        projekt1.addActivity(activity1,user1);
+        project1.addActivity(activity1, projectMan);
     }
 
     @Test
@@ -68,17 +69,17 @@ public class WhiteBox_AddProjectActivity {
         expectedException.expectMessage("You need to have project manager rights to edit this project");
 
         //Given
-        planner.users.add(user1);
-        planner.userLogIn(user1.getCredentials(),user1.getPassword());
+        planner.users.add(developer);
+        planner.userLogIn(developer.getCredentials(), developer.getPassword());
         //Add project without connection user to it
-        planner.projects.add(projekt1);
+        planner.projects.add(project1);
 
         //First check
-        assertTrue(user1.getProjects().isEmpty());
-        assertTrue(projekt1.getUsers().isEmpty());
+        assertTrue(developer.getProjects().isEmpty());
+        assertTrue(project1.getUsers().isEmpty());
 
         //Action
-        projekt1.addActivity(activity1,user1);
+        project1.addActivity(activity1, developer);
     }
 
 }

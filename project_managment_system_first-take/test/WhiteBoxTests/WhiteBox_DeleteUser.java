@@ -19,7 +19,7 @@ public class WhiteBox_DeleteUser {
     private Planner planner = new Planner();
     private User notAdmin = new User("nA","123");
     private User user1 = new User("u1", "123");
-    private Project projekt1 = new Project("projekt1",Calendar.getInstance(),Calendar.getInstance());
+    private Project project1 = new Project("projekt1",Calendar.getInstance(),Calendar.getInstance());
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
@@ -29,14 +29,14 @@ public class WhiteBox_DeleteUser {
         //Given
         planner.userLogIn("ad","123");
         planner.users.add(user1);
-        planner.projects.add(projekt1);
-        projekt1.addUser(user1);
-        user1.addProject(projekt1);
+        planner.projects.add(project1);
+        project1.addUser(user1);
+        user1.addProject(project1);
 
         //First check
         assertFalse(planner.getUser(user1.getCredentials())==null);
-        assertFalse(planner.getProject(projekt1.getTitle())==null);
-        assertFalse(projekt1.getUser(user1.getCredentials())==null);
+        assertFalse(planner.getProject(project1.getTitle())==null);
+        assertFalse(project1.getUser(user1.getCredentials())==null);
         assertFalse(user1.getProjects().isEmpty());
 
         //Action
@@ -44,8 +44,8 @@ public class WhiteBox_DeleteUser {
 
         //Final check
         assertTrue(planner.getUser(user1.getCredentials())==null);
-        assertFalse(planner.getProject(projekt1.getTitle())==null);
-        assertTrue(projekt1.getUser(user1.getCredentials())==null);
+        assertFalse(planner.getProject(project1.getTitle())==null);
+        assertTrue(project1.getUser(user1.getCredentials())==null);
     }
 
     @Test
@@ -74,10 +74,10 @@ public class WhiteBox_DeleteUser {
         //Given
         planner.users.add(notAdmin);
         planner.userLogIn(notAdmin.getCredentials(),notAdmin.getPassword());
-        planner.users.add(user1);
+
 
         //First check
-        assertTrue(planner.getUser(user1.getCredentials())!=null);
+        assertFalse(planner.activeAdmin());
 
         //Action
         planner.deleteUser(user1);

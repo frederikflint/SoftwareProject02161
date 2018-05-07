@@ -1,6 +1,5 @@
 package WhiteBoxTests;
 
-import cucumber.api.java.ca.Cal;
 import org.junit.Rule;
 import org.junit.Test;
 import org.junit.rules.ExpectedException;
@@ -8,7 +7,6 @@ import planner.app.AuthenticationException;
 import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
 import planner.domain.Activity;
-import planner.domain.Project;
 import planner.domain.User;
 
 import java.util.Calendar;
@@ -19,9 +17,9 @@ import static junit.framework.TestCase.assertTrue;
 public class WhiteBox_RegisterTime {
 
     private Planner planner = new Planner();
-    private User user1 = new User("u1", "123");
-    private Calendar startTid = Calendar.getInstance();
-    private Calendar slutTid = Calendar.getInstance();
+    private User developer = new User("u1", "123");
+    private Calendar startTime = Calendar.getInstance();
+    private Calendar endTime = Calendar.getInstance();
     private Activity activity1 = new Activity(Calendar.getInstance(),Calendar.getInstance(),"aktivitet1");
 
     @Rule
@@ -30,18 +28,18 @@ public class WhiteBox_RegisterTime {
     @Test
     public void testInputSetA() throws Exception {
         //Given
-        planner.users.add(user1);
-        planner.userLogIn(user1.getCredentials(),user1.getPassword());
-        user1.addActivity(activity1);
+        planner.users.add(developer);
+        planner.userLogIn(developer.getCredentials(), developer.getPassword());
+        developer.addActivity(activity1);
 
         //First check
-        assertFalse(user1.getActivities().isEmpty());
+        assertFalse(developer.getActivities().isEmpty());
 
 
         //Setup
-        slutTid.add(Calendar.HOUR_OF_DAY,5);
+        endTime.add(Calendar.HOUR_OF_DAY,5);
 
-        user1.registerTime(activity1, startTid, slutTid, user1);
+        developer.registerTime(activity1, startTime, endTime, developer);
 
         //Final check
         //Checks that 5 hours = 5_HOURS*60_MINUTES/HOUR is registered now.
@@ -55,17 +53,17 @@ public class WhiteBox_RegisterTime {
         expectedException.expectMessage("The input of time spent is not valid");
 
         //Given
-        planner.users.add(user1);
-        planner.userLogIn(user1.getCredentials(),user1.getPassword());
-        user1.addActivity(activity1);
+        planner.users.add(developer);
+        planner.userLogIn(developer.getCredentials(), developer.getPassword());
+        developer.addActivity(activity1);
 
         //First check
-        assertFalse(user1.getActivities().isEmpty());
+        assertFalse(developer.getActivities().isEmpty());
 
         //Setup
-        startTid.add(Calendar.HOUR_OF_DAY,5);
+        startTime.add(Calendar.HOUR_OF_DAY,5);
 
-        user1.registerTime(activity1, startTid, slutTid, user1);
+        developer.registerTime(activity1, startTime, endTime, developer);
     }
 
     @Test
@@ -75,17 +73,17 @@ public class WhiteBox_RegisterTime {
         expectedException.expectMessage("You are not assigned to this activity");
 
         //Given
-        planner.users.add(user1);
-        planner.userLogIn(user1.getCredentials(),user1.getPassword());
+        planner.users.add(developer);
+        planner.userLogIn(developer.getCredentials(), developer.getPassword());
 
         //First check
-        assertTrue(user1.getActivities().isEmpty());
+        assertTrue(developer.getActivities().isEmpty());
 
         //Setup
-        slutTid.add(Calendar.HOUR_OF_DAY,5);
+        endTime.add(Calendar.HOUR_OF_DAY,5);
 
         //Action
-        user1.registerTime(activity1,startTid,slutTid,user1);
+        developer.registerTime(activity1, startTime, endTime, developer);
 
     }
 }

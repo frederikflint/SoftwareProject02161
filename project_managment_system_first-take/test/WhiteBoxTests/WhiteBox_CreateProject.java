@@ -11,6 +11,7 @@ import planner.domain.User;
 
 import java.util.Calendar;
 
+import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
 
 public class WhiteBox_CreateProject {
@@ -26,23 +27,31 @@ public class WhiteBox_CreateProject {
 
     @Test
     public void testInputSetA() throws OperationNotAllowedException, AuthenticationException {
-        //setup
+        //Given
         planner.users.add(user1);
         planner.userLogIn(user1.getCredentials(),user1.getPassword());
+
+        //First check
+        assertTrue(planner.projects.isEmpty());
 
         //action
         planner.createProject(project1);
 
-        //assertionTest
+        //Final check
         assertTrue(planner.getProject(project1.getTitle())!=null);
         }
+
     @Test
     public void testInputSetB() throws OperationNotAllowedException, AuthenticationException {
-        //setup
+        //Given
         planner.users.add(user1);
         planner.userLogIn(user1.getCredentials(),user1.getPassword());
         planner.createProject(project2);
         planner.createProject(project3);
+
+        //First check
+        assertFalse(planner.getProjects().isEmpty());
+        assertTrue(planner.getProject(project1.getTitle())==null);
 
         //action
         planner.createProject(project1);
@@ -52,14 +61,19 @@ public class WhiteBox_CreateProject {
     }
     @Test
     public void testInputSetC() throws OperationNotAllowedException, AuthenticationException {
-        //setup
-        planner.users.add(user1);
+        //Expected
         expectedException.expect(OperationNotAllowedException.class);
         expectedException.expectMessage("Project is already in the planner");
+
+        //Given
+        planner.users.add(user1);
         planner.userLogIn(user1.getCredentials(),user1.getPassword());
         planner.projects.add(project1);
         planner.projects.add(project2);
         planner.projects.add(project3);
+
+        //First check
+        assertTrue(planner.getProject(project1.getTitle())!=null);
 
         //action
         planner.createProject(project1);
@@ -67,11 +81,12 @@ public class WhiteBox_CreateProject {
 
     @Test
     public void testInputSetD() throws OperationNotAllowedException, AuthenticationException {
-        //Setup
+        //Expected
         expectedException.expect(AuthenticationException.class);
         expectedException.expectMessage("Login required");
-        planner.projects.add(project1);
-        planner.projects.add(project2);
+
+        //First check
+        assertFalse(planner.activeSession());
 
         //Action
         planner.createProject(project1);

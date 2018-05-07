@@ -62,6 +62,7 @@ public class User {
         }
     }
 
+
     /**
      * Register time used on an activity.
      * @param activity
@@ -69,11 +70,12 @@ public class User {
      * @param endTime
      */
 
-    public void registerTime(Activity activity, Calendar startTime, Calendar endTime, User user) throws AuthenticationException, OperationNotAllowedException  {
-        if(!user.getActivities().contains(activity)) {
+    public void registerTime(Activity activity, Calendar startTime, Calendar endTime, User user) throws
+            AuthenticationException, OperationNotAllowedException  {
+        if(!user.getActivities().contains(activity)) {                                            //1
             throw new AuthenticationException("You are not assigned to this activity");
         } else if(endTime.before(startTime) ||
-                (endTime.get(Calendar.DAY_OF_YEAR) - startTime.get(Calendar.DAY_OF_YEAR) > 30)){
+                (endTime.get(Calendar.DAY_OF_YEAR) - startTime.get(Calendar.DAY_OF_YEAR) > 30)){  //2
             throw new OperationNotAllowedException("The input of time spent is not valid");
         } else {
             WorkHours workHour = new WorkHours(activity, startTime, endTime);

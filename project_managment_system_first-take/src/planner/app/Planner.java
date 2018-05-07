@@ -142,15 +142,16 @@ public class Planner {
      *                                      If the developers is in the system throw exception.
      * @throws AuthenticationException If the user is not a adminHelper.
      */
+
     public void createUser(String credentials, String password) throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();                                            //1
 
         if (getUser(credentials) != null){                              //2
             throw new OperationNotAllowedException("Developer is already registered");
-        } if(credentials.length() >= 4){
+        } if(credentials.length() >= 4){                                //3
             throw new OperationNotAllowedException("Your credentials must have a maximum of 4 characters");
         }
-        users.add(new User(credentials, password));                     //3
+        users.add(new User(credentials, password));
     }
 
     /**
@@ -159,6 +160,7 @@ public class Planner {
      * @throws OperationNotAllowedException If the user is not on the system throw exception.
      * @throws AuthenticationException If the user is not a adminHelper.
      */
+
     public void deleteUser(User user)throws OperationNotAllowedException, AuthenticationException{
         checkAdminSession();                                                            //1
 
@@ -183,12 +185,13 @@ public class Planner {
      *                                      The time frame for the project is i
      * @throws AuthenticationException There is not a user on the system to perform this operation.
      */
-    public void createProject(Project project) throws OperationNotAllowedException, AuthenticationException  {
-        checkSession();
 
-        if(projects.contains(project)){
+    public void createProject(Project project) throws OperationNotAllowedException, AuthenticationException  {
+        checkSession();                                                                     //1
+
+        if(projects.contains(project)){                                                     //2
             throw new OperationNotAllowedException("Project is already in the planner");
-        } else if(getProject(project.getTitle()) != null){
+        } else if(getProject(project.getTitle()) != null){                                  //3
             throw new OperationNotAllowedException("A project with that title is in the planner");
         } else {
             // Add the project to the planner projects list
@@ -196,7 +199,7 @@ public class Planner {
 
             // Set associations
             // Add the user to that project
-            try {
+            try {                                                                           //4
                 project.addUser(getActiveUser());
             } catch (OperationNotAllowedException e) {
                 throw new OperationNotAllowedException(e.getMessage());
@@ -218,18 +221,19 @@ public class Planner {
      * @throws OperationNotAllowedException The project you are trying to remove is not on the system.
      * @throws AuthenticationException The user is not a adminHelper.
      */
+
     public void deleteProject(Project project) throws OperationNotAllowedException, AuthenticationException{
-        checkManagerRights(project);
+        checkManagerRights(project);                                    //1
 
         // Remove the project from
-        if(!(projects.contains(project))){
+        if(!(projects.contains(project))){                              //2
             throw new OperationNotAllowedException("No project with the given title was found");
         }
-        if(!project.getUsers().isEmpty()) {
+        if(!project.getUsers().isEmpty()) {                             //3
             // Get the users associated to this project
             // and remove the project from the user.
-            for (User user : project.getUsers()) {
-                try {
+            for (User user : project.getUsers()) {                      //4
+                try {                                                   //5
                     user.removeProject(project);
                 } catch (OperationNotAllowedException e) {
                     throw new OperationNotAllowedException(e.getMessage());

@@ -77,15 +77,16 @@ public class Project {
      * @throws OperationNotAllowedException The active user is not a part og the project.
      *                                      The activity is already a part og the project.
      */
+
     public void addActivity(Activity activty, User activeUser) throws OperationNotAllowedException, AuthenticationException {
 
-        if(!activeUser.equals(getManager())){
+        if(!activeUser.equals(getManager())){                                                           //1
             throw new AuthenticationException("You need to have project manager rights to edit this project");
         }
 
-        if (!(users.contains(activeUser))) {
+        if (!(users.contains(activeUser))) {                                                            //2
             throw new OperationNotAllowedException("You are not a part of this project");
-        } else if (activities.contains(activty)) {
+        } else if (activities.contains(activty)) {                                                      //3
             throw new OperationNotAllowedException("The activity is already a part of the project");
         } else {
             activities.add(activty);
