@@ -226,4 +226,20 @@ public class Project {
     public User getManager() {
         return manager;
     }
+
+    public User getUser(String credentials) {
+
+        // Set the initial currentDeveloper as null
+        User foundUser = null;
+
+        for (User user : users) {
+
+            // Does the search params match.
+            if (Objects.equals(user.getCredentials(), credentials)){
+                foundUser =  user;
+            }
+        }
+
+        return foundUser;
+    }
 }
