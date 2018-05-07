@@ -158,13 +158,13 @@ public class Planner {
      * @throws AuthenticationException If the user is not a adminHelper.
      */
     public void deleteUser(User user)throws OperationNotAllowedException, AuthenticationException{
-        checkAdminSession();
+        checkAdminSession();                                                            //1
 
-        if(!(users.contains(user))){
+        if(!(users.contains(user))){                                                    //2
             throw new OperationNotAllowedException("No such user is defined in the system");
         } else {
             // Make sure the deleted user is not still in associated project.
-            for (Project project : user.getProjects()) {
+            for (Project project : user.getProjects()) {                                //3
                 // Remove the user from the associated projects.
                 project.removeUser(user);
             }
