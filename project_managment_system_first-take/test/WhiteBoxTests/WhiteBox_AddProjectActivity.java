@@ -17,7 +17,7 @@ import static junit.framework.TestCase.assertTrue;
 public class WhiteBox_AddProjectActivity {
 
     private Planner planner = new Planner();
-    private User user1 = new User("user1", "123");
+    private User user1 = new User("u1", "123");
     private Activity activity1 = new Activity(Calendar.getInstance(), Calendar.getInstance(), "aktivitet1");
     private Project projekt1 = new Project("projekt1", Calendar.getInstance(), Calendar.getInstance());
 

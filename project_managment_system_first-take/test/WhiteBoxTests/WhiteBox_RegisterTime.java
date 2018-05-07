@@ -19,12 +19,10 @@ import static junit.framework.TestCase.assertTrue;
 public class WhiteBox_RegisterTime {
 
     private Planner planner = new Planner();
-    private User notAdmin = new User("notAdmin", "123");
-    private User user1 = new User("user1", "123");
+    private User user1 = new User("u1", "123");
     private Calendar startTid = Calendar.getInstance();
     private Calendar slutTid = Calendar.getInstance();
     private Activity activity1 = new Activity(Calendar.getInstance(),Calendar.getInstance(),"aktivitet1");
-    private Project projekt1 = new Project("projekt1", Calendar.getInstance(), Calendar.getInstance());
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();

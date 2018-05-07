@@ -18,7 +18,7 @@ import static junit.framework.TestCase.assertTrue;
 public class WhiteBox_DeleteProject {
 
     private Planner planner = new Planner();
-    private User projectMan = new User("projectMan", "123");
+    private User projectMan = new User("pM", "123");
     private Project projekt1 = new Project("projekt1",Calendar.getInstance(),Calendar.getInstance());
     private Project projekt2 = new Project("projekt2",Calendar.getInstance(),Calendar.getInstance());
 
