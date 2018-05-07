@@ -41,7 +41,8 @@ public class Terminal {
         /**
          * FAKE data for the planner
          */
-
+        System.out.println("ADMIN: credentials: ad, Pass: 123");
+        System.out.println("----------------------------------------");
         System.out.println("Fake manager: credentials: m, Pass: 123");
         System.out.println("----------------------------------------");
         System.out.println("Fake users: credentials: u1..5, Pass: 123");
@@ -376,7 +377,7 @@ public class Terminal {
     private void getRegisteredTime() {
 
         if(planner.getActiveUser().getWorkHours().size() == 0){
-            System.out.println("No time registered for activities");
+            System.out.println("No registered time spent");
             userFeatureScreen();
         }
 
@@ -558,7 +559,7 @@ public class Terminal {
         System.out.println("10: Remove a user of a project");
         System.out.println("11: Remove an activity from a project");
         System.out.println("12: Remove a project");
-        System.out.println("13: Return");
+        System.out.println("13: Back");
         String in = input.nextLine();
 
         if (in.equals("1")){
@@ -660,7 +661,7 @@ public class Terminal {
             System.out.println(e.getMessage());
         }
         if(availableUsers.isEmpty()){
-            System.out.println("No available users in that time frame");
+            System.out.println("No developer is currently available");
             managerFeatureScreen();
         } else {
             System.out.println("Following users are available in that time frame: ");
