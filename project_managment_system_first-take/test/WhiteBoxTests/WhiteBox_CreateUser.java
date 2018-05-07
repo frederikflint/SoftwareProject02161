@@ -14,14 +14,14 @@ import static org.junit.Assert.assertTrue;
 public class WhiteBox_CreateUser {
 
     private Planner planner = new Planner();
-    private User user1 = new User("user1", "123");
+    private User user1 = new User("u1", "123");
 
     @Rule
     public ExpectedException expectedException = ExpectedException.none();
 
     @Test
     public void testInputSetA() throws OperationNotAllowedException, AuthenticationException {
-        planner.userLogIn("admin", "admin123");
+        planner.userLogIn("ad", "123");
         planner.createUser(user1.getCredentials(),user1.getPassword());
 
         assertTrue(planner.getUser(user1.getCredentials())!=null);
@@ -31,7 +31,7 @@ public class WhiteBox_CreateUser {
         expectedException.expect(OperationNotAllowedException.class);
         expectedException.expectMessage("Developer is already registered");
         planner.users.add(user1);
-        planner.userLogIn("admin","admin123");
+        planner.userLogIn("ad","123");
         planner.createUser(user1.getCredentials(),user1.getPassword());
     }
     @Test

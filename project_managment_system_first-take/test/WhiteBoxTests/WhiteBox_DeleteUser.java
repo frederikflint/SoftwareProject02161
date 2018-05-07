@@ -17,8 +17,8 @@ import static junit.framework.TestCase.assertTrue;
 public class WhiteBox_DeleteUser {
 
     private Planner planner = new Planner();
-    private User notAdmin = new User("notAdmin","123");
-    private User user1 = new User("user1", "123");
+    private User notAdmin = new User("nA","123");
+    private User user1 = new User("u1", "123");
     private Project projekt1 = new Project("projekt1",Calendar.getInstance(),Calendar.getInstance());
 
     @Rule
@@ -27,7 +27,7 @@ public class WhiteBox_DeleteUser {
     @Test
     public void testInputSetA() throws OperationNotAllowedException, AuthenticationException {
         //Given
-        planner.userLogIn("admin","admin123");
+        planner.userLogIn("ad","123");
         planner.users.add(user1);
         planner.projects.add(projekt1);
         projekt1.addUser(user1);
@@ -55,7 +55,7 @@ public class WhiteBox_DeleteUser {
         expectedException.expectMessage("No such user is defined in the system");
 
         //Given
-        planner.userLogIn("admin","admin123");
+        planner.userLogIn("ad","123");
 
         //First check
         assertTrue(planner.getUser(user1.getCredentials())==null);
