@@ -16,7 +16,7 @@ import static org.junit.Assert.assertTrue;
 public class WhiteBox_CreateProject {
 
     private Planner planner = new Planner();
-    private User user1 = new User("user1", "123");
+    private User user1 = new User("u1", "123");
     private Project project1 = new Project("project1", Calendar.getInstance(),Calendar.getInstance());
     private Project project2 = new Project("project2", Calendar.getInstance(),Calendar.getInstance());
     private Project project3 = new Project("project3", Calendar.getInstance(),Calendar.getInstance());

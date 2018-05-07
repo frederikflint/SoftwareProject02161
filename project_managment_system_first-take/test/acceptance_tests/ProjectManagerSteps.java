@@ -178,7 +178,7 @@ public class ProjectManagerSteps {
 
     @Given("^that the administrator is logged in$")
     public void thatTheAdministratorIsLoggedIn() throws Exception {
-        planner.userLogIn("admin","admin123");
+        planner.userLogIn("ad","123");
         assertTrue(planner.activeAdmin());
     }
 

@@ -3,6 +3,7 @@ package planner.domain;
 import planner.app.AuthenticationException;
 import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
+import java.util.UUID;
 
 import java.util.ArrayList;
 import java.util.Calendar;
@@ -15,7 +16,7 @@ import java.util.Objects;
 public class Project {
 
     // List of project activities
-    private List<Activity> activities = new ArrayList<>();
+    public List<Activity> activities = new ArrayList<>();
 
     // List of project users
     private List<User> users = new ArrayList<>();
@@ -24,6 +25,7 @@ public class Project {
     private User manager;
 
     // Project title
+    // and unique identifier
     private String title;
 
     // Estimated project time
@@ -225,5 +227,21 @@ public class Project {
 
     public User getManager() {
         return manager;
+    }
+
+    public User getUser(String credentials) {
+
+        // Set the initial currentDeveloper as null
+        User foundUser = null;
+
+        for (User user : users) {
+
+            // Does the search params match.
+            if (Objects.equals(user.getCredentials(), credentials)){
+                foundUser =  user;
+            }
+        }
+
+        return foundUser;
     }
 }

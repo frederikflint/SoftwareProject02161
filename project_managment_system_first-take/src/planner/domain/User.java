@@ -1,7 +1,9 @@
 package planner.domain;
 
+import planner.app.AuthenticationException;
 import planner.app.OperationNotAllowedException;
 
+import javax.swing.plaf.OptionPaneUI;
 import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
@@ -67,12 +69,12 @@ public class User {
      * @param endTime
      */
 
-    public void registerTime(Activity activity, Calendar startTime, Calendar endTime, User user) throws Exception {
+    public void registerTime(Activity activity, Calendar startTime, Calendar endTime, User user) throws AuthenticationException, OperationNotAllowedException  {
         if(!user.getActivities().contains(activity)) {
-            throw new Exception("You are not assigned to this activity");
+            throw new AuthenticationException("You are not assigned to this activity");
         } else if(endTime.before(startTime) ||
                 (endTime.get(Calendar.DAY_OF_YEAR) - startTime.get(Calendar.DAY_OF_YEAR) > 30)){
-            throw new Exception("The input of time spent is not valid");
+            throw new OperationNotAllowedException("The input of time spent is not valid");
         } else {
             WorkHours workHour = new WorkHours(activity, startTime, endTime);
             workHours.add(workHour);

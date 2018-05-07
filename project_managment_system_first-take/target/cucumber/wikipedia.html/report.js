@@ -261,6 +261,61 @@ formatter.result({
   "status": "passed"
 });
 formatter.scenario({
+  "name": "An activity is created unsuccessfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer enters a valid activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperEntersAValidActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the activity is already registered to the developer",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theActivityIsAlreadyRegisteredToTheDeveloper()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer creates the activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperCreatesTheActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"The activity is already created\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
   "name": "Add a project activity successfully",
   "description": "",
   "keyword": "Scenario"
@@ -321,6 +376,71 @@ formatter.step({
 });
 formatter.match({
   "location": "ProjectManagerSteps.theActivityIsAddedToTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.scenario({
+  "name": "Add a project activity unsuccessfully",
+  "description": "",
+  "keyword": "Scenario"
+});
+formatter.step({
+  "name": "that the developer is logged in",
+  "keyword": "Given "
+});
+formatter.match({
+  "location": "UserSteps.thatTheDeveloperIsLoggedIn()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "a valid project is defined in the system",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.aValidProjectIsDefinedInTheSystem()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is project manager of the project",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theDeveloperIsProjectManagerOfTheProject()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project already contains that activity",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theProjectAlreadyContainsThatActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "the project manager creates the project activity",
+  "keyword": "When "
+});
+formatter.match({
+  "location": "ProjectManagerSteps.theProjectManagerCreatesTheProjectActivity()"
+});
+formatter.result({
+  "status": "passed"
+});
+formatter.step({
+  "name": "I get the error message \"The activity is already a part of the project\"",
+  "keyword": "Then "
+});
+formatter.match({
+  "location": "UserSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
   "status": "passed"
@@ -584,7 +704,7 @@ formatter.result({
 });
 formatter.uri("use_cases/Delete_Activity.feature");
 formatter.feature({
-  "name": "Remove activity",
+  "name": "Delete activity",
   "description": "  Description: An activity is removed by developer or project manager\n  Actors: Developer or project manager",
   "keyword": "Feature"
 });
@@ -884,17 +1004,6 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the developer is not project manager",
-  "keyword": "And "
-});
-formatter.match({
-  "location": "UserSteps.theDeveloperIsNotProjectManager()"
-});
-formatter.result({
-  "error_message": "org.opentest4j.AssertionFailedError: expected: \u003ctrue\u003e but was: \u003cfalse\u003e\r\n\tat org.junit.jupiter.api.AssertionUtils.fail(AssertionUtils.java:36)\r\n\tat org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:42)\r\n\tat org.junit.jupiter.api.AssertTrue.assertTrue(AssertTrue.java:37)\r\n\tat org.junit.jupiter.api.Assertions.assertTrue(Assertions.java:115)\r\n\tat acceptance_tests.UserSteps.theDeveloperIsNotProjectManager(UserSteps.java:282)\r\n\tat ✽.the developer is not project manager(use_cases/Delete_Activity.feature:41)\r\n",
-  "status": "failed"
-});
-formatter.step({
   "name": "there is a activity project with the title \"Herimundus\" defined",
   "keyword": "And "
 });
@@ -902,7 +1011,17 @@ formatter.match({
   "location": "UserSteps.thereIsAActivityProjectWithTheTitleDefined(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
+});
+formatter.step({
+  "name": "the developer is not project manager",
+  "keyword": "And "
+});
+formatter.match({
+  "location": "UserSteps.theDeveloperIsNotProjectManager()"
+});
+formatter.result({
+  "status": "passed"
 });
 formatter.step({
   "name": "the project manager removes the activity with title \"Herimundus\"",
@@ -912,27 +1031,17 @@ formatter.match({
   "location": "UserSteps.theProjectManagerRemovesTheActivityWithTitle(String)"
 });
 formatter.result({
-  "status": "skipped"
-});
-formatter.step({
-  "name": "the activity with title \"Herimundus\" is not removed from the project",
-  "keyword": "Then "
-});
-formatter.match({
-  "location": "UserSteps.theActivityWithTitleIsNotRemovedFromTheProject(String)"
-});
-formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.step({
   "name": "I get the error message \"You need to have project manager rights to edit this project\"",
-  "keyword": "And "
+  "keyword": "Then "
 });
 formatter.match({
   "location": "UserSteps.iGetTheErrorMessage(String)"
 });
 formatter.result({
-  "status": "skipped"
+  "status": "passed"
 });
 formatter.uri("use_cases/Delete_Developer.feature");
 formatter.feature({
@@ -1107,11 +1216,11 @@ formatter.result({
   "status": "passed"
 });
 formatter.step({
-  "name": "the administrator deletes the project with title \"Heisenberg\"",
+  "name": "the manager deletes the project with title \"Heisenberg\"",
   "keyword": "When "
 });
 formatter.match({
-  "location": "UserSteps.theAdministratorDeletesTheProjectWithTitle(String)"
+  "location": "UserSteps.theManagerDeletesTheProjectWithTitle(String)"
 });
 formatter.result({
   "status": "passed"
