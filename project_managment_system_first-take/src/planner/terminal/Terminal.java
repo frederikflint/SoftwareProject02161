@@ -44,22 +44,22 @@ public class Terminal {
 
         System.out.println("Fake manager: credentials: m, Pass: 123");
         System.out.println("----------------------------------------");
-        System.out.println("Fake users: credentials: user1..5, Pass: 123");
+        System.out.println("Fake users: credentials: u1..5, Pass: 123");
         System.out.println("----------------------------------------");
-        User managerUser = new User("manager","123");
+        User managerUser = new User("m","123");
         Project project = new Project("project", null,null);
 
 
         // FAKE DATA
         for (int i = 1; i <= 5; i++){
-            planner.users.add(new User("user" + (i),"123"));
+            planner.users.add(new User("u" + (i),"123"));
         }
 
         planner.users.add(managerUser);
 
         // Create project
         try {
-            planner.userLogIn("manager","123");
+            planner.userLogIn("m","123");
         } catch (Exception e){
             System.out.println(e.getMessage());
         }
