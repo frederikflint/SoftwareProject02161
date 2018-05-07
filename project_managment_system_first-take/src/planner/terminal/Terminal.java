@@ -1,5 +1,6 @@
 package planner.terminal;
 
+import cucumber.api.java.pt.E;
 import planner.app.AuthenticationException;
 import planner.app.OperationNotAllowedException;
 import planner.app.Planner;
@@ -45,7 +46,7 @@ public class Terminal {
         System.out.println("----------------------------------------");
         System.out.println("Fake users: credentials: u1..5, Pass: 123");
         System.out.println("----------------------------------------");
-        User managerUser = new User("manager","123");
+        User managerUser = new User("m","123");
         Project project = new Project("projekt", null,null);
 
 
@@ -125,6 +126,27 @@ public class Terminal {
             return setUser();
         } else {
             return user;
+        }
+
+    }
+
+    private Activity setActivity(){
+
+        String in = input.nextLine();
+        Activity activity = null;
+
+        try {
+            activity = planner.getActivity(in);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        if(activity == null){
+            System.out.println("Brugeren " + "\"" + in + "\"" + " findes ikke på systemet");
+            System.out.println("Prøv igen");
+            return setActivity();
+        } else {
+            return activity;
         }
 
     }
@@ -443,6 +465,7 @@ public class Terminal {
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
             try {
+                System.out.println("Projektet er nu oprettet på systemet");
                 planner.createProject(new Project(titel,start,end));
                 userFeatureScreen();
             }catch (Exception e){
@@ -452,6 +475,7 @@ public class Terminal {
         } else if (x.equals("n")) {
             try {
                 planner.createProject(new Project(titel,null,null));
+                System.out.println("Projektet er nu oprettet på systemet");
                 userFeatureScreen();
             } catch (OperationNotAllowedException | AuthenticationException e) {
                 System.out.println(e.getMessage());
@@ -505,27 +529,13 @@ public class Terminal {
 
         System.out.println("Du har følgende aktiviteter:  ");
         for (Activity activity: activeUser.getActivities()) {
-            System.out.println((activeUser.getActivities().indexOf(activity)+1) + ": " + activity.getTitle());
+            System.out.println("- " + activity.getTitle());
         }
 
-        System.out.println("Indtast nummeret på den aktivitet du vil fjerne");
+        System.out.println("Indtast navnet på den aktivitet du vil fjerne");
         Integer in = null;
 
-        try {
-            in = Integer.parseInt(input.nextLine());
-        }catch (Exception e){
-            System.out.println("Ikke et nummer. Prøv igen.");
-            removeProject();
-        }
-
-        Activity activity = null;
-
-        try {
-            activity = activeUser.getActivities().get(in - 1);
-        }catch (Exception e){
-            System.out.println("Intet projekt matcher det nummer");
-            removeProject();
-        }
+        Activity activity = setActivity();
 
         System.out.println("Er du sikker på du vil slette aktiviteten " + "\"" + activity.getTitle()+ "\"? Ja: j, Nej: n");
         String answer = input.nextLine();
@@ -765,12 +775,12 @@ public class Terminal {
         System.out.println("Skriv navnet på den aktivitet du vil tilføje til en bruger");
         Activity activity = setProjectActivity(project);
 
-        System.out.println("Vælg en bruger af projketet der skal have tilføjet denne aktivitet");
+        System.out.println("Vælg en bruger af projektet der skal have tilføjet denne aktivitet");
         for (User user: project.getUsers()) {
             System.out.println(("- " + user.getCredentials()));
         }
 
-        System.out.println("Skriv brugernavnet på den bruger du vil tilføjet til");
+        System.out.println("Skriv brugernavnet på denne bruger");
         User user = setUser();
 
         try {
