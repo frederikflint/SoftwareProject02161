@@ -18,7 +18,7 @@ public class User {
     private String password;
 
     // Is the user a adminHelper of the system
-    protected Boolean isAdmin = false;
+    protected boolean isAdmin = false;
 
     // The projects the user are managing
     private List<Project> managerProjects = new ArrayList<>();
@@ -88,7 +88,7 @@ public class User {
      * Remove registered time.
      * @param timeRegistration
      * @throws OperationNotAllowedException
-     */
+     * TODO: Slet måske?     */
     public void removeRegistedTime(WorkHours timeRegistration) throws OperationNotAllowedException {
         if(!(workHours.contains(timeRegistration))){
             throw new OperationNotAllowedException("The time registration is not in your personal register");
@@ -176,7 +176,7 @@ public class User {
         return workHours;
     }
 
-    public Boolean isAdmin() {
+    public boolean isAdmin() {
         return isAdmin;
     }
 

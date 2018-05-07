@@ -140,7 +140,7 @@ public class Project {
      * @param activeUser
      * @param user
      * @throws OperationNotAllowedException If you do not have manager rights throw error.
-     *                                      The user has to be a part of the project to add activity.
+     *      TODO: slet måske?                                The user has to be a part of the project to add activity.
      *                                      The activity has to be a part of the project to add it.
      */
     public void addActivityToProjectUser(Activity activity, User activeUser, User user) throws OperationNotAllowedException, AuthenticationException {
@@ -170,7 +170,7 @@ public class Project {
      * @param activeUser
      * @param user
      * @throws OperationNotAllowedException If you do not have manager rights throw error.
-     *                                      The user has to be a part of the project to add activity.
+     *     TODO: Slet måske                                 The user has to be a part of the project to add activity.
      *                                      The activity has to be a part of the project to remove it.
      */
     public void removeActivityFromProjectUser(Activity activity, User activeUser, User user) throws OperationNotAllowedException {
