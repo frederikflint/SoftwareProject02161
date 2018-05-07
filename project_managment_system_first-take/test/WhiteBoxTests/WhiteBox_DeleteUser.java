@@ -53,6 +53,7 @@ public class WhiteBox_DeleteUser {
         //Expectations
         expectedException.expect(OperationNotAllowedException.class);
         expectedException.expectMessage("No such user is defined in the system");
+
         //Given
         planner.userLogIn("admin","admin123");
 
