@@ -376,7 +376,7 @@ public class Terminal {
     private void getRegisteredTime() {
 
         if(planner.getActiveUser().getWorkHours().size() == 0){
-            System.out.println("No time registered for activities");
+            System.out.println("No registered time spent");
             userFeatureScreen();
         }
 
@@ -660,7 +660,7 @@ public class Terminal {
             System.out.println(e.getMessage());
         }
         if(availableUsers.isEmpty()){
-            System.out.println("No available users in that time frame");
+            System.out.println("No developer is currently available");
             managerFeatureScreen();
         } else {
             System.out.println("Following users are available in that time frame: ");

@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER"/>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="src" path="student_test"/>
+	<classpathentry kind="src" path="test"/>
+	<classpathentry kind="lib" path="lib/cucumber-core-2.3.1.jar" sourcepath="/Users/huba/.m2/repository/io/cucumber/cucumber-core/2.3.1/cucumber-core-2.3.1-sources.jar"/>
+	<classpathentry kind="lib" path="lib/cucumber-html-0.2.6.jar"/>
+	<classpathentry kind="lib" path="lib/cucumber-java-2.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/cucumber-junit-2.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/cucumber-jvm-deps-1.0.6.jar"/>
+	<classpathentry kind="lib" path="lib/cucumber-picocontainer-2.3.1.jar"/>
+	<classpathentry kind="lib" path="lib/gherkin-5.0.0.jar"/>
+	<classpathentry kind="lib" path="lib/maven-surefire-plugin-2.12.4.jar"/>
+	<classpathentry kind="lib" path="lib/picocontainer-2.15.jar"/>
+	<classpathentry kind="lib" path="lib/tag-expressions-1.1.1.jar"/>
+	<classpathentry kind="lib" path="lib/byte-buddy-1.7.9.jar"/>
+	<classpathentry kind="lib" path="lib/byte-buddy-agent-1.7.9.jar"/>
+	<classpathentry kind="lib" path="lib/mockito-core-2.13.0.jar" sourcepath="/Users/huba/.m2/repository/org/mockito/mockito-core/2.13.0/mockito-core-2.13.0-sources.jar"/>
+	<classpathentry kind="lib" path="lib/objenesis-2.6.jar"/>
+	<classpathentry kind="var" path="APPLICATION_HOME_DIR/lib/junit-4.12.jar"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.USER_LIBRARY/org.testfx:testfx-junit5:4.0.13-alpha"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>

@@ -192,7 +192,7 @@ public class Planner {
         if(projects.contains(project)){                                                     //2
             throw new OperationNotAllowedException("Project is already in the planner");
         } else if(getProject(project.getTitle()) != null){                                  //3
-            throw new OperationNotAllowedException("A project with that title is in the planner");
+            throw new OperationNotAllowedException("Project is already in the planner");
         } else {
             // Add the project to the planner projects list
             projects.add(project);

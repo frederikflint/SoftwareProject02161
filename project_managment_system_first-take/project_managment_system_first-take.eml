@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<component inheritJdk="true">
+	<exclude-output/>
+	<contentEntry url="file://$MODULE_DIR$">
+		<testFolder url="file://$MODULE_DIR$/test"/>
+	</contentEntry>
+	<lib name="cucumber-core-2.3.1.jar" scope="COMPILE">
+		<srcroot url="file:///Users/huba/.m2/repository/io/cucumber/cucumber-core/2.3.1/cucumber-core-2.3.1-sources.jar"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/cucumber-core-2.3.1.jar!/"/>
+	</lib>
+	<lib name="cucumber-html-0.2.6.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/cucumber-html-0.2.6.jar!/"/>
+	</lib>
+	<lib name="cucumber-java-2.3.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/cucumber-java-2.3.1.jar!/"/>
+	</lib>
+	<lib name="cucumber-junit-2.3.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/cucumber-junit-2.3.1.jar!/"/>
+	</lib>
+	<lib name="cucumber-jvm-deps-1.0.6.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/cucumber-jvm-deps-1.0.6.jar!/"/>
+	</lib>
+	<lib name="cucumber-picocontainer-2.3.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/cucumber-picocontainer-2.3.1.jar!/"/>
+	</lib>
+	<lib name="gherkin-5.0.0.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/gherkin-5.0.0.jar!/"/>
+	</lib>
+	<lib name="maven-surefire-plugin-2.12.4.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/maven-surefire-plugin-2.12.4.jar!/"/>
+	</lib>
+	<lib name="picocontainer-2.15.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/picocontainer-2.15.jar!/"/>
+	</lib>
+	<lib name="tag-expressions-1.1.1.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/tag-expressions-1.1.1.jar!/"/>
+	</lib>
+	<lib name="byte-buddy-1.7.9.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/byte-buddy-1.7.9.jar!/"/>
+	</lib>
+	<lib name="byte-buddy-agent-1.7.9.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/byte-buddy-agent-1.7.9.jar!/"/>
+	</lib>
+	<lib name="mockito-core-2.13.0.jar" scope="COMPILE">
+		<srcroot url="file:///Users/huba/.m2/repository/org/mockito/mockito-core/2.13.0/mockito-core-2.13.0-sources.jar"/>
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/mockito-core-2.13.0.jar!/"/>
+	</lib>
+	<lib name="objenesis-2.6.jar" scope="COMPILE">
+		<relative-module-cls project-related="jar://$PROJECT_DIR$/lib/objenesis-2.6.jar!/"/>
+	</lib>
+	<levels>
+		<level name="org.testfx:testfx-junit5:4.0.13-alpha" value="project"/>
+	</levels>
+</component>
