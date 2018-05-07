@@ -9,6 +9,7 @@ import planner.domain.User;
 import planner.domain.WorkHours;
 
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.Calendar;
 import java.util.List;
 import java.util.Scanner;
@@ -125,6 +126,21 @@ public class Terminal {
             return setUser();
         } else {
             return user;
+        }
+
+    }
+
+    private Activity setProjectActivity(Project project){
+
+        String in = input.nextLine();
+        Activity activity = project.getActivity(in);
+
+        if(activity == null){
+            System.out.println("Aktiviteten " + "\"" + in + "\"" + " findes ikke på projektet " + "\"" + project.getTitle() + "\"" );
+            System.out.println("Prøv igen");
+            return setProjectActivity(project);
+        } else {
+            return activity;
         }
 
     }
@@ -458,32 +474,70 @@ public class Terminal {
         if (x.equals("j")){
             setMonthAndDay();
             start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
-            try {
-                planner.getActiveUser().addActivity(new Activity(start, end, titel));
-                userFeatureScreen();
-            } catch (OperationNotAllowedException e) {
-                System.out.println(e.getMessage());
-                createActivity();
-            }
         } else if (x.equals("n")) {
-            try {
-                planner.getActiveUser().addActivity(new Activity(start, end, titel));
-                userFeatureScreen();
-            } catch (OperationNotAllowedException e) {
-                System.out.println(e.getMessage());
-                createActivity();
-            }
         } else {
             System.out.println("Forkerte information - prøv igen");
+            createActivity();
+        }
+        try {
+            Activity activity = new Activity(start, end, titel);
+            planner.getActiveUser().addActivity(activity);
+            System.out.println("Aktiviteten " + "\"" +  activity.getTitle() + "\" er nu tilføjet til din liste");
+            userFeatureScreen();
+        } catch (OperationNotAllowedException e) {
+            System.out.println(e.getMessage());
             createActivity();
         }
     }
 
     private void removeActivity() {
 
+        if(planner.getActiveUser().getActivities().size() == 0){
+            System.out.println("Du har ingen aktiviteter");
+            userFeatureScreen();
+        }
+
+        User activeUser = planner.getActiveUser();
+
+        System.out.println("Du har følgende aktiviteter:  ");
+        for (Activity activity: activeUser.getActivities()) {
+            System.out.println((activeUser.getActivities().indexOf(activity)+1) + ": " + activity.getTitle());
+        }
+
+        System.out.println("Indtast nummeret på den aktivitet du vil fjerne");
+        Integer in = null;
+
+        try {
+            in = Integer.parseInt(input.nextLine());
+        }catch (Exception e){
+            removeProject();
+        }
+
+        Activity activity = null;
+
+        try {
+            activity = activeUser.getActivities().get(in - 1);
+        }catch (Exception e){
+            System.out.println("Intet projekt matcher det nummer");
+            removeProject();
+        }
+
+        System.out.println("Er du sikker på du vil slette aktiviteten " + "\"" + activity.getTitle()+ "\"? Ja: j, Nej: n");
+        String answer = input.nextLine();
+
+        if(answer.equals("n")){
+            managerFeatureScreen();
+        }
+
+        try {
+            activeUser.removeActivity(activity);
+            System.out.println("Aktiviteten " + "\"" +  activity.getTitle() + "\"" + " er nu fjernet fra dine aktiviteter" );
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
         userFeatureScreen();
     }
-
 
     /********************
      * Manager Features *
@@ -496,15 +550,14 @@ public class Terminal {
         System.out.println("3: Se aktiviteter tilknyttet til et projekt");
         System.out.println("4: Se aktiviteter tilknyttet en bruger af et projekt");
         System.out.println("5: Se ledige brugere");
-        System.out.println("6: Tilføj en aktivitet til et projekt");
+        System.out.println("6: Opret en aktivitet til et projekt");
         System.out.println("7: Tilføj en aktivitet til en bruger af et projekt");
         System.out.println("8: Tilføj en bruger til et projekt");
-        System.out.println("9: Skift manager for et projekt");
+        System.out.println("9: Skift manager for et af dine projekter");
         System.out.println("10: Fjern en bruger fra et projekt");
         System.out.println("11: Fjern en aktivitet fra et projekt");
-        System.out.println("12: Fjern en aktivitet fra en bruger af et projekt");
-        System.out.println("13: Slet et projekt");
-        System.out.println("14: Tilbage");
+        System.out.println("12: Slet et projekt");
+        System.out.println("13: Tilbage");
         String in = input.nextLine();
 
         if (in.equals("1")){
@@ -512,14 +565,26 @@ public class Terminal {
         } else if (in.equals("2")) {
             getManageProjectUserList();
         } else if (in.equals("3")) {
-            assignUserToProject();}
-        else if (in.equals("4")) {
-            removeUserFromProject();
+            getManageProjectActivityList();
+        } else if (in.equals("4")) {
+            getManageProjectUserActivityList();
         } else if (in.equals("5")){
-            changeProjectManager();
-        } else if(in.equals("6")){
-            removeProject();
+            getAvailableUsers();
+        } else if (in.equals("6")){
+            createActivityToProject();
         } else if (in.equals("7")){
+            assignUserToActivity();
+        } else if (in.equals("8")){
+            assignUserToProject();
+        } else if (in.equals("9")){
+            changeProjectManager();
+        } else if (in.equals("10")){
+            removeUserFromProject();
+        } else if (in.equals("11")){
+            removeActivityFromProject();
+        } else if (in.equals("12")){
+            removeProject();
+        } else if(in.equals("13")){
             userFeatureScreen();
         } else {
             System.out.println("Dit input matcher ikke mulighederne");
@@ -576,10 +641,42 @@ public class Terminal {
         managerFeatureScreen();
     }
 
+    private void getAvailableUsers(){
+
+        System.out.println("Hvornår skal brugerne være ledige fra");
+        Calendar start = Calendar.getInstance();
+        Calendar end = Calendar.getInstance();
+        System.out.println("nået op til");
+        setMonthAndDay();
+        start.set(2018,Integer.parseInt(month),Integer.parseInt(day),0,0);
+        System.out.println("Hvornår skal brugerne være ledige til");
+        setMonthAndDay();
+        end.set(2018,Integer.parseInt(month),Integer.parseInt(day),0,0);
+        List<User> availableUsers = new ArrayList();
+
+        try {
+            availableUsers = planner.getAvailableUsers(start,end);
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+        if(availableUsers.isEmpty()){
+            System.out.println("Der er ingen ledige brugere i dette interval");
+            managerFeatureScreen();
+        } else {
+            System.out.println("Følgende brugere er ledige i dette interval: ");
+            for (User user: availableUsers) {
+                System.out.println("- " + user.getCredentials());
+            }
+            managerFeatureScreen();
+        }
+
+
+    }
+
     private void assignUserToProject(){
         User activeUser = planner.getActiveUser();
 
-        System.out.println("Vælg et et projekt der skal tilføjes en bruger til:  ");
+        System.out.println("Vælg et projekt der skal tilføjes en bruger til:  ");
         for (Project project: activeUser.getManagerProjects()) {
             System.out.println((activeUser.getManagerProjects().indexOf(project)+1)+ ": " + project.getTitle());
         }
@@ -603,7 +700,6 @@ public class Terminal {
             assignUserToProject();
         }
 
-
         System.out.println("Vælg en bruger der skal tilføjes til " + "\"" + project.getTitle() + "\"");
         for (User user: planner.getUsers()) {
             if(project.getUsers().contains(user)){
@@ -617,7 +713,7 @@ public class Terminal {
 
         try {
             planner.assignUserToProject(user,project);
-            System.out.println("Brugeren " + "\"" + user.getCredentials() + "\"" + " blev tilføjet til projektet " + "\"" + project.getTitle() + "\"" );
+            System.out.println("Brugeren " + "\"" + user.getCredentials() + "\"" + " er blevet tilføjet til projektet " + "\"" + project.getTitle() + "\"" );
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -625,11 +721,140 @@ public class Terminal {
         managerFeatureScreen();
     }
 
+    private void assignUserToActivity(){
+        User activeUser = planner.getActiveUser();
+
+        System.out.println("Vælg et af følgende projekter: ");
+        for (Project project: activeUser.getManagerProjects()) {
+            System.out.println((activeUser.getManagerProjects().indexOf(project)+1)+ ": " + project.getTitle());
+        }
+
+        System.out.println("Indtast nummeret på det projekt du vil tilføje en bruger en aktivtet");
+        Integer in = null;
+
+        try {
+            in = Integer.parseInt(input.nextLine());
+        }catch (Exception e){
+            System.out.println("");
+            assignUserToActivity();
+        }
+
+        Project project = null;
+
+        try {
+            project = planner.activeUser.getManagerProjects().get(in - 1);
+        }catch (Exception e){
+            System.out.println("Intet projekt matcher det nummer");
+            assignUserToActivity();
+        }
+
+        if(project.getUsers().size() == 1){
+            System.out.println("Der er ingen brugere tilknyttet projektet " + "\"" + project.getTitle() + "\"");
+            managerFeatureScreen();
+        }
+
+        if(project.getActivities().size() == 0){
+            System.out.println("Der er ingen aktiviteter tilknyttet projektet " + "\"" + project.getTitle() + "\"");
+            managerFeatureScreen();
+        }
+
+        System.out.println("Vælg en aktivitet der skal tilføjes til en bruger");
+        for (Activity activity: project.getActivities()) {
+            System.out.println(("- " + activity.getTitle()));
+        }
+
+        System.out.println("Skriv brugernavnet på den bruger du vil tilføjet til");
+        Activity activity = setProjectActivity(project);
+
+        System.out.println("Vælg en bruger der skal tilføjes en aktivitet til");
+        for (User user: project.getUsers()) {
+            System.out.println(("- " + user.getCredentials()));
+        }
+
+        System.out.println("Skriv brugernavnet på den bruger du vil tilføjet til");
+        User user = setUser();
+
+        try {
+            user.addActivity(activity);
+            System.out.println("Brugeren " + "\"" + user.getCredentials() + "\"" + " har fået tilføjet til aktiviteten " + "\"" + activity.getTitle() + "\"" );
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        managerFeatureScreen();
+    }
+
+    private void createActivityToProject(){
+        User activeUser = planner.getActiveUser();
+
+        System.out.println("Vælg et projekt der skal oprettes en aktivitet til:  ");
+        for (Project project: activeUser.getManagerProjects()) {
+            System.out.println((activeUser.getManagerProjects().indexOf(project)+1)+ ": " + project.getTitle());
+        }
+
+        System.out.println("Indtast nummeret på det projekt du vil oprettes en aktivitet til");
+        Integer in = null;
+
+        try {
+            in = Integer.parseInt(input.nextLine());
+        }catch (Exception e){
+            System.out.println("");
+            createActivityToProject();
+        }
+
+        Project project = null;
+
+        try {
+            project = planner.activeUser.getManagerProjects().get(in - 1);
+        }catch (Exception e){
+            System.out.println("Intet projekt matcher det nummer");
+            createActivityToProject();
+        }
+
+        try {
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        System.out.println("Opret den aktivitet der skal tilføjes");
+
+        System.out.println("-1 for at gå tilbage");
+        System.out.println("Opretter aktivitet...");
+        System.out.println("Indtast titel:");
+        String titel = input.nextLine();
+        if (titel.equals("-1")) {
+            userFeatureScreen();
+        }
+        Calendar start = Calendar.getInstance();
+        Calendar end = Calendar.getInstance();
+        System.out.println("Kendes start tidspunkt? Ja: j, Nej: n");
+        String x = input.nextLine();
+        if (x.equals("j")){
+            setMonthAndDay();
+            start.set(2018,Integer.parseInt(month),Integer.parseInt(day));
+        } else if (x.equals("n")) {
+        } else {
+            System.out.println("Forkerte information - prøv igen");
+            createActivityToProject();
+        }
+
+        try {
+            Activity activity = new Activity(start, end, titel);
+            project.addActivity(activity,activeUser);
+            System.out.println("Aktiviteten " + "\"" +  activity.getTitle() + "\" er nu tilføjet til projektet " + "\"" +  project.getTitle() + "\"");
+            managerFeatureScreen();
+        } catch (Exception e) {
+            System.out.println(e.getMessage());
+            createActivityToProject();
+        }
+
+    }
+
     private void removeUserFromProject(){
 
         List mP = planner.activeUser.getManagerProjects();
 
-        System.out.println("Vælg et projekt der skal tilføjes en bruger til:  ");
+        System.out.println("Vælg et projekt der skal fjernes en bruger fra:  ");
         for (Project project: planner.activeUser.getManagerProjects()) {
             System.out.println((mP.indexOf(project)+1)+ ": " + project.getTitle());
         }
@@ -657,7 +882,7 @@ public class Terminal {
             managerFeatureScreen();
         }
 
-        System.out.println("Brugere tilknytet til projketet" + "\"" + project.getTitle() + "\"");
+        System.out.println("Brugere tilknytet til projketet " + "\"" + project.getTitle() + "\"");
         for (User user: project.getUsers()) {
             if (!project.getManager().equals(user)){
                 System.out.println(("- " + user.getCredentials()));
@@ -674,10 +899,67 @@ public class Terminal {
             managerFeatureScreen();
         }
 
-
         try {
             planner.removeUserFromProject(user,project);
-            System.out.println("Brugeren " + "\"" + user.getCredentials() + "\"" + " blev fjernet fra projektet " + "\"" + project.getTitle() + "\"" );
+            System.out.println("Brugeren " + "\"" + user.getCredentials() + "\"" + " er nu blevet fjernet fra projektet " + "\"" + project.getTitle() + "\"" );
+        }catch (Exception e){
+            System.out.println(e.getMessage());
+        }
+
+        managerFeatureScreen();
+    }
+
+
+    private void removeActivityFromProject(){
+
+        List mP = planner.activeUser.getManagerProjects();
+
+        System.out.println("Vælg et projekt der skal fjernes en aktivitet fra:  ");
+        for (Project project: planner.activeUser.getManagerProjects()) {
+            System.out.println((mP.indexOf(project)+1)+ ": " + project.getTitle());
+        }
+
+        System.out.println("Indtast nummeret på det projekt du vil fjerne en aktivitet fra");
+        Integer in = null;
+
+        try {
+            in = Integer.parseInt(input.nextLine());
+        }catch (Exception e){
+            removeActivityFromProject();
+        }
+
+        Project project = null;
+
+        try {
+            project = planner.activeUser.getManagerProjects().get(in - 1);
+        }catch (Exception e){
+            System.out.println("Intet projekt matcher det nummer");
+            removeActivityFromProject();
+        }
+
+        if(project.getActivities().size() == 0){
+            System.out.println("Der er ingen aktiviteter tilknyttet projektet " + "\"" + project.getTitle() + "\"");
+            managerFeatureScreen();
+        }
+
+        System.out.println("Aktiviteter tilknytet projketet " + "\"" + project.getTitle() + "\"");
+        for (Activity activity: project.getActivities()) {
+            System.out.println(("- " + activity.getTitle()));
+        }
+
+        System.out.println("Skriv navnet på den aktivtet du vil fjerne fra " + "\"" + project.getTitle() + "\"");
+        Activity activity = setProjectActivity(project);
+
+        System.out.println("Er du sikker på du vil slette aktiviteten " + "\"" + activity.getTitle()+ "\" fra projektet " + "\"" + project.getTitle() + "\"? Ja: j, Nej: n");
+        String answer = input.nextLine();
+
+        if(answer.equals("n")){
+            managerFeatureScreen();
+        }
+
+        try {
+            project.removeActivity(activity, planner.getActiveUser());
+            System.out.println("Aktiviteten " + "\"" + activity.getTitle() + "\"" + " er nu blevet fjernet fra projektet " + "\"" + project.getTitle() + "\"" );
         }catch (Exception e){
             System.out.println(e.getMessage());
         }
@@ -736,7 +1018,102 @@ public class Terminal {
 
     }
 
-    private void getManageProjectActivtyList(){
+    private void getManageProjectActivityList(){
+        List mP = planner.activeUser.getManagerProjects();
+
+        System.out.println("Vælg et af følgende projekter:  ");
+        for (Project project: planner.activeUser.getManagerProjects()) {
+            System.out.println((mP.indexOf(project)+1)+ ": " + project.getTitle());
+        }
+
+        System.out.println("Indtast nummeret på det projekt du ønsker at se tilknyttede aktiviteter");
+
+        Integer in = null;
+
+        try {
+            in = Integer.parseInt(input.nextLine());
+        }catch (Exception e){
+            System.out.println("");
+            getManageProjectActivityList();
+        }
+
+        Project project = null;
+
+        try {
+            project = planner.activeUser.getManagerProjects().get(in - 1);
+        }catch (Exception e){
+            System.out.println("Intet projekt matcher det nummer");
+            getManageProjectActivityList();
+        }
+
+        if(project.getActivities().size() == 0){
+            System.out.println("Der er ingen Aktiviteter tilknyttet projektet " + "\"" + project.getTitle() + "\"");
+            managerFeatureScreen();
+        }
+
+        System.out.println("Aktiviteterne tilknyttet til projektet " + "\"" + project.getTitle() + "\"" + " er:");
+        for (Activity activity: project.getActivities()) {
+            System.out.println("- " + activity.getTitle());
+        }
+
+        managerFeatureScreen();
+    }
+
+
+    private void getManageProjectUserActivityList(){
+        List mP = planner.activeUser.getManagerProjects();
+
+        System.out.println("Vælg et af følgende projekter:  ");
+        for (Project project: planner.activeUser.getManagerProjects()) {
+            System.out.println((mP.indexOf(project)+1)+ ": " + project.getTitle());
+        }
+
+        System.out.println("Indtast nummeret på det projekt du ønsker at se tilknyttede aktiviteter");
+
+        Integer in = null;
+
+        try {
+            in = Integer.parseInt(input.nextLine());
+        }catch (Exception e){
+            System.out.println("");
+            getManageProjectUserActivityList();
+        }
+
+        Project project = null;
+
+        try {
+            project = planner.activeUser.getManagerProjects().get(in - 1);
+        }catch (Exception e){
+            System.out.println("Intet projekt matcher dette nummer");
+            getManageProjectUserActivityList();
+        }
+
+        if(project.getUsers().size() == 1){
+            System.out.println("Der er ingen brugere tilknyttet projektet " + "\"" + project.getTitle() + "\"");
+            managerFeatureScreen();
+        }
+
+        System.out.println("Brugere tilknytet til projketet" + "\"" + project.getTitle() + "\"");
+        for (User user: project.getUsers()) {
+            if (!project.getManager().equals(user)){
+                System.out.println(("- " + user.getCredentials()));
+            }
+        }
+
+        System.out.println("Skriv brugernavnet for at se aktiviteter for denne bruger");
+        User user = setUser();
+
+        if(user.getActivities().size() == 0){
+            System.out.println("Denne bruger har ingen aktiviteter");
+            managerFeatureScreen();
+        }
+
+        System.out.println("Aktiviteterne tilknyttet til brugeren" + "\"" + user.getCredentials() + "\"" + " er:");
+        for (Activity activity: user.getActivities()) {
+            System.out.println(("- " + activity.getTitle()));
+        }
+
+        managerFeatureScreen();
     }
 
     private void changeProjectManager(){
@@ -844,12 +1221,10 @@ public class Terminal {
                 System.out.println("Prøv igen");
                 setMonthAndDay();
             }
-            System.out.println("efter day");
         } else {
             System.out.println("Prøv igen");
             setMonthAndDay();
         }
-        System.out.println("sidst i day");
     }
 
 

@@ -22,8 +22,6 @@ public class Planner {
     // All the developers on the system
     public List<User> users =  new ArrayList<>();
 
-    List<User> availableUsers = new ArrayList<>();
-
     // All the projects on the system
     public List<Project> projects = new ArrayList<>();
 
@@ -357,20 +355,21 @@ public class Planner {
     public List<User> getAvailableUsers(Calendar activityStartTime, Calendar activityEndTime) throws AuthenticationException {
         checkSession();
 
+        List<User> availableUsers = new ArrayList<>();
+
         // Check if a given user is available
         for (User user : users) {
             if(user.getWorkHours().isEmpty()){
                 if(!getActiveUser().equals(user)){
                     availableUsers.add(user);
                 }
-                break;
-            }
-
-            for (WorkHours workHour : user.getWorkHours()) {
-                if (!(workHour.getStartTime().after(activityStartTime)) && !(workHour.getEndTime().before(activityEndTime))) {
-                    if (!(workHour.getStartTime().equals(activityStartTime)) && !(workHour.getEndTime().equals(activityEndTime))) {
-                        if(!getActiveUser().equals(user)){
-                            availableUsers.add(user);
+            } else {
+                for (WorkHours workHour : user.getWorkHours()) {
+                    if (!(workHour.getStartTime().after(activityStartTime)) && !(workHour.getEndTime().before(activityEndTime))) {
+                        if (!(workHour.getStartTime().equals(activityStartTime)) && !(workHour.getEndTime().equals(activityEndTime))) {
+                            if (!getActiveUser().equals(user)) {
+                                availableUsers.add(user);
+                            }
                         }
                     }
                 }
@@ -432,6 +431,12 @@ public class Planner {
         return currentProject;
     }
 
+    /**
+     * Returns a specified activity.
+     * @param title
+     * @return
+     * @throws OperationNotAllowedException
+     */
     public Activity getActivity(String title) throws OperationNotAllowedException {
 
         // Set the initial currentProject as null.
